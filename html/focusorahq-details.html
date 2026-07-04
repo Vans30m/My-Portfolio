@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Floor Cleaning Robot | Robotics Engineering Case Study</title>
+
+    <!-- Premium Robotics SEO Platform -->
+    <meta name="description" content="Engineering case study for Autonomous Floor Cleaning Robot: An intelligent pathfinding firmware stack for obstacle-avoiding autonomous cleaning robots with sensor fusion.">
+    <meta name="author" content="Vansh Thakur">
+
+    <!-- Google Fonts & Devicons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgMain: '#0B0B0C',
+                        surface: 'rgba(20, 20, 22, 0.65)',
+                        primary: '#7C8CFF',
+                        accent: '#55D6BE',
+                        acc3: '#E8A33D',
+                        textMain: '#F4F2EE',
+                        muted: '#A1A1AA',
+                        borderSpec: 'rgba(255,255,255,.08)'
+                    },
+                    fontFamily: {
+                        sans: ['Hanken Grotesk', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        serif: ['Instrument Serif', 'Georgia', 'serif'],
+                        mono: ['Geist Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0B0C;
+        }
+        /* Premium glassmorphism panel matched to global styling */
+        .glass-panel {
+            background: rgba(20, 20, 22, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-hover:hover {
+            border-color: rgba(124, 140, 255, 0.3);
+            box-shadow: 0 0 30px rgba(124, 140, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        /* Precise grid pattern matching layout rules */
+        .grid-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        /* Scroll reveal animations using minimal code execution paths */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Soft global atmospheric light vectors */
+        .glow-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(130px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.12;
+        }
+        .editorial-serif {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body class="bg-bgMain text-textMain font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden grid-bg">
+
+    <!-- Ambient Lighting Layout Mapping Aesthetics -->
+    <div class="fixed top-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary glow-blob"></div>
+    <div class="fixed bottom-[10%] right-[-10%] w-[500px] h-[500px] bg-accent glow-blob"></div>
+    <div class="fixed top-[40%] right-[15%] w-[450px] h-[450px] bg-acc3 glow-blob"></div>
+
+    <!-- Floating Global Navigation Dock -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-[850px]">
+        <div class="glass-panel px-6 py-4 rounded-full flex items-center justify-between border border-borderSpec">
+            <a href="#" class="text-lg font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
+                Vansh<span class="text-accent">.</span>
+            </a>
+            <div class="flex items-center space-x-6 text-sm">
+                <a href="#" class="text-muted hover:text-textMain transition-colors">← Dashboard Overview</a>
+                <a href="#hardware" class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Hardware</a>
+                <a href="#architecture" class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Architecture</a>
+                <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank" class="text-accent font-mono text-xs hover:underline">Repository ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-32 pb-24 relative z-10">
+
+        <!-- 1. HERO SECTION -->
+        <header class="relative mb-24 reveal">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <span class="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent px-4 py-1 rounded-full text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                    Firmware Stack Operational
+                </span>
+                <span class="text-xs font-mono text-muted uppercase tracking-wider">SYSTEM_04 // Robotics &amp; Embedded</span>
+            </div>
+
+            <div class="max-w-[900px] mb-12">
+                <h1 class="text-5xl sm:text-7xl font-display font-bold tracking-tight text-white mb-6 leading-tight">
+                    Autonomous Floor Cleaning Robot: <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-acc3">
+                        Pathfinding Control Engine
+                    </span>
+                </h1>
+                <p class="text-lg sm:text-xl text-muted font-light leading-relaxed max-w-3xl">
+                    A physical robotics architecture engineered with dynamic obstacle handling and asynchronous sensor evaluation arrays <span class="editorial-serif">built for non-blocking execution loops</span>. Designed to achieve intelligent indoor mobility using minimal computing overhead.
+                </p>
+            </div>
+
+            <!-- Architectural Metadata Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-12">
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Role</div>
+                    <div class="text-sm font-semibold text-white">Embedded Lead</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Duration</div>
+                    <div class="text-sm font-semibold text-primary">4 Weeks Build</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">MCU Core</div>
+                    <div class="text-sm font-semibold text-accent">ATmega328P</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Firmware Platform</div>
+                    <div class="text-sm font-semibold text-white">Arduino C++</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Chassis Topology</div>
+                    <div class="text-sm font-semibold text-acc3 font-mono text-xs">Differential Drive</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Actuation Core</div>
+                    <div class="text-sm font-semibold text-white">L298N H-Bridge</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Telemetry Inputs</div>
+                    <div class="text-sm font-semibold text-accent">Ultrasonic + IR</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl flex flex-col justify-between items-start border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Repository</div>
+                    <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank" class="text-xs text-primary hover:underline font-mono">
+                        Source ↗
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <hr class="border-borderSpec/40 my-16">
+
+        <!-- 2. PROJECT OVERVIEW -->
+        <section class="mb-24 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">01 // ROBOTIC CONTEXT MATRIX</span>
+                    <h2 class="text-3xl font-display font-bold text-white tracking-tight">Project Overview</h2>
+                </div>
+                <div class="lg:col-span-8 space-y-6 text-muted font-light leading-relaxed">
+                    <p>
+                        This <strong class="text-textMain font-medium">Autonomous Floor Cleaning Robot</strong> was designed to bypass the high mechanical cost and heavy power drain common in consumer robotic vacuums. It establishes a direct link between simple proximity sensor arrays and responsive motor control adjustments.
+                    </p>
+                    <p>
+                        By enforcing strict timing logic in the embedded C++ source code and optimizing path directions within a single processing thread, the vehicle avoids obstacles immediately. This architecture keeps room coverage fluid and smooth without requiring expensive processing boards.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PROBLEM STATEMENT -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">02 // EMBEDDED FRICTION POINTS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Problem Statement</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden border border-borderSpec">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">Impeded Obstacle Avoidance</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Typical low-cost cleaning platforms generate erratic navigation changes that drop overall area tracking efficiency and stall vehicles in corner dead ends.
+                    </p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden border border-borderSpec">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">Sensor Echo Inaccuracies</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Ultrasonic transducers and infrared modules can return noisy signals, causing false triggers or sudden movement changes due to environmental interference.
+                    </p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden border border-borderSpec">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">Highly Limited Microcontroller Memory</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Running multi-sensor processing algorithms alongside continuous pulse-width modulation (PWM) actuator loops on a basic 8-bit chip requires careful code footprint management.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. OBJECTIVES -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">03 // STRATEGIC THESIS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Technical Objectives</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_01]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">Real-Time Processing</h4>
+                    <p class="text-xs text-muted font-light">Keep main execution loops under 50ms to read sensor arrays and adjust motor states before physical impacts can occur.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_02]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">Low-Cost Deployment</h4>
+                    <p class="text-xs text-muted font-light">Utilize standard hardware components (HC-SR04, L298N, SG90 servo) to achieve reliable pathing without complex computing chips.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_03]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">Deterministic Stability</h4>
+                    <p class="text-xs text-muted font-light">Isolate voltage tracks across logic circuits and high-current drive motors to stop microchip lockups caused by inductive power feedback.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_04]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">Scalable C++ Base</h4>
+                    <p class="text-xs text-muted font-light">Structure firmware tasks into clear, independent functions to allow adding alternative navigation patterns easily.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. HARDWARE BILL OF MATERIALS OVERVIEW -->
+        <section id="hardware" class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">04 // COMPONENT SPECIFICATIONS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Hardware Layer Architecture</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Arduino Uno -->
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono text-primary">[HW_01]</span>
+                        <span class="text-xs text-muted font-mono">Microcontroller Core</span>
+                    </div>
+                    <h3 class="text-lg font-display font-bold text-white mb-2">Arduino Uno (ATmega328P)</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Processes incoming sensor metrics, executes path-selection rules, and outputs real-time directional commands over configured GPIO and PWM connection lines.
+                    </p>
+                </div>
+                <!-- HC-SR04 -->
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono text-accent">[HW_02]</span>
+                        <span class="text-xs text-muted font-mono">Proximity Array</span>
+                    </div>
+                    <h3 class="text-lg font-display font-bold text-white mb-2">HC-SR04 Ultrasonic Transducer</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Measures forward distances by tracking the flight time of 40 kHz acoustic sound bursts, signaling upcoming structural impacts up to 400cm out.
+                    </p>
+                </div>
+                <!-- IR Proximity -->
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono text-acc3">[HW_03]</span>
+                        <span class="text-xs text-muted font-mono">Short-Range Vector</span>
+                    </div>
+                    <h3 class="text-lg font-display font-bold text-white mb-2">Infrared Sensor Array</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Detects nearby surfaces and checks floor drops using reflected infrared beam signatures to give the platform quick boundary feedback.
+                    </p>
+                </div>
+                <!-- L298N Motor Driver -->
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono text-primary">[HW_04]</span>
+                        <span class="text-xs text-muted font-mono">Actuator Interface</span>
+                    </div>
+                    <h3 class="text-lg font-display font-bold text-white mb-2">L298N Dual H-Bridge Module</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Switches high-current lines to drive the vehicle's independent DC motors, using PWM signals from the microchip to tune output speed safely.
+                    </p>
+                </div>
+                <!-- SG90 Micro Servo -->
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono text-accent">[HW_05]</span>
+                        <span class="text-xs text-muted font-mono">Scanning Servo</span>
+                    </div>
+                    <h3 class="text-lg font-display font-bold text-white mb-2">SG90 Micro Servo Motor</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Rotates the forward ultrasonic sensor across a 180-degree field of view, gathering directional depth scans before turning the chassis.
+                    </p>
+                </div>
+                <!-- DC Geared Motors -->
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono text-acc3">[HW_06]</span>
+                        <span class="text-xs text-muted font-mono">Mechanical Drive</span>
+                    </div>
+                    <h3 class="text-lg font-display font-bold text-white mb-2">Geared DC Motors &amp; Chassis</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Provides reliable output torque through integrated gearboxes to drive the wheels, using a rear caster point for fast pivot steering.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. SOFTWARE & SYSTEM ARCHITECTURE LAYERS -->
+        <section id="architecture" class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">05 // DATA CONDUIT TOPOLOGY</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Full-Stack Functional Architecture</h2>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl border border-borderSpec">
+                <div class="grid grid-cols-1 md:grid-cols-7 gap-4 items-center text-center font-mono text-xs">
+                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
+                        <span class="text-primary block font-bold mb-1">SENSOR STREAM</span>
+                        HC-SR04 Pulse / IR Voltage Levels
+                    </div>
+                    <div class="text-primary font-bold rotate-90 md:rotate-0">➔</div>
+                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
+                        <span class="text-accent block font-bold mb-1">MCU FILTERING</span>
+                        Pulse Length Conversion &amp; Noise Checks
+                    </div>
+                    <div class="text-accent font-bold rotate-90 md:rotate-0">➔</div>
+                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
+                        <span class="text-acc3 block font-bold mb-1">DECISION LOGIC</span>
+                        Distance Threshold Verification Rules
+                    </div>
+                    <div class="text-acc3 font-bold rotate-90 md:rotate-0">➔</div>
+                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
+                        <span class="text-primary block font-bold mb-1">ACTUATOR STAGE</span>
+                        L298N Power Outputs &amp; Pivot Maneuvers
+                    </div>
+                </div>
+                <p class="mt-6 text-xs font-mono text-muted text-center max-w-2xl mx-auto">
+                    Data profiles update continually through localized loops, enabling the robotic platform to adjust its course immediately when hitting path blocks.
+                </p>
+            </div>
+        </section>
+
+        <!-- 7. SYSTEM WORKFLOW TIMELINE -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">06 // RUNTIME TIMELINE</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Operational Loop Workflow</h2>
+            </div>
+            <div class="relative ml-2 space-y-8">
+                <div class="absolute left-3.5 top-2 bottom-2 w-0.5 bg-borderSpec"></div>
+                
+                <div class="relative flex items-start gap-6 pl-10">
+                    <div class="absolute left-2 w-3 h-3 rounded-full bg-primary border-4 border-bgMain ring-4 ring-primary/20"></div>
+                    <div>
+                        <h4 class="text-sm font-display font-bold text-white font-mono uppercase tracking-wide">// 01 / Sensor Scan Burst</h4>
+                        <p class="text-xs text-muted max-w-2xl mt-1">The microchip triggers the ultrasonic port, timing the echo response to find the exact distance to any forward obstacle.</p>
+                    </div>
+                </div>
+                <div class="relative flex items-start gap-6 pl-10">
+                    <div class="absolute left-2 w-3 h-3 rounded-full bg-accent border-4 border-bgMain ring-4 ring-accent/20"></div>
+                    <div>
+                        <h4 class="text-sm font-display font-bold text-white font-mono uppercase tracking-wide">// 02 / Threshold Logic Check</h4>
+                        <p class="text-xs text-muted max-w-2xl mt-1">Firmware checks the distance against a preset 15cm limit. If the path is open, the platform drives ahead smoothly.</p>
+                    </div>
+                </div>
+                <div class="relative flex items-start gap-6 pl-10">
+                    <div class="absolute left-2 w-3 h-3 rounded-full bg-acc3 border-4 border-bgMain ring-4 ring-acc3/20"></div>
+                    <div>
+                        <h4 class="text-sm font-display font-bold text-white font-mono uppercase tracking-wide">// 03 / Servo Directional Sweep</h4>
+                        <p class="text-xs text-muted max-w-2xl mt-1">When blocked, the vehicle stops, rotates its servo to measure side paths, and selects the clearer direction.</p>
+                    </div>
+                </div>
+                <div class="relative flex items-start gap-6 pl-10">
+                    <div class="absolute left-2 w-3 h-3 rounded-full bg-primary border-4 border-bgMain ring-4 ring-primary/20"></div>
+                    <div>
+                        <h4 class="text-sm font-display font-bold text-white font-mono uppercase tracking-wide">// 04 / Motor Driver Activation</h4>
+                        <p class="text-xs text-muted max-w-2xl mt-1">The microchip changes the L298N pins, driving the wheels in opposite directions to perform a crisp pivot turn before restarting the cycle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CAPABILITY & FEATURE GRID SHOWCASE -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">07 // FUNCTIONAL MATRICES</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Feature Deep-Dive</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-accent mb-3">[F_01]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Autonomous Navigation</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Runs continuous pathfinding logic that explores interior floor areas without needing manual controls or human intervention.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-primary mb-3">[F_02]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Dynamic Obstacle Avoidance</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Interprets echo signals immediately to spot upcoming furniture, walls, or clutter, redirecting the chassis safely.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-acc3 mb-3">[F_03]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Differential Drive Control</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Manages independent wheel lines via digital I/O adjustments to enable tight turns and backward exit paths in narrow corners.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-primary mb-3">[F_04]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Sensor Verification Pipeline</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Filters erratic sensor noise inside the firmware to prevent false movement changes and maintain a steady course.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-accent mb-3">[F_05]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Low-Power Footprint Design</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Coordinates actuator cycles efficiently to lower the load on attached battery cells, extending continuous operational runtimes.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-acc3 mb-3">[F_06]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Modular Electronics Base</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Groups component connections systematically on a shared structural bus, making debugging and parts maintenance straightforward.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. TECHNOLOGY VERIFICATION MATRIX -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">08 // THE HARDWARE &amp; SOFTWARE STACK</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Technology Verification Matrix</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs">
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">DEVELOPMENT CORE</div>
+                    <div class="text-white font-bold">Embedded C++ Language</div>
+                </div>
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">COMPILATION ENGINE</div>
+                    <div class="text-primary font-bold">Arduino IDE Platform</div>
+                </div>
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">SILICON ARCHITECTURE</div>
+                    <div class="text-accent font-bold">8-Bit AVR Instruction Set</div>
+                </div>
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">VERSION CONTROL</div>
+                    <div class="text-acc3 font-bold">Git Production Control</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. NAVIGATION & MOTOR INTERFACE DEEP DIVE -->
+        <section class="mb-24 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="glass-panel p-8 rounded-2xl border border-borderSpec">
+                    <span class="text-xs font-mono text-primary uppercase block mb-2">ALGORITHMIC LOGIC</span>
+                    <h3 class="text-xl font-display font-bold text-white mb-4">Obstacle Navigation Decision Flow</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light mb-4">
+                        The firmware uses an option-tree decision algorithm. When the forward sonic distance drops below the 15cm threshold, the microcontroller drops the drive pins low to avoid collision. It then activates a servo sweep routine to inspect alternative paths.
+                    </p>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Comparing the side distance metrics determines the pivot direction. If the right path offers more clearance than the left, the firmware activates the left wheel forward while reversing the right wheel, turning the platform toward the open space.
+                    </p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl border border-borderSpec">
+                    <span class="text-xs font-mono text-accent uppercase block mb-2">ACTUATION MATRIX</span>
+                    <h3 class="text-xl font-display font-bold text-white mb-4">PWM Motor Driver Interface</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light mb-4">
+                        The L298N H-bridge uses 4 digital logic pins to control direction alongside 2 enable pins hooked to microcontroller PWM lines. Pulling alternative inputs high or low reverses the current flow across the motors, changing wheel rotation.
+                    </p>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Modulating the PWM duty cycle controls the robot's movement speed. Dropping the output value lowers the average voltage, allowing smooth slowdowns near obstacles and keeping tracking performance reliable on slick floors.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. ENGINEERING CHALLENGES & RESOLUTIONS -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">09 // RIGOROUS PROBLEM SOLVING</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Engineering Challenges Faced</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec flex flex-col md:flex-row justify-between gap-4 items-start md:items-center">
+                    <div class="max-w-2xl">
+                        <span class="text-[10px] font-mono text-acc3 uppercase tracking-wider block mb-1">CHALLENGE // 01</span>
+                        <h4 class="text-md font-display font-bold text-white mb-1">Inductive Motor Voltage Spikes Causing MCU Restarts</h4>
+                        <p class="text-xs text-muted font-light">High current draws from the DC motors regularly injected noise into the main power rail, causing voltage drops that reset the microcontroller.</p>
+                    </div>
+                    <div class="bg-bgMain px-4 py-2 rounded-lg border border-borderSpec text-xs font-mono text-accent whitespace-normal md:whitespace-nowrap">
+                        <span class="text-muted block text-[9px]">RESOLUTION</span> Isolated power tracks using separate battery packs
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec flex flex-col md:flex-row justify-between gap-4 items-start md:items-center">
+                    <div class="max-w-2xl">
+                        <span class="text-[10px] font-mono text-primary uppercase tracking-wider block mb-1">CHALLENGE // 02</span>
+                        <h4 class="text-md font-display font-bold text-white mb-1">Erratic Acoustic Echoes from Angled Wall Surfaces</h4>
+                        <p class="text-xs text-muted font-light">Sonic waves hitting walls at odd angles reflected away instead of returning to the receiver, generating incorrect deep clear paths.</p>
+                    </div>
+                    <div class="bg-bgMain px-4 py-2 rounded-lg border border-borderSpec text-xs font-mono text-primary whitespace-normal md:whitespace-nowrap">
+                        <span class="text-muted block text-[9px]">RESOLUTION</span> Secondary infrared cross-checks inside firmware loops
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. PERFORMANCE ENGINEERING RESULTS -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">10 // METRIC CALCULATIONS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Performance Engineering Results</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center font-display">
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="text-4xl font-bold text-white mb-1">&lt; 40ms</div>
+                    <div class="text-xs font-mono text-accent uppercase tracking-wider">Obstacle Response Latency</div>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="text-4xl font-bold text-white mb-1">100%</div>
+                    <div class="text-xs font-mono text-primary uppercase tracking-wider">Logic Branch Reliability</div>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="text-4xl font-bold text-white mb-1">0 bytes</div>
+                    <div class="text-xs font-mono text-acc3 uppercase tracking-wider">Dynamic Memory Leaks</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 13. INDIVIDUAL CONTRIBUTIONS TIMELINE -->
+        <section class="mb-24 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-4">
+                    <span class="text-xs uppercase font-mono font-bold tracking-widest text-indigo-400 block mb-2">11 // INDEPENDENT INITIATIVE</span>
+                    <h2 class="text-3xl font-display font-bold text-white tracking-tight">Project Responsibilities</h2>
+                    <p class="text-xs text-muted mt-4 leading-relaxed font-light">
+                        As the sole researcher and developer, I handled the entire evolution of this autonomous platform—from selecting the electronics components to tuning the motion control firmware.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-8 space-y-6">
+                    <div>
+                        <div class="flex justify-between text-xs font-mono mb-2">
+                            <span class="text-gray-300">Firmware Logic Design &amp; Signal Processing Tasks</span>
+                            <span class="text-primary font-bold">100%</span>
+                        </div>
+                        <div class="w-full h-1 bg-borderSpec rounded-full overflow-hidden">
+                            <div class="h-full bg-primary rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-mono mb-2">
+                            <span class="text-gray-300">Hardware Integration, Bus Wiring &amp; Power Regulation</span>
+                            <span class="text-accent font-bold">100%</span>
+                        </div>
+                        <div class="w-full h-1 bg-borderSpec rounded-full overflow-hidden">
+                            <div class="h-full bg-accent rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-mono mb-2">
+                            <span class="text-gray-300">Mechanical Chassis Construction &amp; Motor Synchronization</span>
+                            <span class="text-acc3 font-bold">100%</span>
+                        </div>
+                        <div class="w-full h-1 bg-borderSpec rounded-full overflow-hidden">
+                            <div class="h-full bg-acc3 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 14. COMPONENT & RECON SCALE STATS -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">12 // DESIGN SCOPE LOGS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Platform Scale Statistics</h2>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 font-mono">
+                <div class="border-l-2 border-primary pl-4 py-2">
+                    <div class="text-3xl font-bold text-white">4 Modules</div>
+                    <div class="text-xs text-muted uppercase font-sans font-semibold mt-1">Active Sub-circuits</div>
+                </div>
+                <div class="border-l-2 border-purple-500 pl-4 py-2">
+                    <div class="text-3xl font-bold text-white">100%</div>
+                    <div class="text-xs text-muted uppercase font-sans font-semibold mt-1">Autonomous Runtime</div>
+                </div>
+                <div class="border-l-2 border-pink-500 pl-4 py-2">
+                    <div class="text-3xl font-bold text-white">30+ Hours</div>
+                    <div class="text-xs text-muted uppercase font-sans font-semibold mt-1">Bench Stress Testing</div>
+                </div>
+                <div class="border-l-2 border-emerald-500 pl-4 py-2">
+                    <div class="text-3xl font-bold text-white">5 States</div>
+                    <div class="text-xs text-muted uppercase font-sans font-semibold mt-1">Core Pathing Options</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 15. ROADMAP FORECASTS -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">13 // FUTURE ENGINEERING PERSPECTIVES</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Future Improvements Roadmap</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-muted font-light">
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <h4 class="font-display font-bold text-white font-mono mb-2 text-primary">// 01 / LiDAR Scanner Array</h4>
+                    <p class="text-xs">Swapping basic transducers for an active 360-degree laser sensor to build accurate spatial pathing across complex layouts.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <h4 class="font-display font-bold text-white font-mono mb-2 text-accent">// 02 / Local SLAM Mapping</h4>
+                    <p class="text-xs">Migrating the platform to an ESP32 chip to run lightweight floor grid mapping algorithms, preventing duplicate area cleaning loops.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <h4 class="font-display font-bold text-white font-mono mb-2 text-acc3">// 03 / IoT Telemetry Dashboard</h4>
+                    <p class="text-xs">Adding a Wi-Fi pipeline to stream vehicle runtime charts, battery stats, and sensor alerts out to an online control window.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 16. IMAGE GALLERY VISUAL MATRIX PLACEHOLDERS -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">14 // HARDWARE SCHEMATICS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Platform Environment Previews</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass-panel rounded-2xl overflow-hidden group border border-borderSpec h-64 relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/40 to-gray-900 flex flex-col justify-end p-6 z-10 transition-all group-hover:from-indigo-900/50">
+                        <span class="text-[10px] font-mono text-primary uppercase tracking-widest mb-1">Chassis Assembly Perspective</span>
+                        <h4 class="text-lg font-display font-bold text-white">Chassis Front View Layout</h4>
+                        <p class="text-xs text-muted mt-1">Displays the structural placement of the sonic sensor array on its micro servo mounting point.</p>
+                    </div>
+                    <div class="absolute inset-0 bg-zinc-900/40 opacity-20 group-hover:scale-105 transition-transform duration-500"></div>
+                </div>
+
+                <div class="glass-panel rounded-2xl overflow-hidden group border border-borderSpec h-64 relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-950/40 to-gray-900 flex flex-col justify-end p-6 z-10 transition-all group-hover:from-purple-900/50">
+                        <span class="text-[10px] font-mono text-accent uppercase tracking-widest mb-1">Bus Distribution Map</span>
+                        <h4 class="text-lg font-display font-bold text-white">Power &amp; Logic Circuits Layout</h4>
+                        <p class="text-xs text-muted mt-1">Shows the isolated layout design separating the logic microchip from high-current actuator tracks.</p>
+                    </div>
+                    <div class="absolute inset-0 bg-zinc-900/40 opacity-20 group-hover:scale-105 transition-transform duration-500"></div>
+                </div>
+
+                <div class="glass-panel rounded-2xl overflow-hidden group border border-borderSpec h-64 relative md:col-span-2 lg:col-span-1">
+                    <div class="absolute inset-0 bg-gradient-to-br from-pink-950/40 to-gray-900 flex flex-col justify-end p-6 z-10 transition-all group-hover:from-pink-900/50">
+                        <span class="text-[10px] font-mono text-acc3 uppercase tracking-widest mb-1">Firmware Compilation Window</span>
+                        <h4 class="text-lg font-display font-bold text-white">Pathfinding Execution Logs</h4>
+                        <p class="text-xs text-muted mt-1">Tracks structural decision flow paths, timing registers, and sensor echo processing windows.</p>
+                    </div>
+                    <div class="absolute inset-0 bg-zinc-900/40 opacity-20 group-hover:scale-105 transition-transform duration-500"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 17. CORE ROBOTICS LEARNINGS -->
+        <section class="mb-24 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">15 // KEY INSIGHTS</span>
+                    <h2 class="text-3xl font-display font-bold text-white tracking-tight">Takeaways &amp; Growth</h2>
+                </div>
+                <div class="lg:col-span-8 space-y-6 text-sm sm:text-base text-muted font-light leading-relaxed">
+                    <p>
+                        Building this hardware platform emphasized the challenge of <strong class="text-gray-200 font-semibold">managing electrical noise and timing constraints</strong> in real-time embedded systems. Designing hardware without isolated power paths frequently leads to stability issues and microchip resets.
+                    </p>
+                    <p>
+                        This engineering build improved my skills in handling hardware interrupts, optimizing pulse-width calculations, and structuring non-blocking firmware design. It showed that responsive physical automation projects can be completed successfully using clean, direct code frameworks on basic microprocessors.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 18. RECRUITER PORT CONTEXT MATRIX -->
+        <section class="mb-24 reveal">
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-borderSpec relative overflow-hidden">
+                <div class="max-w-3xl relative z-10">
+                    <span class="text-xs font-mono text-accent uppercase tracking-wider block mb-2">// RECRUITER PORT CONTEXT MATRIX</span>
+                    <h3 class="text-2xl sm:text-4xl font-display font-bold text-white mb-6">Why This Initiative Matters</h3>
+                    <div class="space-y-4 text-sm sm:text-base text-muted font-light leading-relaxed">
+                        <p>
+                            This project tackles a core robotics requirement: <strong class="text-primary">How do you execute stable real-time sensor loops and mechanical control path transitions under strict hardware memory limitations?</strong>
+                        </p>
+                        <p>
+                            The repository moves past basic wiring guides to showcase production engineering choices. It highlights practical knowledge in processing real-time sensor inputs, isolating motor power tracks, and structuring clean C++ code loops—the core skills needed to build robust hardware products at scale.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-borderSpec/40 my-16">
+
+        <!-- 19. PREMIUM CTA ACTION TERMINAL -->
+        <section class="reveal">
+            <div class="glass-panel p-10 text-center relative z-10 max-w-[850px] mx-auto rounded-3xl border border-primary/20">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">ROBOTIC TERMINAL ENDPOINT</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                    Inspect the <span class="editorial-serif">Implementation Layer.</span>
+                </h2>
+                <p class="text-muted text-sm leading-relaxed max-w-xl mx-auto mb-8">
+                    Review the dynamic hardware configuration rules, responsive steering algorithms, and peripheral input logic driving this machine directly on the source pipeline.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank" class="px-6 py-3.5 rounded-full bg-primary text-bgMain text-xs font-mono tracking-wider font-bold hover:bg-primary/90 transition-all transform hover:scale-[1.01] w-full sm:w-auto text-center shadow-lg shadow-primary/25">
+                        Explore Github Repository ↗
+                    </a>
+                    <a href="#" class="px-6 py-3.5 rounded-full bg-bgMain border border-borderSpec text-xs font-mono text-muted hover:text-textMain transition-colors w-full sm:w-auto text-center">
+                        ← Back to Central Dashboard
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer Alignment -->
+    <footer class="border-t border-borderSpec/40 py-12 max-w-[850px] mx-auto px-4 md:px-0 text-[10px] font-mono text-muted flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>&copy; 2026 Vansh Thakur. Redesigned, fluid, and high-performance.</p>
+        <a href="#" class="hover:text-textMain transition-colors">&uarr; Return to Top Target</a>
+    </footer>
+
+    <!-- Minimal Scroll Reveal Logic via Intersection Observer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+
+</html>

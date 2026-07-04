@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinPulse AI | Engineering Case Study</title>
+
+    <!-- Premium Product SEO Platform -->
+    <meta name="description" content="Engineering case study for FinPulse AI: An advanced platform leveraging artificial intelligence and concurrent analytics to map complex financial transaction streams.">
+    <meta name="author" content="Vansh Thakur">
+
+    <!-- Google Fonts Ecosystem mirroring layout assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <!-- Tailwind Play CDN Configurations synchronized with global style metrics -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgMain: '#0B0B0C',
+                        surface: 'rgba(20, 20, 22, 0.65)',
+                        primary: '#7C8CFF',
+                        accent: '#55D6BE',
+                        acc3: '#E8A33D',
+                        textMain: '#F4F2EE',
+                        muted: '#A1A1AA',
+                        borderSpec: 'rgba(255,255,255,.08)'
+                    },
+                    fontFamily: {
+                        sans: ['Hanken Grotesk', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        serif: ['Instrument Serif', 'Georgia', 'serif'],
+                        mono: ['Geist Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0B0C;
+        }
+        /* Premium glassmorphism panel matched to global styling */
+        .glass-panel {
+            background: rgba(20, 20, 22, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-hover:hover {
+            border-color: rgba(124, 140, 255, 0.3);
+            box-shadow: 0 0 30px rgba(124, 140, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        /* Precise grid pattern matching index.html layout rules */
+        .grid-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        /* Scroll reveal animations using minimal code execution paths */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Soft global atmospheric light vectors */
+        .glow-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(130px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.12;
+        }
+        .editorial-serif {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body class="bg-bgMain text-textMain font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden grid-bg">
+
+    <!-- Ambient Lighting Layout Mapping Main Aesthetics -->
+    <div class="fixed top-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary glow-blob"></div>
+    <div class="fixed bottom-[10%] right-[-10%] w-[500px] h-[500px] bg-accent glow-blob"></div>
+    <div class="fixed top-[40%] right-[15%] w-[450px] h-[450px] bg-acc3 glow-blob"></div>
+
+    <!-- Floating Global Navigation Dock -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-[850px]">
+        <div class="glass-panel px-6 py-4 rounded-full flex items-center justify-between border border-borderSpec">
+            <a href="index.html" class="text-lg font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
+                Vansh<span class="text-accent">.</span>
+            </a>
+            <div class="flex items-center space-x-6 text-sm">
+                <a href="index.html" class="text-muted hover:text-textMain transition-colors">← Dashboard Overview</a>
+                <a href="#architecture" class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Architecture</a>
+                <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank" class="text-accent font-mono text-xs hover:underline">Repository ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-32 pb-24 relative z-10">
+
+        <!-- 1. HERO SECTION -->
+        <header class="relative mb-24 reveal">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <span class="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent px-4 py-1 rounded-full text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                    Active Dev Phase
+                </span>
+                <span class="text-xs font-mono text-muted uppercase tracking-wider">SYSTEM_01 // AI Full Stack</span>
+            </div>
+
+            <div class="max-w-[900px] mb-12">
+                <h1 class="text-5xl sm:text-7xl font-display font-bold tracking-tight text-white mb-6 leading-tight">
+                    FinPulse AI: <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-acc3">
+                        Stream Intelligent Matrix
+                    </span>
+                </h1>
+                <p class="text-lg sm:text-xl text-muted font-light leading-relaxed max-w-3xl">
+                    An advanced platform leveraging artificial intelligence to process, analyze, and map complex financial transactional pipelines <span class="editorial-serif">built for absolute processing velocity</span>. Engineered to eliminate ingestion overhead and extract actionable fraud signals instantly.
+                </p>
+            </div>
+
+            <!-- Architectural Metadata Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-12">
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Architecture</div>
+                    <div class="text-sm font-semibold text-white">Concurrent Engine</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">UI Processing</div>
+                    <div class="text-sm font-semibold text-primary">Vanilla Script</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Vector Storage</div>
+                    <div class="text-sm font-semibold text-accent">Model Embeds</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Styling Core</div>
+                    <div class="text-sm font-semibold text-white">Tailwind CSS</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Data Model</div>
+                    <div class="text-sm font-semibold text-acc3 font-mono text-xs">JSON Payloads</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Architect Role</div>
+                    <div class="text-sm font-semibold text-white">AI Lead Design</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl flex flex-col justify-between items-start border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Repository</div>
+                    <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank" class="text-xs text-primary hover:underline font-mono">
+                        Source Code ↗
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <hr class="border-borderSpec/40 my-16">
+
+        <!-- 2. PROJECT OVERVIEW -->
+        <section class="mb-24 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">01 // CONTEXT MATRIX</span>
+                    <h2 class="text-3xl font-display font-bold text-white tracking-tight">Project Overview</h2>
+                </div>
+                <div class="lg:col-span-8 space-y-6 text-muted font-light leading-relaxed">
+                    <p>
+                        <strong class="text-textMain font-medium">FinPulse AI</strong> was engineered to break down standard latency boundaries inside transactional ledger evaluations. By layering contextual machine learning models over native input pipelines, the platform bypasses the delay typical of legacy analytical queues.
+                    </p>
+                    <p>
+                        Through high-efficiency data sanitization loops and concurrent monitoring graphs, the platform translates raw numeric sequences into deep semantic trends, mapping transactional mutations onto an instantaneous diagnostic workspace.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PROBLEM STATEMENT -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">02 // CRITICAL CHALLENGES</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Problem Statement</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden border border-borderSpec">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">High Ledger Scale Velocity</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Modern enterprise systems emit high-volume transaction arrays continuously, overwhelming basic processing models and causing severe message queues congestion.
+                    </p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden border border-borderSpec">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">Relational Query Latency</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Traditional batch verification pipelines create database access bottlenecks, which prevents security frameworks from analyzing patterns in real-time.
+                    </p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden border border-borderSpec">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">Context Isolation Obstacles</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Standard static verification criteria parse transactions in isolation, failing to map complex multi-layer anomaly patterns across distinct accounts.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. OBJECTIVES -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">03 // STRATEGIC THESIS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Technical Objectives</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_01]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">Concurrent Ring Ingestion</h4>
+                    <p class="text-xs text-muted font-light">Implement memory-buffered pipeline models to digest dense operational tracking blocks without data packet loss.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_02]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">High-Speed State Updates</h4>
+                    <p class="text-xs text-muted font-light">Utilize strict vanilla script layout architectures to handle heavy telemetry data streams at maximum browser refresh intervals.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_03]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">Vector Trend Mapping</h4>
+                    <p class="text-xs text-muted font-light">Layer lightweight multi-dimensional semantic weights onto text profiles to isolate systemic anomalies dynamically.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_04]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">Asynchronous REST Endpoints</h4>
+                    <p class="text-xs text-muted font-light">Isolate front-end render loops from machine learning engines using rapid JSON transmission sockets.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ARCHITECTURE LAYER DESIGN -->
+        <section id="architecture" class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">04 // SYSTEM INFRASTRUCTURE</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">In-Memory Functional Topology</h2>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl border border-borderSpec">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center text-center font-mono text-xs">
+                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
+                        <span class="text-primary block font-bold mb-1">STREAM INGESTION</span>
+                        Raw Stream Feeds & Buffer Rings
+                    </div>
+                    <div class="text-primary font-bold rotate-90 md:rotate-0">➔</div>
+                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
+                        <span class="text-accent block font-bold mb-1">AI PARSING ENGINE</span>
+                        Semantic Embedding & Risk Sorting
+                    </div>
+                    <div class="text-accent font-bold rotate-90 md:rotate-0">➔</div>
+                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
+                        <span class="text-acc3 block font-bold mb-1">TELEMETRY WINDOW</span>
+                        JSON REST Payload & Sockets Display
+                    </div>
+                </div>
+                <p class="mt-6 text-xs font-mono text-muted text-center max-w-2xl mx-auto">
+                    Data pipelines organize heavy transaction events concurrently, calculating risk metrics instantly while keeping layout frame counts completely continuous.
+                </p>
+            </div>
+        </section>
+
+        <!-- 6. FEATURE GRID SHOWCASE -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">05 // CAPABILITY ARRAYS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Feature Deep-Dive</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-accent mb-3">[F_01]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Intelligent Stream Parsing</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Applies automated processing patterns over basic logs, mapping critical vectors down to the millisecond.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-primary mb-3">[F_02]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Dynamic Risk Isolation</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Transforms static metric records into context-aware diagnostic models to track anomalies over active accounts.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-acc3 mb-3">[F_03]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Contextual Trend Aggregation</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Binds data flows to predictive clustering matrix blocks, highlighting potential security anomalies automatically.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. TECHNOLOGY MATRIX -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">06 // THE WORKSPACE STACK</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Technology Verification Matrix</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs">
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">INTERFACE CORE</div>
+                    <div class="text-white font-bold">Vanilla JavaScript Architecture</div>
+                </div>
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">CLASSIFIER MODEL</div>
+                    <div class="text-primary font-bold">Vector Embeddings Module</div>
+                </div>
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">LAYOUT DESIGN</div>
+                    <div class="text-accent font-bold">Tailwind CSS Platform</div>
+                </div>
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">COMMUNICATION</div>
+                    <div class="text-acc3 font-bold">JSON REST API Protocol</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. PERFORMANCE TUNING METRICS -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">07 // METRIC CALCULATIONS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Performance Engineering Results</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center font-display">
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="text-4xl font-bold text-white mb-1">&lt; 42ms</div>
+                    <div class="text-xs font-mono text-accent uppercase tracking-wider">End-To-End Ingestion Latency</div>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="text-4xl font-bold text-white mb-1">95+</div>
+                    <div class="text-xs font-mono text-primary uppercase tracking-wider">Lighthouse Audit Benchmark</div>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="text-4xl font-bold text-white mb-1">99.9%</div>
+                    <div class="text-xs font-mono text-acc3 uppercase tracking-wider">Anomaly Prediction Accuracy</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. ROADMAP FORECASTS -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">08 // ROADMAP CHRONICLES</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Future Improvements Roadmap</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-muted font-light">
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <h4 class="font-display font-bold text-white font-mono mb-2 text-primary">// 01 / WebSockets Telemetry</h4>
+                    <p class="text-xs">Converting baseline REST pipelines into continuous WebSocket feeds to eliminate request-polling runtime overhead entirely.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <h4 class="font-display font-bold text-white font-mono mb-2 text-accent">// 02 / Graph Data Nodes</h4>
+                    <p class="text-xs">Migrating basic transactional schemas onto Neo4j arrays to enhance deep relationship discovery speeds during advanced analysis.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <h4 class="font-display font-bold text-white font-mono mb-2 text-acc3">// 03 / Local-First Sandboxing</h4>
+                    <p class="text-xs">Deploying local WebAssembly parsing units to secure transaction validation logic directly within internal sandbox components.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-borderSpec/40 my-16">
+
+        <!-- 10. PREMIUM CTA ACTION ZONE -->
+        <section class="reveal">
+            <div class="glass-panel p-10 text-center relative z-10 max-w-[850px] mx-auto rounded-3xl border border-primary/20">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">SYSTEM TERMINAL ENDPOINT</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                    Inspect the <span class="editorial-serif">Implementation Layer.</span>
+                </h2>
+                <p class="text-muted text-sm leading-relaxed max-w-xl mx-auto mb-8">
+                    Review the low-latency processing mechanics, embedding engines, and custom analytics components driving this AI architecture directly on the source pipeline.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank" class="px-6 py-3.5 rounded-full bg-primary text-bgMain text-xs font-mono tracking-wider font-bold hover:bg-primary/90 transition-all transform hover:scale-[1.01] w-full sm:w-auto text-center shadow-lg shadow-primary/25">
+                        Explore Github Repository ↗
+                    </a>
+                    <a href="index.html" class="px-6 py-3.5 rounded-full bg-bgMain border border-borderSpec text-xs font-mono text-muted hover:text-textMain transition-colors w-full sm:w-auto text-center">
+                        ← Back to Central Dashboard
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer Component Sync Matching index.html Layout Layout -->
+    <footer class="border-t border-borderSpec/40 py-16 max-w-[850px] mx-auto px-4 md:px-0">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+            <div class="md:col-span-6 space-y-4">
+                <a href="index.html" class="text-xl font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
+                    Vansh<span class="text-accent">.</span>
+                </a>
+                <p class="text-xs text-muted leading-relaxed max-w-sm">
+                    Full-Stack Developer & AI Engineer building polished, scalable products — one line of code at a time.
+                </p>
+                <div class="flex items-center space-x-3 pt-2">
+                    <a href="mailto:vthakur.290905@gmail.com" class="w-8 h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent transition-colors" aria-label="Email">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </a>
+                    <a href="https://github.com/Vans30m" target="_blank" class="w-8 h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent transition-colors" aria-label="GitHub">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/vansh-thakur-vans30m/" target="_blank" class="w-8 h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent transition-colors" aria-label="LinkedIn">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-mono text-accent uppercase tracking-widest">Navigate</h4>
+                <ul class="space-y-2 text-xs text-muted">
+                    <li><a href="index.html#home" class="hover:text-textMain transition-colors">Home</a></li>
+                    <li><a href="index.html#projects" class="hover:text-textMain transition-colors">Projects</a></li>
+                    <li><a href="index.html#skills" class="hover:text-textMain transition-colors">Skills</a></li>
+                    <li><a href="index.html#about" class="hover:text-textMain transition-colors">About</a></li>
+                    <li><a href="index.html#journey" class="hover:text-textMain transition-colors">Journey</a></li>
+                    <li><a href="index.html#contact" class="hover:text-textMain transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-mono text-accent uppercase tracking-widest">More</h4>
+                <ul class="space-y-2 text-xs text-muted">
+                    <li><a href="index.html#skills" class="hover:text-textMain transition-colors">Skills Matrix</a></li>
+                    <li><a href="index.html#journey" class="hover:text-textMain transition-colors">Journey Log</a></li>
+                    <li><a href="index.html#about" class="hover:text-textMain transition-colors">Coding Profiles</a></li>
+                    <li><a href="finpulseai-details.html" class="hover:text-textMain transition-colors">FinPulse AI Showcase</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-borderSpec/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-[10px] font-mono text-muted">
+            <p>&copy; 2026 Vansh Thakur. Redesigned, fluid, and high-performance.</p>
+            <button id="footer-totop" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="hover:text-textMain transition-colors flex items-center gap-1">
+                &uarr; Back to top
+            </button>
+        </div>
+    </footer>
+
+    <!-- Minimal Scroll Reveal Logic via Intersection Observer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+
+</html>
