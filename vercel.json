@@ -1,13 +1,13 @@
 {
   "redirects": [
     {
-      "source": "/",
-      "destination": "/html/index.html",
+      "source": "/html/index.html",
+      "destination": "/",
       "permanent": true
     },
     {
-      "source": "/index.html",
-      "destination": "/html/index.html",
+      "source": "/html",
+      "destination": "/",
       "permanent": true
     }
   ]

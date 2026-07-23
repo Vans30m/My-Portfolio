@@ -1,160 +1,1371 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting | Vansh Thakur Portfolio</title>
-    <!-- Meta refresh fallback redirect -->
-    <meta http-equiv="refresh" content="0; url=html/index.html">
+    <title>Vansh Thakur | Full Stack & AI Software Engineer</title>
 
-    <!-- Preconnect resources for optimization -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Premium Product SEO Platform -->
+    <meta name="description"
+        content="Portfolio of Vansh Thakur. Software Engineer building AI-powered full-stack products, featuring FinPulse AI. Specializing in high-performance application architectures.">
+    <meta name="keywords"
+        content="Vansh Thakur, Software Engineer, Full Stack Developer, AI, FinPulse AI, Systems Engineering, Vercel Design, Premium Portfolio">
+    <meta name="author" content="Vansh Thakur">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    <!-- Open Graph Protocol -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vansh Thakur | Software Engineer">
+    <meta property="og:description"
+        content="Building AI-powered full-stack products. Explore FinPulse AI case studies and engineering milestones.">
+    <meta property="og:image" content="assets/images/finpulse-showcase.png">
 
-        body {
-            background-color: #0B0B0C;
-            color: #F4F2EE;
-            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-        }
+    <!-- FontAwesome Icons & Devicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
-        /* Ambient light gradient match to project aesthetics */
-        .ambient-glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(124, 140, 255, 0.15) 0%, rgba(85, 214, 190, 0.05) 60%, transparent 100%);
-            filter: blur(50px);
-            pointer-events: none;
-            z-index: 1;
-        }
+    <!-- AOS Scroll Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-        .container {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            color: #ffffff;
-        }
-
-        .accent {
-            color: #55D6BE;
-        }
-
-        .subtitle {
-            font-size: 0.875rem;
-            color: #A1A1AA;
-        }
-
-        .link-fallback {
-            color: #7C8CFF;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1px dashed rgba(124, 140, 255, 0.4);
-            transition: all 0.2s ease;
-        }
-
-        .link-fallback:hover {
-            color: #55D6BE;
-            border-bottom-color: rgba(85, 214, 190, 0.6);
-        }
-
-        /* Micro-animation loader */
-        .loader {
-            position: relative;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .loader-inner {
-            box-sizing: border-box;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 3px solid transparent;
-            border-top-color: #7C8CFF;
-            border-radius: 50%;
-            animation: spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-        }
-
-        .loader-inner-2 {
-            box-sizing: border-box;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 3px solid transparent;
-            border-bottom-color: #55D6BE;
-            border-radius: 50%;
-            animation: spin-reverse 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes spin-reverse {
-            0% {
-                transform: rotate(360deg);
-            }
-
-            100% {
-                transform: rotate(0deg);
-            }
-        }
-    </style>
-    <!-- JavaScript immediate redirection -->
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        window.location.replace("html/index.html");
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgMain: '#0B0B0C',
+                        surface: 'rgba(20, 20, 22, 0.65)',
+                        primary: '#7C8CFF',
+                        accent: '#55D6BE',
+                        acc3: '#E8A33D',
+                        textMain: '#F4F2EE',
+                        muted: '#A1A1AA',
+                        borderSpec: 'rgba(255,255,255,.08)'
+                    },
+                    fontFamily: {
+                        sans: ['Hanken Grotesk', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        serif: ['Instrument Serif', 'Georgia', 'serif'],
+                        mono: ['Geist Mono', 'monospace'],
+                    }
+                }
+            }
+        }
     </script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
-<body>
-    <div class="ambient-glow"></div>
-    <div class="container">
+<body
+    class="bg-bgMain text-textMain font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden">
+
+    <!-- Loading Screen Overlay -->
+    <div id="loading-overlay" class="loader-overlay">
         <div class="loader">
-            <span class="loader-inner"></span>
-            <span class="loader-inner-2"></span>
-        </div>
-        <div>
-            <h1 class="title">Vansh Thakur<span class="accent">.</span></h1>
-            <p class="subtitle">Redirecting to portfolio... If it doesn't load, <a class="link-fallback"
-                    href="html/index.html">click here</a>.</p>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__ball"></div>
         </div>
     </div>
+
+    <!-- Scroll Progress indicator at top of page (Full width) -->
+    <div id="scroll-progress" class="progress-line"></div>
+
+    <!-- Floating Global Navigation Dock -->
+    <nav id="navbar" class="fixed top-4 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-[850px]">
+        <div class="nav-container">
+            <div class="flex items-center justify-between">
+                <a href="index.html"
+                    class="text-lg font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
+                    Vansh Thakur<span class="text-accent">.</span>
+                </a>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-6 text-sm">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#journey" class="nav-link">Journey</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+
+                <!-- Hamburger Button -->
+                <button id="menu-toggle"
+                    class="md:hidden text-muted hover:text-textMain transition-colors focus:outline-none"
+                    aria-label="Toggle Navigation Menu">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu"
+            class="fixed inset-x-0 top-20 bg-bgMain/98 backdrop-blur-xl z-40 hidden flex-col px-6 py-8 space-y-5 border border-[rgba(255,255,255,.08)] rounded-2xl md:hidden">
+            <a href="#home" class="mobile-nav-link active">Home</a>
+            <a href="#projects" class="mobile-nav-link">Projects</a>
+            <a href="#skills" class="mobile-nav-link">Skills</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#journey" class="mobile-nav-link">Journey</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-28">
+        <!-- Hero Section -->
+        <section id="home"
+            class="min-h-[80vh] flex flex-col justify-center py-20 border-b border-[rgba(255,255,255,.08)] relative overflow-hidden">
+            <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+                <div class="absolute w-[500px] h-[500px] rounded-full opacity-10 blur-[100px] pointer-events-none"
+                    style="background:radial-gradient(circle, rgba(124,140,255,0.3) 0%, rgba(85,214,190,0.2) 50%, transparent 70%); left:50%; top:40%; transform:translate(-50%, -50%)">
+                </div>
+            </div>
+
+            <div class="relative z-10 text-center animate-fade-in-up max-w-[850px] mx-auto">
+                <p class="text-base text-muted font-medium tracking-wide uppercase mb-3">Hey, I'm</p>
+                <h1 class="text-5xl sm:text-7xl font-display font-bold tracking-tight mb-6 leading-tight"
+                    style="text-shadow:0 0 60px rgba(124,140,255,0.15)">
+                    <span class="hero-name-type"></span><span class="typing-cursor">|</span>
+                </h1>
+
+                <div class="mb-6 flex justify-center">
+                    <span
+                        class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary px-4 py-1.5 rounded-full text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        Preparing for SWE Placements 2026
+                    </span>
+                </div>
+
+                <p class="text-xl sm:text-2xl text-muted leading-relaxed max-w-2xl mx-auto mb-6">
+                    Building intelligent, full-stack architectures that <span class="editorial-serif">deliver real
+                        impact</span>. Focused on deploying robust client-side experiences backed by low-latency AI
+                    integrations.
+                </p>
+
+                <!-- Tech Stack Quick Icons -->
+                <div class="hero-tech-icons mb-10 text-zinc-500 text-2xl" data-aos="fade-up" data-aos-delay="150">
+                    <i class="devicon-javascript-plain" title="JavaScript"></i>
+                    <i class="devicon-typescript-plain" title="TypeScript"></i>
+                    <i class="devicon-react-original" title="React"></i>
+                    <i class="devicon-nextjs-plain" title="Next.js"></i>
+                    <i class="devicon-nodejs-plain" title="Node.js"></i>
+                    <i class="devicon-python-plain" title="Python"></i>
+                    <i class="devicon-postgresql-plain" title="PostgreSQL"></i>
+                    <i class="devicon-mongodb-plain" title="MongoDB"></i>
+                    <i class="devicon-docker-plain" title="Docker"></i>
+                    <i class="devicon-github-original hover:text-white" title="GitHub"></i>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                    <a href="#contact"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-bgMain text-sm font-semibold shadow-lg shadow-primary/25 transition-all duration-300 hover:bg-primary/90 hover:scale-[1.01] w-full sm:w-auto text-center justify-center">
+                        Let's Connect
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+
+                    <button id="email-btn"
+                        class="inline-flex items-center gap-2 text-muted text-sm hover:text-textMain transition-colors px-4 py-3 rounded-xl bg-surface border border-borderSpec w-full sm:w-auto justify-center">
+                        <span id="email-text">vthakur.290905@gmail.com</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Projects Section (#projects) -->
+        <section id="projects" class="space-y-16">
+            <!-- Bento Dashboard Grid Header Section -->
+            <div id="bento-dashboard" class="pb-16 pt-16 border-b border-borderSpec/40">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                    <!-- ROW 1: Profile & Laptop Showcase -->
+                    <div class="lg:col-span-7 bento-card-dark bento-border-glow p-8 relative overflow-hidden flex flex-col justify-between min-h-[380px]"
+                        data-aos="fade-up">
+                        <div class="bento-glow-violet absolute inset-0 pointer-events-none"></div>
+                        <div class="relative z-10 flex flex-col justify-between h-full">
+                            <div>
+                                <span
+                                    class="inline-flex items-center gap-1.5 bg-zinc-800/60 border border-zinc-700/50 text-[11px] text-zinc-300 px-3 py-1 rounded-full font-mono mb-6">
+                                    Hello, I'm
+                                </span>
+                                <h1 class="text-4xl sm:text-5xl font-display font-bold text-white mb-2 tracking-tight">
+                                    Vansh Thakur
+                                </h1>
+                                <p class="text-xs font-mono text-muted mb-4 uppercase tracking-wider">Software Engineer
+                                </p>
+                                <p class="text-sm text-zinc-400 max-w-sm leading-relaxed mb-6">
+                                    Building AI-powered financial products and scalable web applications.
+                                </p>
+                            </div>
+
+                            <div class="flex items-center gap-4 flex-wrap mt-auto">
+                                <a href="#other-systems-preview"
+                                    class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-primary text-bgMain text-xs font-semibold hover:scale-[1.02] transition-transform">
+                                    View My Work &rarr;
+                                </a>
+                            </div>
+
+                            <div class="flex items-center gap-4 mt-8 text-xs text-zinc-500 font-mono">
+                                <span>Let's connect</span>
+                                <a href="https://github.com/Vans30m" target="_blank"
+                                    class="connect-icon github-connect"><i
+                                        class="devicon-github-original text-base"></i></a>
+                                <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
+                                    class="connect-icon linkedin-connect"><i
+                                        class="devicon-linkedin-plain text-base"></i></a>
+                                <a href="mailto:vthakur.290905@gmail.com" class="connect-icon google-connect"><i
+                                        class="devicon-google-plain text-base"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROW 1 Right: Focus, Today's Build & Tech Stack -->
+                    <div class="lg:col-span-5 flex flex-col gap-6">
+                        <!-- Current Focus Widget -->
+                        <div class="bento-card-dark bento-border-glow p-6 flex flex-col justify-between h-1/2 min-h-[170px]"
+                            data-aos="fade-up" data-aos-delay="50">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-mono text-accent uppercase tracking-widest">Current
+                                    Focus</span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-accent animate-pulse"></span>
+                            </div>
+                            <ul class="space-y-3 text-xs text-zinc-400 font-mono">
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                    Building FinPulse AI (Market Intelligence Platform)
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                                    Learning System Design (Scalable architectures)
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-acc3"></span>
+                                    Exploring Cloud & DevOps Services
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                    Preparing for SWE placement cycles
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Tech Stack Widget -->
+                        <div class="bento-card-dark bento-border-glow p-6 h-1/2 min-h-[170px]" data-aos="fade-up"
+                            data-aos-delay="100">
+                            <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-4">Tech
+                                Stack</span>
+                            <div class="grid grid-cols-5 gap-3">
+                                <div class="tech-stack-tile" data-tech="react" title="React"><i
+                                        class="devicon-react-original text-lg colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="nextjs" title="Next.js"><i
+                                        class="devicon-nextjs-plain text-lg text-white"></i></div>
+                                <div class="tech-stack-tile" data-tech="nodejs" title="Node.js"><i
+                                        class="devicon-nodejs-plain text-lg colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="mongodb" title="MongoDB"><i
+                                        class="devicon-mongodb-plain text-lg colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="typescript" title="TypeScript"><i
+                                        class="devicon-typescript-plain text-lg colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="tailwind" title="Tailwind CSS"><i
+                                        class="devicon-tailwindcss-plain text-lg colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="python" title="Python"><i
+                                        class="devicon-python-plain text-lg colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="github" title="GitHub"><i
+                                        class="devicon-github-original text-lg text-zinc-400"></i></div>
+                                <div class="tech-stack-tile" data-tech="docker" title="Docker"><i
+                                        class="devicon-docker-plain text-lg colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="cpp" title="C++"><i
+                                        class="devicon-cplusplus-plain text-lg colored"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROW 2: Featured Case Study, GitHub Activity, Coding Journey, Philosophy -->
+                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[220px]"
+                        data-aos="fade-up">
+                        <span class="text-[10px] font-mono text-acc3 uppercase tracking-widest block mb-4">Featured
+                            Product</span>
+                        <div>
+                            <h3 class="text-xl font-display font-bold text-white mb-2">FinPulse AI</h3>
+                            <p class="text-xs text-zinc-400 leading-relaxed mb-4">
+                                High-speed financial tracking platform re-engineering batch streams into concurrent
+                                telemetry graphs.
+                            </p>
+                        </div>
+                        <a href="html/finpulseai-details.html" class="text-xs font-mono text-primary hover:underline">View Case
+                            Study &rarr;</a>
+                    </div>
+
+                    <!-- Mobile/Tablet Side-by-Side Wrapper for GitHub Activity & Coding Journey -->
+                    <div class="col-span-1 lg:col-span-6 grid grid-cols-2 gap-4 sm:gap-6">
+                        <!-- GitHub Activity Card -->
+                        <div class="bento-card-dark bento-border-glow p-4 sm:p-6 flex flex-col justify-between min-h-[220px]"
+                            data-aos="fade-up" data-aos-delay="50">
+                            <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-4">GitHub
+                                Activity</span>
+                            <div>
+                                <span class="text-3xl font-display font-bold text-white github-month-commits">35</span>
+                                <span class="text-xs text-zinc-400 ml-1 font-mono">commits this month</span>
+                            </div>
+                            <a href="https://github.com/Vans30m" target="_blank"
+                                class="text-xs font-mono text-muted hover:text-white">View Profile &rarr;</a>
+                        </div>
+
+                        <!-- Coding Journey Card -->
+                        <div class="bento-card-dark bento-border-glow p-4 sm:p-6 flex flex-col justify-between min-h-[220px]"
+                            data-aos="fade-up" data-aos-delay="100">
+                            <span class="text-[10px] font-mono text-primary uppercase tracking-widest block mb-3">Coding
+                                Journey</span>
+                            <div class="space-y-3 text-[11px] font-mono">
+                                <div
+                                    class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
+                                    <span class="text-zinc-400">
+                                        LeetCode
+                                    </span>
+                                    <span class="text-white font-bold bg-acc3/10 px-2 py-0.5 rounded text-[10px]">250+
+                                        Solved</span>
+                                </div>
+                                <div
+                                    class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
+                                    <span class="text-zinc-400">
+                                        CodeChef
+                                    </span>
+                                    <span class="text-white font-bold bg-accent/10 px-2 py-0.5 rounded text-[10px]">★
+                                        Coder</span>
+                                </div>
+                                <div
+                                    class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
+                                    <span class="text-zinc-400">
+                                        GeeksforGeeks
+                                    </span>
+                                    <span
+                                        class="text-white font-bold bg-primary/10 px-2 py-0.5 rounded text-[10px]">Rank
+                                        +</span>
+                                </div>
+                            </div>
+                            <a href="#about" class="text-xs font-mono text-accent hover:underline mt-2">All Profiles
+                                &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[220px]"
+                        data-aos="fade-up" data-aos-delay="150">
+                        <span
+                            class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-4">Philosophy</span>
+                        <p class="text-xs italic text-zinc-300 leading-relaxed font-serif">
+                            "I don't build projects. I build products."
+                        </p>
+                    </div>
+
+                    <!-- ROW 3: Stats, Open Source, Let's Connect -->
+                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[160px]"
+                        data-aos="fade-up">
+                        <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">Quick
+                            Stats</span>
+                        <div class="grid grid-cols-2 gap-2 text-center font-mono">
+                            <div class="p-2 bg-zinc-900/60 rounded"><span
+                                    class="text-base font-bold text-white block">5</span><span
+                                    class="text-[9px] text-zinc-500">Projects</span></div>
+                            <div class="p-2 bg-zinc-900/60 rounded"><span
+                                    class="text-base font-bold text-white block">15+</span><span
+                                    class="text-[9px] text-zinc-500">Repos</span></div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[160px]"
+                        data-aos="fade-up" data-aos-delay="50">
+                        <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">Open
+                            Source</span>
+                        <p class="text-[10px] text-zinc-400 leading-relaxed font-mono">
+                            Contributing to community libraries.
+                        </p>
+                        <a href="https://github.com/Vans30m" target="_blank"
+                            class="text-xs font-mono text-primary hover:underline">View Repos &rarr;</a>
+                    </div>
+
+                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[160px]"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <span class="text-[10px] font-mono text-primary uppercase tracking-widest block mb-2">Let's
+                            Connect</span>
+                        <p class="text-[10px] text-zinc-400 leading-relaxed font-mono">
+                            Open for software roles.
+                        </p>
+                        <a href="#contact" class="text-xs font-mono text-accent hover:underline">Get In Touch &rarr;</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Flagship Case Study Product Presentation (Featured Project Preview) -->
+            <div id="featured" class="section-container relative max-w-[850px] mx-auto">
+                <div class="mb-12" data-aos="fade-up">
+                    <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">// FLAGSHIP
+                        PRODUCT</span>
+                    <h2 class="section-title">FinPulse AI</h2>
+                    <p class="section-desc mt-2 text-muted">
+                        An advanced platform leveraging artificial intelligence to process, analyze, and map complex
+                        financial transactional pipelines.
+                    </p>
+                </div>
+
+                <!-- Featured Bento Card -->
+                <div class="bentocard border-accent/20 hover:border-accent/40" data-aos="fade-up">
+                    <div class="card-glow-wash glow-teal"></div>
+                    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-6 space-y-4">
+                            <h4 class="text-xs font-mono text-accent uppercase tracking-wider">[ Case Study Overview ]
+                            </h4>
+                            <h3 class="text-2xl font-display font-bold text-white">Intelligent Stream Analytics</h3>
+                            <p class="text-sm text-muted leading-relaxed">
+                                FinPulse AI layers intelligent data parsing right over standard transaction records,
+                                dynamically tracking trends, categorizing risks, and mapping anomalies down to the
+                                millisecond.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="skill-badge">Vanilla JS</span>
+                                <span class="skill-badge">Tailwind CSS</span>
+                                <span class="skill-badge">AI Models</span>
+                                <span class="skill-badge">REST API</span>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-6">
+                            <div class="rounded-xl overflow-hidden border border-borderSpec relative aspect-[16/10]">
+                                <img src="assets/Images/finpulseai.png" alt="FinPulse AI Dashboard Screenshot"
+                                    class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-center justify-between mt-8 pt-4 border-t border-borderSpec/40 relative z-10">
+                        <span class="text-xs font-mono text-accent">Lighthouse Score: 95+ / latency < 42ms</span>
+                                <div class="flex space-x-4">
+                                    <a href="https://finpulse-frontend-jrsd.onrender.com/pulse"
+                                        class="text-xs font-mono text-accent hover:underline">Live Demo ↗</a>
+                                    <a href="html/finpulseai-details.html"
+                                        class="text-xs font-mono text-primary hover:underline">Read Case Study ↗</a>
+                                    <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
+                                        class="text-xs font-mono text-muted hover:text-textMain">Code ↗</a>
+                                </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selected Work Carousel Section -->
+            <div id="other-systems-preview" class="section-container">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12" data-aos="fade-up">
+                    <div>
+                        <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">03 SELECTED
+                            WORK</span>
+                        <h2 class="section-title">Selected Masterpieces</h2>
+                        <p class="section-desc mt-2 text-muted">Tap any project to see the full breakdown.</p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3">
+                        <button class="filter-tab active" data-filter="all">All</button>
+                        <button class="filter-tab" data-filter="indev">In Development</button>
+                        <button class="filter-tab" data-filter="projects">Projects</button>
+                        <button class="filter-tab" data-filter="hardware">Hardware & Embedded</button>
+                    </div>
+                </div>
+
+                <!-- Stats Bar -->
+                <div class="flex items-center gap-6 mb-8 text-xs font-mono" data-aos="fade-up" data-aos-delay="50">
+                    <div>
+                        <span class="text-acc3 text-lg font-bold">5</span> <span class="text-muted">Total
+                            Projects</span>
+                    </div>
+                    <div class="w-px h-4 bg-borderSpec"></div>
+                    <div>
+                        <span class="text-accent text-lg font-bold">2</span> <span class="text-muted">Hardware &
+                            Embedded Builds</span>
+                    </div>
+                </div>
+
+                <!-- Carousel Track -->
+                <div class="relative" data-aos="fade-up" data-aos-delay="100">
+                    <div id="project-carousel" class="carousel-container">
+
+                        <!-- Card 1: FinPulse AI -->
+                        <div class="carousel-card" data-category="indev">
+                            <div>
+                                <div class="carousel-card-img-wrapper">
+                                    <img src="assets/Images/finpulseai.png" alt="FinPulse AI Dashboard"
+                                        class="object-cover">
+                                </div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <a href="html/finpulseai-details.html#demo"
+                                        class="text-[10px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full hover:bg-primary/20 transition-all">IN
+                                        DEVELOPMENT</a>
+                                    <span class="text-[10px] text-muted font-mono">SYSTEM_01</span>
+                                </div>
+                                <h3 class="text-2xl font-display font-bold text-white mb-2">FinPulse AI</h3>
+                                <p class="text-xs text-muted leading-relaxed">
+                                    High-speed financial tracking platform utilizing semantic models to map, analyze,
+                                    and categorize real-time data flows.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                                <span class="text-[10px] font-mono text-primary">AI Full Stack</span>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
+                                        class="text-xs font-mono text-muted hover:underline">Source ↗</a>
+                                    <a href="html/finpulseai-details.html#demo"
+                                        class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
+                                    <a href="html/finpulseai-details.html"
+                                        class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: focusoraHQ -->
+                        <div class="carousel-card" data-category="projects">
+                            <div>
+                                <div class="carousel-card-img-wrapper">
+                                    <img src="assets/Images/focusorahq.png" alt="FocusoraHQ Dashboard"
+                                        style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;" />
+                                </div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <a href="focusora-hq.vercel.app/"
+                                        class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full hover:bg-accent/20 transition-all">LIVE</a>
+                                    <span class="text-[10px] text-muted font-mono">SYSTEM_02</span>
+                                </div>
+                                <h3 class="text-2xl font-display font-bold text-white mb-2">FocusoraHQ</h3>
+                                <p class="text-xs text-muted leading-relaxed">
+                                    Unified, high-performance focus workspace and productivity dashboard. Synchronized
+                                    sessions via real-time WebSockets.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                                <span class="text-[10px] font-mono text-primary">Next.js + WS</span>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://github.com/Chet07-R/FocusoraHQ" target="_blank"
+                                        class="text-xs font-mono text-muted hover:underline">Source ↗</a>
+                                    <a href="html/focusorahq-details.html#demo"
+                                        class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
+                                    <a href="html/focusorahq-details.html"
+                                        class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Fitness Planet -->
+                        <div class="carousel-card" data-category="projects">
+                            <div>
+                                <div class="carousel-card-img-wrapper">
+                                    <img src="assets/Images/fitnessPlanet.png" alt="Fitness Planet Dashboard"
+                                        style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;" />
+                                </div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <a href="new-project-delta-orcin.vercel.app"
+                                        class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full hover:bg-accent/20 transition-all">LIVE</a>
+                                    <span class="text-[10px] text-muted font-mono">SYSTEM_03</span>
+                                </div>
+                                <h3 class="text-2xl font-display font-bold text-white mb-2">Fitness Planet</h3>
+                                <p class="text-xs text-muted leading-relaxed">
+                                    Robust workout tracker and fitness telemetry dashboard. Collects user metrics,
+                                    charting progress indicator arrays.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                                <span class="text-[10px] font-mono text-primary">React + PG</span>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://github.com/Vans30m/fitness-planet" target="_blank"
+                                        class="text-xs font-mono text-muted hover:underline">Source ↗</a>
+                                    <a href="html/fitnessplanet-details.html#demo"
+                                        class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
+                                    <a href="html/fitnessplanet-details.html"
+                                        class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Autonomous Floor Cleaning Robot -->
+                        <div class="carousel-card" data-category="hardware">
+                            <div>
+                                <div class="carousel-card-img-wrapper">
+                                    <img src="assets/Images/floorRobot.png" alt="Autonomous Floor Robot Dashboard"
+                                        style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;" />
+                                </div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <a href="html/floorcleaning-details.html#demo"
+                                        class="text-[10px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full text-indigo-300 hover:bg-primary/20 transition-all">HARDWARE</a>
+                                    <span class="text-[10px] text-muted font-mono">SYSTEM_04</span>
+                                </div>
+                                <h3 class="text-2xl font-display font-bold text-white mb-2">Autonomous Floor Robot</h3>
+                                <p class="text-xs text-muted leading-relaxed">
+                                    Intelligent pathfinding firmware stack for obstacle-avoiding autonomous cleaning
+                                    robots with sensor fusion.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                                <span class="text-[10px] font-mono text-primary">C++ + ROS</span>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank"
+                                        class="text-xs font-mono text-muted hover:underline">Source ↗</a>
+                                    <a href="html/floorcleaning-details.html#demo"
+                                        class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
+                                    <a href="html/floorcleaning-details.html"
+                                        class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Piezoelectric Plates -->
+                        <div class="carousel-card" data-category="hardware">
+                            <div>
+                                <div class="carousel-card-img-wrapper">
+                                    <img src="assets/Images/piezoPlates.png" alt="Piezoelectric Plates"
+                                        style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;" />
+                                </div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <a href="html/piezoelectric-details.html#demo"
+                                        class="text-[10px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full text-indigo-300 hover:bg-primary/20 transition-all">HARDWARE</a>
+                                    <span class="text-[10px] text-muted font-mono">SYSTEM_05</span>
+                                </div>
+                                <h3 class="text-2xl font-display font-bold text-white mb-2">Piezoelectric Plates</h3>
+                                <p class="text-xs text-muted leading-relaxed">
+                                    Microgrid voltage harvesting telemetry network monitoring energy generation from
+                                    piezoelectric sensors.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                                <span class="text-[10px] font-mono text-primary">Embedded C</span>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
+                                        target="_blank" class="text-xs font-mono text-muted hover:underline">Source
+                                        ↗</a>
+                                    <a href="html/piezoelectric-details.html#demo"
+                                        class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
+                                    <a href="html/piezoelectric-details.html"
+                                        class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Carousel Nav Controls -->
+                    <div class="flex items-center justify-end gap-3 mt-6">
+                        <button id="carousel-prev" class="carousel-btn" aria-label="Previous Project">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <button id="carousel-next" class="carousel-btn" aria-label="Next Project">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Skills Section (#skills) -->
+        <section id="skills" class="space-y-16">
+            <!-- Technical Framework & Skills -->
+            <div class="section-container max-w-[850px] mx-auto pb-8">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2" data-aos="fade-up">//
+                    SKILLS MATRIX</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-4" data-aos="fade-up"
+                    data-aos-delay="50">Skills & Expertise<span class="text-primary">.</span></h2>
+                <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">A collection of
+                    technologies I'm proficient with, from languages to frameworks and tools.</p>
+
+                <div class="space-y-10 mt-12" data-aos="fade-up" data-aos-delay="150">
+                    <!-- Languages -->
+                    <div>
+                        <h3 class="mb-4 text-xs font-mono text-muted uppercase tracking-widest">Languages</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="techtile"><i class="devicon-javascript-plain colored"></i><span
+                                    class="text-sm font-medium">JavaScript</span></div>
+                            <div class="techtile"><i class="devicon-typescript-plain colored"></i><span
+                                    class="text-sm font-medium">TypeScript</span></div>
+                            <div class="techtile"><i class="devicon-python-plain colored"></i><span
+                                    class="text-sm font-medium">Python</span></div>
+                            <div class="techtile"><i class="devicon-html5-plain colored"></i><span
+                                    class="text-sm font-medium">HTML5</span></div>
+                            <div class="techtile"><i class="devicon-css3-plain colored"></i><span
+                                    class="text-sm font-medium">CSS3</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Frameworks & Libraries -->
+                    <div>
+                        <h3 class="mb-4 text-xs font-mono text-muted uppercase tracking-widest">Frameworks & Libraries
+                        </h3>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="techtile"><i class="devicon-react-original colored"></i><span
+                                    class="text-sm font-medium">React</span></div>
+                            <div class="techtile"><i class="devicon-nextjs-plain text-white"></i><span
+                                    class="text-sm font-medium">Next.js</span></div>
+                            <div class="techtile"><i class="devicon-nodejs-plain colored"></i><span
+                                    class="text-sm font-medium">Node.js</span></div>
+                            <div class="techtile"><i class="devicon-tailwindcss-plain colored"></i><span
+                                    class="text-sm font-medium">Tailwind CSS</span></div>
+                            <div class="techtile"><i class="devicon-react-original text-primary"></i><span
+                                    class="text-sm font-medium">Framer Motion</span></div>
+                            <div class="techtile"><i class="devicon-prisma-plain text-white"></i><span
+                                    class="text-sm font-medium">Prisma</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Databases -->
+                    <div>
+                        <h3 class="mb-4 text-xs font-mono text-muted uppercase tracking-widest">Databases</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="techtile"><i class="devicon-postgresql-plain colored"></i><span
+                                    class="text-sm font-medium">PostgreSQL</span></div>
+                            <div class="techtile"><i class="devicon-mongodb-plain colored"></i><span
+                                    class="text-sm font-medium">MongoDB</span></div>
+                            <div class="techtile"><i class="devicon-redis-plain colored"></i><span
+                                    class="text-sm font-medium">Redis</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Platforms -->
+                    <div>
+                        <h3 class="mb-4 text-xs font-mono text-muted uppercase tracking-widest">Tools & Platforms</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="techtile"><i class="devicon-git-plain colored"></i><span
+                                    class="text-sm font-medium">Git</span></div>
+                            <div class="techtile"><i class="devicon-docker-plain colored"></i><span
+                                    class="text-sm font-medium">Docker</span></div>
+                            <div class="techtile"><i class="devicon-amazonwebservices-plain-wordmark colored"></i><span
+                                    class="text-sm font-medium">AWS</span></div>
+                            <div class="techtile"><i class="devicon-vercel-original text-white"></i><span
+                                    class="text-sm font-medium">Vercel</span></div>
+                            <div class="techtile"><i class="devicon-linux-plain text-white"></i><span
+                                    class="text-sm font-medium">Linux</span></div>
+                            <div class="techtile"><i class="devicon-figma-plain colored"></i><span
+                                    class="text-sm font-medium">Figma</span></div>
+                            <div class="techtile"><i class="devicon-graphql-plain colored"></i><span
+                                    class="text-sm font-medium">GraphQL</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Currently Learning -->
+            <div class="section-container max-w-[850px] mx-auto border-t border-borderSpec/40 pt-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-5" data-aos="fade-up">
+                        <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">06 CURRENTLY
+                            LEARNING</span>
+                        <h2 class="text-3xl sm:text-4xl font-display font-bold text-white mb-4">Always <span
+                                class="editorial-serif">leveling up.</span></h2>
+                        <p class="text-sm text-muted leading-relaxed max-w-sm">
+                            Right now I'm deepening system design, AI engineering and scalable full-stack development —
+                            building real-world products while sharpening problem-solving every day.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-7 flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="100">
+                        <span class="learning-chip">System design & scalable architecture</span>
+                        <span class="learning-chip">AI engineering & AI agents</span>
+                        <span class="learning-chip">LangChain & RAG apps</span>
+                        <span class="learning-chip">Auth & RBAC systems</span>
+                        <span class="learning-chip">Cloud & DevOps fundamentals</span>
+                        <span class="learning-chip">Data structures & algorithms</span>
+                        <span class="learning-chip">Performance & SEO</span>
+                        <span class="learning-chip">Production-grade full-stack</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Identity & Coding Profiles Section (#about) -->
+        <section id="about" class="space-y-16">
+            <!-- Brief Profile Showcase Bento -->
+            <div id="identity-summary" class="section-container max-w-[850px] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bentocard flex flex-col justify-between" data-aos="fade-up">
+                        <div class="card-glow-wash glow-purple"></div>
+                        <div class="relative z-10">
+                            <span class="text-xs font-mono text-primary uppercase tracking-wider block mb-2">// CORE
+                                THESIS</span>
+                            <h3 class="text-2xl font-display font-bold text-white mb-4">Focused on Solving Concrete
+                                Problems</h3>
+                            <p class="text-sm text-muted leading-relaxed">
+                                I approach software engineering with a product mindset. I am a Computer Science student
+                                preparing for competitive software engineering placements while building real-world
+                                AI-powered systems.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bentocard flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-glow-wash glow-teal"></div>
+                        <div class="relative z-10">
+                            <span class="text-xs font-mono text-accent uppercase tracking-wider block mb-2">// INTENT
+                                TARGET</span>
+                            <h3 class="text-2xl font-display font-bold text-white mb-4">Responsive & Low-Latency
+                                Ecosystems</h3>
+                            <p class="text-sm text-muted leading-relaxed mb-6">
+                                My work revolves around creating clean, frameworkless client experiences integrated
+                                directly with backend APIs and structured AI token feeds.
+                            </p>
+                            <a href="#about"
+                                class="text-xs font-mono text-primary hover:text-textMain transition-colors inline-flex items-center gap-1">
+                                More About Me & Timeline <span
+                                    class="inline-block transition-transform hover:translate-x-1">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coding Profiles Section with Flip Cards -->
+            <div id="coding" class="section-container max-w-[850px] mx-auto border-t border-borderSpec/40 pt-16">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2" data-aos="fade-up">//
+                    GLOBAL METRICS</span>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Coding Profiles</h2>
+                <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">Hover over each card to
+                    flip and view profile links.</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12" data-aos="fade-up"
+                    data-aos-delay="150">
+
+                    <!-- LeetCode -->
+                    <div class="bentocard flip" data-aos="fade-up">
+                        <div class="flip-inner">
+                            <div class="flip-face flip-front">
+                                <div class="flex items-center justify-between w-full">
+                                    <span class="text-xs font-mono text-accent">PLATFORM_01</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-display font-bold text-white">LeetCode</h4>
+                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">Algorithmic puzzle index.</p>
+                                </div>
+                            </div>
+                            <div class="flip-face flip-back">
+                                <p class="text-xs text-muted text-center font-mono">Solve Stats & Rankings</p>
+                                <a href="https://leetcode.com/u/Vans30m/" target="_blank"
+                                    class="px-4 py-2 rounded-lg bg-accent text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
+                                    View Profile <span class="flip-arrow">↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CodeChef -->
+                    <div class="bentocard flip" data-aos="fade-up">
+                        <div class="flip-inner">
+                            <div class="flip-face flip-front">
+                                <div class="flex items-center justify-between w-full">
+                                    <span class="text-xs font-mono text-primary">PLATFORM_02</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-700"></span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-display font-bold text-white">CodeChef</h4>
+                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">Time-boxed contest
+                                        evaluation.</p>
+                                </div>
+                            </div>
+                            <div class="flip-face flip-back">
+                                <p class="text-xs text-muted text-center font-mono">Contest Rating & Badges</p>
+                                <a href="https://www.codechef.com/users/sweet_brace_56" target="_blank"
+                                    class="px-4 py-2 rounded-lg bg-primary text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
+                                    View Profile <span class="flip-arrow">↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Codolio -->
+                    <div class="bentocard flip" data-aos="fade-up">
+                        <div class="flip-inner">
+                            <div class="flip-face flip-front">
+                                <div class="flex items-center justify-between w-full">
+                                    <span class="text-xs font-mono text-accent">PLATFORM_03</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-display font-bold text-white">Codolio</h4>
+                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">Central stats aggregator.</p>
+                                </div>
+                            </div>
+                            <div class="flip-face flip-back">
+                                <p class="text-xs text-muted text-center font-mono">Consolidated Solve Hub</p>
+                                <a href="https://codolio.com/profile/vans30m" target="_blank"
+                                    class="px-4 py-2 rounded-lg bg-accent text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
+                                    View Profile <span class="flip-arrow">↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GeeksforGeeks -->
+                    <div class="bentocard flip" data-aos="fade-up">
+                        <div class="flip-inner">
+                            <div class="flip-face flip-front">
+                                <div class="flex items-center justify-between w-full">
+                                    <span class="text-xs font-mono text-primary">PLATFORM_04</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-display font-bold text-white">GeeksforGeeks</h4>
+                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">CS core topics & algorithms.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flip-face flip-back">
+                                <p class="text-xs text-muted text-center font-mono">CS Fundamentals</p>
+                                <a href="https://www.geeksforgeeks.org/profile/vans30m" target="_blank"
+                                    class="px-4 py-2 rounded-lg bg-primary text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
+                                    View Profile <span class="flip-arrow">↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HackerRank -->
+                    <div class="bentocard flip" data-aos="fade-up">
+                        <div class="flip-inner">
+                            <div class="flip-face flip-front">
+                                <div class="flex items-center justify-between w-full">
+                                    <span class="text-xs font-mono text-accent">PLATFORM_05</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-display font-bold text-white">HackerRank</h4>
+                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">Skill verification tracks.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flip-face flip-back">
+                                <p class="text-xs text-muted text-center font-mono">Verified Certificates</p>
+                                <a href="https://www.hackerrank.com/profile/vans30m" target="_blank"
+                                    class="px-4 py-2 rounded-lg bg-accent text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
+                                    View Profile <span class="flip-arrow">↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- InterviewBit -->
+                    <div class="bentocard flip" data-aos="fade-up">
+                        <div class="flip-inner">
+                            <div class="flip-face flip-front">
+                                <div class="flex items-center justify-between w-full">
+                                    <span class="text-xs font-mono text-primary">PLATFORM_06</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-display font-bold text-white">InterviewBit</h4>
+                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">Placement preparation files.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flip-face flip-back">
+                                <p class="text-xs text-muted text-center font-mono">Targeted Practice Blocks</p>
+                                <a href="https://www.interviewbit.com/profile/Vansh Thakur-thakur_477/" target="_blank"
+                                    class="px-4 py-2 rounded-lg bg-primary text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
+                                    View Profile <span class="flip-arrow">↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Vertical Engineering Journey Timeline -->
+        <section id="journey" class="section-container max-w-[850px] mx-auto">
+            <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2" data-aos="fade-up">//
+                EVOLUTION LOG</span>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Engineering Journey</h2>
+            <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">Chronological history
+                mapping my programming milestones and technical growth.</p>
+
+            <div class="relative mt-12 ml-2 space-y-8">
+                <div class="timeline-line"></div>
+
+                <!-- Milestone 1 -->
+                <div class="relative timeline-item pl-10 md:pl-12" data-aos="fade-up">
+                    <span class="timeline-dot"></span>
+                    <div class="bentocard p-5 sm:p-6">
+                        <div class="flex items-start justify-between gap-6 flex-wrap sm:flex-nowrap">
+                            <div class="space-y-1.5">
+                                <span
+                                    class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 inline-block">
+                                    Phase 01 // Initiation
+                                </span>
+                                <h4 class="text-lg font-display font-bold text-white mb-1">Algorithmic Foundations & C++
+                                    Logic</h4>
+                                <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
+                                    Initiated engineering journey by mastering C++ object-oriented principles.
+                                    Constructed and benchmarked core data structures and optimization algorithms to
+                                    build strong analytical skills.
+                                </p>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary text-lg shrink-0">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Milestone 2 -->
+                <div class="relative timeline-item pl-10 md:pl-12" data-aos="fade-up">
+                    <span class="timeline-dot" style="border-color: var(--accent);"></span>
+                    <div class="bentocard p-5 sm:p-6">
+                        <div class="flex items-start justify-between gap-6 flex-wrap sm:flex-nowrap">
+                            <div class="space-y-1.5">
+                                <span
+                                    class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20 inline-block">
+                                    Phase 02 // Interfaces
+                                </span>
+                                <h4 class="text-lg font-display font-bold text-white mb-1">Responsive Interface Design &
+                                    Performance</h4>
+                                <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
+                                    Shifted focus to front-end systems. Developed responsive, performant user interfaces
+                                    using HTML5, CSS3, Tailwind CSS, and JavaScript, optimizing DOM load times.
+                                </p>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent text-lg shrink-0">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Milestone 3 -->
+                <div class="relative timeline-item pl-10 md:pl-12" data-aos="fade-up">
+                    <span class="timeline-dot"></span>
+                    <div class="bentocard p-5 sm:p-6">
+                        <div class="flex items-start justify-between gap-6 flex-wrap sm:flex-nowrap">
+                            <div class="space-y-1.5">
+                                <span
+                                    class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 inline-block">
+                                    Phase 03 // Full Stack
+                                </span>
+                                <h4 class="text-lg font-display font-bold text-white mb-1">Full-Stack Deployments &
+                                    Databases</h4>
+                                <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
+                                    Transitioned to full-stack applications. Developed asynchronous RESTful APIs using
+                                    Node.js and Express, integrated MongoDB for data storage, and managed data flows.
+                                </p>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary text-lg shrink-0">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Milestone 4 -->
+                <div class="relative timeline-item pl-10 md:pl-12" data-aos="fade-up">
+                    <span class="timeline-dot" style="border-color: var(--accent);"></span>
+                    <div class="bentocard p-5 sm:p-6">
+                        <div class="flex items-start justify-between gap-6 flex-wrap sm:flex-nowrap">
+                            <div class="space-y-1.5">
+                                <span
+                                    class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20 inline-block">
+                                    Phase 04 // Intelligence
+                                </span>
+                                <h4 class="text-lg font-display font-bold text-white mb-1">AI Architectures & FinPulse
+                                    Launch</h4>
+                                <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
+                                    Pioneered intelligent automation by architecting FinPulse AI, integrating large
+                                    language models with real-time financial streams for high-speed analysis.
+                                </p>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent text-lg shrink-0">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Milestone 5 -->
+                <div class="relative timeline-item pl-10 md:pl-12" data-aos="fade-up">
+                    <span class="timeline-dot"></span>
+                    <div class="bentocard p-5 sm:p-6">
+                        <div class="flex items-start justify-between gap-6 flex-wrap sm:flex-nowrap">
+                            <div class="space-y-1.5">
+                                <span
+                                    class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 inline-block">
+                                    Phase 05 // Placement Cycle
+                                </span>
+                                <h4 class="text-lg font-display font-bold text-white mb-1">Advanced System Design & Job
+                                    Prep</h4>
+                                <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
+                                    Optimizing core system configurations. Reviewing complex tree/graph algorithms,
+                                    solidifying code metrics, and refining showcase portfolio projects.
+                                </p>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary text-lg shrink-0">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Activity Section -->
+        <section id="github" class="section-container max-w-[1000px] mx-auto">
+            <span class="text-sm font-mono text-accent uppercase tracking-widest block mb-4" data-aos="fade-up">07
+                GITHUB ACTIVITY</span>
+            <div class="bentocard p-6 md:p-8" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-6">
+                    <div class="flex items-center gap-5">
+                        <img src="https://github.com/Vans30m.png" alt="Vansh Thakur Github Avatar"
+                            class="w-16 h-16 rounded-full border border-borderSpec">
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-white">@Vans30m</h3>
+                            <p class="text-sm text-muted">Shipping consistently · building in public</p>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="https://github.com/Vans30m" target="_blank"
+                            class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-surface border border-borderSpec text-sm font-mono text-muted hover:text-textMain transition-colors">
+                            View full activity <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor"
+                                stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <span class="text-2xl font-display font-bold text-accent github-total-contributions">342</span>
+                    <span class="text-sm text-muted font-mono ml-2">contributions in the last year</span>
+                </div>
+
+                <!-- GitHub Heatmap Wrapper with labels -->
+                <div class="github-heatmap-wrapper">
+                    <div class="github-months" id="github-months-container"></div>
+                    <div class="flex gap-2 items-start">
+                        <div class="github-days">
+                            <span></span>
+                            <span>Mon</span>
+                            <span></span>
+                            <span>Wed</span>
+                            <span></span>
+                            <span>Fri</span>
+                            <span></span>
+                        </div>
+                        <div class="github-grid-container" id="github-contributions-grid">
+                            <!-- Javascript will dynamically inject tile nodes -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Contact Section (#contact) -->
+        <section id="contact" class="space-y-16">
+            <!-- Direct Form Grid (Contact Section) -->
+            <div id="contact-form-block" class="section-container max-w-[850px] mx-auto">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2" data-aos="fade-up">//
+                    CORRESPONDENCE PORT</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-4" data-aos="fade-up"
+                    data-aos-delay="50">Initialize Secure Interconnect</h2>
+                <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">Submit project details
+                    or placement criteria directly into my communication handler.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-12">
+                    <!-- Left Info Panel -->
+                    <div class="lg:col-span-5 space-y-6" data-aos="fade-right" data-aos-delay="150">
+                        <div class="bentocard flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xs font-mono text-accent uppercase tracking-wider mb-3">// Direct Email
+                                </h3>
+                                <p class="text-base font-semibold text-white mb-1">vthakur.290905@gmail.com</p>
+                                <p class="text-xs text-muted">Primary address for recruitment and placement inquiries.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bentocard flex flex-col justify-between">
+                            <div class="card-glow-wash glow-purple"></div>
+                            <div>
+                                <h3 class="text-xs font-mono text-primary uppercase tracking-wider mb-3">// Networks
+                                </h3>
+                                <div class="space-y-2 mt-1">
+                                    <a href="https://www.linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
+                                        class="text-sm text-white hover:underline block">LinkedIn Profile ↗</a>
+                                    <a href="https://github.com/Vans30m/" target="_blank"
+                                        class="text-sm text-white hover:underline block">GitHub Pipeline ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Panel -->
+                    <div class="lg:col-span-7" data-aos="fade-left" data-aos-delay="150">
+                        <div class="bentocard p-6 sm:p-8 relative">
+                            <form id="contact-form" class="space-y-5 relative z-10">
+                                <div>
+                                    <label
+                                        class="block text-xs font-mono text-muted uppercase tracking-wider mb-2">Caller
+                                        Identity</label>
+                                    <input type="text" id="form-name" required placeholder="Name / Enterprise Context"
+                                        class="w-full bg-bgMain border border-borderSpec rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition-colors">
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-xs font-mono text-muted uppercase tracking-wider mb-2">Return
+                                        Address Endpoint</label>
+                                    <input type="email" id="form-email" required placeholder="name@enterprise.com"
+                                        class="w-full bg-bgMain border border-borderSpec rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition-colors">
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-xs font-mono text-muted uppercase tracking-wider mb-2">Message
+                                        Payload</label>
+                                    <textarea id="form-message" required rows="4"
+                                        placeholder="State operational directives, project specifications, or recruitment parameters..."
+                                        class="w-full bg-bgMain border border-borderSpec rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
+                                </div>
+
+                                <button type="submit" id="form-submit"
+                                    class="w-full inline-flex items-center justify-center py-3 rounded-lg bg-primary text-bgMain text-xs font-mono tracking-wide uppercase font-bold transition-transform hover:scale-[1.01]">Transmit
+                                    Signal Package</button>
+                            </form>
+                            <div id="form-status"
+                                class="hidden font-mono text-xs text-center mt-4 p-2 rounded relative z-10"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action Section -->
+            <!-- Call to Action Section (Premium Card) -->
+            <div id="cta" class="py-20 max-w-[850px] mx-auto border-t border-borderSpec/40 pt-16" data-aos="fade-up">
+                <div class="connect-card p-10 text-center relative z-10">
+                    <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">LET'S
+                        CONNECT</span>
+                    <h2 class="text-4xl sm:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                        Let's build <span class="editorial-serif">something that matters.</span>
+                    </h2>
+                    <p class="text-muted text-sm leading-relaxed max-w-xl mx-auto mb-8">
+                        Open to software engineering opportunities, freelance work and collaborations. Drop me a line.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button id="email-btn-cta"
+                            class="connect-btn text-xs font-mono tracking-wider w-full sm:w-auto">
+                            vthakur.290905@gmail.com
+                        </button>
+                        <a href="https://github.com/Vans30m/" target="_blank"
+                            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-surface border border-borderSpec text-xs font-mono text-muted hover:text-textMain transition-colors w-full sm:w-auto justify-center">
+                            GitHub ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Premium Footer Layer -->
+    <footer class="border-t border-borderSpec/40 py-16 max-w-[850px] mx-auto px-4 md:px-0">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+            <div class="md:col-span-6 space-y-4">
+                <a href="index.html"
+                    class="text-xl font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
+                    Vansh Thakur<span class="text-accent">.</span>
+                </a>
+                <p class="text-xs text-muted leading-relaxed max-w-sm">
+                    Full-Stack Developer & AI Engineer building polished, scalable products — one line of code at a
+                    time.
+                </p>
+                <div class="flex items-center space-x-3 pt-2">
+                    <a href="mailto:vthakur.290905@gmail.com"
+                        class="w-8 h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent transition-colors"
+                        aria-label="Email">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </a>
+                    <a href="https://github.com/Vans30m" target="_blank"
+                        class="w-8 h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent transition-colors"
+                        aria-label="GitHub">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
+                        class="w-8 h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent transition-colors"
+                        aria-label="LinkedIn">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-mono text-accent uppercase tracking-widest">Navigate</h4>
+                <ul class="space-y-2 text-xs text-muted">
+                    <li><a href="#home" class="hover:text-textMain transition-colors">Home</a></li>
+                    <li><a href="#projects" class="hover:text-textMain transition-colors">Projects</a></li>
+                    <li><a href="#skills" class="hover:text-textMain transition-colors">Skills</a></li>
+                    <li><a href="#about" class="hover:text-textMain transition-colors">About</a></li>
+                    <li><a href="#journey" class="hover:text-textMain transition-colors">Journey</a></li>
+                    <li><a href="#contact" class="hover:text-textMain transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-mono text-accent uppercase tracking-widest">More</h4>
+                <ul class="space-y-2 text-xs text-muted">
+                    <li><a href="#skills" class="hover:text-textMain transition-colors">Skills Matrix</a></li>
+                    <li><a href="#journey" class="hover:text-textMain transition-colors">Journey Log</a></li>
+                    <li><a href="#about" class="hover:text-textMain transition-colors">Coding Profiles</a></li>
+                    <li><a href="html/finpulseai-details.html" class="hover:text-textMain transition-colors">FinPulse AI
+                            Showcase</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div
+            class="border-t border-borderSpec/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-[10px] font-mono text-muted">
+            <p>&copy; 2026 Vansh Thakur. Redesigned, fluid, and high-performance.</p>
+            <button id="footer-totop" class="hover:text-textMain transition-colors flex items-center gap-1">
+                &uarr; Back to top
+            </button>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button id="back-to-top" class="totop" aria-label="Scroll back to top">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+        </svg>
+    </button>
+
+    <!-- Essential Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
