@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Responsive Adaptations & Breakpoints
+   ========================================================================== */
+
+/* Large Screens & Medium Laptops */
+@media (max-width: 1024px) {
+    .section-container {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .totop {
+        bottom: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* Tablets (Portrait) */
+@media (max-width: 768px) {
+    .section-container {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+    .section-title {
+        font-size: 1.75rem;
+    }
+    .section-desc {
+        font-size: 0.9375rem;
+    }
+    
+    /* Center header navigation relative to smaller page width */
+    .nav-container {
+        border-radius: 0.75rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .flip {
+        height: auto;
+        min-height: 200px;
+    }
+    
+    #mobile-menu {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+    .section-container {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    /* Layout wrapping for buttons and text inputs */
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        padding: 0.875rem 1rem;
+    }
+    
+    .grid {
+        gap: 1rem;
+    }
+}
