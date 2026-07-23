@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Energy Tile | Engineering Case Study</title>
+
+    <!-- Premium Product SEO Platform -->
+    <meta name="description"
+        content="Engineering case study for Smart Energy Tile. Hardware architecture for harvesting footstep energy with piezoelectric transducers, full-wave rectifiers, and Arduino telemetry.">
+    <meta name="author" content="Vansh Thakur">
+
+    <!-- Google Fonts & Icon Substrates -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <!-- Tailwind Play CDN (Synced perfectly with index.html tokens) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgMain: '#0B0B0C',
+                        surface: 'rgba(20, 20, 22, 0.65)',
+                        primary: '#7C8CFF',
+                        accent: '#55D6BE',
+                        acc3: '#E8A33D',
+                        textMain: '#F4F2EE',
+                        muted: '#A1A1AA',
+                        borderSpec: 'rgba(255,255,255,.08)'
+                    },
+                    fontFamily: {
+                        sans: ['Hanken Grotesk', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        serif: ['Instrument Serif', 'Georgia', 'serif'],
+                        mono: ['Geist Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0B0C;
+        }
+
+        /* Premium Bento Blueprint Custom Layer */
+        .bentocard-blueprint {
+            background: rgba(20, 20, 22, 0.7);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 1.25rem;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .bentocard-blueprint:hover {
+            border-color: rgba(232, 163, 61, 0.3);
+            /* Accent orange highlight */
+            box-shadow: 0 0 35px rgba(232, 163, 61, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Technical Grid Overlay */
+        .grid-bg-blueprint {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Non-blocking Scroll Reveal States */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Controlled Radial Atmospheric Glow */
+        .glow-wash {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.08;
+        }
+
+        .editorial-serif {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+        }
+
+        /* Customized table view scrollbar */
+        .custom-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-bgMain text-textMain font-sans antialiased selection:bg-acc3/30 selection:text-white overflow-x-hidden grid-bg-blueprint">
+
+    <!-- Atmospheric Brand Light Targets -->
+    <div class="fixed top-[-10%] left-[-5%] w-[600px] h-[600px] bg-primary glow-wash"></div>
+    <div class="fixed bottom-[10%] right-[-15%] w-[550px] h-[550px] bg-accent glow-wash"></div>
+    <div class="fixed top-[45%] left-[25%] w-[400px] h-[400px] bg-acc3 glow-wash"></div>
+
+    <!-- Floating Global Navigation Dock -->
+    <nav id="navbar" class="fixed top-4 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-[850px]">
+        <div
+            class="bg-surface backdrop-blur-xl border border-borderSpec px-6 py-4 rounded-full flex items-center justify-between">
+            <a href="index.html"
+                class="text-lg font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
+                Vansh Thakur<span class="text-accent">.</span>
+            </a>
+            <div class="hidden sm:flex items-center space-x-6 text-sm">
+                <a href="index.html" class="text-muted hover:text-textMain transition-colors text-xs font-mono">← Back
+                    to Dashboard</a>
+                <a href="#overview"
+                    class="text-muted hover:text-textMain transition-colors text-xs font-mono">Overview</a>
+                <a href="#schematic"
+                    class="text-muted hover:text-textMain transition-colors text-xs font-mono">Schematic</a>
+                <a href="#calculator" class="text-muted hover:text-textMain transition-colors text-xs font-mono">Harvest
+                    Calculator</a>
+                <a href="#firmware"
+                    class="text-muted hover:text-textMain transition-colors text-xs font-mono">Firmware</a>
+            </div>
+            <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
+                target="_blank" class="text-accent font-mono text-xs hover:underline">Repository ↗</a>
+        </div>
+    </nav>
+
+    <!-- Main Blueprint Wrapper -->
+    <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-32 pb-24 relative z-10">
+
+        <!-- 1. HERO ARCHITECTURE SECTION -->
+        <header class="relative mb-24 reveal">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <span
+                    class="inline-flex items-center gap-1.5 bg-acc3/10 border border-acc3/20 text-acc3 px-4 py-1 rounded-full text-xs font-mono">
+                    <span class="w-1.5 h-1.5 rounded-full bg-acc3 animate-pulse"></span>
+                    Solid-State Power Generation
+                </span>
+                <span class="text-xs font-mono text-muted uppercase tracking-wider">// SYSTEM_05 // HARDWARE &
+                    ENERGY</span>
+            </div>
+
+            <div class="max-w-[950px] mb-12">
+                <h1 class="text-5xl sm:text-7xl font-display font-bold tracking-tight text-white mb-6 leading-none">
+                    Smart Energy Tile <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-acc3 via-primary to-accent">
+                        Harvesting Footstep Kinetics
+                    </span>
+                </h1>
+                <p class="text-xl text-muted font-light leading-relaxed max-w-3xl">
+                    A solid-state kinetic energy harvesting platform combining <span
+                        class="editorial-serif">piezoelectric crystal grids</span>, low-drop rectification loops, analog
+                    telemetry scaling, and microcontroller-based power monitoring.
+                </p>
+            </div>
+
+            <!-- Quick Data Parameter Matrix -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                <div class="bentocard-blueprint p-4">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Role</div>
+                    <div class="text-xs font-semibold text-white font-display">Hardware Designer</div>
+                </div>
+                <div class="bentocard-blueprint p-4">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Controller</div>
+                    <div class="text-xs font-semibold text-white font-display">Arduino UNO (ATmega328P)</div>
+                </div>
+                <div class="bentocard-blueprint p-4">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Transducers</div>
+                    <div class="text-xs font-semibold text-white font-display">PZT Ceramic Discs</div>
+                </div>
+                <div class="bentocard-blueprint p-4">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Grid Pattern</div>
+                    <div class="text-xs font-semibold text-white font-display">Parallel-Series Hybrid</div>
+                </div>
+                <div class="bentocard-blueprint p-4">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Rectification</div>
+                    <div class="text-xs font-semibold text-accent font-mono">Schottky Barrier</div>
+                </div>
+                <div class="bentocard-blueprint p-4">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Monitoring Bus</div>
+                    <div class="text-xs font-semibold text-primary font-mono">10-Bit ADC</div>
+                </div>
+                <div class="bentocard-blueprint p-4">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Status</div>
+                    <div class="text-xs font-semibold text-emerald-400 font-display">Field Tested</div>
+                </div>
+                <div class="bentocard-blueprint p-4 flex flex-col justify-between items-start">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Firmware</div>
+                    <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
+                        target="_blank" class="text-xs text-primary font-mono hover:underline">
+                        GitHub ↗
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <hr class="border-borderSpec/40 my-16">
+
+        <!-- 2. PROJECT OVERVIEW -->
+        <section id="overview" class="mb-24 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">01 // TRANSDUCTION
+                        CONCEPT</span>
+                    <h2 class="text-3xl font-display font-bold text-white tracking-tight">Kinetic Energy Harvesting</h2>
+                </div>
+                <div class="lg:col-span-8 space-y-6 text-muted font-light leading-relaxed text-base">
+                    <p>
+                        The <strong class="text-textMain font-medium">Smart Energy Tile</strong> is an engineering
+                        prototype designed to capture wasted kinetic energy from footsteps and convert it into usable
+                        micro-electrical energy. By embedding an array of piezoelectric ceramic transducers beneath a
+                        flexible top plate, vertical mechanical compression triggers an instantaneous charge
+                        displacement.
+                    </p>
+                    <p>
+                        Unlike typical digital interfaces, hardware engineering challenges here center around impedance
+                        matching and signal conditioning. Piezoelectric crystals generate very high transient voltages
+                        (AC spikes) but produce minimal current. To harness this power safely and store it inside
+                        storage capacitors, the AC signals are routed through a dedicated rectification array, filtered,
+                        and then scaled down to protect the microcontroller telemetry bus.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1.5. INTERACTIVE DEMO SIMULATOR SECTION -->
+        <section id="demo" class="mb-24 reveal scroll-mt-24">
+            <div
+                class="glass-panel p-8 rounded-2xl border border-accent/20 hover:border-accent/40 transition-all duration-300 relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[80px] pointer-events-none">
+                </div>
+
+                <div class="mb-8">
+                    <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">// INTERACTIVE
+                        SHOWCASE</span>
+                    <h2 class="text-3xl font-display font-bold text-white">Kinetic Step Energy Harvester Simulator</h2>
+                    <p class="text-sm text-muted mt-1">Tap or click the tile below to simulate footsteps and watch
+                        kinetic force compress the PZT crystal grid, generating voltage spikes.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Column 1: Clickable step tile -->
+                    <div class="lg:col-span-6 flex flex-col justify-center items-center">
+                        <div
+                            class="glass-panel p-6 rounded-xl border border-borderSpec bg-zinc-950/60 w-full max-w-[340px] flex flex-col items-center">
+                            <span class="text-[9px] font-mono text-zinc-500 uppercase block mb-4">Interactive Floor
+                                Sensor Plate</span>
+
+                            <!-- Interactive Button -->
+                            <button id="step-tile-btn"
+                                class="w-[200px] h-[200px] rounded-2xl bg-zinc-900 border-2 border-borderSpec hover:border-accent active:bg-zinc-800 active:scale-95 transition-all duration-100 flex flex-col items-center justify-center gap-2 relative overflow-hidden shadow-inner group">
+                                <div
+                                    class="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 active:bg-accent/15 transition-colors">
+                                </div>
+                                <svg class="w-12 h-12 text-zinc-600 group-hover:text-accent transition-colors"
+                                    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                                </svg>
+                                <span
+                                    class="text-[10px] font-mono text-zinc-500 group-hover:text-zinc-300 uppercase tracking-widest">TAP
+                                    TO STEP</span>
+                            </button>
+
+                            <span class="text-[8px] font-mono text-zinc-500 mt-4 text-center">Every tap applies ~70 kg
+                                force compression</span>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Oscilloscope & telemetry readout -->
+                    <div class="lg:col-span-6 flex flex-col justify-between space-y-6">
+                        <!-- Telemetry Stats -->
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="glass-panel p-4 rounded-xl border border-borderSpec text-center">
+                                <span class="text-[9px] font-mono text-muted uppercase block mb-1">Peak Voltage</span>
+                                <span id="telemetry-volts" class="text-base font-bold text-white font-mono">0.0 V</span>
+                            </div>
+                            <div class="glass-panel p-4 rounded-xl border border-borderSpec text-center">
+                                <span class="text-[9px] font-mono text-muted uppercase block mb-1">Charge Stored</span>
+                                <span id="telemetry-joules" class="text-base font-bold text-primary font-mono">0.0
+                                    uJ</span>
+                            </div>
+                            <div class="glass-panel p-4 rounded-xl border border-borderSpec text-center">
+                                <span class="text-[9px] font-mono text-muted uppercase block mb-1">Total Steps</span>
+                                <span id="telemetry-steps" class="text-base font-bold text-acc3 font-mono">0</span>
+                            </div>
+                        </div>
+
+                        <!-- Spark logs -->
+                        <div
+                            class="glass-panel p-4 rounded-xl border border-borderSpec bg-zinc-950/50 font-mono text-xs flex flex-col justify-between h-[180px]">
+                            <span
+                                class="text-[10px] text-zinc-500 border-b border-borderSpec pb-1 mb-1 block">ANALOG_ADC_TRANSDUCTION_STREAM</span>
+                            <div id="adc-logs" class="flex-grow overflow-y-auto space-y-1 text-[9px] text-zinc-400">
+                                <p class="text-zinc-600">// Awaiting kinetic transducer activation...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. HARDWARE SPECIFIC CRUCIBLE -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">02 // HARDWARE
+                    CONSTRAINTS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">The Hardware Crucibles</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bentocard-blueprint p-8 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-accent"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">High-Voltage Transient Spikes</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light font-mono text-[11px] mb-2">// RISK: 35V+
+                        Over-voltage</p>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Piezoelectric discs under heavy dynamic loads generate high-amplitude voltage spikes. Direct
+                        connections to microcontrollers would fry internal clamping diodes, requiring zener-based
+                        limiters.
+                    </p>
+                </div>
+                <div class="bentocard-blueprint p-8 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-accent"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">AC-to-DC Phase Losses</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light font-mono text-[11px] mb-2">// RISK:
+                        Rectifier Forward Drop</p>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Standard silicon diodes (like 1N4007) introduce a 0.7V forward voltage drop, wasting a large
+                        percentage of micro-harvested power. Schottky diodes are required to lower these thresholds.
+                    </p>
+                </div>
+                <div class="bentocard-blueprint p-8 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-accent"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">Impedance Mismatch</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light font-mono text-[11px] mb-2">// RISK: Source
+                        Impedance > 1MΩ</p>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Piezo transducers behave electrically as capacitive voltage sources with huge source impedance.
+                        Matching them to low-impedance storage elements requires precise grid configurations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. TECHNICAL OBJECTIVES -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">03 // PHYSICAL
+                    SPECIFICATION</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Technical Objectives</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
+                    <div class="text-primary font-mono text-[10px] mb-2">[OBJ_01]</div>
+                    <h4 class="text-sm font-display font-bold text-white mb-2">Grid Optimization</h4>
+                    <p class="text-xs text-muted font-light">Wire the PZT array in a balanced parallel-series layout to
+                        balance voltage output against current delivery.</p>
+                </div>
+                <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
+                    <div class="text-primary font-mono text-[10px] mb-2">[OBJ_02]</div>
+                    <h4 class="text-sm font-display font-bold text-white mb-2">Low-Drop Rectification</h4>
+                    <p class="text-xs text-muted font-light">Utilize BAT43 or 1N5817 Schottky diode bridges to rectify
+                        high-frequency alternating currents with minimal drops.</p>
+                </div>
+                <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
+                    <div class="text-primary font-mono text-[10px] mb-2">[OBJ_03]</div>
+                    <h4 class="text-sm font-display font-bold text-white mb-2">ADC Telemetry Scaling</h4>
+                    <p class="text-xs text-muted font-light">Configure voltage division scaling filters to map 0-25V
+                        charging lines safely to the 5V ADC input of the Arduino.</p>
+                </div>
+                <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
+                    <div class="text-primary font-mono text-[10px] mb-2">[OBJ_04]</div>
+                    <h4 class="text-sm font-display font-bold text-white mb-2">Interactive Display</h4>
+                    <p class="text-xs text-muted font-light">Establish real-time data calculations displaying
+                        instantaneous voltage levels and cumulative harvested energy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SCHEMATIC DIAGRAM (Hardware Style SVG) -->
+        <section id="schematic" class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">04 // CIRCUIT SCHEMATICS
+                    & BLOCK LAYOUT</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Signal Conditioning Topology</h2>
+            </div>
+
+            <div class="bentocard-blueprint p-6 md:p-10">
+                <div class="w-full flex justify-center mb-6">
+                    <svg viewBox="0 0 900 320" class="w-full max-w-[800px] h-auto overflow-visible" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <!-- Definitions for glow effects and markers -->
+                        <defs>
+                            <filter id="glow-orange" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#E8A33D"
+                                    flood-opacity="0.6" />
+                            </filter>
+                            <filter id="glow-teal" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#55D6BE"
+                                    flood-opacity="0.6" />
+                            </filter>
+                            <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#7C8CFF"
+                                    flood-opacity="0.6" />
+                            </filter>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6"
+                                orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="rgba(255,255,255,0.4)" />
+                            </marker>
+                        </defs>
+
+                        <!-- Grid Background -->
+                        <rect x="0" y="0" width="900" height="320" rx="10" fill="#070708"
+                            stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+                        <path
+                            d="M 0 40 H 900 M 0 80 H 900 M 0 120 H 900 M 0 160 H 900 M 0 200 H 900 M 0 240 H 900 M 0 280 H 900"
+                            stroke="rgba(255,255,255,0.015)" stroke-width="1" />
+                        <path
+                            d="M 100 0 V 320 M 200 0 V 320 M 300 0 V 320 M 400 0 V 320 M 500 0 V 320 M 600 0 V 320 M 700 0 V 320 M 800 0 V 320"
+                            stroke="rgba(255,255,255,0.015)" stroke-width="1" />
+
+                        <!-- BLOCK 1: Piezo Transducers -->
+                        <rect x="20" y="60" width="160" height="200" rx="8" fill="rgba(232, 163, 61, 0.05)"
+                            stroke="#E8A33D" stroke-width="1.5" filter="url(#glow-orange)" />
+                        <text x="100" y="90" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="bold"
+                            fill="#E8A33D" text-anchor="middle">PIEZO GRID ARRAY</text>
+                        <!-- Transducer circles -->
+                        <circle cx="65" cy="150" r="18" fill="#141416" stroke="rgba(232,163,61,0.5)"
+                            stroke-width="1.5" />
+                        <circle cx="65" cy="150" r="10" fill="#E8A33D" fill-opacity="0.3" />
+                        <text x="65" y="154" font-family="'Space Grotesk', sans-serif" font-size="10" fill="#F4F2EE"
+                            text-anchor="middle">P1</text>
+
+                        <circle cx="135" cy="150" r="18" fill="#141416" stroke="rgba(232,163,61,0.5)"
+                            stroke-width="1.5" />
+                        <circle cx="135" cy="150" r="10" fill="#E8A33D" fill-opacity="0.3" />
+                        <text x="135" y="154" font-family="'Space Grotesk', sans-serif" font-size="10" fill="#F4F2EE"
+                            text-anchor="middle">P2</text>
+
+                        <text x="100" y="215" font-family="monospace" font-size="9" fill="#A1A1AA"
+                            text-anchor="middle">AC Peak Generation</text>
+                        <text x="100" y="230" font-family="monospace" font-size="9" fill="#A1A1AA"
+                            text-anchor="middle">Output: ±30V Transient</text>
+
+                        <!-- Signal Flow Arrow 1 -->
+                        <path d="M 180 160 H 230" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"
+                            marker-end="url(#arrow)" />
+                        <text x="205" y="150" font-family="monospace" font-size="9" fill="#A1A1AA"
+                            text-anchor="middle">AC Volts</text>
+
+                        <!-- BLOCK 2: Schottky Rectifier Bridge -->
+                        <rect x="240" y="60" width="160" height="200" rx="8" fill="rgba(85, 214, 190, 0.05)"
+                            stroke="#55D6BE" stroke-width="1.5" filter="url(#glow-teal)" />
+                        <text x="320" y="90" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="bold"
+                            fill="#55D6BE" text-anchor="middle">SCHOTTKY BRIDGE</text>
+
+                        <!-- Bridge diodes symbol representation -->
+                        <path d="M 320 120 L 300 150 H 340 Z" fill="rgba(85, 214, 190, 0.15)" stroke="#55D6BE"
+                            stroke-width="1.5" />
+                        <line x1="300" y1="120" x2="340" y2="120" stroke="#55D6BE" stroke-width="2" />
+                        <path d="M 320 180 L 300 150 H 340 Z" fill="rgba(85, 214, 190, 0.15)" stroke="#55D6BE"
+                            stroke-width="1.5" />
+                        <line x1="300" y1="180" x2="340" y2="180" stroke="#55D6BE" stroke-width="2" />
+
+                        <text x="320" y="215" font-family="monospace" font-size="9" fill="#A1A1AA"
+                            text-anchor="middle">BAT43 Schottky Array</text>
+                        <text x="320" y="230" font-family="monospace" font-size="9" fill="#A1A1AA"
+                            text-anchor="middle">VF = 0.35V Drop</text>
+
+                        <!-- Signal Flow Arrow 2 -->
+                        <path d="M 400 160 H 450" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"
+                            marker-end="url(#arrow)" />
+                        <text x="425" y="150" font-family="monospace" font-size="9" fill="#A1A1AA"
+                            text-anchor="middle">Pulsed DC</text>
+
+                        <!-- BLOCK 3: Smoothing & Protection -->
+                        <rect x="460" y="60" width="180" height="200" rx="8" fill="rgba(124, 140, 255, 0.05)"
+                            stroke="#7C8CFF" stroke-width="1.5" filter="url(#glow-blue)" />
+                        <text x="550" y="90" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="bold"
+                            fill="#7C8CFF" text-anchor="middle">FILTER & LIMITER</text>
+
+                        <!-- Capacitor & Zener icons -->
+                        <line x1="510" y1="130" x2="510" y2="170" stroke="#7C8CFF" stroke-width="1.5" />
+                        <path d="M 520 135 V 165" stroke="#7C8CFF" stroke-width="3" />
+                        <path d="M 528 135 C 523 140 523 160 528 165" stroke="#7C8CFF" stroke-width="2" fill="none" />
+                        <line x1="535" y1="130" x2="535" y2="170" stroke="#7C8CFF" stroke-width="1.5" />
+                        <text x="525" y="125" font-family="monospace" font-size="8" fill="#7C8CFF"
+                            text-anchor="middle">Cap Filter</text>
+
+                        <!-- Zener Diode -->
+                        <path d="M 580 150 L 565 160 V 140 Z" fill="rgba(124, 140, 255, 0.2)" stroke="#7C8CFF"
+                            stroke-width="1.5" />
+                        <line x1="580" y1="138" x2="580" y2="162" stroke="#7C8CFF" stroke-width="2" />
+                        <line x1="580" y1="138" x2="584" y2="140" stroke="#7C8CFF" stroke-width="2" />
+                        <line x1="576" y1="160" x2="580" y2="162" stroke="#7C8CFF" stroke-width="2" />
+                        <text x="572" y="125" font-family="monospace" font-size="8" fill="#7C8CFF"
+                            text-anchor="middle">5.1V Zener</text>
+
+                        <text x="550" y="215" font-family="monospace" font-size="9" fill="#A1A1AA"
+                            text-anchor="middle">10μF Smoothing Cap</text>
+                        <text x="550" y="230" font-family="monospace" font-size="9" fill="#A1A1AA"
+                            text-anchor="middle">Zener Voltage Clamping</text>
+
+                        <!-- Signal Flow Arrow 3 -->
+                        <path d="M 640 160 H 690" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"
+                            marker-end="url(#arrow)" />
+                        <text x="665" y="150" font-family="monospace" font-size="9" fill="#A1A1AA"
+                            text-anchor="middle">0-5V Analog</text>
+
+                        <!-- BLOCK 4: MCU Telemetry -->
+                        <rect x="700" y="60" width="180" height="200" rx="8" fill="rgba(255, 255, 255, 0.02)"
+                            stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+                        <text x="790" y="90" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="bold"
+                            fill="#F4F2EE" text-anchor="middle">ARDUINO UNO</text>
+
+                        <!-- Microcontroller graphic -->
+                        <rect x="740" y="110" width="100" height="70" rx="4" fill="#141416"
+                            stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+                        <rect x="760" y="120" width="60" height="25" fill="#222" stroke="rgba(255,255,255,0.2)" />
+                        <text x="790" y="136" font-family="monospace" font-size="8" fill="#A1A1AA"
+                            text-anchor="middle">ATMEGA328P</text>
+                        <circle cx="750" cy="165" r="4" fill="#55D6BE" filter="url(#glow-teal)" />
+                        <text x="760" y="168" font-family="monospace" font-size="8" fill="#55D6BE">Analog A0</text>
+
+                        <text x="790" y="215" font-family="monospace" font-size="9" fill="#A1A1AA"
+                            text-anchor="middle">10-Bit ADC Conversion</text>
+                        <text x="790" y="230" font-family="monospace" font-size="9" fill="#A1A1AA"
+                            text-anchor="middle">Display Serial Data</text>
+                    </svg>
+                </div>
+
+                <div
+                    class="pt-6 border-t border-borderSpec/40 text-muted text-xs font-light max-w-3xl mx-auto leading-relaxed text-center font-mono">
+                    <strong>Electrical Path:</strong> Kinetic Compression ➔ AC Charge Output ➔ Full-Wave Rectification ➔
+                    Electrolytic Filtering ➔ Zener Voltage Clamping (Overvoltage Safety) ➔ Arduino A0 Analog Measurement
+                    Bus.
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. BILL OF MATERIALS (Hardware Characteristic) -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">05 // COMPONENT
+                    SPECIFICATIONS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Bill of Materials (BOM)</h2>
+            </div>
+
+            <div class="bentocard-blueprint p-6 md:p-8">
+                <div class="overflow-x-auto custom-scroll">
+                    <table class="w-full text-left font-mono text-xs">
+                        <thead class="bg-bgMain text-muted">
+                            <tr>
+                                <th class="p-4 border-b border-borderSpec">Ref Descriptor</th>
+                                <th class="p-4 border-b border-borderSpec">Component Name</th>
+                                <th class="p-4 border-b border-borderSpec">Value / Rating</th>
+                                <th class="p-4 border-b border-borderSpec">Description</th>
+                                <th class="p-4 border-b border-borderSpec text-right">Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-borderSpec text-muted">
+                            <tr>
+                                <td class="p-4 text-white font-bold">P1 - P6</td>
+                                <td class="p-4 text-acc3">Piezoelectric Ceramic Discs</td>
+                                <td class="p-4 font-semibold">35mm Diameter, Lead Zirconate Titanate</td>
+                                <td class="p-4 font-light">Solid-state sensor conversion elements that generate charge
+                                    upon deflection.</td>
+                                <td class="p-4 text-right">6</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-white font-bold">D1 - D24</td>
+                                <td class="p-4 text-accent">Schottky Diodes (BAT43)</td>
+                                <td class="p-4 font-semibold">30V 200mA, VF ≈ 0.35V</td>
+                                <td class="p-4 font-light">Configured as 6 independent full-wave bridge rectifiers to
+                                    capture polar kinetic changes.</td>
+                                <td class="p-4 text-right">24</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-white font-bold">C1</td>
+                                <td class="p-4 text-primary">Electrolytic Smoothing Cap</td>
+                                <td class="p-4 font-semibold">10μF / 50V Rating</td>
+                                <td class="p-4 font-light">Integrates pulsed charges into a smooth, stable DC voltage
+                                    ready for measurement.</td>
+                                <td class="p-4 text-right">1</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-white font-bold">ZD1</td>
+                                <td class="p-4 text-primary">Zener Diode Limiter</td>
+                                <td class="p-4 font-semibold">5.1V / 1W rating</td>
+                                <td class="p-4 font-light">Clamps voltage lines to 5.1V maximum to prevent transient
+                                    spikes from entering the MCU pin.</td>
+                                <td class="p-4 text-right">1</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-white font-bold">MCU1</td>
+                                <td class="p-4">Arduino UNO Rev 3</td>
+                                <td class="p-4 font-semibold">16MHz ATmega328P</td>
+                                <td class="p-4 font-light">Reads scaled analog voltage inputs, computes harvested
+                                    kinetics, outputs telemetry data.</td>
+                                <td class="p-4 text-right">1</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-white font-bold">R1, R2</td>
+                                <td class="p-4">Voltage Divider Resistors</td>
+                                <td class="p-4 font-semibold">10KΩ & 4.7KΩ Metal Film</td>
+                                <td class="p-4 font-light">Reduces the rectified voltage line scaling factor by roughly
+                                    3.1x for broader safety margin.</td>
+                                <td class="p-4 text-right">2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. INTERACTIVE KINETIC ENERGY CALCULATOR (Interactive & Educational Hardware Flavor) -->
+        <section id="calculator" class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">06 // ELECTRICAL CALCULUS
+                    LABORATORY</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Kinetic Harvester Lab Calculator
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Calculator Inputs -->
+                <div class="bentocard-blueprint p-8 lg:col-span-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-display font-bold text-white mb-4">Input Parameters</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label
+                                    class="block text-xs font-mono text-muted uppercase tracking-wider mb-2">Footsteps /
+                                    Minute</label>
+                                <input type="number" id="calc-steps" value="60" min="1" max="300"
+                                    class="w-full bg-bgMain border border-borderSpec rounded-lg p-3 text-white text-sm font-mono focus:border-acc3 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-muted uppercase tracking-wider mb-2">Average
+                                    Impact Weight (kg)</label>
+                                <input type="number" id="calc-weight" value="70" min="1" max="150"
+                                    class="w-full bg-bgMain border border-borderSpec rounded-lg p-3 text-white text-sm font-mono focus:border-acc3 focus:outline-none">
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-xs font-mono text-muted uppercase tracking-wider mb-2">Transducer
+                                    Output Voltage Peak</label>
+                                <select id="calc-voltage"
+                                    class="w-full bg-bgMain border border-borderSpec rounded-lg p-3 text-white text-sm font-mono focus:border-acc3 focus:outline-none">
+                                    <option value="5">5.0V (Soft Compression)</option>
+                                    <option value="12" selected>12.0V (Standard Walking Run)</option>
+                                    <option value="20">20.0V (Rigid Direct Strike)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="calculateEnergy()"
+                        class="mt-6 w-full py-3.5 rounded-lg bg-acc3 text-bgMain text-xs font-mono font-bold tracking-wider hover:bg-acc3/90 transition-all uppercase">
+                        Recompute Harvester Dynamics
+                    </button>
+                </div>
+
+                <!-- Calculator Display -->
+                <div
+                    class="bentocard-blueprint p-8 lg:col-span-2 flex flex-col justify-between relative overflow-hidden">
+                    <div
+                        class="absolute -right-20 -bottom-20 w-80 h-80 bg-acc3/5 rounded-full blur-3xl pointer-events-none">
+                    </div>
+                    <div>
+                        <span class="text-xs font-mono text-accent uppercase block mb-1">REAL-TIME MATHEMATICS</span>
+                        <h3 class="text-xl font-display font-bold text-white mb-4">Calculated Energy Telemetry</h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-6">
+                            <div class="bg-bgMain p-4 rounded-xl border border-borderSpec">
+                                <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Energy
+                                    Stored / Step</div>
+                                <div class="text-2xl font-bold text-white font-mono" id="val-energy">0.72 mJ</div>
+                                <div class="text-[9px] text-muted font-mono mt-1">E = ½ C V²</div>
+                            </div>
+                            <div class="bg-bgMain p-4 rounded-xl border border-borderSpec">
+                                <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Continuous
+                                    Power</div>
+                                <div class="text-2xl font-bold text-accent font-mono" id="val-power">0.72 mW</div>
+                                <div class="text-[9px] text-muted font-mono mt-1">P = E × Frequency</div>
+                            </div>
+                            <div class="bg-bgMain p-4 rounded-xl border border-borderSpec">
+                                <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Hourly
+                                    Generation</div>
+                                <div class="text-2xl font-bold text-primary font-mono" id="val-hourly">2.59 Joules</div>
+                                <div class="text-[9px] text-muted font-mono mt-1">Total over 3,600 steps</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="text-xs text-muted font-light leading-relaxed p-4 bg-bgMain rounded-lg border border-borderSpec/60 font-mono">
+                        <strong class="text-white">Transducer Physics Theorem:</strong> Calculations assume a 10μF
+                        smoothing capacitor bank. Real-world returns will vary slightly depending on step pressure speed
+                        (dV/dt) and the mechanical flexing coefficient of the tile housing layout.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. RUN LOOP TIME LOGS -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">07 // WAVEFORM
+                    DIGITIZATION PROCESS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Main Signal Processing Lifecycle
+                </h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
+                    <div class="font-mono text-acc3 font-bold min-w-[50px]">01 //</div>
+                    <div>
+                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Piezo Mechanical Displacement
+                        </h4>
+                        <p class="text-xs text-muted font-light">Physical impact deflections squeeze the inner lead
+                            zirconate titanate crystal lattices, forcing free charge separation between surface silver
+                            plates.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
+                    <div class="font-mono text-acc3 font-bold min-w-[50px]">02 //</div>
+                    <div>
+                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Full-Wave Rectification Wave
+                        </h4>
+                        <p class="text-xs text-muted font-light">High-amplitude AC voltage curves pass through Schottky
+                            diode structures, folding negative peaks into positive pulses with under 0.35V loss.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
+                    <div class="font-mono text-acc3 font-bold min-w-[50px]">03 //</div>
+                    <div>
+                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Capacitive Charge Storing</h4>
+                        <p class="text-xs text-muted font-light">The rectified pulse stream dumps charge into a
+                            low-leakage 10μF electrolytic reservoir capacitor, smoothing voltage ripples into steady
+                            lines.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
+                    <div class="font-mono text-acc3 font-bold min-w-[50px]">04 //</div>
+                    <div>
+                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Zener Limiting & Voltage
+                            Division</h4>
+                        <p class="text-xs text-muted font-light">Overvoltage protection circuits clamp inputs above
+                            5.1V. A precision resistance divider scales values so the MCU A0 line measures safe analog
+                            boundaries.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
+                    <div class="font-mono text-acc3 font-bold min-w-[50px]">05 //</div>
+                    <div>
+                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">ADC Interpolation &
+                            Calculations</h4>
+                        <p class="text-xs text-muted font-light">The ATmega328P runs 10-bit analog conversion sweeps,
+                            translates digitized metrics back to original voltage values, and logs cumulative power
+                            outputs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. FIRMWARE EXPOSITION (Embedded C/C++) -->
+        <section id="firmware" class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">08 // FIRMWARE REGISTER
+                    LOGIC</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Embedded C Telemetry Code</h2>
+            </div>
+
+            <div class="bentocard-blueprint p-6 md:p-8">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-mono text-muted">// main_harvester_telemetry.ino</span>
+                    <span class="text-xs font-mono text-accent bg-accent/10 px-2.5 py-1 rounded">Embedded C++</span>
+                </div>
+                <pre
+                    class="bg-bgMain p-6 rounded-xl border border-borderSpec overflow-x-auto text-[11.5px] font-mono text-zinc-300 leading-relaxed custom-scroll">
+<span class="text-zinc-600">// Core telemetry config for Smart Energy Tile</span>
+<span class="text-primary">const int</span> analogPin = A0;      <span class="text-zinc-600">// Transducer monitoring voltage divider input</span>
+<span class="text-primary">const float</span> V_REF = 5.0;       <span class="text-zinc-600">// Arduino analog operational reference voltage</span>
+<span class="text-primary">const float</span> R1 = 10000.0;      <span class="text-zinc-600">// Voltage divider Resistor 1 (10K ohms)</span>
+<span class="text-primary">const float</span> R2 = 4700.0;       <span class="text-zinc-600">// Voltage divider Resistor 2 (4.7K ohms)</span>
+<span class="text-primary">const float</span> divisionRatio = (R1 + R2) / R2; <span class="text-zinc-600">// Division factor scaling ratio</span>
+
+<span class="text-primary">void</span> <span class="text-accent">setup</span>() {
+  Serial.<span class="text-accent">begin</span>(9600);
+  <span class="text-accent">pinMode</span>(analogPin, INPUT);
+  Serial.<span class="text-accent">println</span>(<span class="text-acc3">"--- SMART PIEZOELECTRIC HARVESTER INITIALIZED ---"</span>);
+}
+
+<span class="text-primary">void</span> <span class="text-accent">loop</span>() {
+  <span class="text-primary">int</span> rawADC = <span class="text-accent">analogRead</span>(analogPin);
+  
+  <span class="text-zinc-600">// Interpolate analog readings to absolute capacitor terminal volts</span>
+  <span class="text-primary">float</span> measuredVoltage = (rawADC * V_REF) / 1023.0;
+  <span class="text-primary">float</span> capacitorVoltage = measuredVoltage * divisionRatio;
+
+  <span class="text-zinc-600">// Telemetry terminal diagnostic print</span>
+  Serial.<span class="text-accent">print</span>(<span class="text-acc3">"ADC Value: "</span>);
+  Serial.<span class="text-accent">print</span>(rawADC);
+  Serial.<span class="text-accent">print</span>(<span class="text-acc3">" | Terminal Voltage: "</span>);
+  Serial.<span class="text-accent">print</span>(capacitorVoltage, 2);
+  Serial.<span class="text-accent">println</span>(<span class="text-acc3">"V"</span>);
+
+  <span class="text-accent">delay</span>(250); <span class="text-zinc-600">// Non-blocking timer loops deployed in deployment builds</span>
+}</pre>
+            </div>
+        </section>
+
+        <!-- 10. REAL-WORLD TESTING & ENGINEERING METRICS -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">09 // BENCH TESTING
+                    SUMMARY</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Performance Diagnostics</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center font-display">
+                <div class="bentocard-blueprint p-6">
+                    <div class="text-4xl font-bold text-white mb-2">28.4 V</div>
+                    <div class="text-xs font-mono text-acc3 uppercase tracking-wider">Unloaded Peak Voltage</div>
+                    <p class="text-xs text-muted font-light mt-2">Maximum transient open-circuit voltage recorded during
+                        high-intensity foot strikes.</p>
+                </div>
+                <div class="bentocard-blueprint p-6">
+                    <div class="text-4xl font-bold text-white mb-2">0.32 mW</div>
+                    <div class="text-xs font-mono text-primary uppercase tracking-wider">Nominal Power Yield</div>
+                    <p class="text-xs text-muted font-light mt-2">Average power delivered into storage cap
+                        configurations at 1.0Hz pedestrian steps.</p>
+                </div>
+                <div class="bentocard-blueprint p-6">
+                    <div class="text-4xl font-bold text-white mb-2">&lt; 350mV</div>
+                    <div class="text-xs font-mono text-accent uppercase tracking-wider">Rectifier Voltage Drop</div>
+                    <p class="text-xs text-muted font-light mt-2">Minimized phase loss by replacing standard silicon
+                        diodes with high-speed Schottky bridges.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. HARDWARE CHALLENGES (Problem / Approach / Result) -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">10 // ENGINEERING
+                    ADAPTATIONS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Physical Calibration Log</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bentocard-blueprint p-6">
+                    <span class="text-xs font-mono text-acc3 block mb-1">ENGINEERING CHALLENGE //</span>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Ceramic Crystal Fragility</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed mb-4">
+                        Direct dynamic foot impacts quickly cracked the thin ceramic lead zirconate titanate layers,
+                        ruining the output charge yield.
+                    </p>
+                    <span class="text-xs font-mono text-accent block mb-1">PHYSICAL SOLUTION //</span>
+                    <p class="text-xs text-slate-300 font-light bg-surface p-3 rounded border border-borderSpec">
+                        Designed an acrylic tile housing with neoprene spacer rings, distributing the mechanical
+                        compression force evenly and limiting direct shear stresses.
+                    </p>
+                </div>
+                <div class="bentocard-blueprint p-6">
+                    <span class="text-xs font-mono text-acc3 block mb-1">ENGINEERING CHALLENGE //</span>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Rapid Capacitor Self-Discharge</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed mb-4">
+                        Stored energy leaked back through cheap filtering caps and high divider resistance branches,
+                        draining reserves during quiet intervals.
+                    </p>
+                    <span class="text-xs font-mono text-accent block mb-1">PHYSICAL SOLUTION //</span>
+                    <p class="text-xs text-slate-300 font-light bg-surface p-3 rounded border border-borderSpec">
+                        Implemented high-spec tantalum capacitors with ultra-low leakage profiles and scaled division
+                        resistors up to 10KΩ/4.7KΩ limits.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-borderSpec/40 my-16">
+
+        <!-- 12. CALL TO ACTION -->
+        <section class="reveal">
+            <div class="bentocard-blueprint p-10 text-center relative z-10 max-w-[850px] mx-auto border-primary/20">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">HARDWARE INTERFACE
+                    SCHEMATICS</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                    Explore Circuit <span class="editorial-serif">Designs & Firmware.</span>
+                </h2>
+                <p class="text-muted text-sm leading-relaxed max-w-xl mx-auto mb-8">
+                    View full wiring diagrams, component footprints, firmware files, and microgrid experiments in the
+                    open-source repository.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
+                        target="_blank"
+                        class="px-6 py-3.5 rounded-full bg-acc3 text-bgMain text-xs font-mono tracking-wider font-bold hover:bg-acc3/90 transition-all transform hover:scale-[1.01] w-full sm:w-auto text-center shadow-lg shadow-acc3/25">
+                        Access Source Repository
+                    </a>
+                    <a href="index.html"
+                        class="px-6 py-3.5 rounded-full bg-bgMain border border-borderSpec text-xs font-mono text-muted hover:text-textMain transition-colors w-full sm:w-auto text-center">
+                        ← Central Dashboard Overview
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Synced Footer Module (Direct style continuity matching index.html) -->
+    <footer
+        class="border-t border-borderSpec/40 py-12 max-w-[850px] mx-auto px-4 md:px-0 text-[10px] font-mono text-muted flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>&copy; 2026 Vansh Thakur. Engineered, hardware-optimized, and fluid.</p>
+        <a href="#" class="hover:text-textMain transition-colors">&uarr; Return to Top Target</a>
+    </footer>
+
+    <!-- Asynchronous Reveal Script Engine & Calculator Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+
+            revealElements.forEach(el => observer.observe(el));
+
+            // Initial computation
+            calculateEnergy();
+
+            // Piezoelectric Tile Simulator Script
+            const stepTileBtn = document.getElementById('step-tile-btn');
+            const telemetryVolts = document.getElementById('telemetry-volts');
+            const telemetryJoules = document.getElementById('telemetry-joules');
+            const telemetrySteps = document.getElementById('telemetry-steps');
+            const adcLogs = document.getElementById('adc-logs');
+
+            let stepsCount = 0;
+            let totalEnergyUJ = 0; // micro-Joules
+            const capacitance = 10e-6; // 10 uF
+
+            const logAdc = (msg, type = 'info') => {
+                const time = new Date().toLocaleTimeString().split(' ')[0];
+                let colorClass = 'text-zinc-500';
+                if (type === 'success') colorClass = 'text-accent';
+                if (type === 'voltage') colorClass = 'text-acc3';
+
+                const logElem = document.createElement('div');
+                logElem.className = 'py-0.5 border-b border-white/5';
+                logElem.innerHTML = `<span class="text-zinc-600">[${time}]</span> <span class="${colorClass}">${msg}</span>`;
+
+                // Clear initial placeholder
+                if (adcLogs.innerText.includes('Awaiting kinetic')) {
+                    adcLogs.innerHTML = '';
+                }
+
+                adcLogs.appendChild(logElem);
+                adcLogs.scrollTop = adcLogs.scrollHeight;
+
+                // Limit logs
+                while (adcLogs.children.length > 15) {
+                    adcLogs.removeChild(adcLogs.firstChild);
+                }
+            };
+
+            stepTileBtn.addEventListener('click', () => {
+                stepsCount++;
+                telemetrySteps.innerText = stepsCount;
+
+                // Random peak voltage from step (15V to 35V)
+                const voltage = parseFloat((Math.random() * 20 + 15).toFixed(1));
+
+                // Energy = 0.5 * C * V^2 (Joules)
+                const energyJoules = 0.5 * capacitance * Math.pow(voltage, 2);
+                const energyMicroJoules = energyJoules * 1e6; // to uJ
+
+                totalEnergyUJ += energyMicroJoules;
+
+                telemetryVolts.innerText = `${voltage} V`;
+                telemetryJoules.innerText = `${totalEnergyUJ.toFixed(1)} uJ`;
+
+                // Log steps
+                logAdc(`FORCE COMPRESSION: Dynamic load impact detected.`, 'info');
+                logAdc(`ADC Channel 0 (PZT Array Peak): ${voltage}V peak AC detected.`, 'voltage');
+                logAdc(`RECTIFICATION: Full-bridge Schottky output: ${voltage - 0.4}V DC.`, 'info');
+                logAdc(`CHARGE TRANSFER: Stored +${energyMicroJoules.toFixed(2)} uJ inside storage cap.`, 'success');
+
+                // Visual ripple spark flash effect on button
+                stepTileBtn.classList.remove('border-borderSpec');
+                stepTileBtn.classList.add('border-accent', 'shadow-[0_0_20px_rgba(85,214,190,0.3)]');
+                setTimeout(() => {
+                    stepTileBtn.classList.remove('border-accent', 'shadow-[0_0_20px_rgba(85,214,190,0.3)]');
+                    stepTileBtn.classList.add('border-borderSpec');
+                }, 150);
+            });
+        });
+
+        function calculateEnergy() {
+            const stepsPerMin = parseFloat(document.getElementById('calc-steps').value) || 0;
+            const weight = parseFloat(document.getElementById('calc-weight').value) || 0;
+            const voltagePeak = parseFloat(document.getElementById('calc-voltage').value) || 0;
+
+            // Capacitance: 10 uF (10e-6 Farads)
+            const capacitance = 10e-6;
+
+            // Energy stored per step: E = 0.5 * C * V^2 (Joules)
+            const energyPerStep = 0.5 * capacitance * Math.pow(voltagePeak, 2); // Joules
+
+            // Power output = Energy per step * step frequency (steps per second)
+            const stepsPerSec = stepsPerMin / 60.0;
+            const powerWatts = energyPerStep * stepsPerSec;
+
+            // Hourly generation (Joules)
+            const hourlyEnergy = energyPerStep * stepsPerMin * 60;
+
+            // Update UI elements with metric scales
+            document.getElementById('val-energy').innerText = (energyPerStep * 1000).toFixed(3) + " mJ";
+            document.getElementById('val-power').innerText = (powerWatts * 1000).toFixed(3) + " mW";
+            document.getElementById('val-hourly').innerText = hourlyEnergy.toFixed(3) + " Joules";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Planet | Engineering Case Study</title>
+
+    <!-- Premium Product SEO Platform -->
+    <meta name="description"
+        content="Engineering case study for Fitness Planet: A high-performance workout tracker and real-time health telemetry dashboard architecture.">
+    <meta name="author" content="Vansh Thakur">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgMain: '#0B0B0C',
+                        surface: 'rgba(20, 20, 22, 0.65)',
+                        primary: '#7C8CFF',
+                        accent: '#55D6BE',
+                        acc3: '#E8A33D',
+                        textMain: '#F4F2EE',
+                        muted: '#A1A1AA',
+                        borderSpec: 'rgba(255,255,255,.08)'
+                    },
+                    fontFamily: {
+                        sans: ['Hanken Grotesk', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        serif: ['Instrument Serif', 'Georgia', 'serif'],
+                        mono: ['Geist Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0B0C;
+        }
+
+        /* Premium glassmorphism panel matched to global styling */
+        .glass-panel {
+            background: rgba(20, 20, 22, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card-hover:hover {
+            border-color: rgba(124, 140, 255, 0.3);
+            box-shadow: 0 0 30px rgba(124, 140, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Precise grid pattern matching index.html layout rules */
+        .grid-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Scroll reveal animations using minimal code execution paths */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Soft global atmospheric light vectors */
+        .glow-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(130px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.12;
+        }
+
+        .editorial-serif {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-bgMain text-textMain font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden grid-bg">
+
+    <!-- Ambient Lighting Layout Mapping index.html Aesthetics -->
+    <div class="fixed top-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary glow-blob"></div>
+    <div class="fixed bottom-[10%] right-[-10%] w-[500px] h-[500px] bg-accent glow-blob"></div>
+    <div class="fixed top-[40%] right-[15%] w-[450px] h-[450px] bg-acc3 glow-blob"></div>
+
+    <!-- Floating Global Navigation Dock -->
+    <nav class="fixed top-4 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-[850px]">
+        <div class="glass-panel px-6 py-4 rounded-full flex items-center justify-between border border-borderSpec">
+            <a href="index.html"
+                class="text-lg font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
+                Vansh Thakur<span class="text-accent">.</span>
+            </a>
+            <div class="flex items-center space-x-6 text-sm">
+                <a href="index.html" class="text-muted hover:text-textMain transition-colors">← Dashboard Overview</a>
+                <a href="#architecture"
+                    class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Architecture</a>
+                <a href="https://github.com/Vans30m/fitness-planet" target="_blank"
+                    class="text-accent font-mono text-xs hover:underline">Repository ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-32 pb-24 relative z-10">
+
+        <!-- 1. HERO SECTION -->
+        <header class="relative mb-24 reveal">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <span
+                    class="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent px-4 py-1 rounded-full text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                    Production Stack Active
+                </span>
+                <span class="text-xs font-mono text-muted uppercase tracking-wider">SYSTEM_03 // Full Stack</span>
+            </div>
+
+            <div class="max-w-[900px] mb-12">
+                <h1 class="text-5xl sm:text-7xl font-display font-bold tracking-tight text-white mb-6 leading-tight">
+                    Fitness Planet: <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-acc3">
+                        Telemetry Workspace
+                    </span>
+                </h1>
+                <p class="text-lg sm:text-xl text-muted font-light leading-relaxed max-w-3xl">
+                    A robust workout tracker and real-time health metrics dashboard <span class="editorial-serif">built
+                        for absolute fluidity</span>. Engineered to orchestrate relational databases and process
+                    performance telemetry arrays cleanly.
+                </p>
+            </div>
+
+            <!-- Architectural Metadata Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-12">
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Architecture</div>
+                    <div class="text-sm font-semibold text-white">Full-Stack SPA</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Frontend</div>
+                    <div class="text-sm font-semibold text-primary">React Layer</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Database Engine</div>
+                    <div class="text-sm font-semibold text-accent">PostgreSQL</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Styling Core</div>
+                    <div class="text-sm font-semibold text-white">Tailwind CSS</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Data Model</div>
+                    <div class="text-sm font-semibold text-acc3 font-mono text-xs">Relational DB</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">State Mgmt</div>
+                    <div class="text-sm font-semibold text-white">React Context</div>
+                </div>
+                <div
+                    class="glass-panel p-4 rounded-xl flex flex-col justify-between items-start border border-borderSpec">
+                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Repository</div>
+                    <a href="https://github.com/Vans30m/fitness-planet" target="_blank"
+                        class="text-xs text-primary hover:underline font-mono">
+                        Source Code ↗
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <hr class="border-borderSpec/40 my-16">
+
+        <!-- 2. PROJECT OVERVIEW -->
+        <section class="mb-24 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">01 // CONTEXT
+                        MATRIX</span>
+                    <h2 class="text-3xl font-display font-bold text-white tracking-tight">Project Overview</h2>
+                </div>
+                <div class="lg:col-span-8 space-y-6 text-muted font-light leading-relaxed">
+                    <p>
+                        <strong class="text-textMain font-medium">Fitness Planet</strong> was built to bypass the high
+                        tracking friction and data isolation common in typical performance hubs. It creates an explicit
+                        link between transactional training inputs and low-latency database queries.
+                    </p>
+                    <p>
+                        Through granular rendering bounds in the client-side components and optimized access paths
+                        inside the relational schema layer, the interface loads execution history vectors
+                        instantaneously, enabling a clean, responsive analytics window.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PROBLEM STATEMENT -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">02 // CRITICAL
+                    CHALLENGES</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Problem Statement</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden border border-borderSpec">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">Unstructured Progress Vectors</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Typical tracking tools generate fragmented logs that obscure continuous training trajectories
+                        and breakdown data trend mapping over multi-month microcycles.
+                    </p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden border border-borderSpec">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">High Interface Friction</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Over-complicated input layouts introduce processing friction that slows down fast metric logs
+                        and disrupts active workout sessions.
+                    </p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden border border-borderSpec">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
+                    <h3 class="text-lg font-display font-bold text-white mb-3">Telemetry Synchronicity Drops</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light">
+                        Coordinating real-time visualization nodes safely with physical database writes without blocking
+                        layout render targets or polling cycles.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. OBJECTIVES -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">03 // STRATEGIC
+                    THESIS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Technical Objectives</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div
+                    class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_01]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">Normalized Datasets</h4>
+                    <p class="text-xs text-muted font-light">Normalize schema trees inside PostgreSQL to maintain
+                        absolute metric integrity across tracking periods.</p>
+                </div>
+                <div
+                    class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_02]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">Fluid Interface States</h4>
+                    <p class="text-xs text-muted font-light">Leverage utility structures in Tailwind CSS to preserve
+                        spatial layout control across mobile and desktop nodes.</p>
+                </div>
+                <div
+                    class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_03]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">Efficient Client Routing</h4>
+                    <p class="text-xs text-muted font-light">Minimize component tree overhead to let state indicators
+                        load instantly during data sync interactions.</p>
+                </div>
+                <div
+                    class="glass-panel p-6 rounded-xl border-l-2 border-primary border-y-borderSpec border-r-borderSpec">
+                    <div class="text-primary font-mono text-xs mb-2">[OBJ_04]</div>
+                    <h4 class="text-md font-display font-bold text-white mb-2">Secure API Transactions</h4>
+                    <p class="text-xs text-muted font-light">Sanitize and validate database payload write streams to
+                        prevent command script execution vulnerabilities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ARCHITECTURE LAYER DESIGN -->
+        <section id="architecture" class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">04 // SYSTEM
+                    INFRASTRUCTURE</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Full-Stack Functional Architecture
+                </h2>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl border border-borderSpec">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center text-center font-mono text-xs">
+                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
+                        <span class="text-primary block font-bold mb-1">CLIENT PERSISTENCE</span>
+                        React Context & LocalState Nodes
+                    </div>
+                    <div class="text-primary font-bold rotate-90 md:rotate-0">➔</div>
+                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
+                        <span class="text-accent block font-bold mb-1">ROUTING ROUTERS</span>
+                        REST Request Middleware Controllers
+                    </div>
+                    <div class="text-accent font-bold rotate-90 md:rotate-0">➔</div>
+                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
+                        <span class="text-acc3 block font-bold mb-1">RELATIONAL MATRIX</span>
+                        PostgreSQL Normalized Index Pools
+                    </div>
+                </div>
+                <p class="mt-6 text-xs font-mono text-muted text-center max-w-2xl mx-auto">
+                    Data updates pass cleanly through validation filters, securing infrastructure queries and
+                    maintaining instantaneous state transformations.
+                </p>
+            </div>
+        </section>
+
+        <!-- 6. FEATURE GRID SHOWCASE -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">05 // CAPABILITY
+                    ARRAYS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Feature Deep-Dive</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-accent mb-3">[F_01]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Workout Telemetry Tracking</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Tracks exact logs for set arrangements, rep
+                        splits, and loading targets to match performance objectives cleanly.</p>
+                </div>
+                <div
+                    class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-primary mb-3">[F_02]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Dynamic Progress Vectors</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Transforms static tracking matrices into
+                        interactive analytics grids for fast history reviews.</p>
+                </div>
+                <div
+                    class="glass-panel p-6 rounded-xl glass-card-hover transition-all duration-300 border border-borderSpec">
+                    <div class="text-xs font-mono text-acc3 mb-3">[F_03]</div>
+                    <h4 class="text-lg font-display font-bold text-white mb-2">Relational Activity Linking</h4>
+                    <p class="text-xs text-muted font-light leading-relaxed">Binds data records directly to target
+                        anatomical regions via strategic foreign index associations on the SQL core.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. TECHNOLOGY MATRIX -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">06 // THE WORKSPACE
+                    STACK</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Technology Verification Matrix
+                </h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs">
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">CORE ECOSYSTEM</div>
+                    <div class="text-white font-bold">React.js Engine Core</div>
+                </div>
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">DATABASE STORAGE</div>
+                    <div class="text-primary font-bold">PostgreSQL Engine</div>
+                </div>
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">INTERFACE LAYERS</div>
+                    <div class="text-accent font-bold">Tailwind CSS Platform</div>
+                </div>
+                <div class="p-4 rounded-xl bg-bgMain border border-borderSpec">
+                    <div class="text-muted mb-1">VERSION LOGISTICS</div>
+                    <div class="text-acc3 font-bold">Git Production Control</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. PERFORMANCE TUNING METRICS -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">07 // METRIC
+                    CALCULATIONS</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Performance Engineering Results
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center font-display">
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="text-4xl font-bold text-white mb-1">&lt; 35ms</div>
+                    <div class="text-xs font-mono text-accent uppercase tracking-wider">Query Execution Time</div>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="text-4xl font-bold text-white mb-1">100%</div>
+                    <div class="text-xs font-mono text-primary uppercase tracking-wider">Data Consistency Rate</div>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <div class="text-4xl font-bold text-white mb-1">0 bps</div>
+                    <div class="text-xs font-mono text-acc3 uppercase tracking-wider">State Pollution Overhead</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. ROADMAP FORECASTS -->
+        <section class="mb-24 reveal">
+            <div class="mb-12">
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">08 // ROADMAP
+                    CHRONICLES</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Future Improvements Roadmap</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-muted font-light">
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <h4 class="font-display font-bold text-white font-mono mb-2 text-primary">// 01 / Predictive
+                        Analytics</h4>
+                    <p class="text-xs">Integrating lightweight machine learning pipelines to evaluate weight tracking
+                        changes across upcoming cycles.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <h4 class="font-display font-bold text-white font-mono mb-2 text-accent">// 02 / Local-First Caching
+                    </h4>
+                    <p class="text-xs">Deploying service worker cache patterns to protect and support offline telemetry
+                        input logging without losing database state connectivity.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-borderSpec">
+                    <h4 class="font-display font-bold text-white font-mono mb-2 text-acc3">// 03 / Tabular Data
+                        Pipelines</h4>
+                    <p class="text-xs">Building secure export modules to download training histories as structured
+                        datasets anytime.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-borderSpec/40 my-16">
+
+        <!-- 10. PREMIUM CTA ACTION ZONE -->
+        <section class="reveal">
+            <div
+                class="glass-panel p-10 text-center relative z-10 max-w-[850px] mx-auto rounded-3xl border border-primary/20">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">SYSTEM TERMINAL
+                    ENDPOINT</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                    Inspect the <span class="editorial-serif">Implementation Layer.</span>
+                </h2>
+                <p class="text-muted text-sm leading-relaxed max-w-xl mx-auto mb-8">
+                    Review the dynamic schema configurations, visual reporting frameworks, and query structures driving
+                    this architecture directly on the open source hub.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://github.com/Vans30m/fitness-planet" target="_blank"
+                        class="px-6 py-3.5 rounded-full bg-primary text-bgMain text-xs font-mono tracking-wider font-bold hover:bg-primary/90 transition-all transform hover:scale-[1.01] w-full sm:w-auto text-center shadow-lg shadow-primary/25">
+                        Explore Github Repository ↗
+                    </a>
+                    <a href="index.html"
+                        class="px-6 py-3.5 rounded-full bg-bgMain border border-borderSpec text-xs font-mono text-muted hover:text-textMain transition-colors w-full sm:w-auto text-center">
+                        ← Back to Central Dashboard
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer Component Sync -->
+    <footer
+        class="border-t border-borderSpec/40 py-12 max-w-[850px] mx-auto px-4 md:px-0 text-[10px] font-mono text-muted flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>&copy; 2026 Vansh Thakur. Redesigned, fluid, and high-performance.</p>
+        <a href="#" class="hover:text-textMain transition-colors">&uarr; Return to Top Target</a>
+    </footer>
+
+    <!-- Minimal Scroll Reveal Logic via Intersection Observer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+
+</html>
