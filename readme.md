@@ -87,6 +87,6 @@ Since this is a fully static client-side web application, running it locally is 
 
 ## ✉️ Contact & Network
 
-*   **LinkedIn:** [linkedin.com/in/Vansh Thakur-thakur-vans30m/](https://linkedin.com/in/Vansh Thakur-thakur-vans30m/)
+*   **LinkedIn:** [linkedin.com/in/vansh-thakur-vans30m/](https://linkedin.com/in/vansh-thakur-vans30m/)
 *   **GitHub:** [github.com/Vans30m](https://github.com/Vans30m)
 *   **Email:** [vthakur.290905@gmail.com](mailto:vthakur.290905@gmail.com)
