@@ -5,12 +5,14 @@
 /* Large Screens & Medium Laptops */
 @media (max-width: 1024px) {
     .section-container {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
     }
+
     .section-title {
         font-size: 2rem;
     }
+
     .totop {
         bottom: 20px;
         right: 20px;
@@ -22,16 +24,18 @@
 /* Tablets (Portrait) */
 @media (max-width: 768px) {
     .section-container {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
+
     .section-title {
         font-size: 1.75rem;
     }
+
     .section-desc {
         font-size: 0.9375rem;
     }
-    
+
     /* Center header navigation relative to smaller page width */
     .nav-container {
         border-radius: 0.75rem;
@@ -39,10 +43,39 @@
     }
 
     .flip {
-        height: auto;
-        min-height: 200px;
+        height: 155px !important;
     }
-    
+    .flip-front, .flip-back {
+        padding: 1rem !important;
+    }
+    .flip-face h4 {
+        font-size: 1.05rem !important;
+    }
+    .flip-face p {
+        font-size: 10px !important;
+        margin-top: 0.2rem !important;
+        line-height: 1.35 !important;
+    }
+    .flip-back {
+        gap: 0.5rem !important;
+    }
+    .flip-back p {
+        font-size: 10px !important;
+    }
+    .flip-back a {
+        padding: 0.4rem 0.75rem !important;
+        font-size: 10px !important;
+    }
+
+    .grid {
+        gap: 1rem !important;
+    }
+
+    .bentocard,
+    .bento-card-dark {
+        padding: 1.25rem !important;
+    }
+
     #mobile-menu {
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
@@ -51,22 +84,54 @@
 /* Mobile Devices */
 @media (max-width: 480px) {
     .section-container {
-        padding-top: 4rem;
-        padding-bottom: 4rem;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
         padding-left: 1rem;
         padding-right: 1rem;
     }
+
     .section-title {
         font-size: 1.5rem;
     }
-    
+
     /* Layout wrapping for buttons and text inputs */
-    .btn-primary, .btn-secondary {
+    .btn-primary,
+    .btn-secondary {
         width: 100%;
         padding: 0.875rem 1rem;
     }
-    
+
     .grid {
-        gap: 1rem;
+        gap: 0.75rem !important;
+    }
+
+    .bentocard,
+    .bento-card-dark {
+        padding: 1rem !important;
+    }
+
+    .flip {
+        height: 135px !important;
+    }
+    .flip-front, .flip-back {
+        padding: 0.75rem !important;
+    }
+    .flip-face h4 {
+        font-size: 0.95rem !important;
+    }
+    .flip-face p {
+        font-size: 9px !important;
+        margin-top: 0.1rem !important;
+        line-height: 1.3 !important;
+    }
+    .flip-back {
+        gap: 0.35rem !important;
+    }
+    .flip-back p {
+        font-size: 9px !important;
+    }
+    .flip-back a {
+        padding: 0.3rem 0.5rem !important;
+        font-size: 9px !important;
     }
 }
