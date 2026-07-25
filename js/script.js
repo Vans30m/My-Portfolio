@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('carousel-next');
 
     if (filterTabs.length && carouselContainer) {
-        let speedPxPerMs = 0.16; // constant speed in pixels per millisecond (fast and smooth)
+        let speedPxPerMs = 0.08; // optimized autoscroll speed (80px/sec)
         let animationFrameId = null;
         let scrollAnimFrameId = null;
         let isInteracting = false;
@@ -616,20 +616,40 @@ document.addEventListener('DOMContentLoaded', () => {
             interactionTimeout = setTimeout(() => {
                 isInteracting = false;
                 lastTime = performance.now(); // reset reference timestamp
-            }, 2500); // Resume autoscroll after 2.5 seconds of inactivity
+            }, 1500); // Resume autoscroll after 1.5 seconds of inactivity
         };
 
         // Scroll listener to handle seamless loop wrapping in BOTH directions
         carouselContainer.addEventListener('scroll', () => {
             if (isSmoothScrolling) return; // Do not interrupt smooth scrolling animations
+            
+            // If user is actively scrolling or container is decelerating, push back resume time
+            if (isInteracting) {
+                resumeAfterDelay();
+            }
+
             if (currentWidth > 0) {
                 // If we scroll past the second set of cards, shift back by one set width
                 if (carouselContainer.scrollLeft >= currentWidth * 2) {
+                    const originalSnap = carouselContainer.style.scrollSnapType;
+                    const originalBehavior = carouselContainer.style.scrollBehavior;
+                    carouselContainer.style.scrollSnapType = 'none';
+                    carouselContainer.style.scrollBehavior = 'auto';
                     carouselContainer.scrollLeft -= currentWidth;
+                    const _ = carouselContainer.offsetHeight; // force reflow
+                    carouselContainer.style.scrollSnapType = originalSnap;
+                    carouselContainer.style.scrollBehavior = originalBehavior;
                 }
                 // If we scroll to the left past the start of the second set, shift forward by one set width
                 else if (carouselContainer.scrollLeft < currentWidth) {
+                    const originalSnap = carouselContainer.style.scrollSnapType;
+                    const originalBehavior = carouselContainer.style.scrollBehavior;
+                    carouselContainer.style.scrollSnapType = 'none';
+                    carouselContainer.style.scrollBehavior = 'auto';
                     carouselContainer.scrollLeft += currentWidth;
+                    const _ = carouselContainer.offsetHeight; // force reflow
+                    carouselContainer.style.scrollSnapType = originalSnap;
+                    carouselContainer.style.scrollBehavior = originalBehavior;
                 }
             }
         });
@@ -661,9 +681,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Wrap immediately and seamlessly
                     if (currentWidth > 0) {
                         if (carouselContainer.scrollLeft >= currentWidth * 2) {
+                            const originalSnap = carouselContainer.style.scrollSnapType;
+                            const originalBehavior = carouselContainer.style.scrollBehavior;
+                            carouselContainer.style.scrollSnapType = 'none';
+                            carouselContainer.style.scrollBehavior = 'auto';
                             carouselContainer.scrollLeft -= currentWidth;
+                            const _ = carouselContainer.offsetHeight; // force reflow
+                            carouselContainer.style.scrollSnapType = originalSnap;
+                            carouselContainer.style.scrollBehavior = originalBehavior;
                         } else if (carouselContainer.scrollLeft < currentWidth) {
+                            const originalSnap = carouselContainer.style.scrollSnapType;
+                            const originalBehavior = carouselContainer.style.scrollBehavior;
+                            carouselContainer.style.scrollSnapType = 'none';
+                            carouselContainer.style.scrollBehavior = 'auto';
                             carouselContainer.scrollLeft += currentWidth;
+                            const _ = carouselContainer.offsetHeight; // force reflow
+                            carouselContainer.style.scrollSnapType = originalSnap;
+                            carouselContainer.style.scrollBehavior = originalBehavior;
                         }
                     }
                     resumeAfterDelay();
@@ -693,26 +727,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentWidth += c.offsetWidth + 24; // Width + 24px gap
             });
 
-            // Clone elements to fill enough space for seamless scrolling
-            const containerWidth = carouselContainer.offsetWidth;
+            // Clone one full set and prepend before originals (Set 1)
             if (currentWidth > 0) {
-                const targetWidth = containerWidth * 3;
-                let widthAdded = 0;
-                while (widthAdded < targetWidth) {
-                    originalCards.forEach(card => {
-                        const clone = card.cloneNode(true);
-                        clone.classList.add('cloned');
-                        clone.addEventListener('mousemove', (e) => updateMouseCoordinates(e, clone));
-                        carouselContainer.appendChild(clone);
-                        widthAdded += card.offsetWidth + 24;
-                    });
-                }
+                const firstOriginal = originalCards[0];
+                originalCards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    clone.classList.add('cloned');
+                    clone.addEventListener('mousemove', (e) => updateMouseCoordinates(e, clone));
+                    carouselContainer.insertBefore(clone, firstOriginal);
+                });
+
+                // Clone another full set and append after originals (Set 3)
+                originalCards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    clone.classList.add('cloned');
+                    clone.addEventListener('mousemove', (e) => updateMouseCoordinates(e, clone));
+                    carouselContainer.appendChild(clone);
+                });
             }
+
+            // Attach mouse, touch, and focus events to pause autoscroll and prevent focus scroll jumps
+            const allCards = carouselContainer.querySelectorAll('.carousel-card');
+            allCards.forEach(card => {
+                card.addEventListener('mouseenter', () => setInteracting(true));
+                card.addEventListener('mouseleave', () => resumeAfterDelay());
+                card.addEventListener('touchstart', () => setInteracting(true), { passive: true });
+                card.addEventListener('touchend', () => resumeAfterDelay(), { passive: true });
+
+                const interactiveElements = card.querySelectorAll('a, button');
+                interactiveElements.forEach(el => {
+                    el.addEventListener('focus', () => {
+                        setInteracting(true);
+                        // Prevent the browser from automatically scrolling/jumping the carousel to focus the link
+                        const prevScrollLeft = carouselContainer.scrollLeft;
+                        const prevScrollY = window.scrollY;
+                        setTimeout(() => {
+                            carouselContainer.scrollLeft = prevScrollLeft;
+                            window.scrollTo(window.scrollX, prevScrollY);
+                        }, 0);
+                    });
+                    el.addEventListener('blur', () => {
+                        resumeAfterDelay();
+                    });
+                });
+            });
 
             // Delta-time based animation loop for consistent speed regardless of refresh rate (e.g. 60Hz/120Hz screens)
             const scrollLoop = (timestamp) => {
-                const delta = timestamp - lastTime;
+                let delta = timestamp - lastTime;
                 lastTime = timestamp;
+
+                // If tab was inactive or frame dropped, clamp delta to prevent jumping
+                if (delta > 64) {
+                    delta = 16;
+                }
 
                 if (!isInteracting && currentWidth > 0) {
                     carouselContainer.scrollLeft += speedPxPerMs * delta;
@@ -720,7 +788,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 animationFrameId = requestAnimationFrame(scrollLoop);
             };
 
+            const originalBehavior = carouselContainer.style.scrollBehavior;
+            carouselContainer.style.scrollBehavior = 'auto';
             carouselContainer.scrollLeft = currentWidth; // Start at the second set of cards to enable wrapping immediately in both directions
+            const _ = carouselContainer.offsetHeight; // force reflow
+            carouselContainer.style.scrollBehavior = originalBehavior;
+
             lastTime = performance.now();
             animationFrameId = requestAnimationFrame(scrollLoop);
         };
@@ -775,6 +848,17 @@ document.addEventListener('DOMContentLoaded', () => {
             card.dataset.visible = 'true';
         });
         setupInfiniteScroll('all');
+
+        // Handle screen resizing/orientation changes dynamically
+        let resizeTimeout = null;
+        window.addEventListener('resize', () => {
+            if (resizeTimeout) clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const activeTab = document.querySelector('.filter-tab.active');
+                const filterValue = activeTab ? activeTab.getAttribute('data-filter') : 'all';
+                setupInfiniteScroll(filterValue);
+            }, 250);
+        });
     }
 
     /* ==========================================================================

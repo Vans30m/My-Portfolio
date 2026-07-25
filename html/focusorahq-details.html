@@ -101,6 +101,8 @@
             font-style: italic;
         }
     </style>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 
 <body
@@ -111,22 +113,21 @@
     <div class="fixed bottom-[10%] right-[-10%] w-[500px] h-[500px] bg-accent glow-blob"></div>
     <div class="fixed top-[40%] right-[15%] w-[450px] h-[450px] bg-acc3 glow-blob"></div>
 
-    <!-- Floating Global Navigation Dock -->
-    <nav class="fixed top-4 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-[850px]">
-        <div class="glass-panel px-6 py-4 rounded-full flex items-center justify-between border border-borderSpec">
-            <a href="#"
-                class="text-lg font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
-                Vansh Thakur<span class="text-accent">.</span>
-            </a>
-            <div class="flex items-center space-x-6 text-sm">
-                <a href="../index.html" class="text-muted hover:text-textMain transition-colors">← Dashboard
-                    Overview</a>
-                <a href="#hardware"
-                    class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Hardware</a>
-                <a href="#architecture"
-                    class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Architecture</a>
-                <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank"
-                    class="text-accent font-mono text-xs hover:underline">Repository ↗</a>
+    <!-- Global Navigation Header -->
+    <nav id="navbar" class="fixed top-0 inset-x-0 z-50 w-full">
+        <div class="nav-container">
+            <div class="flex items-center justify-between">
+                <a href="../index.html"
+                    class="text-sm sm:text-lg font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
+                    Vansh Thakur<span class="text-accent">.</span>
+                </a>
+                <div class="flex items-center space-x-3 sm:space-x-6 text-xs sm:text-sm">
+                    <a href="../index.html" class="text-muted hover:text-textMain transition-colors">← Dashboard</a>
+                    <a href="#architecture"
+                        class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Architecture</a>
+                    <a href="https://github.com/Chet07-R/FocusoraHQ" target="_blank"
+                        class="text-accent font-mono text-[10px] sm:text-xs hover:underline shrink-0">Repository ↗</a>
+                </div>
             </div>
         </div>
     </nav>
