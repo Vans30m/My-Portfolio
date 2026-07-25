@@ -2,6 +2,13 @@
    Responsive Adaptations & Breakpoints
    ========================================================================== */
 
+/* Laptop & Desktop Screens: Only show 2 cards in viewport */
+@media (min-width: 1024px) {
+    .carousel-card {
+        flex: 0 0 calc(50% - 12px) !important;
+    }
+}
+
 /* Large Screens & Medium Laptops */
 @media (max-width: 1024px) {
     .section-container {
@@ -79,6 +86,13 @@
     #mobile-menu {
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
+
+    /* Carousel Cards Tablet Optimization */
+    .carousel-card {
+        flex: 0 0 310px !important;
+        padding: 1.25rem !important;
+        min-height: 380px !important;
+    }
 }
 
 /* Mobile Devices */
@@ -133,5 +147,27 @@
     .flip-back a {
         padding: 0.3rem 0.5rem !important;
         font-size: 9px !important;
+    }
+
+    /* Carousel Cards Mobile Optimization */
+    .carousel-container {
+        scroll-snap-type: x mandatory;
+    }
+    .carousel-card {
+        flex: 0 0 calc(100% - 24px) !important;
+        scroll-snap-align: center;
+        padding: 1.15rem !important;
+        min-height: 360px !important;
+    }
+    .carousel-card h3 {
+        font-size: 1.3rem !important;
+    }
+    .carousel-card p {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+    }
+    .carousel-card .flex.items-center.justify-between.mt-6.pt-3 {
+        margin-top: 1rem !important;
+        padding-top: 0.75rem !important;
     }
 }
