@@ -10,26 +10,318 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
     window.location.hash = '#home';
 
-    // Safety Fallback: Force AOS elements visible if library fails to trigger on scroll
-    setTimeout(() => {
+    // Initialize Custom Scroll Animations (IntersectionObserver)
+    const initScrollAnimations = () => {
         const aosElements = document.querySelectorAll('[data-aos]');
-        aosElements.forEach(el => {
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-        });
-    }, 1200);
 
-    // Initialize Scroll Animations (AOS)
-    try {
-        AOS.init({
-            once: true,
-            duration: 800,
-            easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-            offset: 40
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -40px 0px', // Matches original offset: 40
+            threshold: 0.05 // Trigger when 5% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+
+                    // Retrieve custom delay, duration, easing if specified in HTML
+                    const delay = el.getAttribute('data-aos-delay');
+                    const duration = el.getAttribute('data-aos-duration');
+                    const easing = el.getAttribute('data-aos-easing');
+
+                    if (delay) el.style.transitionDelay = `${delay}ms`;
+                    if (duration) el.style.transitionDuration = `${duration}ms`;
+                    if (easing) el.style.transitionTimingFunction = easing;
+
+                    el.classList.add('aos-animate');
+
+                    // Once animated, stop observing (once: true behavior)
+                    observer.unobserve(el);
+                }
+            });
+        }, observerOptions);
+
+        aosElements.forEach(el => {
+            observer.observe(el);
         });
-    } catch (e) {
-        console.warn("AOS did not initialize. Using clean fallback layout.");
-    }
+    };
+
+    initScrollAnimations();
+
+    // Timeline Scroll Progress Animation
+    const initTimelineProgress = () => {
+        const timeline = document.querySelector('#journey .relative');
+        const line = document.querySelector('.timeline-line');
+        if (!timeline || !line) return;
+
+        const updateTimelineLine = () => {
+            const rect = timeline.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+
+            // Trigger point is at 70% of the viewport height
+            const triggerPoint = viewportHeight * 0.7;
+
+            // Calculate how much of the timeline has scrolled past the trigger point
+            const totalHeight = rect.height;
+            const scrolledHeight = triggerPoint - rect.top;
+
+            // Clamp progress percentage between 0 and 100
+            const progress = Math.max(0, Math.min(100, (scrolledHeight / totalHeight) * 100));
+            line.style.setProperty('--scroll-progress', `${progress}%`);
+
+            // Illuminate dots as they are reached
+            const dots = timeline.querySelectorAll('.timeline-dot');
+            dots.forEach(dot => {
+                const dotRect = dot.getBoundingClientRect();
+                if (dotRect.top < triggerPoint) {
+                    dot.classList.add('active-dot');
+                } else {
+                    dot.classList.remove('active-dot');
+                }
+            });
+        };
+
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    window.addEventListener('scroll', updateTimelineLine, { passive: true });
+                    updateTimelineLine();
+                } else {
+                    window.removeEventListener('scroll', updateTimelineLine);
+                }
+            });
+        }, { rootMargin: '100px 0px' });
+
+        timelineObserver.observe(timeline);
+    };
+
+    initTimelineProgress();
+
+    /* ==========================================================================
+       Animated Counters (IntersectionObserver triggered)
+       ========================================================================== */
+    const initAnimatedCounters = () => {
+        const counterEls = document.querySelectorAll('[data-count]');
+        if (!counterEls.length) return;
+
+        const easeOutQuart = t => 1 - Math.pow(1 - t, 4);
+
+        const animateCounter = (el) => {
+            const target = parseInt(el.getAttribute('data-count'), 10);
+            const suffix = el.getAttribute('data-suffix') || '';
+            const duration = Math.max(800, Math.min(2000, target * 18)); // Scale duration to number size
+            const start = performance.now();
+
+            const tick = (now) => {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.floor(easeOutQuart(progress) * target);
+                el.textContent = current + suffix;
+
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                } else {
+                    el.textContent = target + suffix;
+                    el.classList.add('counter-done');
+                    // Remove class after animation so it can re-trigger cleanly
+                    setTimeout(() => el.classList.remove('counter-done'), 400);
+                }
+            };
+
+            requestAnimationFrame(tick);
+        };
+
+        const counterObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.4 });
+
+        counterEls.forEach(el => counterObserver.observe(el));
+    };
+
+    initAnimatedCounters();
+
+    /* ==========================================================================
+       Floating Blob Subtle Mouse Parallax
+       ========================================================================== */
+    const initBlobParallax = () => {
+        const blobs = document.querySelectorAll('.blob');
+        if (!blobs.length) return;
+
+        let mouseX = 0, mouseY = 0;
+        let raf = null;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;  // -1 to +1
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2; // -1 to +1
+
+            if (!raf) {
+                raf = requestAnimationFrame(() => {
+                    blobs.forEach((blob, i) => {
+                        // Each blob moves at a different depth factor
+                        const depth = (i + 1) * 12;
+                        blob.style.transform = `translate(${mouseX * depth}px, ${mouseY * depth}px)`;
+                    });
+                    raf = null;
+                });
+            }
+        });
+    };
+
+    initBlobParallax();
+
+    /* ==========================================================================
+       Mouse Spotlight Effect
+       ========================================================================== */
+    const initMouseSpotlight = () => {
+        const spotlight = document.getElementById('mouse-spotlight');
+        if (!spotlight) return;
+
+        let rafSpotlight = null;
+        let hasMovedOnce = false;
+
+        const update = (x, y) => {
+            spotlight.style.setProperty('--spotlight-x', `${x}px`);
+            spotlight.style.setProperty('--spotlight-y', `${y}px`);
+            rafSpotlight = null;
+        };
+
+        window.addEventListener('mousemove', (e) => {
+            // Reveal on first move
+            if (!hasMovedOnce) {
+                spotlight.classList.add('visible');
+                hasMovedOnce = true;
+            }
+
+            if (!rafSpotlight) {
+                rafSpotlight = requestAnimationFrame(() => update(e.clientX, e.clientY));
+            }
+        }, { passive: true });
+
+        // Hide when cursor leaves the window
+        document.addEventListener('mouseleave', () => {
+            spotlight.classList.remove('visible');
+            hasMovedOnce = false;
+        });
+
+        document.addEventListener('mouseenter', () => {
+            spotlight.classList.add('visible');
+        });
+    };
+
+    initMouseSpotlight();
+
+    /* ==========================================================================
+       Animated Gradient Borders (auto-applied to cards)
+       ========================================================================== */
+    const initGradientBorders = () => {
+        const targets = document.querySelectorAll(
+            '.bentocard, .bento-card-dark, .carousel-card'
+        );
+        targets.forEach(el => el.classList.add('grad-border'));
+    };
+
+    initGradientBorders();
+
+    /* ==========================================================================
+       Card 3D Tilt with Cursor Tracking
+       ========================================================================== */
+    const initCardTilt = () => {
+        // Apply tilt class to all tilting targets
+        const tiltTargets = document.querySelectorAll(
+            '.bentocard, .bento-card-dark, .carousel-card'
+        );
+        tiltTargets.forEach(el => el.classList.add('tilt-card'));
+
+        const MAX_TILT = 8; // max degrees of tilt
+
+        const onMove = (e, card) => {
+            const rect = card.getBoundingClientRect();
+
+            // Cursor position relative to card center, normalized -1 to +1
+            const cx = (e.clientX - rect.left) / rect.width;
+            const cy = (e.clientY - rect.top) / rect.height;
+
+            const tiltY = (cx - 0.5) * MAX_TILT * 2;  // left/right
+            const tiltX = -(cy - 0.5) * MAX_TILT * 2;  // up/down (inverted)
+
+            card.classList.remove('tilt-resetting');
+            card.style.setProperty('--tilt-x', `${tiltX}deg`);
+            card.style.setProperty('--tilt-y', `${tiltY}deg`);
+            card.style.setProperty('--tilt-glow-x', `${cx * 100}%`);
+            card.style.setProperty('--tilt-glow-y', `${cy * 100}%`);
+        };
+
+        const onLeave = (card) => {
+            card.classList.add('tilt-resetting');
+            card.style.setProperty('--tilt-x', '0deg');
+            card.style.setProperty('--tilt-y', '0deg');
+            card.style.setProperty('--tilt-glow-x', '50%');
+            card.style.setProperty('--tilt-glow-y', '50%');
+
+            // Remove resetting class after spring animation finishes
+            card.addEventListener('transitionend', () => {
+                card.classList.remove('tilt-resetting');
+            }, { once: true });
+        };
+
+        tiltTargets.forEach(card => {
+            card.addEventListener('mousemove', (e) => onMove(e, card), { passive: true });
+            card.addEventListener('mouseleave', () => onLeave(card), { passive: true });
+        });
+    };
+
+    initCardTilt();
+
+    /* ==========================================================================
+       Button Ripple Micro-Interaction
+       ========================================================================== */
+    const initButtonRipples = () => {
+        // Selectors for all buttons that should get ripple effect
+        const rippleTargetSelectors = [
+            '.filter-tab',
+            '.carousel-btn',
+            '.connect-btn',
+            '#email-btn',
+            '#form-submit',
+            '#footer-totop',
+            '#email-btn-cta'
+        ];
+
+        const allBtns = document.querySelectorAll(rippleTargetSelectors.join(', '));
+
+        allBtns.forEach(btn => {
+            // Add btn-ripple class for CSS positioning context
+            btn.classList.add('btn-ripple');
+
+            btn.addEventListener('click', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                ripple.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                `;
+
+                btn.appendChild(ripple);
+                // Remove the ripple element after animation
+                ripple.addEventListener('animationend', () => ripple.remove());
+            });
+        });
+    };
+
+    initButtonRipples();
 
     // Initialize EmailJS
     try {
@@ -151,17 +443,13 @@ document.addEventListener('DOMContentLoaded', () => {
        3. Mobile Navigation Drawer Controls
        ========================================================================== */
     const toggleMobileDrawer = () => {
-        const isHidden = mobileMenu.classList.contains('hidden');
-        if (isHidden) {
-            mobileMenu.classList.remove('hidden');
-            mobileMenu.classList.add('flex');
-            menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
-            document.body.style.overflow = 'hidden';
+        const isActive = mobileMenu.classList.contains('active');
+        if (!isActive) {
+            mobileMenu.classList.add('active');
+            if (menuToggle) menuToggle.classList.add('active');
         } else {
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('flex');
-            menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-            document.body.style.overflow = '';
+            mobileMenu.classList.remove('active');
+            if (menuToggle) menuToggle.classList.remove('active');
         }
     };
 
@@ -171,11 +459,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (!mobileMenu.classList.contains('hidden')) {
+            if (mobileMenu.classList.contains('active')) {
                 toggleMobileDrawer();
             }
         });
     });
+
+    // Close mobile dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (mobileMenu && mobileMenu.classList.contains('active')) {
+            const isClickInsideMenu = mobileMenu.contains(e.target);
+            const isClickToggle = menuToggle && menuToggle.contains(e.target);
+            if (!isClickInsideMenu && !isClickToggle) {
+                toggleMobileDrawer();
+            }
+        }
+    });
+
+    // Close mobile dropdown on scroll
+    window.addEventListener('scroll', () => {
+        if (mobileMenu && mobileMenu.classList.contains('active')) {
+            toggleMobileDrawer();
+        }
+    }, { passive: true });
 
     /* ==========================================================================
        4. Premium Hover Mouse Coordinate Tracking
@@ -627,10 +933,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let phraseIdx = 0;
         let charIdx = 0;
         let isDeleting = false;
-        
+
         const typeLoop = () => {
             const currentPhrase = phrases[phraseIdx];
-            
+
             if (isDeleting) {
                 typeTarget.textContent = currentPhrase.substring(0, charIdx - 1);
                 charIdx--;
@@ -638,9 +944,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 typeTarget.textContent = currentPhrase.substring(0, charIdx + 1);
                 charIdx++;
             }
-            
+
             let speed = isDeleting ? 60 : 120;
-            
+
             if (!isDeleting && charIdx === currentPhrase.length) {
                 speed = 2200; // Hold phrase visible for 2.2 seconds
                 isDeleting = true;
@@ -649,10 +955,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 phraseIdx = (phraseIdx + 1) % phrases.length;
                 speed = 400; // Delay before typing the next phrase
             }
-            
+
             setTimeout(typeLoop, speed);
         };
-        
+
         // Initial delay before typewriter starts
         setTimeout(typeLoop, 800);
     }

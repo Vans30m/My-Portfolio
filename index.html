@@ -26,8 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
-    <!-- AOS Scroll Animations -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 
     <!-- Tailwind Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -62,6 +61,17 @@
 <body
     class="bg-bgMain text-textMain font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden">
 
+    <!-- Floating Background Gradient Blobs -->
+    <div class="floating-blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+    </div>
+
+    <!-- Mouse Spotlight Overlay -->
+    <div id="mouse-spotlight" aria-hidden="true"></div>
+
     <!-- Loading Screen Overlay -->
     <div id="loading-overlay" class="loader-overlay">
         <div class="loader">
@@ -74,11 +84,10 @@
         </div>
     </div>
 
-    <!-- Scroll Progress indicator at top of page (Full width) -->
-    <div id="scroll-progress" class="progress-line"></div>
-
-    <!-- Floating Global Navigation Dock -->
-    <nav id="navbar" class="fixed top-4 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-[850px]">
+    <!-- Global Navigation Header -->
+    <nav id="navbar" class="fixed top-0 inset-x-0 z-50 w-full">
+        <!-- Scroll Progress indicator under navbar -->
+        <div id="scroll-progress" class="progress-line"></div>
         <div class="nav-container">
             <div class="flex items-center justify-between">
                 <a href="index.html"
@@ -98,372 +107,391 @@
 
                 <!-- Hamburger Button -->
                 <button id="menu-toggle"
-                    class="md:hidden text-muted hover:text-textMain transition-colors focus:outline-none"
+                    class="md:hidden relative w-11 h-11 flex flex-col justify-center items-center gap-1.5 focus:outline-none z-50 group"
                     aria-label="Toggle Navigation Menu">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+                    <span class="w-6 h-0.5 bg-zinc-400 rounded transition-all duration-300 transform origin-center nav-bar-top group-hover:bg-white"></span>
+                    <span class="w-6 h-0.5 bg-zinc-400 rounded transition-all duration-300 nav-bar-mid group-hover:bg-white"></span>
+                    <span class="w-6 h-0.5 bg-zinc-400 rounded transition-all duration-300 transform origin-center nav-bar-bot group-hover:bg-white"></span>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Drawer Navigation -->
-        <div id="mobile-menu"
-            class="fixed inset-x-0 top-20 bg-bgMain/98 backdrop-blur-xl z-40 hidden flex-col px-6 py-8 space-y-5 border border-[rgba(255,255,255,.08)] rounded-2xl md:hidden">
-            <a href="#home" class="mobile-nav-link active">Home</a>
-            <a href="#projects" class="mobile-nav-link">Projects</a>
-            <a href="#skills" class="mobile-nav-link">Skills</a>
-            <a href="#about" class="mobile-nav-link">About</a>
-            <a href="#journey" class="mobile-nav-link">Journey</a>
-            <a href="#contact" class="mobile-nav-link">Contact</a>
-        </div>
     </nav>
+
+    <!-- Mobile Floating Dropdown Navigation -->
+    <div id="mobile-menu" class="md:hidden">
+        <div class="flex flex-col space-y-1">
+            <span class="text-[9px] font-mono text-accent uppercase tracking-widest block border-b border-borderSpec/30 pb-1.5 mb-2">// NAVIGATE</span>
+            <a href="#home" class="mobile-nav-link active" style="--i: 1;"><span class="text-[10px] font-mono text-muted/50">01 /</span> Home</a>
+            <a href="#projects" class="mobile-nav-link" style="--i: 2;"><span class="text-[10px] font-mono text-muted/50">02 /</span> Projects</a>
+            <a href="#skills" class="mobile-nav-link" style="--i: 3;"><span class="text-[10px] font-mono text-muted/50">03 /</span> Skills</a>
+            <a href="#about" class="mobile-nav-link" style="--i: 4;"><span class="text-[10px] font-mono text-muted/50">04 /</span> About</a>
+            <a href="#journey" class="mobile-nav-link" style="--i: 5;"><span class="text-[10px] font-mono text-muted/50">05 /</span> Journey</a>
+            <a href="#contact" class="mobile-nav-link" style="--i: 6;"><span class="text-[10px] font-mono text-muted/50">06 /</span> Contact</a>
+        </div>
+
+        <div class="border-t border-borderSpec/40 pt-4 space-y-2.5 mt-2" style="--i: 7;" id="mobile-menu-footer">
+            <span class="text-[9px] font-mono text-accent uppercase tracking-widest block">// CONNECT</span>
+            <a href="mailto:vthakur.290905@gmail.com" class="text-[11px] font-mono text-zinc-300 hover:text-white block truncate">vthakur.290905@gmail.com</a>
+            <div class="flex gap-4 pt-0.5">
+                <a href="https://github.com/Vans30m" target="_blank" class="text-[11px] font-mono text-muted hover:text-white transition-colors">GitHub ↗</a>
+                <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank" class="text-[11px] font-mono text-muted hover:text-white transition-colors">LinkedIn ↗</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Container -->
     <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-28">
-        <!-- Hero Section -->
-        <section id="home"
-            class="min-h-[80vh] flex flex-col justify-center py-20 border-b border-[rgba(255,255,255,.08)] relative overflow-hidden">
-            <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-                <div class="absolute w-[500px] h-[500px] rounded-full opacity-10 blur-[100px] pointer-events-none"
-                    style="background:radial-gradient(circle, rgba(124,140,255,0.3) 0%, rgba(85,214,190,0.2) 50%, transparent 70%); left:50%; top:40%; transform:translate(-50%, -50%)">
-                </div>
-            </div>
-
-            <div class="relative z-10 text-center animate-fade-in-up max-w-[850px] mx-auto">
-                <p class="text-base text-muted font-medium tracking-wide uppercase mb-3">Hey, I'm</p>
-                <h1 class="text-5xl sm:text-7xl font-display font-bold tracking-tight mb-6 leading-tight"
-                    style="text-shadow:0 0 60px rgba(124,140,255,0.15)">
-                    <span class="hero-name-type"></span><span class="typing-cursor">|</span>
-                </h1>
-
-                <div class="mb-6 flex justify-center">
-                    <span
-                        class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary px-4 py-1.5 rounded-full text-xs font-mono">
-                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                        Preparing for SWE Placements 2026
-                    </span>
+        <!-- Home Section containing Hero & Bento Dashboard -->
+        <section id="home">
+            <!-- Hero Section -->
+            <div
+                class="min-h-[60vh] md:min-h-[75vh] flex flex-col justify-center pt-8 pb-6 md:pt-16 md:pb-12 border-b border-[rgba(255,255,255,.08)] relative overflow-hidden">
+                <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+                    <div class="absolute w-[500px] h-[500px] rounded-full opacity-10 blur-[100px] pointer-events-none"
+                        style="background:radial-gradient(circle, rgba(124,140,255,0.3) 0%, rgba(85,214,190,0.2) 50%, transparent 70%); left:50%; top:40%; transform:translate(-50%, -50%)">
+                    </div>
                 </div>
 
-                <p class="text-xl sm:text-2xl text-muted leading-relaxed max-w-2xl mx-auto mb-6">
-                    Building intelligent, full-stack architectures that <span class="editorial-serif">deliver real
-                        impact</span>. Focused on deploying robust client-side experiences backed by low-latency AI
-                    integrations.
-                </p>
+                <div class="relative z-10 text-center animate-fade-in-up max-w-[850px] mx-auto">
+                    <p class="text-base text-muted font-medium tracking-wide uppercase mb-3">Hey, I'm</p>
+                    <h1 class="text-5xl sm:text-7xl font-display font-bold tracking-tight mb-6 leading-tight"
+                        style="text-shadow:0 0 60px rgba(124,140,255,0.15)">
+                        <span class="hero-name-type"></span><span class="typing-cursor">|</span>
+                    </h1>
 
-                <!-- Tech Stack Quick Icons -->
-                <div class="hero-tech-icons mb-10 text-zinc-500 text-2xl" data-aos="fade-up" data-aos-delay="150">
-                    <i class="devicon-javascript-plain" title="JavaScript"></i>
-                    <i class="devicon-typescript-plain" title="TypeScript"></i>
-                    <i class="devicon-react-original" title="React"></i>
-                    <i class="devicon-nextjs-plain" title="Next.js"></i>
-                    <i class="devicon-nodejs-plain" title="Node.js"></i>
-                    <i class="devicon-python-plain" title="Python"></i>
-                    <i class="devicon-postgresql-plain" title="PostgreSQL"></i>
-                    <i class="devicon-mongodb-plain" title="MongoDB"></i>
-                    <i class="devicon-docker-plain" title="Docker"></i>
-                    <i class="devicon-github-original hover:text-white" title="GitHub"></i>
+                    <div class="mb-6 flex justify-center">
+                        <span
+                            class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary px-4 py-1.5 rounded-full text-xs font-mono">
+                            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                            Preparing for SWE Placements 2026
+                        </span>
+                    </div>
+
+                    <p class="text-xl sm:text-2xl text-muted leading-relaxed max-w-2xl mx-auto mb-6">
+                        Building intelligent, full-stack architectures that <span class="editorial-serif">deliver real
+                            impact</span>. Focused on deploying robust client-side experiences backed by low-latency AI
+                        integrations.
+                    </p>
+
+                    <!-- Tech Stack Quick Icons -->
+                    <div class="hero-tech-icons mb-10 text-zinc-500 text-2xl" data-aos="fade-up" data-aos-delay="150">
+                        <i class="devicon-javascript-plain" title="JavaScript"></i>
+                        <i class="devicon-typescript-plain" title="TypeScript"></i>
+                        <i class="devicon-react-original" title="React"></i>
+                        <i class="devicon-nextjs-plain" title="Next.js"></i>
+                        <i class="devicon-nodejs-plain" title="Node.js"></i>
+                        <i class="devicon-python-plain" title="Python"></i>
+                        <i class="devicon-postgresql-plain" title="PostgreSQL"></i>
+                        <i class="devicon-mongodb-plain" title="MongoDB"></i>
+                        <i class="devicon-docker-plain" title="Docker"></i>
+                        <i class="devicon-github-original hover:text-white" title="GitHub"></i>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                        <a href="#contact"
+                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-bgMain text-sm font-semibold shadow-lg shadow-primary/25 transition-all duration-300 hover:bg-primary/90 hover:scale-[1.01] w-full sm:w-auto text-center justify-center">
+                            Let's Connect
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+
+                        <button id="email-btn"
+                            class="inline-flex items-center gap-2 text-muted text-sm hover:text-textMain transition-colors px-4 py-3 rounded-xl bg-surface border border-borderSpec w-full sm:w-auto justify-center">
+                            <span id="email-text">vthakur.290905@gmail.com</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                    <a href="#contact"
-                        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-bgMain text-sm font-semibold shadow-lg shadow-primary/25 transition-all duration-300 hover:bg-primary/90 hover:scale-[1.01] w-full sm:w-auto text-center justify-center">
-                        Let's Connect
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </a>
 
-                    <button id="email-btn"
-                        class="inline-flex items-center gap-2 text-muted text-sm hover:text-textMain transition-colors px-4 py-3 rounded-xl bg-surface border border-borderSpec w-full sm:w-auto justify-center">
-                        <span id="email-text">vthakur.290905@gmail.com</span>
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-                            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </section>
+                <!-- Bento Dashboard Grid Header Section -->
+                <div id="bento-dashboard" class="pt-8 pb-6 md:pt-12 md:pb-8 border-b border-borderSpec/40">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
 
+                        <!-- ROW 1: Profile & Laptop Showcase -->
+                        <div class="lg:col-span-7 bento-card-dark bento-border-glow p-8 relative overflow-hidden flex flex-col justify-between min-h-[380px]"
+                            data-aos="fade-up">
+                            <div class="bento-glow-violet absolute inset-0 pointer-events-none"></div>
+                            <div class="relative z-10 flex flex-col justify-between h-full">
+                                <div>
+                                    <span
+                                        class="inline-flex items-center gap-1.5 bg-zinc-800/60 border border-zinc-700/50 text-[11px] text-zinc-300 px-3 py-1 rounded-full font-mono mb-6">
+                                        Hello, I'm
+                                    </span>
+                                    <h1
+                                        class="text-4xl sm:text-5xl font-display font-bold text-white mb-2 tracking-tight">
+                                        Vansh Thakur
+                                    </h1>
+                                    <p class="text-xs font-mono text-muted mb-4 uppercase tracking-wider">Software
+                                        Engineer
+                                    </p>
+                                    <p class="text-sm text-zinc-400 max-w-sm leading-relaxed mb-6">
+                                        Building AI-powered financial products and scalable web applications.
+                                    </p>
+                                </div>
 
-        <!-- Projects Section (#projects) -->
-        <section id="projects" class="space-y-16">
-            <!-- Bento Dashboard Grid Header Section -->
-            <div id="bento-dashboard" class="pb-16 pt-16 border-b border-borderSpec/40">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                                <div class="flex items-center gap-4 flex-wrap mt-auto">
+                                    <a href="#other-systems-preview"
+                                        class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-primary text-bgMain text-xs font-semibold hover:scale-[1.02] transition-transform">
+                                        View My Work &rarr;
+                                    </a>
+                                </div>
 
-                    <!-- ROW 1: Profile & Laptop Showcase -->
-                    <div class="lg:col-span-7 bento-card-dark bento-border-glow p-8 relative overflow-hidden flex flex-col justify-between min-h-[380px]"
-                        data-aos="fade-up">
-                        <div class="bento-glow-violet absolute inset-0 pointer-events-none"></div>
-                        <div class="relative z-10 flex flex-col justify-between h-full">
+                                <div class="flex items-center gap-4 mt-8 text-xs text-zinc-500 font-mono">
+                                    <span>Let's connect</span>
+                                    <a href="https://github.com/Vans30m" target="_blank"
+                                        class="connect-icon github-connect"><i
+                                            class="devicon-github-original text-base"></i></a>
+                                    <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
+                                        class="connect-icon linkedin-connect"><i
+                                            class="devicon-linkedin-plain text-base"></i></a>
+                                    <a href="mailto:vthakur.290905@gmail.com" class="connect-icon google-connect"><i
+                                            class="devicon-google-plain text-base"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ROW 1 Right: Focus, Today's Build & Tech Stack -->
+                        <div class="lg:col-span-5 flex flex-col gap-4">
+                            <!-- Current Focus Widget -->
+                            <div class="bento-card-dark bento-border-glow p-6 pb-8 flex flex-col justify-start gap-3 flex-1 min-h-[170px]"
+                                data-aos="fade-up" data-aos-delay="50">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-xs font-mono text-accent uppercase tracking-widest">Current
+                                        Focus</span>
+                                </div>
+                                <ul class="space-y-3 text-[11px] text-zinc-400 font-mono">
+                                    <li class="flex items-start gap-3">
+                                        <span class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[9px] shrink-0 mt-0.5">01</span>
+                                        <span class="leading-relaxed text-zinc-300">Building FinPulse AI (Market Intelligence Platform)</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="flex items-center justify-center w-5 h-5 rounded bg-accent/15 border border-accent/30 text-accent font-bold text-[9px] shrink-0 mt-0.5">02</span>
+                                        <span class="leading-relaxed text-zinc-300">Learning System Design (Scalable architectures)</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="flex items-center justify-center w-5 h-5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-400 font-bold text-[9px] shrink-0 mt-0.5">03</span>
+                                        <span class="leading-relaxed text-zinc-300">Exploring Cloud & DevOps Services</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[9px] shrink-0 mt-0.5">04</span>
+                                        <span class="leading-relaxed text-zinc-300">Preparing for SWE placement cycles</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Tech Stack Widget -->
+                            <div class="bento-card-dark bento-border-glow p-6 flex flex-col justify-between flex-1 min-h-[170px]" data-aos="fade-up"
+                                data-aos-delay="100">
+                                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-4">Tech
+                                    Stack</span>
+                                <div class="grid grid-cols-5 gap-3">
+                                    <div class="tech-stack-tile" data-tech="react" title="React"><i
+                                            class="devicon-react-original text-lg colored"></i></div>
+                                    <div class="tech-stack-tile" data-tech="nextjs" title="Next.js"><i
+                                            class="devicon-nextjs-plain text-lg text-white"></i></div>
+                                    <div class="tech-stack-tile" data-tech="nodejs" title="Node.js"><i
+                                            class="devicon-nodejs-plain text-lg colored"></i></div>
+                                    <div class="tech-stack-tile" data-tech="mongodb" title="MongoDB"><i
+                                            class="devicon-mongodb-plain text-lg colored"></i></div>
+                                    <div class="tech-stack-tile" data-tech="typescript" title="TypeScript"><i
+                                            class="devicon-typescript-plain text-lg colored"></i></div>
+                                    <div class="tech-stack-tile" data-tech="tailwind" title="Tailwind CSS"><i
+                                            class="devicon-tailwindcss-plain text-lg colored"></i></div>
+                                    <div class="tech-stack-tile" data-tech="python" title="Python"><i
+                                            class="devicon-python-plain text-lg colored"></i></div>
+                                    <div class="tech-stack-tile" data-tech="github" title="GitHub"><i
+                                            class="devicon-github-original text-lg text-zinc-400"></i></div>
+                                    <div class="tech-stack-tile" data-tech="docker" title="Docker"><i
+                                            class="devicon-docker-plain text-lg colored"></i></div>
+                                    <div class="tech-stack-tile" data-tech="cpp" title="C++"><i
+                                            class="devicon-cplusplus-plain text-lg colored"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ROW 2: Featured Case Study, GitHub Activity, Coding Journey, Philosophy -->
+                        <div class="lg:col-span-4 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[220px]"
+                            data-aos="fade-up">
+                            <span class="text-[10px] font-mono text-acc3 uppercase tracking-widest block mb-4">Featured
+                                Product</span>
                             <div>
+                                <h3 class="text-xl font-display font-bold text-white mb-2">FinPulse AI</h3>
+                                <p class="text-xs text-zinc-400 leading-relaxed mb-4">
+                                    High-speed financial tracking platform re-engineering batch streams into concurrent
+                                    telemetry graphs.
+                                </p>
+                            </div>
+                            <a href="html/finpulseai-details.html"
+                                class="text-xs font-mono text-primary hover:underline">View Case
+                                Study &rarr;</a>
+                        </div>
+
+                        <!-- Mobile/Tablet Side-by-Side Wrapper for GitHub Activity & Coding Journey -->
+                        <div class="col-span-1 lg:col-span-6 grid grid-cols-2 gap-4">
+                            <!-- GitHub Activity Card -->
+                            <div class="bento-card-dark bento-border-glow p-4 sm:p-6 flex flex-col justify-between min-h-[220px]"
+                                data-aos="fade-up" data-aos-delay="50">
                                 <span
-                                    class="inline-flex items-center gap-1.5 bg-zinc-800/60 border border-zinc-700/50 text-[11px] text-zinc-300 px-3 py-1 rounded-full font-mono mb-6">
-                                    Hello, I'm
-                                </span>
-                                <h1 class="text-4xl sm:text-5xl font-display font-bold text-white mb-2 tracking-tight">
-                                    Vansh Thakur
-                                </h1>
-                                <p class="text-xs font-mono text-muted mb-4 uppercase tracking-wider">Software Engineer
-                                </p>
-                                <p class="text-sm text-zinc-400 max-w-sm leading-relaxed mb-6">
-                                    Building AI-powered financial products and scalable web applications.
-                                </p>
-                            </div>
-
-                            <div class="flex items-center gap-4 flex-wrap mt-auto">
-                                <a href="#other-systems-preview"
-                                    class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-primary text-bgMain text-xs font-semibold hover:scale-[1.02] transition-transform">
-                                    View My Work &rarr;
-                                </a>
-                            </div>
-
-                            <div class="flex items-center gap-4 mt-8 text-xs text-zinc-500 font-mono">
-                                <span>Let's connect</span>
+                                    class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-4">GitHub
+                                    Activity</span>
+                                <div>
+                                    <span class="text-3xl font-display font-bold text-white github-month-commits"
+                                        data-count="35">0</span>
+                                    <span class="text-xs text-zinc-400 ml-1 font-mono">commits this month</span>
+                                </div>
                                 <a href="https://github.com/Vans30m" target="_blank"
-                                    class="connect-icon github-connect"><i
-                                        class="devicon-github-original text-base"></i></a>
-                                <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
-                                    class="connect-icon linkedin-connect"><i
-                                        class="devicon-linkedin-plain text-base"></i></a>
-                                <a href="mailto:vthakur.290905@gmail.com" class="connect-icon google-connect"><i
-                                        class="devicon-google-plain text-base"></i></a>
+                                    class="text-xs font-mono text-muted hover:text-white">View Profile &rarr;</a>
+                            </div>
+
+                            <!-- Coding Journey Card -->
+                            <div class="bento-card-dark bento-border-glow p-4 sm:p-6 flex flex-col justify-between min-h-[220px]"
+                                data-aos="fade-up" data-aos-delay="100">
+                                <span
+                                    class="text-[10px] font-mono text-primary uppercase tracking-widest block mb-3">Coding
+                                    Journey</span>
+                                <div class="space-y-3 text-[11px] font-mono">
+                                    <div
+                                        class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
+                                        <span class="text-zinc-400">
+                                            LeetCode
+                                        </span>
+                                        <span class="text-white font-bold bg-acc3/10 px-2 py-0.5 rounded text-[10px]"
+                                            data-count="250" data-suffix="+">0+</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
+                                        <span class="text-zinc-400">
+                                            CodeChef
+                                        </span>
+                                        <span
+                                            class="text-white font-bold bg-accent/10 px-2 py-0.5 rounded text-[10px]">★
+                                            Coder</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
+                                        <span class="text-zinc-400">
+                                            GeeksforGeeks
+                                        </span>
+                                        <span
+                                            class="text-white font-bold bg-primary/10 px-2 py-0.5 rounded text-[10px]">Rank
+                                            +</span>
+                                    </div>
+                                </div>
+                                <a href="#about" class="text-xs font-mono text-accent hover:underline mt-2">All Profiles
+                                    &rarr;</a>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- ROW 1 Right: Focus, Today's Build & Tech Stack -->
-                    <div class="lg:col-span-5 flex flex-col gap-6">
-                        <!-- Current Focus Widget -->
-                        <div class="bento-card-dark bento-border-glow p-6 flex flex-col justify-between h-1/2 min-h-[170px]"
-                            data-aos="fade-up" data-aos-delay="50">
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-mono text-accent uppercase tracking-widest">Current
-                                    Focus</span>
-                                <span class="w-2.5 h-2.5 rounded-full bg-accent animate-pulse"></span>
-                            </div>
-                            <ul class="space-y-3 text-xs text-zinc-400 font-mono">
-                                <li class="flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                                    Building FinPulse AI (Market Intelligence Platform)
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                                    Learning System Design (Scalable architectures)
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-acc3"></span>
-                                    Exploring Cloud & DevOps Services
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                                    Preparing for SWE placement cycles
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Tech Stack Widget -->
-                        <div class="bento-card-dark bento-border-glow p-6 h-1/2 min-h-[170px]" data-aos="fade-up"
-                            data-aos-delay="100">
-                            <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-4">Tech
-                                Stack</span>
-                            <div class="grid grid-cols-5 gap-3">
-                                <div class="tech-stack-tile" data-tech="react" title="React"><i
-                                        class="devicon-react-original text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="nextjs" title="Next.js"><i
-                                        class="devicon-nextjs-plain text-lg text-white"></i></div>
-                                <div class="tech-stack-tile" data-tech="nodejs" title="Node.js"><i
-                                        class="devicon-nodejs-plain text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="mongodb" title="MongoDB"><i
-                                        class="devicon-mongodb-plain text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="typescript" title="TypeScript"><i
-                                        class="devicon-typescript-plain text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="tailwind" title="Tailwind CSS"><i
-                                        class="devicon-tailwindcss-plain text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="python" title="Python"><i
-                                        class="devicon-python-plain text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="github" title="GitHub"><i
-                                        class="devicon-github-original text-lg text-zinc-400"></i></div>
-                                <div class="tech-stack-tile" data-tech="docker" title="Docker"><i
-                                        class="devicon-docker-plain text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="cpp" title="C++"><i
-                                        class="devicon-cplusplus-plain text-lg colored"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ROW 2: Featured Case Study, GitHub Activity, Coding Journey, Philosophy -->
-                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[220px]"
-                        data-aos="fade-up">
-                        <span class="text-[10px] font-mono text-acc3 uppercase tracking-widest block mb-4">Featured
-                            Product</span>
-                        <div>
-                            <h3 class="text-xl font-display font-bold text-white mb-2">FinPulse AI</h3>
-                            <p class="text-xs text-zinc-400 leading-relaxed mb-4">
-                                High-speed financial tracking platform re-engineering batch streams into concurrent
-                                telemetry graphs.
+                        <div class="lg:col-span-2 bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-between min-h-[110px] lg:min-h-[220px]"
+                            data-aos="fade-up" data-aos-delay="150">
+                            <span
+                                class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2 sm:mb-4">Philosophy</span>
+                            <p class="text-xs italic text-zinc-300 leading-relaxed font-serif">
+                                "I don't build projects. I build products."
                             </p>
                         </div>
-                        <a href="html/finpulseai-details.html"
-                            class="text-xs font-mono text-primary hover:underline">View Case
-                            Study &rarr;</a>
-                    </div>
 
-                    <!-- Mobile/Tablet Side-by-Side Wrapper for GitHub Activity & Coding Journey -->
-                    <div class="col-span-1 lg:col-span-6 grid grid-cols-2 gap-4 sm:gap-6">
-                        <!-- GitHub Activity Card -->
-                        <div class="bento-card-dark bento-border-glow p-4 sm:p-6 flex flex-col justify-between min-h-[220px]"
-                            data-aos="fade-up" data-aos-delay="50">
-                            <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-4">GitHub
-                                Activity</span>
-                            <div>
-                                <span class="text-3xl font-display font-bold text-white github-month-commits">35</span>
-                                <span class="text-xs text-zinc-400 ml-1 font-mono">commits this month</span>
+                        <!-- ROW 3: Stats, Open Source, Let's Connect -->
+                        <div class="lg:col-span-4 bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-between min-h-[120px] lg:min-h-[160px]"
+                            data-aos="fade-up">
+                            <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">Quick
+                                Stats</span>
+                            <div class="grid grid-cols-2 gap-2 text-center font-mono">
+                                <div class="p-2 bg-zinc-900/60 rounded"><span
+                                        class="text-base font-bold text-white block" data-count="5">0</span><span
+                                        class="text-[9px] text-zinc-500">Projects</span></div>
+                                <div class="p-2 bg-zinc-900/60 rounded"><span
+                                        class="text-base font-bold text-white block" data-count="15"
+                                        data-suffix="+">0+</span><span class="text-[9px] text-zinc-500">Repos</span>
+                                </div>
                             </div>
-                            <a href="https://github.com/Vans30m" target="_blank"
-                                class="text-xs font-mono text-muted hover:text-white">View Profile &rarr;</a>
                         </div>
 
-                        <!-- Coding Journey Card -->
-                        <div class="bento-card-dark bento-border-glow p-4 sm:p-6 flex flex-col justify-between min-h-[220px]"
+                        <div class="lg:col-span-4 bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-between min-h-[120px] lg:min-h-[160px]"
+                            data-aos="fade-up" data-aos-delay="50">
+                            <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">Open
+                                Source</span>
+                            <p class="text-[10px] text-zinc-400 leading-relaxed font-mono">
+                                Contributing to community libraries.
+                            </p>
+                            <a href="https://github.com/Vans30m" target="_blank"
+                                class="text-xs font-mono text-primary hover:underline">View Repos &rarr;</a>
+                        </div>
+
+                        <div class="lg:col-span-4 bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-between min-h-[120px] lg:min-h-[160px]"
                             data-aos="fade-up" data-aos-delay="100">
-                            <span class="text-[10px] font-mono text-primary uppercase tracking-widest block mb-3">Coding
-                                Journey</span>
-                            <div class="space-y-3 text-[11px] font-mono">
-                                <div
-                                    class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
-                                    <span class="text-zinc-400">
-                                        LeetCode
-                                    </span>
-                                    <span class="text-white font-bold bg-acc3/10 px-2 py-0.5 rounded text-[10px]">250+
-                                        Solved</span>
-                                </div>
-                                <div
-                                    class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
-                                    <span class="text-zinc-400">
-                                        CodeChef
-                                    </span>
-                                    <span class="text-white font-bold bg-accent/10 px-2 py-0.5 rounded text-[10px]">★
-                                        Coder</span>
-                                </div>
-                                <div
-                                    class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
-                                    <span class="text-zinc-400">
-                                        GeeksforGeeks
-                                    </span>
-                                    <span
-                                        class="text-white font-bold bg-primary/10 px-2 py-0.5 rounded text-[10px]">Rank
-                                        +</span>
-                                </div>
-                            </div>
-                            <a href="#about" class="text-xs font-mono text-accent hover:underline mt-2">All Profiles
+                            <span class="text-[10px] font-mono text-primary uppercase tracking-widest block mb-2">Let's
+                                Connect</span>
+                            <p class="text-[10px] text-zinc-400 leading-relaxed font-mono">
+                                Open for software roles.
+                            </p>
+                            <a href="#contact" class="text-xs font-mono text-accent hover:underline">Get In Touch
                                 &rarr;</a>
                         </div>
-                    </div>
 
-                    <div class="lg:col-span-2 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[220px]"
-                        data-aos="fade-up" data-aos-delay="150">
-                        <span
-                            class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-4">Philosophy</span>
-                        <p class="text-xs italic text-zinc-300 leading-relaxed font-serif">
-                            "I don't build projects. I build products."
-                        </p>
                     </div>
-
-                    <!-- ROW 3: Stats, Open Source, Let's Connect -->
-                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[160px]"
-                        data-aos="fade-up">
-                        <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">Quick
-                            Stats</span>
-                        <div class="grid grid-cols-2 gap-2 text-center font-mono">
-                            <div class="p-2 bg-zinc-900/60 rounded"><span
-                                    class="text-base font-bold text-white block">5</span><span
-                                    class="text-[9px] text-zinc-500">Projects</span></div>
-                            <div class="p-2 bg-zinc-900/60 rounded"><span
-                                    class="text-base font-bold text-white block">15+</span><span
-                                    class="text-[9px] text-zinc-500">Repos</span></div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[160px]"
-                        data-aos="fade-up" data-aos-delay="50">
-                        <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">Open
-                            Source</span>
-                        <p class="text-[10px] text-zinc-400 leading-relaxed font-mono">
-                            Contributing to community libraries.
-                        </p>
-                        <a href="https://github.com/Vans30m" target="_blank"
-                            class="text-xs font-mono text-primary hover:underline">View Repos &rarr;</a>
-                    </div>
-
-                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[160px]"
-                        data-aos="fade-up" data-aos-delay="100">
-                        <span class="text-[10px] font-mono text-primary uppercase tracking-widest block mb-2">Let's
-                            Connect</span>
-                        <p class="text-[10px] text-zinc-400 leading-relaxed font-mono">
-                            Open for software roles.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-accent hover:underline">Get In Touch &rarr;</a>
-                    </div>
-
                 </div>
+        </section>
+
+        <!-- Flagship Case Study Product Presentation (Featured Project Preview) -->
+        <section id="projects" class="relative max-w-[850px] mx-auto pt-6 md:pt-8">
+            <div class="mb-12" data-aos="fade-up">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">// FLAGSHIP
+                    PRODUCT</span>
+                <h2 class="section-title">FinPulse AI</h2>
+                <p class="section-desc mt-2 text-muted">
+                    An advanced platform leveraging artificial intelligence to process, analyze, and map complex
+                    financial transactional pipelines.
+                </p>
             </div>
 
-            <!-- Flagship Case Study Product Presentation (Featured Project Preview) -->
-            <div id="featured" class="section-container relative max-w-[850px] mx-auto">
-                <div class="mb-12" data-aos="fade-up">
-                    <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">// FLAGSHIP
-                        PRODUCT</span>
-                    <h2 class="section-title">FinPulse AI</h2>
-                    <p class="section-desc mt-2 text-muted">
-                        An advanced platform leveraging artificial intelligence to process, analyze, and map complex
-                        financial transactional pipelines.
-                    </p>
-                </div>
-
-                <!-- Featured Bento Card -->
-                <div class="bentocard border-accent/20 hover:border-accent/40" data-aos="fade-up">
-                    <div class="card-glow-wash glow-teal"></div>
-                    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                        <div class="lg:col-span-6 space-y-4">
-                            <h4 class="text-xs font-mono text-accent uppercase tracking-wider">[ Case Study Overview ]
-                            </h4>
-                            <h3 class="text-2xl font-display font-bold text-white">Intelligent Stream Analytics</h3>
-                            <p class="text-sm text-muted leading-relaxed">
-                                FinPulse AI layers intelligent data parsing right over standard transaction records,
-                                dynamically tracking trends, categorizing risks, and mapping anomalies down to the
-                                millisecond.
-                            </p>
-                            <div class="flex flex-wrap gap-2 pt-2">
-                                <span class="skill-badge">Vanilla JS</span>
-                                <span class="skill-badge">Tailwind CSS</span>
-                                <span class="skill-badge">AI Models</span>
-                                <span class="skill-badge">REST API</span>
-                            </div>
-                        </div>
-                        <div class="lg:col-span-6">
-                            <div class="rounded-xl overflow-hidden border border-borderSpec relative aspect-[16/10]">
-                                <img src="assets/Images/finpulseai.png" alt="FinPulse AI Dashboard Screenshot"
-                                    class="w-full h-full object-cover">
-                            </div>
+            <!-- Featured Bento Card -->
+            <div class="bentocard border-accent/20 hover:border-accent/40" data-aos="fade-up">
+                <div class="card-glow-wash glow-teal"></div>
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6 space-y-4">
+                        <h4 class="text-xs font-mono text-accent uppercase tracking-wider">[ Case Study Overview ]
+                        </h4>
+                        <h3 class="text-2xl font-display font-bold text-white">Intelligent Stream Analytics</h3>
+                        <p class="text-sm text-muted leading-relaxed">
+                            FinPulse AI layers intelligent data parsing right over standard transaction records,
+                            dynamically tracking trends, categorizing risks, and mapping anomalies down to the
+                            millisecond.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="skill-badge">Vanilla JS</span>
+                            <span class="skill-badge">Tailwind CSS</span>
+                            <span class="skill-badge">AI Models</span>
+                            <span class="skill-badge">REST API</span>
                         </div>
                     </div>
-                    <div
-                        class="flex items-center justify-between mt-8 pt-4 border-t border-borderSpec/40 relative z-10">
-                        <span class="text-xs font-mono text-accent">Lighthouse Score: 95+ / latency < 42ms</span>
-                                <div class="flex space-x-4">
-                                    <a href="https://finpulse-frontend-jrsd.onrender.com/pulse"
-                                        class="text-xs font-mono text-accent hover:underline">Live Demo ↗</a>
-                                    <a href="html/finpulseai-details.html"
-                                        class="text-xs font-mono text-primary hover:underline">Read Case Study ↗</a>
-                                    <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
-                                        class="text-xs font-mono text-muted hover:text-textMain">Code ↗</a>
-                                </div>
+                    <div class="lg:col-span-6">
+                        <div class="rounded-xl overflow-hidden border border-borderSpec relative aspect-[16/10]">
+                            <img src="assets/Images/finpulseai.png" alt="FinPulse AI Dashboard Screenshot"
+                                class="w-full h-full object-cover">
+                        </div>
                     </div>
                 </div>
+                <div
+                    class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-8 pt-4 border-t border-borderSpec/40 relative z-10">
+                    <span class="text-xs font-mono text-accent">Lighthouse Score: 95+ / latency &lt; 42ms</span>
+                    <div class="flex flex-wrap gap-x-4 gap-y-2">
+                        <a href="https://finpulse-frontend-jrsd.onrender.com/pulse"
+                            class="text-xs font-mono text-accent hover:underline">Live Demo ↗</a>
+                        <a href="html/finpulseai-details.html"
+                            class="text-xs font-mono text-primary hover:underline">Read Case Study ↗</a>
+                        <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
+                            class="text-xs font-mono text-muted hover:text-textMain">Code ↗</a>
+                    </div>
+                </div>
+            </div>
             </div>
 
             <!-- Selected Work Carousel Section -->
@@ -674,7 +702,6 @@
                         </button>
                     </div>
                 </div>
-            </div>
         </section>
 
 
@@ -764,7 +791,7 @@
             </div>
 
             <!-- Currently Learning -->
-            <div class="section-container max-w-[850px] mx-auto border-t border-borderSpec/40 pt-16">
+            <div class="section-container max-w-[850px] mx-auto pt-16">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     <div class="lg:col-span-5" data-aos="fade-up">
                         <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">06 CURRENTLY
@@ -795,7 +822,7 @@
         <section id="about" class="space-y-16">
             <!-- Brief Profile Showcase Bento -->
             <div id="identity-summary" class="section-container max-w-[850px] mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="bentocard flex flex-col justify-between" data-aos="fade-up">
                         <div class="card-glow-wash glow-purple"></div>
                         <div class="relative z-10">
@@ -833,14 +860,14 @@
             </div>
 
             <!-- Coding Profiles Section with Flip Cards -->
-            <div id="coding" class="section-container max-w-[850px] mx-auto border-t border-borderSpec/40 pt-16">
+            <div id="coding" class="section-container max-w-[850px] mx-auto pt-16">
                 <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2" data-aos="fade-up">//
                     GLOBAL METRICS</span>
                 <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Coding Profiles</h2>
                 <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">Hover over each card to
                     flip and view profile links.</p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12" data-aos="fade-up"
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mt-12" data-aos="fade-up"
                     data-aos-delay="150">
 
                     <!-- LeetCode -->
@@ -1129,54 +1156,37 @@
         </section>
 
         <!-- GitHub Activity Section -->
-        <section id="github" class="section-container max-w-[1000px] mx-auto">
+        <section id="github" class="section-container max-w-[850px] mx-auto">
             <span class="text-sm font-mono text-accent uppercase tracking-widest block mb-4" data-aos="fade-up">07
                 GITHUB ACTIVITY</span>
-            <div class="bentocard p-6 md:p-8" data-aos="fade-up" data-aos-delay="100">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-6">
-                    <div class="flex items-center gap-5">
-                        <img src="https://github.com/Vans30m.png" alt="Vansh Thakur Github Avatar"
-                            class="w-16 h-16 rounded-full border border-borderSpec">
-                        <div>
-                            <h3 class="text-2xl font-display font-bold text-white">@Vans30m</h3>
-                            <p class="text-sm text-muted">Shipping consistently · building in public</p>
-                        </div>
-                    </div>
+            <div class="bentocard p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex items-center gap-5">
+                    <img src="https://github.com/Vans30m.png" alt="Vansh Thakur Github Avatar"
+                        class="w-16 h-16 rounded-full border border-borderSpec">
                     <div>
-                        <a href="https://github.com/Vans30m" target="_blank"
-                            class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-surface border border-borderSpec text-sm font-mono text-muted hover:text-textMain transition-colors">
-                            View full activity <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor"
-                                stroke-width="2" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="mb-6">
-                    <span class="text-2xl font-display font-bold text-accent github-total-contributions">342</span>
-                    <span class="text-sm text-muted font-mono ml-2">contributions in the last year</span>
-                </div>
-
-                <!-- GitHub Heatmap Wrapper with labels -->
-                <div class="github-heatmap-wrapper">
-                    <div class="github-months" id="github-months-container"></div>
-                    <div class="flex gap-2 items-start">
-                        <div class="github-days">
-                            <span></span>
-                            <span>Mon</span>
-                            <span></span>
-                            <span>Wed</span>
-                            <span></span>
-                            <span>Fri</span>
-                            <span></span>
-                        </div>
-                        <div class="github-grid-container" id="github-contributions-grid">
-                            <!-- Javascript will dynamically inject tile nodes -->
+                        <h3 class="text-2xl font-display font-bold text-white">@Vans30m</h3>
+                        <p class="text-sm text-muted">Shipping consistently · building in public</p>
+                        <div class="flex gap-6 mt-3">
+                            <div>
+                                <span class="text-xl font-display font-bold text-accent github-total-contributions">342</span>
+                                <span class="text-[10px] text-muted font-mono block uppercase tracking-wider mt-0.5">Yearly Contributions</span>
+                            </div>
+                            <div class="border-l border-borderSpec pl-6">
+                                <span class="text-xl font-display font-bold text-primary github-month-commits">35</span>
+                                <span class="text-[10px] text-muted font-mono block uppercase tracking-wider mt-0.5">Commits This Month</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
+                <div class="w-full md:w-auto">
+                    <a href="https://github.com/Vans30m" target="_blank"
+                        class="inline-flex w-full md:w-auto justify-center items-center gap-2 px-5 py-3 rounded-xl bg-surface border border-borderSpec text-sm font-mono text-muted hover:text-textMain hover:border-primary/30 hover:bg-primary/5 transition-all">
+                        View GitHub Profile
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -1260,7 +1270,7 @@
 
             <!-- Call to Action Section -->
             <!-- Call to Action Section (Premium Card) -->
-            <div id="cta" class="py-20 max-w-[850px] mx-auto border-t border-borderSpec/40 pt-16" data-aos="fade-up">
+            <div id="cta" class="py-10 max-w-[850px] mx-auto" data-aos="fade-up">
                 <div class="connect-card p-10 text-center relative z-10">
                     <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">LET'S
                         CONNECT</span>
@@ -1287,87 +1297,90 @@
     </main>
 
     <!-- Premium Footer Layer -->
-    <footer class="border-t border-borderSpec/40 py-16 max-w-[850px] mx-auto px-4 md:px-0">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
-            <div class="md:col-span-6 space-y-4">
-                <a href="index.html"
-                    class="text-xl font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
-                    Vansh Thakur<span class="text-accent">.</span>
-                </a>
-                <p class="text-xs text-muted leading-relaxed max-w-sm">
-                    Full-Stack Developer & AI Engineer building polished, scalable products — one line of code at a
-                    time.
-                </p>
-                <div class="flex items-center space-x-3 pt-2">
-                    <a href="mailto:vthakur.290905@gmail.com"
-                        class="w-8 h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent transition-colors"
-                        aria-label="Email">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
+    <div class="relative overflow-hidden border-t border-borderSpec/40 bg-zinc-950/20 mt-20">
+        <!-- Ambient Footer Glow -->
+        <div
+            class="absolute bottom-[-100px] left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-primary/10 rounded-full blur-[80px] pointer-events-none">
+        </div>
+
+        <footer class="py-16 max-w-[850px] mx-auto px-6 md:px-0 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-12 gap-8 mb-12">
+                <div class="col-span-2 md:col-span-6 space-y-4">
+                    <a href="index.html"
+                        class="text-xl font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
+                        Vansh Thakur<span class="text-accent">.</span>
                     </a>
-                    <a href="https://github.com/Vans30m" target="_blank"
-                        class="w-8 h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent transition-colors"
-                        aria-label="GitHub">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                        </svg>
-                    </a>
-                    <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
-                        class="w-8 h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent transition-colors"
-                        aria-label="LinkedIn">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                    </a>
+                    <p class="text-xs text-muted leading-relaxed max-w-sm">
+                        Full-Stack Developer & AI Engineer building polished, scalable products — one line of code at a
+                        time.
+                    </p>
+                    <div class="flex items-center space-x-3 pt-2">
+                        <a href="mailto:vthakur.290905@gmail.com"
+                            class="w-11 h-11 md:w-8 md:h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent hover:scale-105 transition-all"
+                            aria-label="Email">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </a>
+                        <a href="https://github.com/Vans30m" target="_blank"
+                            class="w-11 h-11 md:w-8 md:h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent hover:scale-105 transition-all"
+                            aria-label="GitHub">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
+                            class="w-11 h-11 md:w-8 md:h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent hover:scale-105 transition-all"
+                            aria-label="LinkedIn">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+ 
+                <div class="col-span-1 md:col-span-3 space-y-3">
+                    <h4 class="text-xs font-mono text-accent uppercase tracking-widest">Navigate</h4>
+                    <ul class="space-y-2 text-xs text-muted">
+                        <li><a href="#home" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Home</a></li>
+                        <li><a href="#projects" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Projects</a></li>
+                        <li><a href="#skills" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Skills</a></li>
+                        <li><a href="#about" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">About</a></li>
+                        <li><a href="#journey" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Journey</a></li>
+                        <li><a href="#contact" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Contact</a></li>
+                    </ul>
+                </div>
+ 
+                <div class="col-span-1 md:col-span-3 space-y-3">
+                    <h4 class="text-xs font-mono text-accent uppercase tracking-widest">More</h4>
+                    <ul class="space-y-2 text-xs text-muted">
+                        <li><a href="#skills" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Skills Matrix</a>
+                        </li>
+                        <li><a href="#journey" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Journey Log</a>
+                        </li>
+                        <li><a href="#about" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Coding Profiles</a>
+                        </li>
+                        <li><a href="html/finpulseai-details.html"
+                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">FinPulse AI Showcase</a></li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="md:col-span-3 space-y-3">
-                <h4 class="text-xs font-mono text-accent uppercase tracking-widest">Navigate</h4>
-                <ul class="space-y-2 text-xs text-muted">
-                    <li><a href="#home" class="hover:text-textMain transition-colors">Home</a></li>
-                    <li><a href="#projects" class="hover:text-textMain transition-colors">Projects</a></li>
-                    <li><a href="#skills" class="hover:text-textMain transition-colors">Skills</a></li>
-                    <li><a href="#about" class="hover:text-textMain transition-colors">About</a></li>
-                    <li><a href="#journey" class="hover:text-textMain transition-colors">Journey</a></li>
-                    <li><a href="#contact" class="hover:text-textMain transition-colors">Contact</a></li>
-                </ul>
+ 
+            <div
+                class="border-t border-borderSpec/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-[10px] font-mono text-muted">
+                <p>&copy; 2026 Vansh Thakur. Redesigned, fluid, and high-performance.</p>
+                <button id="footer-totop" class="hover:text-white active:text-white focus:text-white transition-colors flex items-center gap-1">
+                    &uarr; Back to top
+                </button>
             </div>
+        </footer>
+    </div>
 
-            <div class="md:col-span-3 space-y-3">
-                <h4 class="text-xs font-mono text-accent uppercase tracking-widest">More</h4>
-                <ul class="space-y-2 text-xs text-muted">
-                    <li><a href="#skills" class="hover:text-textMain transition-colors">Skills Matrix</a></li>
-                    <li><a href="#journey" class="hover:text-textMain transition-colors">Journey Log</a></li>
-                    <li><a href="#about" class="hover:text-textMain transition-colors">Coding Profiles</a></li>
-                    <li><a href="html/finpulseai-details.html" class="hover:text-textMain transition-colors">FinPulse AI
-                            Showcase</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div
-            class="border-t border-borderSpec/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-[10px] font-mono text-muted">
-            <p>&copy; 2026 Vansh Thakur. Redesigned, fluid, and high-performance.</p>
-            <button id="footer-totop" class="hover:text-textMain transition-colors flex items-center gap-1">
-                &uarr; Back to top
-            </button>
-        </div>
-    </footer>
-
-    <!-- Floating Back to Top Button -->
-    <button id="back-to-top" class="totop" aria-label="Scroll back to top">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
-        </svg>
-    </button>
 
     <!-- Essential Scripts -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="js/script.js"></script>
 </body>
 
