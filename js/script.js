@@ -1046,4 +1046,383 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial delay before typewriter starts
         setTimeout(typeLoop, 800);
     }
+
+    /* ==========================================================================
+       Command Palette (Ctrl+K) Controller
+       ========================================================================== */
+    const initCommandPalette = () => {
+        const items = [
+            { id: 'nav-home', title: 'Home', desc: 'Go to the introduction section', url: '#home', category: 'Navigation', icon: 'fa-home', shortcut: '↵' },
+            { id: 'nav-bento', title: 'Bento Dashboard', desc: 'Go to dashboard grid', url: '#bento-dashboard', category: 'Navigation', icon: 'fa-table-cells-large', shortcut: '↵' },
+            { id: 'nav-projects', title: 'Projects Showcase', desc: 'Browse developed products', url: '#projects', category: 'Navigation', icon: 'fa-laptop-code', shortcut: '↵' },
+            { id: 'nav-skills', title: 'Skills Matrix', desc: 'View technical expertise', url: '#skills', category: 'Navigation', icon: 'fa-bolt', shortcut: '↵' },
+            { id: 'nav-about', title: 'About Me', desc: 'Read biography & profiles', url: '#about', category: 'Navigation', icon: 'fa-user', shortcut: '↵' },
+            { id: 'nav-journey', title: 'Journey Log', desc: 'View academic & coding timeline', url: '#journey', category: 'Navigation', icon: 'fa-road', shortcut: '↵' },
+            { id: 'nav-contact', title: 'Contact', desc: 'Get in touch / hire me', url: '#contact', category: 'Navigation', icon: 'fa-envelope', shortcut: '↵' },
+
+            { id: 'proj-finpulse', title: 'FinPulse AI Case Study', desc: 'Intelligent real-time transaction streams', url: 'html/finpulseai-details.html', category: 'Case Studies', icon: 'fa-file-invoice-dollar', shortcut: '↗' },
+            { id: 'proj-focusora', title: 'FocusoraHQ Case Study', desc: 'Unified productivity dashboard', url: 'html/focusorahq-details.html', category: 'Case Studies', icon: 'fa-circle-check', shortcut: '↗' },
+            { id: 'proj-fitness', title: 'Fitness Planet Case Study', desc: 'Fitness workout planner app', url: 'html/fitnessplanet-details.html', category: 'Case Studies', icon: 'fa-dumbbell', shortcut: '↗' },
+            { id: 'proj-piezo', title: 'Piezoelectric Floor Case Study', desc: 'Energy harvesting floor design', url: 'html/piezoelectric-details.html', category: 'Case Studies', icon: 'fa-plug', shortcut: '↗' },
+            { id: 'proj-floor', title: 'Floor Cleaning Robot Case Study', desc: 'Autonomous Arduino cleaner', url: 'html/floorcleaning-details.html', category: 'Case Studies', icon: 'fa-robot', shortcut: '↗' },
+
+            { id: 'action-recruiter', title: 'Recruiter Mode', desc: 'Open 30-second candidate summary (Press R)', url: 'action:recruiter', category: 'Actions', icon: 'fa-user-tie', shortcut: 'R' },
+            { id: 'social-github', title: 'GitHub Profile', desc: 'Check repositories & contributions', url: 'https://github.com/Vans30m', category: 'Connect', icon: 'fa-brands fa-github', shortcut: '↗', external: true },
+            { id: 'social-linkedin', title: 'LinkedIn Profile', desc: 'Professional network presence', url: 'https://linkedin.com/in/Vansh Thakur-thakur-vans30m/', category: 'Connect', icon: 'fa-brands fa-linkedin', shortcut: '↗', external: true },
+            { id: 'action-email', title: 'Send Email', desc: 'vthakur.290905@gmail.com', url: 'mailto:vthakur.290905@gmail.com', category: 'Connect', icon: 'fa-paper-plane', shortcut: '↗' }
+        ];
+
+        // Create Palette Overlay HTML
+        const overlay = document.createElement('div');
+        overlay.className = 'cmd-palette-overlay';
+        overlay.id = 'cmd-palette';
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.innerHTML = `
+            <div class="cmd-palette-modal" role="dialog" aria-modal="true" aria-labelledby="cmd-palette-input">
+                <div class="cmd-palette-header">
+                    <i class="fa-solid fa-magnifying-glass cmd-palette-search-icon"></i>
+                    <input type="text" class="cmd-palette-input" id="cmd-palette-input" placeholder="Type a command or search..." autocomplete="off" spellcheck="false">
+                    <button class="cmd-palette-close-btn" id="cmd-palette-close" aria-label="Close Command Palette">Esc</button>
+                </div>
+                <div class="cmd-palette-results" id="cmd-palette-results"></div>
+                <div class="cmd-palette-footer">
+                    <div>
+                        <span class="cmd-palette-key">↑↓</span> Navigate
+                        <span class="cmd-palette-key" style="margin-left: 8px;">Enter</span> Select
+                    </div>
+                    <div>
+                        <span class="cmd-palette-key">Esc</span> Close
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        const input = overlay.querySelector('#cmd-palette-input');
+        const resultsContainer = overlay.querySelector('#cmd-palette-results');
+        const closeBtn = overlay.querySelector('#cmd-palette-close');
+        let activeIndex = 0;
+        let filteredItems = [...items];
+
+        const openPalette = () => {
+            overlay.classList.add('active');
+            overlay.setAttribute('aria-hidden', 'false');
+            input.value = '';
+            activeIndex = 0;
+            renderResults();
+            setTimeout(() => input.focus(), 50);
+        };
+
+        const closePalette = () => {
+            overlay.classList.remove('active');
+            overlay.setAttribute('aria-hidden', 'true');
+        };
+
+        const renderResults = () => {
+            const query = input.value.trim().toLowerCase();
+            if (query) {
+                filteredItems = items.filter(item => 
+                    item.title.toLowerCase().includes(query) || 
+                    item.desc.toLowerCase().includes(query) ||
+                    item.category.toLowerCase().includes(query)
+                );
+            } else {
+                filteredItems = [...items];
+            }
+
+            if (filteredItems.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div style="padding: 24px 16px; text-align: center; color: var(--muted); font-size: 13px;">
+                        No results found for "<span class="text-white">${input.value}</span>"
+                    </div>
+                `;
+                return;
+            }
+
+            // Group by category
+            const grouped = {};
+            filteredItems.forEach((item, index) => {
+                if (!grouped[item.category]) {
+                    grouped[item.category] = [];
+                }
+                grouped[item.category].push({ item, globalIndex: index });
+            });
+
+            // Ensure activeIndex is within bounds
+            if (activeIndex >= filteredItems.length) {
+                activeIndex = filteredItems.length - 1;
+            }
+            if (activeIndex < 0) {
+                activeIndex = 0;
+            }
+
+            let html = '';
+            for (const category in grouped) {
+                html += `<div class="cmd-palette-group-title">${category}</div>`;
+                grouped[category].forEach(({ item, globalIndex }) => {
+                    const isActive = globalIndex === activeIndex;
+                    html += `
+                        <div class="cmd-palette-item ${isActive ? 'active' : ''}" data-index="${globalIndex}">
+                            <div class="cmd-palette-item-content">
+                                <div class="cmd-palette-item-icon">
+                                    <i class="fa-solid ${item.icon}"></i>
+                                </div>
+                                <div class="cmd-palette-item-text">
+                                    <span class="cmd-palette-item-title">${item.title}</span>
+                                    <span class="cmd-palette-item-desc">${item.desc}</span>
+                                </div>
+                            </div>
+                            <span class="cmd-palette-item-shortcut">${item.shortcut}</span>
+                        </div>
+                    `;
+                });
+            }
+            resultsContainer.innerHTML = html;
+
+            // Bind click events to results
+            const itemEls = resultsContainer.querySelectorAll('.cmd-palette-item');
+            itemEls.forEach(el => {
+                el.addEventListener('click', () => {
+                    const idx = parseInt(el.getAttribute('data-index'), 10);
+                    triggerAction(filteredItems[idx]);
+                });
+                el.addEventListener('mouseenter', () => {
+                    activeIndex = parseInt(el.getAttribute('data-index'), 10);
+                    renderResults();
+                });
+            });
+
+            // Scroll active item into view
+            const activeEl = resultsContainer.querySelector('.cmd-palette-item.active');
+            if (activeEl) {
+                activeEl.scrollIntoView({ block: 'nearest' });
+            }
+        };
+
+        const triggerAction = (item) => {
+            closePalette();
+            if (item.url === 'action:recruiter') {
+                if (window.toggleRecruiterMode) {
+                    window.toggleRecruiterMode();
+                }
+                return;
+            }
+            if (item.url.startsWith('#')) {
+                // Smooth scroll to the target element
+                const target = document.querySelector(item.url);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Update location hash silently
+                    setTimeout(() => {
+                        window.location.hash = item.url;
+                    }, 500);
+                }
+            } else {
+                if (item.external) {
+                    window.open(item.url, '_blank');
+                } else {
+                    window.location.href = item.url;
+                }
+            }
+        };
+
+        // Event Listeners
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                if (overlay.classList.contains('active')) {
+                    closePalette();
+                } else {
+                    openPalette();
+                }
+            }
+
+            if (!overlay.classList.contains('active')) return;
+
+            if (e.key === 'Escape') {
+                closePalette();
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                activeIndex = (activeIndex + 1) % filteredItems.length;
+                renderResults();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                activeIndex = (activeIndex - 1 + filteredItems.length) % filteredItems.length;
+                renderResults();
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (filteredItems[activeIndex]) {
+                    triggerAction(filteredItems[activeIndex]);
+                }
+            }
+        });
+
+        input.addEventListener('input', () => {
+            activeIndex = 0;
+            renderResults();
+        });
+
+        // Trigger buttons
+        const triggerBtn = document.getElementById('cmd-palette-btn');
+        const triggerBtnMobile = document.getElementById('cmd-palette-btn-mobile');
+
+        if (triggerBtn) {
+            triggerBtn.addEventListener('click', openPalette);
+        }
+        if (triggerBtnMobile) {
+            triggerBtnMobile.addEventListener('click', openPalette);
+        }
+
+        // Close on backdrop click
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                closePalette();
+            }
+        });
+
+        closeBtn.addEventListener('click', closePalette);
+    };
+
+    /* ==========================================================================
+       Recruiter Mode (R Key) Controller
+       ========================================================================== */
+    const initRecruiterMode = () => {
+        // Create Floating Pill
+        const pill = document.createElement('button');
+        pill.className = 'recruiter-pill';
+        pill.id = 'recruiter-pill';
+        pill.setAttribute('aria-label', 'Open Recruiter Mode');
+        pill.innerHTML = `
+            <span class="recruiter-pill-dot"></span>
+            <span>Recruiter Mode <kbd style="margin-left: 4px; opacity: 0.6; font-size: 9px; font-weight: normal; background: rgba(255,255,255,0.08); padding: 1px 3px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.1);">R</kbd></span>
+        `;
+        document.body.appendChild(pill);
+
+        // Create Modal Overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'recruiter-overlay';
+        overlay.id = 'recruiter-overlay';
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.innerHTML = `
+            <div class="recruiter-modal" role="dialog" aria-modal="true" aria-labelledby="recruiter-modal-title">
+                <div class="recruiter-header">
+                    <div class="recruiter-title-group">
+                        <span class="recruiter-badge">⚡ Quick Evaluation</span>
+                        <h2 class="recruiter-title" id="recruiter-modal-title">Vansh Thakur Summary</h2>
+                    </div>
+                    <button class="recruiter-close" id="recruiter-close-btn" aria-label="Close Recruiter Mode">&times;</button>
+                </div>
+                <div class="recruiter-body">
+                    <div class="recruiter-pitch-sec">
+                        <span class="recruiter-pitch-title">Pitch / 10-Sec Summary</span>
+                        <p class="recruiter-pitch-text">
+                            Software Engineer specializing in full-stack architectures and AI integrations. Focused on designing high-performance systems with modern web standards and concurrent analytics. Ready for SWE placements in 2026.
+                        </p>
+                        <div class="recruiter-btn-group">
+                            <a href="assets/resume me.pdf" class="recruiter-resume-btn" download="Vansh_Thakur_Resume.pdf">
+                                <i class="fa-solid fa-file-pdf"></i> Download Resume (PDF)
+                            </a>
+                        </div>
+                    </div>
+                    <div class="recruiter-side-sec">
+                        <div>
+                            <span class="recruiter-pitch-title" style="margin-bottom: 8px; display: block;">Key Metrics</span>
+                            <div class="recruiter-stats-grid">
+                                <div class="recruiter-stat-card">
+                                    <span class="recruiter-stat-val">250+</span>
+                                    <span class="recruiter-stat-lbl">LeetCode</span>
+                                </div>
+                                <div class="recruiter-stat-card">
+                                    <span class="recruiter-stat-val">35</span>
+                                    <span class="recruiter-stat-lbl">Commits / Mo</span>
+                                </div>
+                                <div class="recruiter-stat-card">
+                                    <span class="recruiter-stat-val">5</span>
+                                    <span class="recruiter-stat-lbl">Projects</span>
+                                </div>
+                                <div class="recruiter-stat-card">
+                                    <span class="recruiter-stat-val">&lt; 42ms</span>
+                                    <span class="recruiter-stat-lbl">AI Latency</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="recruiter-pitch-title" style="margin-bottom: 8px; display: block;">Core Tech</span>
+                            <div class="recruiter-skills-list">
+                                <span class="recruiter-skill-tag">JavaScript / TS</span>
+                                <span class="recruiter-skill-tag">Next.js / React</span>
+                                <span class="recruiter-skill-tag">Node.js</span>
+                                <span class="recruiter-skill-tag">Python</span>
+                                <span class="recruiter-skill-tag">PostgreSQL</span>
+                                <span class="recruiter-skill-tag">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="recruiter-footer">
+                    <span>Press <kbd class="recruiter-footer-shortcut">R</kbd> again or <kbd class="recruiter-footer-shortcut">Esc</kbd> to close</span>
+                    <a href="mailto:vthakur.290905@gmail.com" style="color: var(--acc3); text-decoration: none;" class="hover:underline">vthakur.290905@gmail.com</a>
+                </div>
+            </div>
+        </div>
+        `;
+        document.body.appendChild(overlay);
+
+        const closeBtn = overlay.querySelector('#recruiter-close-btn');
+
+        const openRecruiterMode = () => {
+            // Close command palette if open
+            const cmdOverlay = document.getElementById('cmd-palette');
+            if (cmdOverlay && cmdOverlay.classList.contains('active')) {
+                cmdOverlay.classList.remove('active');
+                cmdOverlay.setAttribute('aria-hidden', 'true');
+            }
+
+            overlay.classList.add('active');
+            overlay.setAttribute('aria-hidden', 'false');
+        };
+
+        const closeRecruiterMode = () => {
+            overlay.classList.remove('active');
+            overlay.setAttribute('aria-hidden', 'true');
+        };
+
+        const toggleRecruiterMode = () => {
+            if (overlay.classList.contains('active')) {
+                closeRecruiterMode();
+            } else {
+                openRecruiterMode();
+            }
+        };
+
+        // Expose toggle to global scope so command palette can trigger it
+        window.toggleRecruiterMode = toggleRecruiterMode;
+
+        // Keydown toggles
+        window.addEventListener('keydown', (e) => {
+            // Ignore if typing in input/textarea/select
+            if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+
+            if (e.key.toLowerCase() === 'r' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                e.preventDefault();
+                toggleRecruiterMode();
+            }
+
+            if (overlay.classList.contains('active') && e.key === 'Escape') {
+                closeRecruiterMode();
+            }
+        });
+
+        // Click binds
+        pill.addEventListener('click', toggleRecruiterMode);
+        closeBtn.addEventListener('click', closeRecruiterMode);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                closeRecruiterMode();
+            }
+        });
+    };
+
+    initCommandPalette();
+    initRecruiterMode();
 });

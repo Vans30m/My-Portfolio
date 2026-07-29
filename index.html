@@ -103,16 +103,36 @@
                     <a href="#about" class="nav-link">About</a>
                     <a href="#journey" class="nav-link">Journey</a>
                     <a href="#contact" class="nav-link">Contact</a>
+                    <button id="cmd-palette-btn"
+                        class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-900/60 border border-borderSpec/60 text-xs text-muted hover:text-white hover:border-zinc-700 transition-all font-mono ml-2"
+                        aria-label="Open Command Palette">
+                        <i class="fa-solid fa-magnifying-glass text-[10px]"></i>
+                        <span>Search</span>
+                        <kbd
+                            class="text-[9px] bg-zinc-800 border border-zinc-700/60 px-1.5 py-0.5 rounded leading-none text-zinc-400">Ctrl
+                            K</kbd>
+                    </button>
                 </div>
 
-                <!-- Hamburger Button -->
-                <button id="menu-toggle"
-                    class="md:hidden relative w-11 h-11 flex flex-col justify-center items-center gap-1.5 focus:outline-none z-50 group"
-                    aria-label="Toggle Navigation Menu">
-                    <span class="w-6 h-0.5 bg-zinc-400 rounded transition-all duration-300 transform origin-center nav-bar-top group-hover:bg-white"></span>
-                    <span class="w-6 h-0.5 bg-zinc-400 rounded transition-all duration-300 nav-bar-mid group-hover:bg-white"></span>
-                    <span class="w-6 h-0.5 bg-zinc-400 rounded transition-all duration-300 transform origin-center nav-bar-bot group-hover:bg-white"></span>
-                </button>
+                <!-- Mobile Search & Hamburger Group -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <button id="cmd-palette-btn-mobile"
+                        class="flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-900/60 border border-borderSpec/60 text-muted hover:text-white hover:border-zinc-700 transition-all"
+                        aria-label="Open Command Palette">
+                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                    </button>
+                    <!-- Hamburger Button -->
+                    <button id="menu-toggle"
+                        class="relative w-11 h-11 flex flex-col justify-center items-center gap-1.5 focus:outline-none z-50 group"
+                        aria-label="Toggle Navigation Menu">
+                        <span
+                            class="w-6 h-0.5 bg-zinc-400 rounded transition-all duration-300 transform origin-center nav-bar-top group-hover:bg-white"></span>
+                        <span
+                            class="w-6 h-0.5 bg-zinc-400 rounded transition-all duration-300 nav-bar-mid group-hover:bg-white"></span>
+                        <span
+                            class="w-6 h-0.5 bg-zinc-400 rounded transition-all duration-300 transform origin-center nav-bar-bot group-hover:bg-white"></span>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -121,21 +141,32 @@
     <!-- Mobile Floating Dropdown Navigation -->
     <div id="mobile-menu" class="md:hidden">
         <div class="flex flex-col space-y-1">
-            <span class="text-[9px] font-mono text-accent uppercase tracking-widest block border-b border-borderSpec/30 pb-1.5 mb-2">// NAVIGATE</span>
-            <a href="#home" class="mobile-nav-link active" style="--i: 1;"><span class="text-[10px] font-mono text-muted/50">01 /</span> Home</a>
-            <a href="#projects" class="mobile-nav-link" style="--i: 2;"><span class="text-[10px] font-mono text-muted/50">02 /</span> Projects</a>
-            <a href="#skills" class="mobile-nav-link" style="--i: 3;"><span class="text-[10px] font-mono text-muted/50">03 /</span> Skills</a>
-            <a href="#about" class="mobile-nav-link" style="--i: 4;"><span class="text-[10px] font-mono text-muted/50">04 /</span> About</a>
-            <a href="#journey" class="mobile-nav-link" style="--i: 5;"><span class="text-[10px] font-mono text-muted/50">05 /</span> Journey</a>
-            <a href="#contact" class="mobile-nav-link" style="--i: 6;"><span class="text-[10px] font-mono text-muted/50">06 /</span> Contact</a>
+            <span
+                class="text-[9px] font-mono text-accent uppercase tracking-widest block border-b border-borderSpec/30 pb-1.5 mb-2">//
+                NAVIGATE</span>
+            <a href="#home" class="mobile-nav-link active" style="--i: 1;"><span
+                    class="text-[10px] font-mono text-muted/50">01 /</span> Home</a>
+            <a href="#projects" class="mobile-nav-link" style="--i: 2;"><span
+                    class="text-[10px] font-mono text-muted/50">02 /</span> Projects</a>
+            <a href="#skills" class="mobile-nav-link" style="--i: 3;"><span
+                    class="text-[10px] font-mono text-muted/50">03 /</span> Skills</a>
+            <a href="#about" class="mobile-nav-link" style="--i: 4;"><span
+                    class="text-[10px] font-mono text-muted/50">04 /</span> About</a>
+            <a href="#journey" class="mobile-nav-link" style="--i: 5;"><span
+                    class="text-[10px] font-mono text-muted/50">05 /</span> Journey</a>
+            <a href="#contact" class="mobile-nav-link" style="--i: 6;"><span
+                    class="text-[10px] font-mono text-muted/50">06 /</span> Contact</a>
         </div>
 
         <div class="border-t border-borderSpec/40 pt-4 space-y-2.5 mt-2" style="--i: 7;" id="mobile-menu-footer">
             <span class="text-[9px] font-mono text-accent uppercase tracking-widest block">// CONNECT</span>
-            <a href="mailto:vthakur.290905@gmail.com" class="text-[11px] font-mono text-zinc-300 hover:text-white block truncate">vthakur.290905@gmail.com</a>
+            <a href="mailto:vthakur.290905@gmail.com"
+                class="text-[11px] font-mono text-zinc-300 hover:text-white block truncate">vthakur.290905@gmail.com</a>
             <div class="flex gap-4 pt-0.5">
-                <a href="https://github.com/Vans30m" target="_blank" class="text-[11px] font-mono text-muted hover:text-white transition-colors">GitHub ↗</a>
-                <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank" class="text-[11px] font-mono text-muted hover:text-white transition-colors">LinkedIn ↗</a>
+                <a href="https://github.com/Vans30m" target="_blank"
+                    class="text-[11px] font-mono text-muted hover:text-white transition-colors">GitHub ↗</a>
+                <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
+                    class="text-[11px] font-mono text-muted hover:text-white transition-colors">LinkedIn ↗</a>
             </div>
         </div>
     </div>
@@ -268,27 +299,35 @@
                                 </div>
                                 <ul class="space-y-3 text-[11px] text-zinc-400 font-mono">
                                     <li class="flex items-start gap-3">
-                                        <span class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[9px] shrink-0 mt-0.5">01</span>
-                                        <span class="leading-relaxed text-zinc-300">Building FinPulse AI (Market Intelligence Platform)</span>
+                                        <span
+                                            class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[9px] shrink-0 mt-0.5">01</span>
+                                        <span class="leading-relaxed text-zinc-300">Building FinPulse AI (Market
+                                            Intelligence Platform)</span>
                                     </li>
                                     <li class="flex items-start gap-3">
-                                        <span class="flex items-center justify-center w-5 h-5 rounded bg-accent/15 border border-accent/30 text-accent font-bold text-[9px] shrink-0 mt-0.5">02</span>
-                                        <span class="leading-relaxed text-zinc-300">Learning System Design (Scalable architectures)</span>
+                                        <span
+                                            class="flex items-center justify-center w-5 h-5 rounded bg-accent/15 border border-accent/30 text-accent font-bold text-[9px] shrink-0 mt-0.5">02</span>
+                                        <span class="leading-relaxed text-zinc-300">Learning System Design (Scalable
+                                            architectures)</span>
                                     </li>
                                     <li class="flex items-start gap-3">
-                                        <span class="flex items-center justify-center w-5 h-5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-400 font-bold text-[9px] shrink-0 mt-0.5">03</span>
-                                        <span class="leading-relaxed text-zinc-300">Exploring Cloud & DevOps Services</span>
+                                        <span
+                                            class="flex items-center justify-center w-5 h-5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-400 font-bold text-[9px] shrink-0 mt-0.5">03</span>
+                                        <span class="leading-relaxed text-zinc-300">Exploring Cloud & DevOps
+                                            Services</span>
                                     </li>
                                     <li class="flex items-start gap-3">
-                                        <span class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[9px] shrink-0 mt-0.5">04</span>
-                                        <span class="leading-relaxed text-zinc-300">Preparing for SWE placement cycles</span>
+                                        <span
+                                            class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[9px] shrink-0 mt-0.5">04</span>
+                                        <span class="leading-relaxed text-zinc-300">Preparing for SWE placement
+                                            cycles</span>
                                     </li>
                                 </ul>
                             </div>
 
                             <!-- Tech Stack Widget -->
-                            <div class="bento-card-dark bento-border-glow p-6 flex flex-col justify-between flex-1 min-h-[170px]" data-aos="fade-up"
-                                data-aos-delay="100">
+                            <div class="bento-card-dark bento-border-glow p-6 flex flex-col justify-between flex-1 min-h-[170px]"
+                                data-aos="fade-up" data-aos-delay="100">
                                 <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-4">Tech
                                     Stack</span>
                                 <div class="grid grid-cols-5 gap-3">
@@ -552,11 +591,11 @@
                                 </p>
                             </div>
                             <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                                <span class="text-[10px] font-mono text-primary">AI Full Stack</span>
+                                <span class="text-[10px] font-mono text-primary">Full Stack</span>
                                 <div class="flex items-center gap-3">
                                     <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
                                         class="text-xs font-mono text-muted hover:underline">Source ↗</a>
-                                    <a href="html/finpulseai-details.html#demo"
+                                    <a href="https://finpulse-frontend-jrsd.onrender.com"
                                         class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
                                     <a href="html/finpulseai-details.html"
                                         class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
@@ -583,11 +622,11 @@
                                 </p>
                             </div>
                             <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                                <span class="text-[10px] font-mono text-primary">Next.js + WS</span>
+                                <span class="text-[10px] font-mono text-primary">React + Tailwind CSS + WS</span>
                                 <div class="flex items-center gap-3">
                                     <a href="https://github.com/Chet07-R/FocusoraHQ" target="_blank"
                                         class="text-xs font-mono text-muted hover:underline">Source ↗</a>
-                                    <a href="html/focusorahq-details.html#demo"
+                                    <a href="https://focusora-hq.vercel.app/" target="_blank"
                                         class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
                                     <a href="html/focusorahq-details.html"
                                         class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
@@ -603,7 +642,7 @@
                                         style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;" />
                                 </div>
                                 <div class="flex justify-between items-start mb-4">
-                                    <a href="new-project-delta-orcin.vercel.app"
+                                    <a href="https://new-project-delta-orcin.vercel.app"
                                         class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full hover:bg-accent/20 transition-all">LIVE</a>
                                     <span class="text-[10px] text-muted font-mono">SYSTEM_03</span>
                                 </div>
@@ -614,11 +653,11 @@
                                 </p>
                             </div>
                             <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                                <span class="text-[10px] font-mono text-primary">React + PG</span>
+                                <span class="text-[10px] font-mono text-primary">HTML, CSS and JS</span>
                                 <div class="flex items-center gap-3">
                                     <a href="https://github.com/Vans30m/fitness-planet" target="_blank"
                                         class="text-xs font-mono text-muted hover:underline">Source ↗</a>
-                                    <a href="html/fitnessplanet-details.html#demo"
+                                    <a href="new-project-delta-orcin.vercel.app"
                                         class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
                                     <a href="html/fitnessplanet-details.html"
                                         class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
@@ -645,12 +684,10 @@
                                 </p>
                             </div>
                             <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                                <span class="text-[10px] font-mono text-primary">C++ + ROS</span>
+                                <span class="text-[10px] font-mono text-primary">C++ and Arduino Nano</span>
                                 <div class="flex items-center gap-3">
                                     <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank"
                                         class="text-xs font-mono text-muted hover:underline">Source ↗</a>
-                                    <a href="html/floorcleaning-details.html#demo"
-                                        class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
                                     <a href="html/floorcleaning-details.html"
                                         class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
                                 </div>
@@ -665,7 +702,7 @@
                                         style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;" />
                                 </div>
                                 <div class="flex justify-between items-start mb-4">
-                                    <a href="html/piezoelectric-details.html#demo"
+                                    <a href="html/piezoelectric-details.html"
                                         class="text-[10px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full text-indigo-300 hover:bg-primary/20 transition-all">HARDWARE</a>
                                     <span class="text-[10px] text-muted font-mono">SYSTEM_05</span>
                                 </div>
@@ -676,13 +713,11 @@
                                 </p>
                             </div>
                             <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                                <span class="text-[10px] font-mono text-primary">Embedded C</span>
+                                <span class="text-[10px] font-mono text-primary">C++ and Arduino UNO</span>
                                 <div class="flex items-center gap-3">
                                     <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
                                         target="_blank" class="text-xs font-mono text-muted hover:underline">Source
                                         ↗</a>
-                                    <a href="html/piezoelectric-details.html#demo"
-                                        class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
                                     <a href="html/piezoelectric-details.html"
                                         class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
                                 </div>
@@ -1162,7 +1197,8 @@
         <section id="github" class="section-container max-w-[850px] mx-auto">
             <span class="text-sm font-mono text-accent uppercase tracking-widest block mb-4" data-aos="fade-up">07
                 GITHUB ACTIVITY</span>
-            <div class="bentocard p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="bentocard p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+                data-aos="fade-up" data-aos-delay="100">
                 <div class="flex items-center gap-5">
                     <img src="https://github.com/Vans30m.png" alt="Vansh Thakur Github Avatar"
                         class="w-16 h-16 rounded-full border border-borderSpec">
@@ -1171,12 +1207,17 @@
                         <p class="text-sm text-muted">Shipping consistently · building in public</p>
                         <div class="flex gap-6 mt-3">
                             <div>
-                                <span class="text-xl font-display font-bold text-accent github-total-contributions">342</span>
-                                <span class="text-[10px] text-muted font-mono block uppercase tracking-wider mt-0.5">Yearly Contributions</span>
+                                <span
+                                    class="text-xl font-display font-bold text-accent github-total-contributions">342</span>
+                                <span
+                                    class="text-[10px] text-muted font-mono block uppercase tracking-wider mt-0.5">Yearly
+                                    Contributions</span>
                             </div>
                             <div class="border-l border-borderSpec pl-6">
                                 <span class="text-xl font-display font-bold text-primary github-month-commits">35</span>
-                                <span class="text-[10px] text-muted font-mono block uppercase tracking-wider mt-0.5">Commits This Month</span>
+                                <span
+                                    class="text-[10px] text-muted font-mono block uppercase tracking-wider mt-0.5">Commits
+                                    This Month</span>
                             </div>
                         </div>
                     </div>
@@ -1344,38 +1385,58 @@
                         </a>
                     </div>
                 </div>
- 
+
                 <div class="col-span-1 md:col-span-3 space-y-3">
                     <h4 class="text-xs font-mono text-accent uppercase tracking-widest">Navigate</h4>
                     <ul class="space-y-2 text-xs text-muted">
-                        <li><a href="#home" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Home</a></li>
-                        <li><a href="#projects" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Projects</a></li>
-                        <li><a href="#skills" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Skills</a></li>
-                        <li><a href="#about" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">About</a></li>
-                        <li><a href="#journey" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Journey</a></li>
-                        <li><a href="#contact" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Contact</a></li>
+                        <li><a href="#home"
+                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Home</a>
+                        </li>
+                        <li><a href="#projects"
+                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Projects</a>
+                        </li>
+                        <li><a href="#skills"
+                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Skills</a>
+                        </li>
+                        <li><a href="#about"
+                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">About</a>
+                        </li>
+                        <li><a href="#journey"
+                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Journey</a>
+                        </li>
+                        <li><a href="#contact"
+                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Contact</a>
+                        </li>
                     </ul>
                 </div>
- 
+
                 <div class="col-span-1 md:col-span-3 space-y-3">
                     <h4 class="text-xs font-mono text-accent uppercase tracking-widest">More</h4>
                     <ul class="space-y-2 text-xs text-muted">
-                        <li><a href="#skills" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Skills Matrix</a>
+                        <li><a href="#skills"
+                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Skills
+                                Matrix</a>
                         </li>
-                        <li><a href="#journey" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Journey Log</a>
+                        <li><a href="#journey"
+                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Journey
+                                Log</a>
                         </li>
-                        <li><a href="#about" class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Coding Profiles</a>
+                        <li><a href="#about"
+                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Coding
+                                Profiles</a>
                         </li>
                         <li><a href="html/finpulseai-details.html"
-                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">FinPulse AI Showcase</a></li>
+                                class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">FinPulse
+                                AI Showcase</a></li>
                     </ul>
                 </div>
             </div>
- 
+
             <div
                 class="border-t border-borderSpec/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-[10px] font-mono text-muted">
                 <p>&copy; 2026 Vansh Thakur. Redesigned, fluid, and high-performance.</p>
-                <button id="footer-totop" class="hover:text-white active:text-white focus:text-white transition-colors flex items-center gap-1">
+                <button id="footer-totop"
+                    class="hover:text-white active:text-white focus:text-white transition-colors flex items-center gap-1">
                     &uarr; Back to top
                 </button>
             </div>

@@ -299,31 +299,67 @@
         <!-- 5. ARCHITECTURE LAYER DESIGN -->
         <section id="architecture" class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">04 // SYSTEM
-                    INFRASTRUCTURE</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Full-Stack Functional Architecture
-                </h2>
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">04 // SYSTEM INFRASTRUCTURE</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Full-Stack Functional Architecture</h2>
             </div>
-            <div class="glass-panel p-8 rounded-2xl border border-borderSpec">
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center text-center font-mono text-xs">
-                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
-                        <span class="text-primary block font-bold mb-1">CLIENT PERSISTENCE</span>
-                        React Context & LocalState Nodes
+            <div class="glass-panel p-8 rounded-2xl border border-borderSpec relative overflow-hidden">
+                <!-- Visual Node Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-11 gap-6 items-center">
+                    
+                    <!-- Node 1: Frontend Workspace -->
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                        <div class="absolute top-3 right-3 text-[9px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">Frontend</div>
+                        <span class="text-xs font-mono text-muted block mb-1">UI Layer</span>
+                        <h4 class="text-md font-display font-bold text-white mb-2">React Interface</h4>
+                        <ul class="text-[11px] text-zinc-400 space-y-1 font-mono">
+                            <li>• Context State Caches</li>
+                            <li>• Tracking Input Panels</li>
+                            <li>• Telemetry View Node</li>
+                        </ul>
                     </div>
-                    <div class="text-primary font-bold rotate-90 md:rotate-0">➔</div>
-                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
-                        <span class="text-accent block font-bold mb-1">ROUTING ROUTERS</span>
-                        REST Request Middleware Controllers
+                    
+                    <!-- Arrow 1 -->
+                    <div class="lg:col-span-1 flex flex-col items-center justify-center font-bold text-primary text-xl">
+                        <span class="hidden lg:block">➔</span>
+                        <span class="lg:hidden rotate-90 my-2 block">➔</span>
+                        <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest mt-1">REST</span>
                     </div>
-                    <div class="text-accent font-bold rotate-90 md:rotate-0">➔</div>
-                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
-                        <span class="text-acc3 block font-bold mb-1">RELATIONAL MATRIX</span>
-                        PostgreSQL Normalized Index Pools
+                    
+                    <!-- Node 2: Routing Middleware -->
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                        <div class="absolute top-3 right-3 text-[9px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full">API Engine</div>
+                        <span class="text-xs font-mono text-accent block mb-1">Controller Layer</span>
+                        <h4 class="text-md font-display font-bold text-white mb-2">Express Controllers</h4>
+                        <ul class="text-[11px] text-zinc-400 space-y-1 font-mono">
+                            <li>• Request Sanitizers</li>
+                            <li>• Validation Loops</li>
+                            <li>• Query Middleware</li>
+                        </ul>
                     </div>
+                    
+                    <!-- Arrow 2 -->
+                    <div class="lg:col-span-1 flex flex-col items-center justify-center font-bold text-accent text-xl">
+                        <span class="hidden lg:block">➔</span>
+                        <span class="lg:hidden rotate-90 my-2 block">➔</span>
+                        <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest mt-1">Query</span>
+                    </div>
+                    
+                    <!-- Node 3: PostgreSQL Database -->
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                        <div class="absolute top-3 right-3 text-[9px] font-mono text-acc3 bg-acc3/10 border border-acc3/20 px-2 py-0.5 rounded-full">Storage</div>
+                        <span class="text-xs font-mono text-acc3 block mb-1">Database Layer</span>
+                        <h4 class="text-md font-display font-bold text-white mb-2">PostgreSQL Matrix</h4>
+                        <ul class="text-[11px] text-zinc-400 space-y-1 font-mono">
+                            <li>• Normalized Schemas</li>
+                            <li>• Index Target Pools</li>
+                            <li>• Relational Integrity</li>
+                        </ul>
+                    </div>
+                    
                 </div>
-                <p class="mt-6 text-xs font-mono text-muted text-center max-w-2xl mx-auto">
-                    Data updates pass cleanly through validation filters, securing infrastructure queries and
-                    maintaining instantaneous state transformations.
+                
+                <p class="mt-8 text-xs font-mono text-muted text-center max-w-2xl mx-auto border-t border-borderSpec/30 pt-4">
+                    Data updates pass through validation filters securely, committing transactional telemetry updates directly to PostgreSQL relational indexes with minimal processing overhead.
                 </p>
             </div>
         </section>

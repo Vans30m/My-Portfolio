@@ -301,30 +301,67 @@
         <!-- 5. ARCHITECTURE LAYER DESIGN -->
         <section id="architecture" class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">04 // SYSTEM
-                    INFRASTRUCTURE</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">In-Memory Functional Topology</h2>
+                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">04 // SYSTEM INFRASTRUCTURE</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Stream Intelligent Pipeline</h2>
             </div>
-            <div class="glass-panel p-8 rounded-2xl border border-borderSpec">
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center text-center font-mono text-xs">
-                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
-                        <span class="text-primary block font-bold mb-1">STREAM INGESTION</span>
-                        Raw Stream Feeds & Buffer Rings
+            <div class="glass-panel p-8 rounded-2xl border border-borderSpec relative overflow-hidden">
+                <!-- Visual Node Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-11 gap-6 items-center">
+                    
+                    <!-- Node 1: Ingestion Ring -->
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                        <div class="absolute top-3 right-3 text-[9px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">Ingest</div>
+                        <span class="text-xs font-mono text-muted block mb-1">Queue Layer</span>
+                        <h4 class="text-md font-display font-bold text-white mb-2">Stream Ingestion</h4>
+                        <ul class="text-[11px] text-zinc-400 space-y-1 font-mono">
+                            <li>• Ledger Stream Feeds</li>
+                            <li>• Memory Ring Buffers</li>
+                            <li>• Data Sanitization Loop</li>
+                        </ul>
                     </div>
-                    <div class="text-primary font-bold rotate-90 md:rotate-0">➔</div>
-                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
-                        <span class="text-accent block font-bold mb-1">AI PARSING ENGINE</span>
-                        Semantic Embedding & Risk Sorting
+                    
+                    <!-- Arrow 1 -->
+                    <div class="lg:col-span-1 flex flex-col items-center justify-center font-bold text-primary text-xl">
+                        <span class="hidden lg:block">➔</span>
+                        <span class="lg:hidden rotate-90 my-2 block">➔</span>
+                        <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest mt-1">Concur</span>
                     </div>
-                    <div class="text-accent font-bold rotate-90 md:rotate-0">➔</div>
-                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
-                        <span class="text-acc3 block font-bold mb-1">TELEMETRY WINDOW</span>
-                        JSON REST Payload & Sockets Display
+                    
+                    <!-- Node 2: AI Parser -->
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                        <div class="absolute top-3 right-3 text-[9px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full">AI Core</div>
+                        <span class="text-xs font-mono text-accent block mb-1">Process Layer</span>
+                        <h4 class="text-md font-display font-bold text-white mb-2">AI Parsing Engine</h4>
+                        <ul class="text-[11px] text-zinc-400 space-y-1 font-mono">
+                            <li>• Semantic Embedder</li>
+                            <li>• Risk Scoring Logic</li>
+                            <li>• Anomaly Detection</li>
+                        </ul>
                     </div>
+                    
+                    <!-- Arrow 2 -->
+                    <div class="lg:col-span-1 flex flex-col items-center justify-center font-bold text-accent text-xl">
+                        <span class="hidden lg:block">➔</span>
+                        <span class="lg:hidden rotate-90 my-2 block">➔</span>
+                        <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest mt-1">Render</span>
+                    </div>
+                    
+                    <!-- Node 3: Viewport -->
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                        <div class="absolute top-3 right-3 text-[9px] font-mono text-acc3 bg-acc3/10 border border-acc3/20 px-2 py-0.5 rounded-full">Render</div>
+                        <span class="text-xs font-mono text-acc3 block mb-1">Display Layer</span>
+                        <h4 class="text-md font-display font-bold text-white mb-2">Telemetry Viewport</h4>
+                        <ul class="text-[11px] text-zinc-400 space-y-1 font-mono">
+                            <li>• JSON REST Payload</li>
+                            <li>• Smooth Flow Graphs</li>
+                            <li>• Alarm Alerts Grid</li>
+                        </ul>
+                    </div>
+                    
                 </div>
-                <p class="mt-6 text-xs font-mono text-muted text-center max-w-2xl mx-auto">
-                    Data pipelines organize heavy transaction events concurrently, calculating risk metrics instantly
-                    while keeping layout frame counts completely continuous.
+                
+                <p class="mt-8 text-xs font-mono text-muted text-center max-w-2xl mx-auto border-t border-borderSpec/30 pt-4">
+                    Data pipelines ingest high-volume transaction entries concurrently, applying semantic models to filter risk alerts and routing JSON telemetry payloads under 42ms end-to-end.
                 </p>
             </div>
         </section>

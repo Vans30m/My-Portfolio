@@ -538,44 +538,69 @@
         <!-- 6 & 7. ARROW-LINKED DATA PATHS -->
         <section class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">05 // SIGNAL
-                    COHERENCE</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Firmware & System Architecture
-                </h2>
+                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">05 // SIGNAL COHERENCE</span>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Firmware & System Architecture</h2>
             </div>
 
-            <div class="bentocard-blueprint p-8">
-                <h3 class="text-xs font-mono font-bold text-white mb-6 uppercase tracking-wider text-center">System Data
-                    Processing Loop</h3>
-
-                <div class="grid grid-cols-1 md:grid-cols-7 gap-4 items-center text-center font-mono text-xs">
-                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
-                        <span class="text-accent block font-bold mb-1">DATA SUBSTRATE</span>
-                        HC-SR04 & IR Diode Array Inputs
+            <div class="bentocard-blueprint p-8 rounded-2xl relative overflow-hidden">
+                <!-- Visual Node Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-11 gap-6 items-center">
+                    
+                    <!-- Node 1: Sensor Substrate -->
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                        <div class="absolute top-3 right-3 text-[9px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">Telemetry</div>
+                        <span class="text-xs font-mono text-muted block mb-1">Inputs Layer</span>
+                        <h4 class="text-md font-display font-bold text-white mb-2">Sensor Array</h4>
+                        <ul class="text-[11px] text-zinc-400 space-y-1 font-mono font-light">
+                            <li>• Sonar Echo Pins</li>
+                            <li>• IR Proximity Status</li>
+                            <li>• Interrupt Buffers</li>
+                        </ul>
                     </div>
-                    <div class="text-accent font-bold rotate-90 md:rotate-0">➔</div>
-                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
-                        <span class="text-primary block font-bold mb-1">DEBOUNCE FILTER</span>
-                        Register Validation & Pin Buffering
+                    
+                    <!-- Arrow 1 -->
+                    <div class="lg:col-span-1 flex flex-col items-center justify-center font-bold text-primary text-xl">
+                        <span class="hidden lg:block">➔</span>
+                        <span class="lg:hidden rotate-90 my-2 block">➔</span>
+                        <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest mt-1">Polling</span>
                     </div>
-                    <div class="text-primary font-bold rotate-90 md:rotate-0">➔</div>
-                    <div class="p-4 rounded-xl bg-bgMain border border-borderSpec text-textMain">
-                        <span class="text-acc3 block font-bold mb-1">STATE CONTROL</span>
-                        Dynamic Direction Pathfinding Trees
+                    
+                    <!-- Node 2: AVR Processor -->
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                        <div class="absolute top-3 right-3 text-[9px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full">Firmware</div>
+                        <span class="text-xs font-mono text-accent block mb-1">Decision Layer</span>
+                        <h4 class="text-md font-display font-bold text-white mb-2">ATmega328P Core</h4>
+                        <ul class="text-[11px] text-zinc-400 space-y-1 font-mono font-light">
+                            <li>• Debounce Registers</li>
+                            <li>• Non-Blocking State Loop</li>
+                            <li>• Duty Cycle Maps</li>
+                        </ul>
                     </div>
-                    <div class="text-acc3 font-bold rotate-90 md:rotate-0">➔</div>
-                    <div class="p-4 rounded-xl bg-bgMain border border-accent/30 text-white">
-                        <span class="text-accent block font-bold mb-1">ACTUATION LINE</span>
-                        PWM Duty Cycles dispatched to H-Bridge
+                    
+                    <!-- Arrow 2 -->
+                    <div class="lg:col-span-1 flex flex-col items-center justify-center font-bold text-accent text-xl">
+                        <span class="hidden lg:block">➔</span>
+                        <span class="lg:hidden rotate-90 my-2 block">➔</span>
+                        <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest mt-1">Disptch</span>
                     </div>
+                    
+                    <!-- Node 3: H-Bridge Actuation -->
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                        <div class="absolute top-3 right-3 text-[9px] font-mono text-acc3 bg-acc3/10 border border-acc3/20 px-2 py-0.5 rounded-full">Motors</div>
+                        <span class="text-xs font-mono text-acc3 block mb-1">Actuator Layer</span>
+                        <h4 class="text-md font-display font-bold text-white mb-2">H-Bridge Drive</h4>
+                        <ul class="text-[11px] text-zinc-400 space-y-1 font-mono font-light">
+                            <li>• Isolated H-Bridge</li>
+                            <li>• PWM Speed Drivers</li>
+                            <li>• Differential Motors</li>
+                        </ul>
+                    </div>
+                    
                 </div>
-
-                <div
-                    class="mt-8 pt-6 border-t border-borderSpec/40 text-muted text-xs font-light max-w-3xl mx-auto leading-relaxed">
-                    <strong>Architectural Logic Strategy:</strong> The device software relies entirely on asynchronous
-                    tracking windows. This design bypasses heavy operating system layers, guaranteeing responsive motor
-                    speed corrections when obstacles are detected.
-                </div>
+                
+                <p class="mt-8 text-xs font-mono text-muted text-center max-w-2xl mx-auto border-t border-borderSpec/30 pt-4">
+                    The software relies on asynchronous timing loops, checking sensors continuously and updating motor speeds via PWM duty cycles.
+                </p>
             </div>
         </section>
 
@@ -1100,30 +1125,89 @@
                 telemetryDistance.innerText = `${cm} cm`;
             };
 
-            const stepSimulation = () => {
-                // Check cell ahead
-                const nextX = robotPos.x + direction.x;
-                const nextY = robotPos.y + direction.y;
-
-                if (nextX < 0 || nextX >= 10 || nextY < 0 || nextY >= 10 || grid[nextY][nextX] === 'obstacle') {
-                    // Obstacle avoidance trigger! Rotate clockwise
-                    logFirmware(`OBSTACLE_AVOIDANCE: Sensor range low. Re-routing.`);
-
-                    // Rotate direction: (x, y) -> (-y, x) clockwise
-                    const newDx = -direction.y;
-                    const newDy = direction.x;
-                    direction = { x: newDx, y: newDy };
-
-                    logFirmware(`MOTORS: Rotating clockwise.`);
-                } else {
-                    // Move forward
-                    robotPos = { x: nextX, y: nextY };
-                    if (grid[robotPos.y][robotPos.x] === 'dirty') {
-                        grid[robotPos.y][robotPos.x] = 'cleaned';
-                        logFirmware(`SWEEPING: Cleaned cell [${robotPos.x}, ${robotPos.y}]`);
+            const findShortestPathToNearestDirty = (start) => {
+                const queue = [[start]];
+                const visited = new Set();
+                visited.add(`${start.x},${start.y}`);
+                
+                while (queue.length > 0) {
+                    const path = queue.shift();
+                    const current = path[path.length - 1];
+                    
+                    if (grid[current.y][current.x] === 'dirty') {
+                        return path;
+                    }
+                    
+                    const dirs = [
+                        { x: 0, y: -1 }, // North
+                        { x: 1, y: 0 },  // East
+                        { x: 0, y: 1 },  // South
+                        { x: -1, y: 0 }  // West
+                    ];
+                    
+                    for (const d of dirs) {
+                        const nx = current.x + d.x;
+                        const ny = current.y + d.y;
+                        if (nx >= 0 && nx < 10 && ny >= 0 && ny < 10 && grid[ny][nx] !== 'obstacle') {
+                            const key = `${nx},${ny}`;
+                            if (!visited.has(key)) {
+                                visited.add(key);
+                                queue.push([...path, { x: nx, y: ny }]);
+                            }
+                        }
                     }
                 }
+                return null;
+            };
 
+            const stepSimulation = () => {
+                // Look at 4 neighbors of robotPos
+                const dirs = [
+                    { x: direction.x, y: direction.y }, // Prioritize current direction
+                    { x: 0, y: -1 }, // North
+                    { x: 1, y: 0 },  // East
+                    { x: 0, y: 1 },  // South
+                    { x: -1, y: 0 }  // West
+                ];
+                
+                let targetNeighbor = null;
+                
+                // Find a dirty neighbor
+                for (const d of dirs) {
+                    const nx = robotPos.x + d.x;
+                    const ny = robotPos.y + d.y;
+                    if (nx >= 0 && nx < 10 && ny >= 0 && ny < 10 && grid[ny][nx] === 'dirty') {
+                        targetNeighbor = { x: nx, y: ny, dx: d.x, dy: d.y };
+                        break;
+                    }
+                }
+                
+                if (targetNeighbor) {
+                    // Move to dirty neighbor
+                    direction = { x: targetNeighbor.dx, y: targetNeighbor.dy };
+                    robotPos = { x: targetNeighbor.x, y: targetNeighbor.y };
+                    grid[robotPos.y][robotPos.x] = 'cleaned';
+                    logFirmware(`SWEEPING: Cleaned cell [${robotPos.x}, ${robotPos.y}]`);
+                } else {
+                    // No dirty neighbors around. Find path to nearest dirty cell in the grid
+                    const path = findShortestPathToNearestDirty(robotPos);
+                    if (path && path.length > 1) {
+                        // Move to the next cell in the path (which is already cleaned, but leads to a dirty one)
+                        const nextStep = path[1];
+                        direction = { x: nextStep.x - robotPos.x, y: nextStep.y - robotPos.y };
+                        robotPos = { x: nextStep.x, y: nextStep.y };
+                        logFirmware(`REROUTING: Backtracking to [${robotPos.x}, ${robotPos.y}]`);
+                    } else {
+                        // No dirty cells reachable at all
+                        clearInterval(runInterval);
+                        isRunning = false;
+                        simRunBtn.innerText = 'START PATHFINDING';
+                        simRunBtn.classList.remove('bg-zinc-800', 'text-white');
+                        simRunBtn.classList.add('bg-accent', 'text-bgMain');
+                        logFirmware("COVERAGE COMPLETED: All reachable areas cleaned.");
+                    }
+                }
+                
                 renderGrid();
             };
 
