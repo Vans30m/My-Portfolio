@@ -1060,9 +1060,6 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: 'nav-journey', title: 'Journey Log', desc: 'View academic & coding timeline', url: '#journey', category: 'Navigation', icon: 'fa-road', shortcut: '↵' },
             { id: 'nav-contact', title: 'Contact', desc: 'Get in touch / hire me', url: '#contact', category: 'Navigation', icon: 'fa-envelope', shortcut: '↵' },
 
-            { id: 'proj-finpulse', title: 'FinPulse AI Case Study', desc: 'Intelligent real-time transaction streams', url: 'html/finpulseai-details.html', category: 'Case Studies', icon: 'fa-file-invoice-dollar', shortcut: '↗' },
-            { id: 'proj-focusora', title: 'FocusoraHQ Case Study', desc: 'Unified productivity dashboard', url: 'html/focusorahq-details.html', category: 'Case Studies', icon: 'fa-circle-check', shortcut: '↗' },
-            { id: 'proj-fitness', title: 'Fitness Planet Case Study', desc: 'Fitness workout planner app', url: 'html/fitnessplanet-details.html', category: 'Case Studies', icon: 'fa-dumbbell', shortcut: '↗' },
             { id: 'proj-piezo', title: 'Piezoelectric Floor Case Study', desc: 'Energy harvesting floor design', url: 'html/piezoelectric-details.html', category: 'Case Studies', icon: 'fa-plug', shortcut: '↗' },
             { id: 'proj-floor', title: 'Floor Cleaning Robot Case Study', desc: 'Autonomous Arduino cleaner', url: 'html/floorcleaning-details.html', category: 'Case Studies', icon: 'fa-robot', shortcut: '↗' },
 
@@ -1319,7 +1316,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             Software Engineer specializing in full-stack architectures and AI integrations. Focused on designing high-performance systems with modern web standards and concurrent analytics. Ready for SWE placements in 2026.
                         </p>
                         <div class="recruiter-btn-group">
-                            <a href="assets/resume me.pdf" class="recruiter-resume-btn" download="Vansh_Thakur_Resume.pdf">
+                            <a href="assets/resume me - Main till now.pdf" class="recruiter-resume-btn" download="Vansh_Thakur_Resume.pdf">
                                 <i class="fa-solid fa-file-pdf"></i> Download Resume (PDF)
                             </a>
                         </div>
@@ -1350,11 +1347,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="recruiter-pitch-title" style="margin-bottom: 8px; display: block;">Core Tech</span>
                             <div class="recruiter-skills-list">
                                 <span class="recruiter-skill-tag">JavaScript / TS</span>
-                                <span class="recruiter-skill-tag">Next.js / React</span>
+                                <span class="recruiter-skill-tag">React</span>
                                 <span class="recruiter-skill-tag">Node.js</span>
                                 <span class="recruiter-skill-tag">Python</span>
                                 <span class="recruiter-skill-tag">PostgreSQL</span>
-                                <span class="recruiter-skill-tag">Docker</span>
                             </div>
                         </div>
                     </div>

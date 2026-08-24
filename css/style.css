@@ -456,11 +456,6 @@ picture {
     filter: drop-shadow(0 0 10px rgba(97, 218, 251, 0.6));
 }
 
-.hero-tech-icons .devicon-nextjs-plain:hover {
-    color: #ffffff;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
-}
-
 .hero-tech-icons .devicon-nodejs-plain:hover {
     color: #339933;
     filter: drop-shadow(0 0 10px rgba(51, 153, 51, 0.6));
@@ -479,11 +474,6 @@ picture {
 .hero-tech-icons .devicon-mongodb-plain:hover {
     color: #47A248;
     filter: drop-shadow(0 0 10px rgba(71, 162, 72, 0.6));
-}
-
-.hero-tech-icons .devicon-docker-plain:hover {
-    color: #2496ED;
-    filter: drop-shadow(0 0 10px rgba(36, 150, 237, 0.6));
 }
 
 .hero-tech-icons .devicon-github-original:hover {
@@ -583,11 +573,6 @@ picture {
     border-color: rgba(97, 218, 251, 0.35);
 }
 
-.techtile:has(.devicon-nextjs-plain):hover {
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.25);
-}
-
 .techtile:has(.devicon-nodejs-plain):hover {
     box-shadow: 0 4px 20px rgba(51, 153, 51, 0.2);
     border-color: rgba(51, 153, 51, 0.35);
@@ -608,16 +593,6 @@ picture {
     border-color: rgba(71, 162, 72, 0.35);
 }
 
-.techtile:has(.devicon-redis-plain):hover {
-    box-shadow: 0 4px 20px rgba(220, 62, 44, 0.2);
-    border-color: rgba(220, 62, 44, 0.35);
-}
-
-.techtile:has(.devicon-docker-plain):hover {
-    box-shadow: 0 4px 20px rgba(36, 150, 237, 0.2);
-    border-color: rgba(36, 150, 237, 0.35);
-}
-
 .techtile:has(.devicon-git-plain):hover {
     box-shadow: 0 4px 20px rgba(240, 80, 50, 0.2);
     border-color: rgba(240, 80, 50, 0.35);
@@ -626,11 +601,6 @@ picture {
 .techtile:has(.devicon-figma-plain):hover {
     box-shadow: 0 4px 20px rgba(162, 89, 255, 0.2);
     border-color: rgba(162, 89, 255, 0.35);
-}
-
-.techtile:has(.devicon-graphql-plain):hover {
-    box-shadow: 0 4px 20px rgba(225, 0, 152, 0.2);
-    border-color: rgba(225, 0, 152, 0.35);
 }
 
 /* ==========================================================================
@@ -1016,10 +986,21 @@ picture {
     background: rgba(20, 20, 22, 0.85);
     border: 1px solid var(--border-spec);
     color: var(--text-main);
-    padding: 0.65rem 1.25rem;
+    padding: 0.5rem 0.9rem;
     border-radius: 0.75rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
     transition: all 0.3s ease;
+}
+
+@media (min-width: 640px) {
+    .learning-chip {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.85rem;
+    }
 }
 
 .learning-chip:hover {
@@ -1360,11 +1341,6 @@ picture {
     box-shadow: 0 0 15px rgba(97, 218, 251, 0.2);
 }
 
-.tech-stack-tile[data-tech="nextjs"]:hover {
-    border-color: #ffffff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
-}
-
 .tech-stack-tile[data-tech="nodejs"]:hover {
     border-color: #339933;
     box-shadow: 0 0 15px rgba(51, 153, 51, 0.15);
@@ -1385,9 +1361,19 @@ picture {
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
 }
 
-.tech-stack-tile[data-tech="python"]:hover {
-    border-color: #3776ab;
-    box-shadow: 0 0 15px rgba(55, 118, 171, 0.2);
+.tech-stack-tile[data-tech="javascript"]:hover {
+    border-color: #f7df1e;
+    box-shadow: 0 0 15px rgba(247, 223, 30, 0.2);
+}
+
+.tech-stack-tile[data-tech="postgresql"]:hover {
+    border-color: #4169e1;
+    box-shadow: 0 0 15px rgba(65, 105, 225, 0.2);
+}
+
+.tech-stack-tile[data-tech="java"]:hover {
+    border-color: #ea2d2e;
+    box-shadow: 0 0 15px rgba(234, 45, 46, 0.2);
 }
 
 .tech-stack-tile[data-tech="github"]:hover {
@@ -1402,11 +1388,6 @@ picture {
 .tech-stack-tile[data-tech="git"]:hover {
     border-color: #f05032;
     box-shadow: 0 0 15px rgba(240, 80, 50, 0.2);
-}
-
-.tech-stack-tile[data-tech="docker"]:hover {
-    border-color: #2496ed;
-    box-shadow: 0 0 15px rgba(36, 150, 237, 0.2);
 }
 
 .tech-stack-tile[data-tech="cpp"]:hover {

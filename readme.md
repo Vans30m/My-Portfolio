@@ -24,9 +24,6 @@ Welcome to the official repository of my premium developer portfolio. Designed w
 │   └── responsive.css       # Mobile-first layouts and viewport overrides
 ├── html/
 │   ├── index.html           # Principal bento-grid dashboard structure
-│   ├── finpulseai-details.html    # Deep dive: AI financial mapping platform
-│   ├── focusorahq-details.html    # Deep dive: Live WebSocket focus space
-│   ├── fitnessplanet-details.html # Deep dive: Telemetry fitness tracking
 │   ├── floorcleaning-details.html # Deep dive: ROS autonomous firmware
 │   └── piezoelectric-details.html # Deep dive: Microgrid energy harvesting
 └── js/
@@ -52,19 +49,22 @@ Welcome to the official repository of my premium developer portfolio. Designed w
 
 ## 💻 Projects Highlighted
 
-1.  **[FinPulse AI](html/finpulseai-details.html) (System 01 - In Development)**
+1.  **FinPulse AI (System 01 - In Development)**
     *   *Role:* AI Full Stack Developer
     *   *Description:* High-speed financial tracking platform utilizing semantic models to map, analyze, and categorize real-time data flows.
-2.  **[FocusoraHQ](html/focusorahq-details.html) (System 02 - Live)**
-    *   *Role:* Next.js & WebSocket Developer
+2.  **[Xplorism](https://xplorism.vercel.app) (System 02 - Live)**
+    *   *Role:* Full-Stack AI Developer
+    *   *Description:* AI-assisted travel & hotel booking ecosystem featuring real-time room availability, interactive mapping, dynamic pricing, and instant itinerary generation.
+3.  **FocusoraHQ (System 03 - Live)**
+    *   *Role:* React & WebSocket Developer
     *   *Description:* Unified, high-performance focus workspace and productivity dashboard featuring synchronized real-time sessions.
-3.  **[Fitness Planet](html/fitnessplanet-details.html) (System 03 - Live)**
-    *   *Role:* React & PostgreSQL Developer
+4.  **Fitness Planet (System 04 - Live)**
+    *   *Role:* Web Developer
     *   *Description:* Robust workout tracker and fitness telemetry dashboard to collect user metrics and render progress indicator arrays.
-4.  **[Autonomous Floor Robot](html/floorcleaning-details.html) (System 04 - Hardware)**
+5.  **[Autonomous Floor Robot](html/floorcleaning-details.html) (System 05 - Hardware)**
     *   *Role:* Firmware Engineer (C++ & ROS)
     *   *Description:* Intelligent pathfinding firmware stack for obstacle-avoiding autonomous cleaning robots utilizing sensor fusion.
-5.  **[Piezoelectric Plates](html/piezoelectric-details.html) (System 05 - Hardware)**
+6.  **[Piezoelectric Plates](html/piezoelectric-details.html) (System 06 - Hardware)**
     *   *Role:* Embedded Systems Developer (Embedded C)
     *   *Description:* Microgrid voltage harvesting telemetry network monitoring energy generation from piezoelectric sensors.
 
