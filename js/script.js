@@ -1290,7 +1290,6 @@ document.addEventListener('DOMContentLoaded', () => {
         pill.id = 'recruiter-pill';
         pill.setAttribute('aria-label', 'Open Recruiter Mode');
         pill.innerHTML = `
-            <span class="recruiter-pill-dot"></span>
             <span>Recruiter Mode <kbd style="margin-left: 4px; opacity: 0.6; font-size: 9px; font-weight: normal; background: rgba(255,255,255,0.08); padding: 1px 3px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.1);">R</kbd></span>
         `;
         document.body.appendChild(pill);
@@ -1304,7 +1303,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="recruiter-modal" role="dialog" aria-modal="true" aria-labelledby="recruiter-modal-title">
                 <div class="recruiter-header">
                     <div class="recruiter-title-group">
-                        <span class="recruiter-badge">⚡ Quick Evaluation</span>
                         <h2 class="recruiter-title" id="recruiter-modal-title">Vansh Thakur Summary</h2>
                     </div>
                     <button class="recruiter-close" id="recruiter-close-btn" aria-label="Close Recruiter Mode">&times;</button>
@@ -1326,20 +1324,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="recruiter-pitch-title" style="margin-bottom: 8px; display: block;">Key Metrics</span>
                             <div class="recruiter-stats-grid">
                                 <div class="recruiter-stat-card">
+                                    <i class="fa-solid fa-terminal recruiter-stat-icon"></i>
                                     <span class="recruiter-stat-val">250+</span>
                                     <span class="recruiter-stat-lbl">LeetCode</span>
                                 </div>
                                 <div class="recruiter-stat-card">
+                                    <i class="fa-solid fa-code-commit recruiter-stat-icon"></i>
                                     <span class="recruiter-stat-val">35</span>
                                     <span class="recruiter-stat-lbl">Commits / Mo</span>
                                 </div>
                                 <div class="recruiter-stat-card">
+                                    <i class="fa-solid fa-laptop-code recruiter-stat-icon"></i>
                                     <span class="recruiter-stat-val">5</span>
                                     <span class="recruiter-stat-lbl">Projects</span>
-                                </div>
-                                <div class="recruiter-stat-card">
-                                    <span class="recruiter-stat-val">&lt; 42ms</span>
-                                    <span class="recruiter-stat-lbl">AI Latency</span>
                                 </div>
                             </div>
                         </div>
@@ -1349,7 +1346,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="recruiter-skill-tag">JavaScript / TS</span>
                                 <span class="recruiter-skill-tag">React</span>
                                 <span class="recruiter-skill-tag">Node.js</span>
-                                <span class="recruiter-skill-tag">Python</span>
+                                <span class="recruiter-skill-tag">Java</span>
                                 <span class="recruiter-skill-tag">PostgreSQL</span>
                             </div>
                         </div>
