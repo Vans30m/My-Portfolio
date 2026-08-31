@@ -622,7 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Scroll listener to handle seamless loop wrapping in BOTH directions
         carouselContainer.addEventListener('scroll', () => {
             if (isSmoothScrolling) return; // Do not interrupt smooth scrolling animations
-            
+
             // If user is actively scrolling or container is decelerating, push back resume time
             if (isInteracting) {
                 resumeAfterDelay();
@@ -1118,8 +1118,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const renderResults = () => {
             const query = input.value.trim().toLowerCase();
             if (query) {
-                filteredItems = items.filter(item => 
-                    item.title.toLowerCase().includes(query) || 
+                filteredItems = items.filter(item =>
+                    item.title.toLowerCase().includes(query) ||
                     item.desc.toLowerCase().includes(query) ||
                     item.category.toLowerCase().includes(query)
                 );
@@ -1314,7 +1314,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             Software Engineer specializing in full-stack architectures and AI integrations. Focused on designing high-performance systems with modern web standards and concurrent analytics. Ready for SWE placements in 2026.
                         </p>
                         <div class="recruiter-btn-group">
-                            <a href="assets/resume me - Main till now.pdf" class="recruiter-resume-btn" download="Vansh_Thakur_Resume.pdf">
+                            <a href="assets/resume me - Main till now (Improved).pdf" class="recruiter-resume-btn" download="Vansh_Thakur_Resume.pdf">
                                 <i class="fa-solid fa-file-pdf"></i> Download Resume (PDF)
                             </a>
                         </div>
