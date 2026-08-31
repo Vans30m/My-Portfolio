@@ -1314,7 +1314,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             Software Engineer specializing in full-stack architectures and AI integrations. Focused on designing high-performance systems with modern web standards and concurrent analytics. Ready for SWE placements in 2026.
                         </p>
                         <div class="recruiter-btn-group">
-                            <a href="assets/resume me - Main till now (Improved).pdf" class="recruiter-resume-btn" download="Vansh_Thakur_Resume.pdf">
+                            <a href="assets/Resume me - Main till now (Improved).pdf" class="recruiter-resume-btn" download="Vansh_Thakur_Resume.pdf">
                                 <i class="fa-solid fa-file-pdf"></i> Download Resume (PDF)
                             </a>
                         </div>
