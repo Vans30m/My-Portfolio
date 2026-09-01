@@ -6,14 +6,14 @@
 :root {
     --bg-main: #0B0B0C;
     --surface: rgba(20, 20, 22, 0.65);
-    --primary: #7C8CFF;
     /* Purple/Blue */
-    --accent: #55D6BE;
+    --primary: #7C8CFF;
     /* Teal */
-    --acc3: #E8A33D;
+    --accent: #55D6BE;
     /* Orange/Gold */
-    --acc4: #FF7A59;
+    --acc3: #E8A33D;
     /* Peach */
+    --acc4: #FF7A59;
     --text-main: #F4F2EE;
     --muted: #A1A1AA;
     --border-spec: rgba(255, 255, 255, 0.08);
