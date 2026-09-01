@@ -130,7 +130,7 @@ html {
 
 /* Hamburger animations */
 #menu-toggle.active .nav-bar-top {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: translateY(8px) rotate(45deg);
     background-color: var(--primary) !important;
 }
 
@@ -139,7 +139,7 @@ html {
 }
 
 #menu-toggle.active .nav-bar-bot {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: translateY(-8px) rotate(-45deg);
     background-color: var(--primary) !important;
 }
 
@@ -353,7 +353,20 @@ html {
     background: transparent !important;
     border: 0 !important;
     padding: 0 !important;
-    height: 220px;
+    height: 175px;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0.3s ease;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.flip:hover {
+    transform: translateY(-2px);
+}
+
+.flip.flipped {
+    transform: scale(1.06) translateY(-4px);
+    z-index: 10;
 }
 
 .flip-inner {
@@ -364,7 +377,7 @@ html {
     transform-style: preserve-3d;
 }
 
-.flip:hover .flip-inner {
+.flip.flipped .flip-inner {
     transform: rotateY(180deg);
 }
 
@@ -400,7 +413,7 @@ html {
     transition: transform 0.3s ease;
 }
 
-.flip:hover .flip-back .flip-arrow {
+.flip.flipped .flip-back .flip-arrow {
     transform: translate(3px, -3px);
 }
 
@@ -2314,11 +2327,12 @@ footer {
 .recruiter-modal {
     width: 100%;
     max-width: 720px;
+    max-height: 90vh;
+    overflow-y: auto;
     background: rgba(20, 20, 22, 0.94);
     border: 1px solid rgba(232, 163, 61, 0.25);
     border-radius: 20px;
     box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 0 50px rgba(232, 163, 61, 0.08);
-    overflow: hidden;
     transform: scale(0.95) translateY(10px);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     backdrop-filter: blur(20px);
@@ -2555,4 +2569,23 @@ footer {
     border: 1px solid var(--border-spec);
     padding: 2px 5px;
     border-radius: 4px;
+}
+
+@media (max-width: 520px) {
+    .recruiter-header {
+        padding: 16px 20px;
+    }
+    .recruiter-body {
+        padding: 20px;
+        gap: 16px;
+    }
+    .recruiter-footer {
+        padding: 14px 20px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    .recruiter-title {
+        font-size: 18px;
+    }
 }
