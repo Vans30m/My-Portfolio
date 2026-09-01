@@ -606,15 +606,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const setInteracting = (value) => {
             isInteracting = value;
-            if (value && interactionTimeout) {
-                clearTimeout(interactionTimeout);
+            if (value) {
+                if (interactionTimeout) {
+                    clearTimeout(interactionTimeout);
+                }
+                carouselContainer.style.scrollSnapType = 'x mandatory';
+            } else {
+                carouselContainer.style.scrollSnapType = 'none';
             }
         };
 
         const resumeAfterDelay = () => {
             if (interactionTimeout) clearTimeout(interactionTimeout);
             interactionTimeout = setTimeout(() => {
-                isInteracting = false;
+                setInteracting(false);
                 lastTime = performance.now(); // reset reference timestamp
             }, 1500); // Resume autoscroll after 1.5 seconds of inactivity
         };
@@ -793,6 +798,7 @@ document.addEventListener('DOMContentLoaded', () => {
             carouselContainer.scrollLeft = currentWidth; // Start at the second set of cards to enable wrapping immediately in both directions
             const _ = carouselContainer.offsetHeight; // force reflow
             carouselContainer.style.scrollBehavior = originalBehavior;
+            carouselContainer.style.scrollSnapType = isInteracting ? 'x mandatory' : 'none';
 
             lastTime = performance.now();
             animationFrameId = requestAnimationFrame(scrollLoop);
@@ -1051,6 +1057,15 @@ document.addEventListener('DOMContentLoaded', () => {
        Command Palette (Ctrl+K) Controller
        ========================================================================== */
     const initCommandPalette = () => {
+        // Disable search fully on smaller screens (mobile/tablet) and touch devices
+        const isMobileOrTablet = window.innerWidth < 768;
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+        if (isMobileOrTablet || isTouchDevice) {
+            const triggerBtn = document.getElementById('cmd-palette-btn');
+            if (triggerBtn) triggerBtn.style.display = 'none';
+            return;
+        }
+
         const items = [
             { id: 'nav-home', title: 'Home', desc: 'Go to the introduction section', url: '#home', category: 'Navigation', icon: 'fa-home', shortcut: '↵' },
             { id: 'nav-bento', title: 'Bento Dashboard', desc: 'Go to dashboard grid', url: '#bento-dashboard', category: 'Navigation', icon: 'fa-table-cells-large', shortcut: '↵' },
@@ -1176,16 +1191,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             resultsContainer.innerHTML = html;
 
-            // Bind click events to results
+            // Bind interactions to results instantly via mousedown and optimized class toggles
             const itemEls = resultsContainer.querySelectorAll('.cmd-palette-item');
             itemEls.forEach(el => {
-                el.addEventListener('click', () => {
+                el.addEventListener('mousedown', (e) => {
+                    e.preventDefault(); // Keep input focus
                     const idx = parseInt(el.getAttribute('data-index'), 10);
                     triggerAction(filteredItems[idx]);
                 });
                 el.addEventListener('mouseenter', () => {
                     activeIndex = parseInt(el.getAttribute('data-index'), 10);
-                    renderResults();
+                    resultsContainer.querySelectorAll('.cmd-palette-item.active').forEach(activeItem => {
+                        activeItem.classList.remove('active');
+                    });
+                    el.classList.add('active');
                 });
             });
 
@@ -1416,6 +1435,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    /* ==========================================================================
+       Coding Profiles Click-to-Flip Interaction
+       ========================================================================== */
+    const initCodingProfileFlips = () => {
+        const flipCards = document.querySelectorAll('.flip');
+        if (!flipCards.length) return;
+
+        flipCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Prevent click from propagating to the document body immediately
+                e.stopPropagation();
+
+                // Check if user clicked a link inside the card
+                const isLink = e.target.closest('a');
+                if (isLink) {
+                    // Let navigation proceed, then restore card to its place after a brief delay
+                    setTimeout(() => {
+                        card.classList.remove('flipped');
+                    }, 400);
+                    return;
+                }
+
+                // Toggle flipped state for this card
+                const isAlreadyFlipped = card.classList.contains('flipped');
+                
+                // Clear flipped state from all cards
+                flipCards.forEach(c => c.classList.remove('flipped'));
+
+                // If it wasn't flipped, flip it
+                if (!isAlreadyFlipped) {
+                    card.classList.add('flipped');
+                }
+            });
+        });
+
+        // Close any flipped cards when user clicks anywhere else on the document
+        document.addEventListener('click', () => {
+            flipCards.forEach(c => c.classList.remove('flipped'));
+        });
+    };
+
     initCommandPalette();
     initRecruiterMode();
+    initCodingProfileFlips();
 });
