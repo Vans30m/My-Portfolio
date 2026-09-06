@@ -73,9 +73,12 @@ picture {
 ::-webkit-scrollbar {
     display: none;
 }
+
 html {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
 }
 
 /* Navigation Bar Fixed Placement */
@@ -265,21 +268,6 @@ html {
     transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.35s, box-shadow 0.35s;
 }
 
-.bentocard::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.03), transparent 45%);
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.bentocard:hover::before {
-    opacity: 1;
-}
-
 .bentocard:hover {
     transform: translateY(-4px);
     border-color: rgba(255, 255, 255, 0.15);
@@ -302,21 +290,6 @@ html {
     transform: translateY(-4px);
     border-color: rgba(255, 255, 255, 0.15) !important;
     box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
-}
-
-.bento-card-dark::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.03), transparent 45%);
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.bento-card-dark:hover::before {
-    opacity: 1;
 }
 
 /* 
@@ -353,19 +326,19 @@ html {
     background: transparent !important;
     border: 0 !important;
     padding: 0 !important;
-    height: 175px;
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0.3s ease;
+    height: 250px;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0.3s ease;
     position: relative;
     z-index: 1;
     cursor: pointer;
 }
 
 .flip:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
 }
 
 .flip.flipped {
-    transform: scale(1.06) translateY(-4px);
+    transform: scale(1.03) translateY(-4px);
     z-index: 10;
 }
 
@@ -388,9 +361,16 @@ html {
     -webkit-backface-visibility: hidden;
     display: flex;
     border-radius: 1.25rem;
-    background: rgba(20, 20, 22, 0.85);
-    border: 1px solid var(--border-spec);
+    background: rgba(18, 18, 22, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flip:hover .flip-face {
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(124, 140, 255, 0.15);
 }
 
 .flip-front {
@@ -403,9 +383,8 @@ html {
     transform: rotateY(180deg);
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    background: #161618;
+    justify-content: space-between;
+    background: rgba(14, 14, 18, 0.95);
     padding: 1.5rem;
 }
 
@@ -1144,22 +1123,6 @@ html {
 .bento-card-dark>* {
     position: relative;
     z-index: 10;
-}
-
-.bento-card-dark::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(124, 140, 255, 0.06), transparent 45%);
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0;
-    border-radius: inherit;
-    transition: opacity 0.5s ease;
-}
-
-.bento-card-dark:hover::before {
-    opacity: 1;
 }
 
 .bento-card-dark:hover {
@@ -1960,45 +1923,7 @@ footer {
     }
 }
 
-/* Applied to any card that should get animated borders */
-.grad-border {
-    position: relative;
-    isolation: isolate;
-}
-
-.grad-border::after {
-    content: '';
-    position: absolute;
-    inset: -1.5px;
-    border-radius: inherit;
-    background: conic-gradient(from var(--grad-angle),
-            var(--primary) 0%,
-            var(--accent) 25%,
-            var(--acc3) 50%,
-            var(--primary) 75%,
-            var(--primary) 100%);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    /* Mask to only show border ring, not fill */
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    padding: 1.5px;
-}
-
-.grad-border:hover::after {
-    opacity: 1;
-    animation: borderSpin 3s linear infinite;
-}
-
-/* Carousel card variant — slightly thinner border */
-.carousel-card.grad-border::after {
-    inset: -1px;
-    padding: 1px;
-}
+/* Gradient border styles removed */
 
 /* ==========================================================================
    Card 3D Tilt with Cursor Tracking
@@ -2019,25 +1944,6 @@ footer {
     will-change: transform;
 }
 
-/* Specular highlight that follows cursor inside card */
-.tilt-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: radial-gradient(circle at var(--tilt-glow-x) var(--tilt-glow-y),
-            rgba(255, 255, 255, 0.06) 0%,
-            transparent 55%);
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.tilt-card:hover::before {
-    opacity: 1;
-}
-
 /* Smooth reset when mouse leaves */
 .tilt-card.tilt-resetting {
     transition:
@@ -2045,29 +1951,7 @@ footer {
         box-shadow 0.4s ease;
 }
 
-/* ==========================================================================
-   Mouse Spotlight Effect
-   ========================================================================== */
-#mouse-spotlight {
-    position: fixed;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
 
-    /* Radial spotlight centered at cursor via CSS custom props */
-    background: radial-gradient(600px circle at var(--spotlight-x, -9999px) var(--spotlight-y, -9999px),
-            rgba(124, 140, 255, 0.07) 0%,
-            rgba(85, 214, 190, 0.03) 35%,
-            transparent 70%);
-
-    /* Fade in smoothly on first move */
-    opacity: 0;
-    transition: opacity 0.6s ease;
-}
-
-#mouse-spotlight.visible {
-    opacity: 1;
-}
 
 /* ==========================================================================
    Command Palette Overlay & Elements
@@ -2283,7 +2167,8 @@ footer {
     background: rgba(20, 20, 22, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(232, 163, 61, 0.3); /* gold border */
+    border: 1px solid rgba(232, 163, 61, 0.3);
+    /* gold border */
     color: var(--text-main);
     padding: 10px 18px;
     border-radius: 999px;
@@ -2478,7 +2363,27 @@ footer {
 
 @media (max-width: 520px) {
     .recruiter-stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+
+    .recruiter-stat-card {
+        padding: 10px 4px;
+        gap: 3px;
+    }
+
+    .recruiter-stat-icon {
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+
+    .recruiter-stat-val {
+        font-size: 13px;
+    }
+
+    .recruiter-stat-lbl {
+        font-size: 7.5px;
+        letter-spacing: -0.2px;
     }
 }
 
@@ -2575,16 +2480,19 @@ footer {
     .recruiter-header {
         padding: 16px 20px;
     }
+
     .recruiter-body {
         padding: 20px;
         gap: 16px;
     }
+
     .recruiter-footer {
         padding: 14px 20px;
         flex-direction: column;
         gap: 8px;
         text-align: center;
     }
+
     .recruiter-title {
         font-size: 18px;
     }

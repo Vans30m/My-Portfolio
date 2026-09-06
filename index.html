@@ -69,9 +69,6 @@
         <div class="blob blob-4"></div>
     </div>
 
-    <!-- Mouse Spotlight Overlay -->
-    <div id="mouse-spotlight" aria-hidden="true"></div>
-
     <!-- Loading Screen Overlay -->
     <div id="loading-overlay" class="loader-overlay">
         <div class="loader">
@@ -160,7 +157,7 @@
             <div class="flex gap-4 pt-0.5">
                 <a href="https://github.com/Vans30m" target="_blank"
                     class="text-[11px] font-mono text-muted hover:text-white transition-colors">GitHub ↗</a>
-                <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
+                <a href="https://linkedin.com/in/vansh-thakur-vans30m/" target="_blank"
                     class="text-[11px] font-mono text-muted hover:text-white transition-colors">LinkedIn ↗</a>
             </div>
         </div>
@@ -272,7 +269,7 @@
                                     <a href="https://github.com/Vans30m" target="_blank"
                                         class="connect-icon github-connect"><i
                                             class="devicon-github-original text-base"></i></a>
-                                    <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
+                                    <a href="https://linkedin.com/in/vansh-thakur-vans30m/" target="_blank"
                                         class="connect-icon linkedin-connect"><i
                                             class="devicon-linkedin-plain text-base"></i></a>
                                     <a href="mailto:vthakur.290905@gmail.com" class="connect-icon google-connect"><i
@@ -471,7 +468,7 @@
         </section>
 
         <!-- Flagship Case Study Product Presentation (Featured Project Preview) -->
-        <section id="projects" class="relative max-w-[850px] mx-auto pt-6 md:pt-8">
+        <section id="projects" class="section-container">
             <div class="mb-12" data-aos="fade-up">
                 <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">// FLAGSHIP
                     PRODUCT</span>
@@ -483,29 +480,29 @@
             </div>
 
             <!-- Featured Bento Card -->
-            <div class="bentocard border-accent/20 hover:border-accent/40" data-aos="fade-up">
+            <div class="bentocard border-accent/30 hover:border-accent/50 p-6 sm:p-8 transition-all" data-aos="fade-up">
                 <div class="card-glow-wash glow-teal"></div>
                 <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <div class="lg:col-span-6 space-y-4">
                         <h4 class="text-xs font-mono text-accent uppercase tracking-wider">[ Featured Project Overview ]
                         </h4>
-                        <h3 class="text-2xl font-display font-bold text-white">Intelligent Stream Analytics</h3>
+                        <h3 class="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight">Intelligent Stream Analytics</h3>
                         <p class="text-sm text-muted leading-relaxed">
                             FinPulse AI layers intelligent data parsing right over standard transaction records,
                             dynamically tracking trends, categorizing risks, and mapping anomalies down to the
                             millisecond.
                         </p>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="skill-badge">Vanilla JS</span>
-                            <span class="skill-badge">Tailwind CSS</span>
-                            <span class="skill-badge">AI Models</span>
-                            <span class="skill-badge">REST API</span>
+                        <div class="flex flex-wrap gap-2 pt-3">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">TypeScript</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">React</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">Node</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">LLM APIs</span>
                         </div>
                     </div>
                     <div class="lg:col-span-6">
-                        <div class="rounded-xl overflow-hidden border border-borderSpec relative aspect-[16/10]">
+                        <div class="rounded-xl overflow-hidden border border-white/10 shadow-2xl relative aspect-[16/10] group">
                             <img src="assets/Images/finpulseai.webp" alt="FinPulse AI Dashboard Screenshot"
-                                class="w-full h-full object-cover">
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
                     </div>
                 </div>
@@ -513,565 +510,580 @@
                     class="flex flex-col sm:flex-row sm:items-center justify-end gap-4 mt-8 pt-4 border-t border-borderSpec/40 relative z-10">
                     <div class="flex flex-wrap gap-x-4 gap-y-2">
                         <a href="https://finpulse-frontend-jrsd.onrender.com/pulse" target="_blank"
-                            class="text-xs font-mono text-accent hover:underline">Live Demo ↗</a>
+                            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent/15 text-accent border border-accent/30 text-xs font-mono font-semibold hover:bg-accent/25 transition-all hover:scale-[1.02]">Live Demo ↗</a>
                         <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
-                            class="text-xs font-mono text-muted hover:text-textMain">Code ↗</a>
-                    </div>
-                </div>
-            </div>
-            </div>
-
-            <!-- Selected Work Carousel Section -->
-            <div id="other-systems-preview" class="section-container">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12" data-aos="fade-up">
-                    <div>
-                        <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">03 SELECTED
-                            WORK</span>
-                        <h2 class="section-title">Selected Masterpieces</h2>
-                        <p class="section-desc mt-2 text-muted">Tap any project to see the full breakdown.</p>
-                    </div>
-
-                    <div class="flex flex-wrap items-center gap-3">
-                        <button class="filter-tab active" data-filter="all">All</button>
-                        <button class="filter-tab" data-filter="indev">In Development</button>
-                        <button class="filter-tab" data-filter="projects">Projects</button>
-                        <button class="filter-tab" data-filter="hardware">Hardware & Embedded</button>
-                    </div>
-                </div>
-
-                <!-- Stats Bar -->
-                <div class="flex items-center gap-6 mb-8 text-xs font-mono" data-aos="fade-up" data-aos-delay="50">
-                    <div>
-                        <span class="text-acc3 text-lg font-bold">5</span> <span class="text-muted">Total
-                            Projects</span>
-                    </div>
-                    <div class="w-px h-4 bg-borderSpec"></div>
-                    <div>
-                        <span class="text-accent text-lg font-bold">2</span> <span class="text-muted">Hardware &
-                            Embedded Builds</span>
-                    </div>
-                </div>
-
-                <!-- Carousel Track -->
-                <div class="relative" data-aos="fade-up" data-aos-delay="100">
-                    <div id="project-carousel" class="carousel-container">
-
-                        <!-- Card 1: FinPulse AI -->
-                        <div class="carousel-card" data-category="indev">
-                            <div>
-                                <div class="carousel-card-img-wrapper">
-                                    <img src="assets/Images/finpulseai.webp" alt="FinPulse AI Dashboard"
-                                        class="object-cover" loading="lazy">
-                                </div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <span
-                                        class="text-[10px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">IN
-                                        DEVELOPMENT</span>
-                                    <span class="text-[10px] text-muted font-mono">SYSTEM_01</span>
-                                </div>
-                                <h3 class="text-2xl font-display font-bold text-white mb-2">FinPulse AI</h3>
-                                <p class="text-xs text-muted leading-relaxed">
-                                    High-speed financial tracking platform utilizing semantic models to map, analyze,
-                                    and categorize real-time data flows.
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                                <span class="text-[10px] font-mono text-primary">Full Stack</span>
-                                <div class="flex items-center gap-3">
-                                    <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
-                                        class="text-xs font-mono text-muted hover:underline">Source ↗</a>
-                                    <a href="https://finpulse-frontend-jrsd.onrender.com" target="_blank"
-                                        class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 2: Xplorism -->
-                        <div class="carousel-card" data-category="projects">
-                            <div>
-                                <div class="carousel-card-img-wrapper">
-                                    <img src="assets/Images/xplorism.webp" alt="Xplorism Travel Platform"
-                                        style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;" loading="lazy" />
-                                </div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <a href="https://xplorism.vercel.app" target="_blank"
-                                        class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full hover:bg-accent/20 transition-all">LIVE</a>
-                                    <span class="text-[10px] text-muted font-mono">SYSTEM_02</span>
-                                </div>
-                                <h3 class="text-2xl font-display font-bold text-white mb-2">Xplorism</h3>
-                                <p class="text-xs text-muted leading-relaxed">
-                                    Full-stack AI-assisted travel & hotel booking ecosystem with real-time room
-                                    availability, interactive maps, dynamic pricing, and instant itinerary generation.
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                                <span class="text-[10px] font-mono text-primary">React + Node.js + Express +
-                                    Gemini</span>
-                                <div class="flex items-center gap-3">
-                                    <a href="https://github.com/TanishMehta23/Xplorism" target="_blank"
-                                        class="text-xs font-mono text-muted hover:underline">Source ↗</a>
-                                    <a href="https://xplorism.vercel.app" target="_blank"
-                                        class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 3: focusoraHQ -->
-                        <div class="carousel-card" data-category="projects">
-                            <div>
-                                <div class="carousel-card-img-wrapper">
-                                    <img src="assets/Images/focusorahq.webp" alt="FocusoraHQ Dashboard"
-                                        style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;" loading="lazy" />
-                                </div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <a href="https://focusora-hq.vercel.app/" target="_blank"
-                                        class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full hover:bg-accent/20 transition-all">LIVE</a>
-                                    <span class="text-[10px] text-muted font-mono">SYSTEM_03</span>
-                                </div>
-                                <h3 class="text-2xl font-display font-bold text-white mb-2">FocusoraHQ</h3>
-                                <p class="text-xs text-muted leading-relaxed">
-                                    Unified, high-performance focus workspace and productivity dashboard. Synchronized
-                                    sessions via real-time WebSockets.
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                                <span class="text-[10px] font-mono text-primary">React + Tailwind CSS + WS</span>
-                                <div class="flex items-center gap-3">
-                                    <a href="https://github.com/Chet07-R/FocusoraHQ" target="_blank"
-                                        class="text-xs font-mono text-muted hover:underline">Source ↗</a>
-                                    <a href="https://focusora-hq.vercel.app/" target="_blank"
-                                        class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 3: Fitness Planet -->
-                        <div class="carousel-card" data-category="projects">
-                            <div>
-                                <div class="carousel-card-img-wrapper">
-                                    <img src="assets/Images/fitnessPlanet.webp" alt="Fitness Planet Dashboard"
-                                        style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;" loading="lazy" />
-                                </div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <a href="https://new-project-delta-orcin.vercel.app" target="_blank"
-                                        class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full hover:bg-accent/20 transition-all">LIVE</a>
-                                    <span class="text-[10px] text-muted font-mono">SYSTEM_04</span>
-                                </div>
-                                <h3 class="text-2xl font-display font-bold text-white mb-2">Fitness Planet</h3>
-                                <p class="text-xs text-muted leading-relaxed">
-                                    Robust workout tracker and fitness telemetry dashboard. Collects user metrics,
-                                    charting progress indicator arrays.
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                                <span class="text-[10px] font-mono text-primary">HTML, CSS and JS</span>
-                                <div class="flex items-center gap-3">
-                                    <a href="https://github.com/Vans30m/fitness-planet" target="_blank"
-                                        class="text-xs font-mono text-muted hover:underline">Source ↗</a>
-                                    <a href="https://new-project-delta-orcin.vercel.app" target="_blank"
-                                        class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 4: Autonomous Floor Cleaning Robot -->
-                        <div class="carousel-card" data-category="hardware">
-                            <div>
-                                <div class="carousel-card-img-wrapper">
-                                    <img src="assets/Images/floorRobot.webp" alt="Autonomous Floor Robot Dashboard"
-                                        style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;" loading="lazy" />
-                                </div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <a href="html/floorcleaning-details.html#demo"
-                                        class="text-[10px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full text-indigo-300 hover:bg-primary/20 transition-all">HARDWARE</a>
-                                    <span class="text-[10px] text-muted font-mono">SYSTEM_05</span>
-                                </div>
-                                <h3 class="text-2xl font-display font-bold text-white mb-2">Autonomous Floor Robot</h3>
-                                <p class="text-xs text-muted leading-relaxed">
-                                    Intelligent pathfinding firmware stack for obstacle-avoiding autonomous cleaning
-                                    robots with sensor fusion.
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                                <span class="text-[10px] font-mono text-primary">C++ and Arduino Nano</span>
-                                <div class="flex items-center gap-3">
-                                    <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank"
-                                        class="text-xs font-mono text-muted hover:underline">Source ↗</a>
-                                    <a href="html/floorcleaning-details.html"
-                                        class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 5: Piezoelectric Plates -->
-                        <div class="carousel-card" data-category="hardware">
-                            <div>
-                                <div class="carousel-card-img-wrapper">
-                                    <img src="assets/Images/piezoPlates.webp" alt="Piezoelectric Plates"
-                                        style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;" loading="lazy" />
-                                </div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <a href="html/piezoelectric-details.html"
-                                        class="text-[10px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full text-indigo-300 hover:bg-primary/20 transition-all">HARDWARE</a>
-                                    <span class="text-[10px] text-muted font-mono">SYSTEM_06</span>
-                                </div>
-                                <h3 class="text-2xl font-display font-bold text-white mb-2">Piezoelectric Plates</h3>
-                                <p class="text-xs text-muted leading-relaxed">
-                                    Microgrid voltage harvesting telemetry network monitoring energy generation from
-                                    piezoelectric sensors.
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                                <span class="text-[10px] font-mono text-primary">C++ and Arduino UNO</span>
-                                <div class="flex items-center gap-3">
-                                    <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
-                                        target="_blank" class="text-xs font-mono text-muted hover:underline">Source
-                                        ↗</a>
-                                    <a href="html/piezoelectric-details.html"
-                                        class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Carousel Nav Controls -->
-                    <div class="flex items-center justify-end gap-3 mt-6">
-                        <button id="carousel-prev" class="carousel-btn" aria-label="Previous Project">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </button>
-                        <button id="carousel-next" class="carousel-btn" aria-label="Next Project">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-        </section>
-
-
-        <!-- Skills Section (#skills) -->
-        <section id="skills" class="space-y-8 md:space-y-16">
-            <!-- Technical Framework & Skills -->
-            <div class="section-container max-w-[850px] mx-auto pb-4 md:pb-8">
-                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2" data-aos="fade-up">//
-                    SKILLS MATRIX</span>
-                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-4" data-aos="fade-up"
-                    data-aos-delay="50">Skills & Expertise<span class="text-primary">.</span></h2>
-                <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">A collection of
-                    technologies I'm proficient with, from languages to frameworks and tools.</p>
-
-                <div class="space-y-10 mt-12" data-aos="fade-up" data-aos-delay="150">
-                    <!-- Languages -->
-                    <div>
-                        <h3 class="mb-4 text-xs font-mono text-muted uppercase tracking-widest">Languages</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="techtile"><i class="devicon-javascript-plain colored"></i><span
-                                    class="text-sm font-medium">JavaScript</span></div>
-                            <div class="techtile"><i class="devicon-typescript-plain colored"></i><span
-                                    class="text-sm font-medium">TypeScript</span></div>
-                            <div class="techtile"><i class="devicon-python-plain colored"></i><span
-                                    class="text-sm font-medium">Python</span></div>
-                            <div class="techtile"><i class="devicon-html5-plain colored"></i><span
-                                    class="text-sm font-medium">HTML5</span></div>
-                            <div class="techtile"><i class="devicon-css3-plain colored"></i><span
-                                    class="text-sm font-medium">CSS3</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Frameworks & Libraries -->
-                    <div>
-                        <h3 class="mb-4 text-xs font-mono text-muted uppercase tracking-widest">Frameworks & Libraries
-                        </h3>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="techtile"><i class="devicon-react-original colored"></i><span
-                                    class="text-sm font-medium">React</span></div>
-                            <div class="techtile"><i class="devicon-nodejs-plain colored"></i><span
-                                    class="text-sm font-medium">Node.js</span></div>
-                            <div class="techtile"><i class="devicon-tailwindcss-plain colored"></i><span
-                                    class="text-sm font-medium">Tailwind CSS</span></div>
-                            <div class="techtile"><i class="devicon-prisma-plain text-white"></i><span
-                                    class="text-sm font-medium">Prisma</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Databases -->
-                    <div>
-                        <h3 class="mb-4 text-xs font-mono text-muted uppercase tracking-widest">Databases</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="techtile"><i class="devicon-postgresql-plain colored"></i><span
-                                    class="text-sm font-medium">PostgreSQL</span></div>
-                            <div class="techtile"><i class="devicon-mongodb-plain colored"></i><span
-                                    class="text-sm font-medium">MongoDB</span></div>
-                        </div>
-                    </div>
-
-                    <!-- AI & LLM Integrations -->
-                    <div>
-                        <h3 class="mb-4 text-xs font-mono text-muted uppercase tracking-widest">AI & LLM Integrations
-                        </h3>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="techtile">
-                                <svg class="w-4 h-4 text-cyan-400 fill-current inline-block" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
-                                </svg>
-                                <span class="text-sm font-medium">Google Gemini API</span>
-                            </div>
-                            <div class="techtile">
-                                <svg class="w-4 h-4 text-orange-500 fill-current inline-block" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                                </svg>
-                                <span class="text-sm font-medium">Groq API</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tools & Platforms -->
-                    <div>
-                        <h3 class="mb-4 text-xs font-mono text-muted uppercase tracking-widest">Tools & Platforms</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="techtile"><i class="devicon-git-plain colored"></i><span
-                                    class="text-sm font-medium">Git</span></div>
-                            <div class="techtile"><i class="devicon-amazonwebservices-plain-wordmark colored"></i><span
-                                    class="text-sm font-medium">AWS</span></div>
-                            <div class="techtile"><i class="devicon-vercel-original text-white"></i><span
-                                    class="text-sm font-medium">Vercel</span></div>
-                            <div class="techtile"><i class="devicon-linux-plain text-white"></i><span
-                                    class="text-sm font-medium">Linux</span></div>
-                            <div class="techtile"><i class="devicon-figma-plain colored"></i><span
-                                    class="text-sm font-medium">Figma</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Currently Learning -->
-            <div class="section-container max-w-[850px] mx-auto pt-6 md:pt-16">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <div class="lg:col-span-5" data-aos="fade-up">
-                        <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">06 CURRENTLY
-                            LEARNING</span>
-                        <h2 class="text-3xl sm:text-4xl font-display font-bold text-white mb-4">Always <span
-                                class="editorial-serif">leveling up.</span></h2>
-                        <p class="text-sm text-muted leading-relaxed max-w-sm">
-                            Right now I'm deepening system design, AI engineering and scalable full-stack development —
-                            building real-world products while sharpening problem-solving every day.
-                        </p>
-                    </div>
-                    <div class="lg:col-span-7 flex flex-wrap gap-2.5 sm:gap-3" data-aos="fade-up" data-aos-delay="100">
-                        <span class="learning-chip">System design & scalable architecture</span>
-                        <span class="learning-chip">AI engineering & AI agents</span>
-                        <span class="learning-chip">RAG apps</span>
-                        <span class="learning-chip">Auth & RBAC systems</span>
-                        <span class="learning-chip">Cloud & DevOps fundamentals</span>
-                        <span class="learning-chip">Data structures & algorithms</span>
-                        <span class="learning-chip">Performance & SEO</span>
-                        <span class="learning-chip">Production-grade full-stack</span>
+                            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/5 text-muted border border-white/10 text-xs font-mono font-semibold hover:text-white hover:bg-white/10 transition-all hover:scale-[1.02]">Code ↗</a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Selected Work Carousel Section -->
+        <section id="other-systems-preview" class="section-container">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12" data-aos="fade-up">
+                <div>
+                    <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">03 SELECTED
+                        WORK</span>
+                    <h2 class="section-title">Selected Masterpieces</h2>
+                    <p class="section-desc mt-2 text-muted">Tap any project to see the full breakdown.</p>
+                </div>
 
-        <!-- Identity & Coding Profiles Section (#about) -->
-        <section id="about" class="space-y-8 md:space-y-16">
-            <!-- Brief Profile Showcase Bento -->
-            <div id="identity-summary" class="section-container max-w-[850px] mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bentocard flex flex-col justify-between" data-aos="fade-up">
-                        <div class="card-glow-wash glow-purple"></div>
-                        <div class="relative z-10">
-                            <span class="text-xs font-mono text-primary uppercase tracking-wider block mb-2">// CORE
-                                THESIS</span>
-                            <h3 class="text-2xl font-display font-bold text-white mb-4">Focused on Solving Concrete
-                                Problems</h3>
-                            <p class="text-sm text-muted leading-relaxed">
-                                I approach software engineering with a product mindset. I am a Computer Science student
-                                preparing for competitive software engineering placements while building real-world
-                                AI-powered systems.
+                <div class="flex flex-wrap items-center gap-3">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="indev">In Development</button>
+                    <button class="filter-tab" data-filter="projects">Projects</button>
+                    <button class="filter-tab" data-filter="hardware">Hardware & Embedded</button>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="flex items-center gap-6 mb-8 text-xs font-mono" data-aos="fade-up" data-aos-delay="50">
+                <div>
+                    <span class="text-acc3 text-lg font-bold">5</span> <span class="text-muted">Total
+                        Projects</span>
+                </div>
+                <div class="w-px h-4 bg-borderSpec"></div>
+                <div>
+                    <span class="text-accent text-lg font-bold">2</span> <span class="text-muted">Hardware &
+                        Embedded Builds</span>
+                </div>
+            </div>
+
+            <!-- Carousel Track -->
+            <div class="relative" data-aos="fade-up" data-aos-delay="100">
+                <div id="project-carousel" class="carousel-container">
+
+                    <!-- Card 1: CheckinPass -->
+                    <div class="carousel-card" data-category="indev">
+                        <div>
+                            <div class="carousel-card-img-wrapper p-3 flex items-center justify-center bg-black/40">
+                                <img src="assets/Images/checkinpass_logo.webp" alt="CheckinPass Logo"
+                                    class="object-contain w-3/4 h-3/4" loading="lazy">
+                            </div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span
+                                    class="text-[10px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">IN
+                                    DEVELOPMENT</span>
+                                <span class="text-[10px] text-muted font-mono">SYSTEM_01</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">CheckinPass</h3>
+                            <p class="text-xs text-muted leading-relaxed">
+                                Digital access & verification platform streamlining event entry, dynamic pass generation, and access control.
                             </p>
                         </div>
+                        <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                            <span class="text-[11px] font-mono text-primary">React.js • Node.js • Express</span>
+                            <div class="flex items-center gap-3">
+                                <a href="#contact"
+                                    class="text-xs font-mono text-accent hover:underline">Inquire ↗</a>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bentocard flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-glow-wash glow-teal"></div>
-                        <div class="relative z-10">
-                            <span class="text-xs font-mono text-accent uppercase tracking-wider block mb-2">// INTENT
-                                TARGET</span>
-                            <h3 class="text-2xl font-display font-bold text-white mb-4">Responsive & Low-Latency
-                                Ecosystems</h3>
-                            <p class="text-sm text-muted leading-relaxed mb-6">
-                                My work revolves around creating clean, frameworkless client experiences integrated
-                                directly with backend APIs and structured AI token feeds.
+                    <!-- Card 2: FinPulse AI -->
+                    <div class="carousel-card" data-category="projects">
+                        <div>
+                            <div class="carousel-card-img-wrapper">
+                                <img src="assets/Images/finpulseai.webp" alt="FinPulse AI Dashboard"
+                                    class="object-cover" loading="lazy">
+                            </div>
+                            <div class="flex justify-between items-start mb-4">
+                                <a href="https://finpulse-frontend-jrsd.onrender.com/pulse" target="_blank"
+                                    class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full hover:bg-accent/20 transition-all">LIVE</a>
+                                <span class="text-[10px] text-muted font-mono">SYSTEM_02</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">FinPulse AI</h3>
+                            <p class="text-xs text-muted leading-relaxed">
+                                High-speed financial tracking platform utilizing semantic models to map, analyze,
+                                and categorize real-time data flows.
                             </p>
-                            <a href="#about"
-                                class="text-xs font-mono text-primary hover:text-textMain transition-colors inline-flex items-center gap-1">
-                                More About Me & Timeline <span
-                                    class="inline-block transition-transform hover:translate-x-1">→</span>
-                            </a>
+                        </div>
+                        <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                            <span class="text-[11px] font-mono text-primary">TypeScript • React • Node • LLM APIs</span>
+                            <div class="flex items-center gap-3">
+                                <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
+                                    class="text-xs font-mono text-muted hover:underline">Source ↗</a>
+                                <a href="https://finpulse-frontend-jrsd.onrender.com/pulse" target="_blank"
+                                    class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Card 2: Xplorism -->
+                    <div class="carousel-card" data-category="projects">
+                        <div>
+                            <div class="carousel-card-img-wrapper">
+                                <img src="assets/Images/xplorism.webp" alt="Xplorism Travel Platform"
+                                    style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;"
+                                    loading="lazy" />
+                            </div>
+                            <div class="flex justify-between items-start mb-4">
+                                <a href="https://xplorism.vercel.app" target="_blank"
+                                    class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full hover:bg-accent/20 transition-all">LIVE</a>
+                                <span class="text-[10px] text-muted font-mono">SYSTEM_02</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">Xplorism</h3>
+                            <p class="text-xs text-muted leading-relaxed">
+                                AI-assisted travel & hotel booking ecosystem featuring real-time room availability,
+                                interactive mapping, dynamic pricing, and instant itinerary generation.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                            <span class="text-[11px] font-mono text-primary">React.js • Node.js • LLM APIs</span>
+                            <div class="flex items-center gap-3">
+                                <a href="https://github.com/Vans30m/xplorism-travel-ai" target="_blank"
+                                    class="text-xs font-mono text-muted hover:underline">Source ↗</a>
+                                <a href="https://xplorism.vercel.app" target="_blank"
+                                    class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Fitness Planet -->
+                    <div class="carousel-card" data-category="projects">
+                        <div>
+                            <div class="carousel-card-img-wrapper">
+                                <img src="assets/Images/fitnessPlanet.webp" alt="Fitness Planet Dashboard"
+                                    style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;"
+                                    loading="lazy" />
+                            </div>
+                            <div class="flex justify-between items-start mb-4">
+                                <a href="https://fitness-planet-vans.vercel.app/" target="_blank"
+                                    class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full hover:bg-accent/20 transition-all">LIVE</a>
+                                <span class="text-[10px] text-muted font-mono">SYSTEM_04</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">Fitness Planet</h3>
+                            <p class="text-xs text-muted leading-relaxed">
+                                Robust workout tracker and fitness telemetry dashboard. Collects user metrics,
+                                charting progress indicator arrays.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                            <span class="text-[11px] font-mono text-primary">HTML5 • CSS3 • JavaScript</span>
+                            <div class="flex items-center gap-3">
+                                <a href="https://github.com/Vans30m/fitness-planet" target="_blank"
+                                    class="text-xs font-mono text-muted hover:underline">Source ↗</a>
+                                <a href="https://fitness-planet-vans.vercel.app/" target="_blank"
+                                    class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Autonomous Floor Cleaning Robot -->
+                    <div class="carousel-card" data-category="hardware">
+                        <div>
+                            <div class="carousel-card-img-wrapper">
+                                <img src="assets/Images/floorRobot.webp" alt="Autonomous Floor Cleaning Robot"
+                                    style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;"
+                                    loading="lazy" />
+                            </div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span
+                                    class="text-[10px] font-mono text-purple-400 bg-purple-500/10 border border-purple-500/20 px-2 py-0.5 rounded-full">HARDWARE</span>
+                                <span class="text-[10px] text-muted font-mono">SYSTEM_05</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">Floor Cleaning Robot</h3>
+                            <p class="text-xs text-muted leading-relaxed">
+                                Autonomous robotic firmware system equipped with obstacle-avoidance sensors, obstacle
+                                mapping, and intelligent path planning.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                            <span class="text-[11px] font-mono text-primary">C++ • ROS • Sensors</span>
+                            <div class="flex items-center gap-3">
+                                <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank"
+                                    class="text-xs font-mono text-muted hover:underline">Source ↗</a>
+                                <a href="html/floorcleaning-details.html"
+                                    class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Piezoelectric Energy Tile -->
+                    <div class="carousel-card" data-category="hardware">
+                        <div>
+                            <div class="carousel-card-img-wrapper">
+                                <img src="assets/Images/piezoPlates.webp" alt="Piezoelectric Energy Tile"
+                                    style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;"
+                                    loading="lazy" />
+                            </div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span
+                                    class="text-[10px] font-mono text-purple-400 bg-purple-500/10 border border-purple-500/20 px-2 py-0.5 rounded-full">HARDWARE</span>
+                                <span class="text-[10px] text-muted font-mono">SYSTEM_06</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">Piezoelectric Energy Tile</h3>
+                            <p class="text-xs text-muted leading-relaxed">
+                                Microgrid voltage harvesting telemetry network monitoring energy generation from
+                                piezoelectric sensors.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                            <span class="text-[11px] font-mono text-primary">C++ • Arduino UNO • Sensors</span>
+                            <div class="flex items-center gap-3">
+                                <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
+                                    target="_blank" class="text-xs font-mono text-muted hover:underline">Source
+                                    ↗</a>
+                                <a href="html/piezoelectric-details.html"
+                                    class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
 
-            <!-- Coding Profiles Section with Flip Cards -->
-            <div id="coding" class="section-container max-w-[850px] mx-auto pt-6 md:pt-16">
-                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2" data-aos="fade-up">//
-                    GLOBAL METRICS</span>
-                <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Coding Profiles</h2>
-                <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">Hover over each card to
-                    flip and view profile links.</p>
-
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mt-12" data-aos="fade-up"
-                    data-aos-delay="150">
-
-                    <!-- LeetCode -->
-                    <div class="bentocard flip" data-aos="fade-up">
-                        <div class="flip-inner">
-                            <div class="flip-face flip-front">
-                                <div class="flex items-center justify-between w-full">
-                                    <span class="text-xs font-mono text-accent">PLATFORM_01</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-display font-bold text-white">LeetCode</h4>
-                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">Algorithmic puzzle index.</p>
-                                </div>
-                            </div>
-                            <div class="flip-face flip-back">
-                                <p class="text-xs text-muted text-center font-mono">Solve Stats & Rankings</p>
-                                <a href="https://leetcode.com/u/Vans30m/" target="_blank"
-                                    class="px-4 py-2 rounded-lg bg-accent text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
-                                    View Profile <span class="flip-arrow">↗</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CodeChef -->
-                    <div class="bentocard flip" data-aos="fade-up">
-                        <div class="flip-inner">
-                            <div class="flip-face flip-front">
-                                <div class="flex items-center justify-between w-full">
-                                    <span class="text-xs font-mono text-primary">PLATFORM_02</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-display font-bold text-white">CodeChef</h4>
-                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">Time-boxed contest
-                                        evaluation.</p>
-                                </div>
-                            </div>
-                            <div class="flip-face flip-back">
-                                <p class="text-xs text-muted text-center font-mono">Contest Rating & Badges</p>
-                                <a href="https://www.codechef.com/users/sweet_brace_56" target="_blank"
-                                    class="px-4 py-2 rounded-lg bg-primary text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
-                                    View Profile <span class="flip-arrow">↗</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Codolio -->
-                    <div class="bentocard flip" data-aos="fade-up">
-                        <div class="flip-inner">
-                            <div class="flip-face flip-front">
-                                <div class="flex items-center justify-between w-full">
-                                    <span class="text-xs font-mono text-accent">PLATFORM_03</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-display font-bold text-white">Codolio</h4>
-                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">Central stats aggregator.</p>
-                                </div>
-                            </div>
-                            <div class="flip-face flip-back">
-                                <p class="text-xs text-muted text-center font-mono">Consolidated Solve Hub</p>
-                                <a href="https://codolio.com/profile/vans30m" target="_blank"
-                                    class="px-4 py-2 rounded-lg bg-accent text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
-                                    View Profile <span class="flip-arrow">↗</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- GeeksforGeeks -->
-                    <div class="bentocard flip" data-aos="fade-up">
-                        <div class="flip-inner">
-                            <div class="flip-face flip-front">
-                                <div class="flex items-center justify-between w-full">
-                                    <span class="text-xs font-mono text-primary">PLATFORM_04</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-display font-bold text-white">GeeksforGeeks</h4>
-                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">CS core topics & algorithms.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flip-face flip-back">
-                                <p class="text-xs text-muted text-center font-mono">CS Fundamentals</p>
-                                <a href="https://www.geeksforgeeks.org/profile/vans30m" target="_blank"
-                                    class="px-4 py-2 rounded-lg bg-primary text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
-                                    View Profile <span class="flip-arrow">↗</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- HackerRank -->
-                    <div class="bentocard flip" data-aos="fade-up">
-                        <div class="flip-inner">
-                            <div class="flip-face flip-front">
-                                <div class="flex items-center justify-between w-full">
-                                    <span class="text-xs font-mono text-accent">PLATFORM_05</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-display font-bold text-white">HackerRank</h4>
-                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">Skill verification tracks.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flip-face flip-back">
-                                <p class="text-xs text-muted text-center font-mono">Verified Certificates</p>
-                                <a href="https://www.hackerrank.com/profile/vans30m" target="_blank"
-                                    class="px-4 py-2 rounded-lg bg-accent text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
-                                    View Profile <span class="flip-arrow">↗</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- InterviewBit -->
-                    <div class="bentocard flip" data-aos="fade-up">
-                        <div class="flip-inner">
-                            <div class="flip-face flip-front">
-                                <div class="flex items-center justify-between w-full">
-                                    <span class="text-xs font-mono text-primary">PLATFORM_06</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-display font-bold text-white">InterviewBit</h4>
-                                    <p class="text-[11px] text-muted mt-2 leading-relaxed">Placement preparation files.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flip-face flip-back">
-                                <p class="text-xs text-muted text-center font-mono">Targeted Practice Blocks</p>
-                                <a href="https://www.interviewbit.com/profile/Vansh Thakur-thakur_477/" target="_blank"
-                                    class="px-4 py-2 rounded-lg bg-primary text-bgMain text-xs font-semibold hover:scale-105 transition-transform flex items-center gap-1">
-                                    View Profile <span class="flip-arrow">↗</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Carousel Nav Controls -->
+                <div class="flex items-center justify-end gap-3 mt-6">
+                    <button id="carousel-prev" class="carousel-btn" aria-label="Previous Project">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <button id="carousel-next" class="carousel-btn" aria-label="Next Project">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </section>
 
+        <!-- Technical Skills Matrix Section -->
+        <section id="skills" class="section-container">
+            <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2" data-aos="fade-up">//
+                TECHNICAL SKILLS</span>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Skills & Tech Stack</h2>
+            <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">Comprehensive overview of
+                languages, frameworks, databases, and developer tooling.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Languages Card -->
+                <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="mb-4 pb-2 border-b border-borderSpec/40">
+                        <h3 class="font-display font-bold text-white text-base">Languages</h3>
+                    </div>
+                    <ul class="space-y-2.5 text-xs text-muted font-mono">
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-java-plain text-red-400"></i> Java</span>
+                            <span class="text-[10px] text-accent">OOP / Core</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-javascript-plain text-amber-400"></i> JavaScript</span>
+                            <span class="text-[10px] text-accent">Advanced</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-cplusplus-plain text-blue-500"></i> C++</span>
+                            <span class="text-[10px] text-accent">DSA Core</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-python-plain text-yellow-400"></i> Python</span>
+                            <span class="text-[10px] text-accent">AI / Scripts</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-typescript-plain text-blue-400"></i> TypeScript</span>
+                            <span class="text-[10px] text-accent">Proficient</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Frontend Card -->
+                <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mb-4 pb-2 border-b border-borderSpec/40">
+                        <h3 class="font-display font-bold text-white text-base">Frontend</h3>
+                    </div>
+                    <ul class="space-y-2.5 text-xs text-muted font-mono">
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-react-original text-cyan-400"></i> React.js</span>
+                            <span class="text-[10px] text-accent">Advanced</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-tailwindcss-original text-sky-400"></i> Tailwind CSS</span>
+                            <span class="text-[10px] text-accent">Styling</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-html5-plain text-orange-500"></i> HTML5 / CSS3</span>
+                            <span class="text-[10px] text-accent">Semantic</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Backend & Cloud Card -->
+                <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="250">
+                    <div class="mb-4 pb-2 border-b border-borderSpec/40">
+                        <h3 class="font-display font-bold text-white text-base">Backend & DB</h3>
+                    </div>
+                    <ul class="space-y-2.5 text-xs text-muted font-mono">
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-nodejs-plain text-green-500"></i> Node.js </span>
+                            <span class="text-[10px] text-accent">REST APIs</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-postgresql-plain text-blue-400"></i> PostgreSQL</span>
+                            <span class="text-[10px] text-accent">Relational</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-mongodb-plain text-emerald-500"></i> MongoDB</span>
+                            <span class="text-[10px] text-accent">NoSQL</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-fastapi-plain text-teal-400"></i> FastAPI</span>
+                            <span class="text-[10px] text-accent">Python API</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tools & AI Card -->
+                <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mb-4 pb-2 border-b border-borderSpec/40">
+                        <h3 class="font-display font-bold text-white text-base">Tooling & AI</h3>
+                    </div>
+                    <ul class="space-y-2.5 text-xs text-muted font-mono">
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-git-plain text-orange-600"></i> Git & GitHub</span>
+                            <span class="text-[10px] text-accent">VCS</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="fa-solid fa-robot text-emerald-400"></i> LLM APIs</span>
+                            <span class="text-[10px] text-accent">AI Core</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-vercel-original text-white"></i> Vercel & Render</span>
+                            <span class="text-[10px] text-accent">Deploy</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-vscode-plain text-blue-500"></i> VS Code / Linux</span>
+                            <span class="text-[10px] text-accent">Dev Env</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Coding Profiles Section -->
+        <section id="about" class="section-container">
+            <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2" data-aos="fade-up">//
+                CODING PROFILES</span>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Problem Solving & Profiles</h2>
+            <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">Live competitive
+                programming metrics, algorithmic problem-solving records, and developer profile links.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- LeetCode Card -->
+                <a href="https://leetcode.com/u/Vans30m/" target="_blank"
+                    class="bentocard p-5 flex flex-col justify-between relative overflow-hidden group cursor-pointer hover:border-amber-500/40 transition-all block"
+                    data-aos="fade-up" data-aos-delay="150">
+                    <div
+                        class="absolute -right-8 -top-8 w-28 h-28 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition-all pointer-events-none">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-lg shadow-inner">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-display font-bold text-white mb-0.5 flex items-center justify-between">
+                            LeetCode
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square text-xs text-amber-400 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+                        </h3>
+                        <p class="text-[11px] text-muted mb-3">Data Structures & Algorithms</p>
+                        <div class="bg-black/30 border border-white/5 rounded-xl p-2.5 space-y-1.5 font-mono text-xs">
+                            <div class="flex justify-between items-center">
+                                <span class="text-muted text-[11px]">Problems Solved:</span>
+                                <span class="text-amber-400 font-bold text-xs" data-count="250"
+                                    data-suffix="+">250+</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-1 border-t border-white/5">
+                                <span class="text-muted text-[11px]">Primary Focus:</span>
+                                <span class="text-white text-[11px] font-medium">DSA</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- GitHub Card -->
+                <a href="https://github.com/Vans30m" target="_blank"
+                    class="bentocard p-5 flex flex-col justify-between relative overflow-hidden group cursor-pointer hover:border-purple-500/40 transition-all block"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="absolute -right-8 -top-8 w-28 h-28 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all pointer-events-none">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white text-lg shadow-inner">
+                                <i class="devicon-github-original"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-display font-bold text-white mb-0.5 flex items-center justify-between">
+                            GitHub
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square text-xs text-purple-400 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+                        </h3>
+                        <p class="text-[11px] text-muted mb-3">Open Source & Repositories</p>
+                        <div class="bg-black/30 border border-white/5 rounded-xl p-2.5 space-y-1.5 font-mono text-xs">
+                            <div class="flex justify-between items-center">
+                                <span class="text-muted text-[11px]">Yearly Commits:</span>
+                                <span class="text-purple-400 font-bold text-xs" data-count="342">342</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-1 border-t border-white/5">
+                                <span class="text-muted text-[11px]">Developer Handle:</span>
+                                <span class="text-white text-[11px] font-medium">@Vans30m</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- LinkedIn Card -->
+                <a href="https://linkedin.com/in/vansh-thakur-vans30m/" target="_blank"
+                    class="bentocard p-5 flex flex-col justify-between relative overflow-hidden group cursor-pointer hover:border-blue-500/40 transition-all block"
+                    data-aos="fade-up" data-aos-delay="250">
+                    <div
+                        class="absolute -right-8 -top-8 w-28 h-28 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all pointer-events-none">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-lg shadow-inner">
+                                <i class="devicon-linkedin-plain"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-display font-bold text-white mb-0.5 flex items-center justify-between">
+                            LinkedIn
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square text-xs text-blue-400 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+                        </h3>
+                        <p class="text-[11px] text-muted mb-3">Professional Network</p>
+                        <div class="bg-black/30 border border-white/5 rounded-xl p-2.5 space-y-1.5 font-mono text-xs">
+                            <div class="flex justify-between items-center">
+                                <span class="text-muted text-[11px]">Availability:</span>
+                                <span class="text-emerald-400 font-bold text-[11px]">SWE 2026 Roles</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-1 border-t border-white/5">
+                                <span class="text-muted text-[11px]">Network Type:</span>
+                                <span class="text-white text-[11px] font-medium">Engineers & Tech</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- GeeksforGeeks Card -->
+                <a href="https://www.geeksforgeeks.org/user/vans30m/" target="_blank"
+                    class="bentocard p-5 flex flex-col justify-between relative overflow-hidden group cursor-pointer hover:border-emerald-500/40 transition-all block"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="absolute -right-8 -top-8 w-28 h-28 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all pointer-events-none">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-base font-bold shadow-inner">
+                                GFG
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-display font-bold text-white mb-0.5 flex items-center justify-between">
+                            GeeksforGeeks
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square text-xs text-emerald-400 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+                        </h3>
+                        <p class="text-[11px] text-muted mb-3">DSA & CS Fundamentals</p>
+                        <div class="bg-black/30 border border-white/5 rounded-xl p-2.5 space-y-1.5 font-mono text-xs">
+                            <div class="flex justify-between items-center">
+                                <span class="text-muted text-[11px]">Problems Solved:</span>
+                                <span class="text-emerald-400 font-bold text-xs" data-count="180"
+                                    data-suffix="+">180+</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-1 border-t border-white/5">
+                                <span class="text-muted text-[11px]">Focus Domain:</span>
+                                <span class="text-white text-[11px] font-medium">Core Algorithms</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- HackerRank Card -->
+                <a href="https://www.hackerrank.com/profile/vans30m" target="_blank"
+                    class="bentocard p-5 flex flex-col justify-between relative overflow-hidden group cursor-pointer hover:border-green-500/40 transition-all block"
+                    data-aos="fade-up" data-aos-delay="350">
+                    <div
+                        class="absolute -right-8 -top-8 w-28 h-28 bg-green-500/10 rounded-full blur-2xl group-hover:bg-green-500/20 transition-all pointer-events-none">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 text-lg shadow-inner">
+                                <i class="fa-brands fa-hackerrank"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-display font-bold text-white mb-0.5 flex items-center justify-between">
+                            HackerRank
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square text-xs text-green-400 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+                        </h3>
+                        <p class="text-[11px] text-muted mb-3">Problem Solving</p>
+                        <div class="bg-black/30 border border-white/5 rounded-xl p-2.5 space-y-1.5 font-mono text-xs">
+                            <div class="flex justify-between items-center">
+                                <span class="text-muted text-[11px]">Skill Rating:</span>
+                                <span class="text-green-400 font-bold text-[11px]">4★ Problem Solving</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-1 border-t border-white/5">
+                                <span class="text-muted text-[11px]">Certifications:</span>
+                                <span class="text-white text-[11px] font-medium">C++, Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Codeforces Card -->
+                <a href="https://codeforces.com/profile/vthakur.290905" target="_blank"
+                    class="bentocard p-5 flex flex-col justify-between relative overflow-hidden group cursor-pointer hover:border-red-500/40 transition-all block"
+                    data-aos="fade-up" data-aos-delay="400">
+                    <div
+                        class="absolute -right-8 -top-8 w-28 h-28 bg-red-500/10 rounded-full blur-2xl group-hover:bg-red-500/20 transition-all pointer-events-none">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 text-lg shadow-inner">
+                                <i class="fa-solid fa-chart-simple"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-display font-bold text-white mb-0.5 flex items-center justify-between">
+                            Codeforces
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square text-xs text-red-400 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+                        </h3>
+                        <p class="text-[11px] text-muted mb-3">Competitive Programming</p>
+                        <div class="bg-black/30 border border-white/5 rounded-xl p-2.5 space-y-1.5 font-mono text-xs">
+                            <div class="flex justify-between items-center">
+                                <span class="text-muted text-[11px]">Primary Focus:</span>
+                                <span class="text-white text-[11px] font-medium">Contests & Speed</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
 
         <!-- Vertical Engineering Journey Timeline -->
-        <section id="journey" class="section-container max-w-[850px] mx-auto">
+        <section id="journey" class="section-container">
             <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2" data-aos="fade-up">//
                 EVOLUTION LOG</span>
             <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Engineering Journey</h2>
@@ -1085,24 +1097,18 @@
                 <div class="relative timeline-item pl-10 md:pl-12" data-aos="fade-up">
                     <span class="timeline-dot"></span>
                     <div class="bentocard p-5 sm:p-6">
-                        <div class="flex items-start justify-between gap-6 flex-wrap sm:flex-nowrap">
-                            <div class="space-y-1.5">
-                                <span
-                                    class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 inline-block">
-                                    Phase 01 // Initiation
-                                </span>
-                                <h4 class="text-lg font-display font-bold text-white mb-1">Algorithmic Foundations & C++
-                                    Logic</h4>
-                                <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
-                                    Initiated engineering journey by mastering C++ object-oriented principles.
-                                    Constructed and benchmarked core data structures and optimization algorithms to
-                                    build strong analytical skills.
-                                </p>
-                            </div>
-                            <div
-                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary text-lg shrink-0">
-                                <i class="fa-solid fa-code"></i>
-                            </div>
+                        <div class="space-y-1.5">
+                            <span
+                                class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 inline-block">
+                                Phase 01 // Initiation
+                            </span>
+                            <h4 class="text-lg font-display font-bold text-white mb-1">Algorithmic Foundations & C++
+                                Logic</h4>
+                            <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
+                                Initiated engineering journey by mastering C++ object-oriented principles.
+                                Constructed and benchmarked core data structures and optimization algorithms to
+                                build strong analytical skills.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1111,30 +1117,24 @@
                 <div class="relative timeline-item pl-10 md:pl-12" data-aos="fade-up">
                     <span class="timeline-dot" style="border-color: var(--accent);"></span>
                     <div class="bentocard p-5 sm:p-6">
-                        <div class="flex items-start justify-between gap-6 flex-wrap sm:flex-nowrap">
-                            <div class="space-y-1.5">
-                                <div class="flex flex-wrap items-center gap-2">
-                                    <span
-                                        class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20 inline-block">
-                                        Phase 02 // Interfaces
-                                    </span>
-                                    <span
-                                        class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/80 inline-flex items-center gap-2">
-                                        <img src="assets/Images/fitnessplanet_logo.webp" alt="Fitness Planet"
-                                            class="w-5 h-5 object-contain rounded-sm" loading="lazy" /> Fitness Planet
-                                    </span>
-                                </div>
-                                <h4 class="text-lg font-display font-bold text-white mb-1">Responsive Interface Design &
-                                    Performance</h4>
-                                <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
-                                    Shifted focus to front-end systems. Developed responsive, performant user interfaces
-                                    using HTML5, CSS3, Tailwind CSS, and JavaScript, optimizing DOM load times.
-                                </p>
+                        <div class="space-y-1.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span
+                                    class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20 inline-block">
+                                    Phase 02 // Interfaces
+                                </span>
+                                <span
+                                    class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/80 inline-flex items-center gap-2">
+                                    <img src="assets/Images/fitnessplanet_logo.webp" alt="Fitness Planet"
+                                        class="w-5 h-5 object-contain rounded-sm" loading="lazy" /> Fitness Planet
+                                </span>
                             </div>
-                            <div
-                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent text-lg shrink-0">
-                                <i class="fa-solid fa-laptop-code"></i>
-                            </div>
+                            <h4 class="text-lg font-display font-bold text-white mb-1">Responsive Interface Design &
+                                Performance</h4>
+                            <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
+                                Shifted focus to front-end systems. Developed responsive, performant user interfaces
+                                using HTML5, CSS3, Tailwind CSS, and JavaScript, optimizing DOM load times.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1143,30 +1143,24 @@
                 <div class="relative timeline-item pl-10 md:pl-12" data-aos="fade-up">
                     <span class="timeline-dot"></span>
                     <div class="bentocard p-5 sm:p-6">
-                        <div class="flex items-start justify-between gap-6 flex-wrap sm:flex-nowrap">
-                            <div class="space-y-1.5">
-                                <div class="flex flex-wrap items-center gap-2">
-                                    <span
-                                        class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 inline-block">
-                                        Phase 03 // Full Stack
-                                    </span>
-                                    <span
-                                        class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/80 inline-flex items-center gap-2">
-                                        <img src="assets/Images/focusorahq_logo.webp" alt="FocusoraHQ"
-                                            class="w-5 h-5 object-contain rounded-sm" loading="lazy" /> FocusoraHQ
-                                    </span>
-                                </div>
-                                <h4 class="text-lg font-display font-bold text-white mb-1">Full-Stack Deployments &
-                                    Databases</h4>
-                                <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
-                                    Transitioned to full-stack applications. Developed asynchronous RESTful APIs using
-                                    Node.js and Express, integrated MongoDB for data storage, and managed data flows.
-                                </p>
+                        <div class="space-y-1.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span
+                                    class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 inline-block">
+                                    Phase 03 // Full Stack
+                                </span>
+                                <span
+                                    class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/80 inline-flex items-center gap-2">
+                                    <img src="assets/Images/focusorahq_logo.webp" alt="FocusoraHQ"
+                                        class="w-5 h-5 object-contain rounded-sm" loading="lazy" /> FocusoraHQ
+                                </span>
                             </div>
-                            <div
-                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary text-lg shrink-0">
-                                <i class="fa-solid fa-database"></i>
-                            </div>
+                            <h4 class="text-lg font-display font-bold text-white mb-1">Full-Stack Deployments &
+                                Databases</h4>
+                            <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
+                                Transitioned to full-stack applications. Developed asynchronous RESTful APIs using
+                                Node.js and Express, integrated MongoDB for data storage, and managed data flows.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1175,36 +1169,30 @@
                 <div class="relative timeline-item pl-10 md:pl-12" data-aos="fade-up">
                     <span class="timeline-dot" style="border-color: var(--accent);"></span>
                     <div class="bentocard p-5 sm:p-6">
-                        <div class="flex items-start justify-between gap-6 flex-wrap sm:flex-nowrap">
-                            <div class="space-y-1.5">
-                                <div class="flex flex-wrap items-center gap-2">
-                                    <span
-                                        class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20 inline-block">
-                                        Phase 04 // Intelligence
-                                    </span>
-                                    <span
-                                        class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/80 inline-flex items-center gap-2">
-                                        <img src="assets/Images/finpulseai_Logo.webp" alt="FinPulse AI"
-                                            class="w-5 h-5 object-contain rounded-sm" loading="lazy" /> FinPulse AI
-                                    </span>
-                                    <span
-                                        class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/80 inline-flex items-center gap-2">
-                                        <img src="assets/Images/xplorism_logo.webp" alt="Xplorism"
-                                            class="w-5 h-5 object-contain rounded-sm" loading="lazy" /> Xplorism
-                                    </span>
-                                </div>
-                                <h4 class="text-lg font-display font-bold text-white mb-1">AI Architectures & FinPulse
-                                    Launch</h4>
-                                <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
-                                    Pioneered intelligent automation by architecting FinPulse AI and building full-stack
-                                    travel platforms like Xplorism, integrating large language models with real-time
-                                    data streams.
-                                </p>
+                        <div class="space-y-1.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span
+                                    class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20 inline-block">
+                                    Phase 04 // Intelligence
+                                </span>
+                                <span
+                                    class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/80 inline-flex items-center gap-2">
+                                    <img src="assets/Images/finpulseai_Logo.webp" alt="FinPulse AI"
+                                        class="w-5 h-5 object-contain rounded-sm" loading="lazy" /> FinPulse AI
+                                </span>
+                                <span
+                                    class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/80 inline-flex items-center gap-2">
+                                    <img src="assets/Images/xplorism_logo.webp" alt="Xplorism"
+                                        class="w-5 h-5 object-contain rounded-sm" loading="lazy" /> Xplorism
+                                </span>
                             </div>
-                            <div
-                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent text-lg shrink-0">
-                                <i class="fa-solid fa-brain"></i>
-                            </div>
+                            <h4 class="text-lg font-display font-bold text-white mb-1">AI Architectures & FinPulse
+                                Launch</h4>
+                            <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
+                                Pioneered intelligent automation by architecting FinPulse AI and building full-stack
+                                travel platforms like Xplorism, integrating large language models with real-time
+                                data streams.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1213,36 +1201,30 @@
                 <div class="relative timeline-item pl-10 md:pl-12" data-aos="fade-up">
                     <span class="timeline-dot"></span>
                     <div class="bentocard p-5 sm:p-6">
-                        <div class="flex items-start justify-between gap-6 flex-wrap sm:flex-nowrap">
-                            <div class="space-y-1.5">
-                                <div class="flex flex-wrap items-center gap-2">
+                        <div class="space-y-1.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span
+                                    class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 inline-block">
+                                    Phase 05 // Placement Cycle
+                                </span>
+                                <span
+                                    class="text-[10px] font-mono px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/40 text-amber-300 inline-flex items-center gap-2 shadow-sm">
                                     <span
-                                        class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 inline-block">
-                                        Phase 05 // Placement Cycle
+                                        class="w-5 h-5 rounded-md bg-black/80 p-0.5 inline-flex items-center justify-center shrink-0 border border-amber-500/30 shadow-inner">
+                                        <img src="assets/Images/checkinpass_logo.webp" alt="CheckinPass Logo"
+                                            class="w-full h-full object-contain filter drop-shadow-[0_0_4px_rgba(245,158,11,0.5)]" />
                                     </span>
-                                    <span
-                                        class="text-[10px] font-mono px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/40 text-amber-300 inline-flex items-center gap-2 shadow-sm">
-                                        <span
-                                            class="w-5 h-5 rounded-md bg-white p-0.5 inline-flex items-center justify-center shrink-0 border border-white/80 shadow-inner">
-                                            <img src="assets/Images/checkinpass_logo.svg" alt="CheckinPass Logo"
-                                                class="w-full h-full object-contain filter drop-shadow-sm" />
-                                        </span>
-                                        <span class="font-semibold tracking-wide">CheckinPass <span
-                                                class="text-[9px] opacity-80 font-normal">(In Progress)</span></span>
-                                    </span>
-                                </div>
-                                <h4 class="text-lg font-display font-bold text-white mb-1">Advanced System Design & Job
-                                    Prep</h4>
-                                <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
-                                    Optimizing core system configurations while engineering CheckinPass. Reviewing
-                                    complex tree/graph algorithms, solidifying code metrics, and refining showcase
-                                    portfolio projects.
-                                </p>
+                                    <span class="font-semibold tracking-wide">CheckinPass <span
+                                            class="text-[9px] opacity-80 font-normal">(In Progress)</span></span>
+                                </span>
                             </div>
-                            <div
-                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary text-lg shrink-0">
-                                <i class="fa-solid fa-briefcase"></i>
-                            </div>
+                            <h4 class="text-lg font-display font-bold text-white mb-1">Advanced System Design & Job
+                                Prep</h4>
+                            <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-2xl">
+                                Optimizing core system configurations while engineering CheckinPass. Reviewing
+                                complex tree/graph algorithms, solidifying code metrics, and refining showcase
+                                portfolio projects.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1250,7 +1232,7 @@
         </section>
 
         <!-- GitHub Activity Section -->
-        <section id="github" class="section-container max-w-[850px] mx-auto">
+        <section id="github" class="section-container">
             <span class="text-sm font-mono text-accent uppercase tracking-widest block mb-4" data-aos="fade-up">07
                 GITHUB ACTIVITY</span>
             <div class="bentocard p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
@@ -1290,11 +1272,10 @@
             </div>
         </section>
 
-
         <!-- Contact Section (#contact) -->
-        <section id="contact" class="space-y-16">
+        <section id="contact" class="section-container space-y-16">
             <!-- Direct Form Grid (Contact Section) -->
-            <div id="contact-form-block" class="section-container max-w-[850px] mx-auto">
+            <div id="contact-form-block">
                 <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2" data-aos="fade-up">//
                     CORRESPONDENCE PORT</span>
                 <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-4" data-aos="fade-up"
@@ -1321,7 +1302,7 @@
                                 <h3 class="text-xs font-mono text-primary uppercase tracking-wider mb-3">// Networks
                                 </h3>
                                 <div class="space-y-2 mt-1">
-                                    <a href="https://www.linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
+                                    <a href="https://www.linkedin.com/in/vansh-thakur-vans30m/" target="_blank"
                                         class="text-sm text-white hover:underline block">LinkedIn Profile ↗</a>
                                     <a href="https://github.com/Vans30m/" target="_blank"
                                         class="text-sm text-white hover:underline block">GitHub Pipeline ↗</a>
@@ -1369,8 +1350,7 @@
             </div>
 
             <!-- Call to Action Section -->
-            <!-- Call to Action Section (Premium Card) -->
-            <div id="cta" class="py-10 max-w-[850px] mx-auto" data-aos="fade-up">
+            <div id="cta" class="py-10" data-aos="fade-up">
                 <div class="connect-card p-10 text-center relative z-10">
                     <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">LET'S
                         CONNECT</span>
@@ -1403,7 +1383,7 @@
             class="absolute bottom-[-100px] left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-primary/10 rounded-full blur-[80px] pointer-events-none">
         </div>
 
-        <footer class="py-16 max-w-[850px] mx-auto px-6 md:px-0 relative z-10">
+        <footer class="py-16 max-w-[1200px] mx-auto px-4 md:px-6 relative z-10">
             <div class="grid grid-cols-2 md:grid-cols-12 gap-8 mb-12">
                 <div class="col-span-2 md:col-span-6 space-y-4">
                     <a href="index.html"
@@ -1431,7 +1411,7 @@
                                     d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                         </a>
-                        <a href="https://linkedin.com/in/Vansh Thakur-thakur-vans30m/" target="_blank"
+                        <a href="https://linkedin.com/in/vansh-thakur-vans30m/" target="_blank"
                             class="w-11 h-11 md:w-8 md:h-8 rounded-full bg-surface border border-borderSpec flex items-center justify-center text-muted hover:text-textMain hover:border-accent hover:scale-105 transition-all"
                             aria-label="LinkedIn">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -1487,7 +1467,7 @@
                                 class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">FocusoraHQ
                                 ↗</a>
                         </li>
-                        <li><a href="https://new-project-delta-orcin.vercel.app" target="_blank"
+                        <li><a href="https://fitness-planet-vans.vercel.app/" target="_blank"
                                 class="hover:text-white active:text-white focus:text-white hover:pl-1 transition-all">Fitness
                                 Planet ↗</a>
                         </li>
@@ -1505,8 +1485,6 @@
         </footer>
     </div>
 
-
-    <!-- Essential Scripts -->
     <script src="js/script.js"></script>
 </body>
 
