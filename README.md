@@ -2,11 +2,9 @@
 
 Welcome to the official repository of my premium developer portfolio. Designed with a bento-grid layout, dark-mode styling, glassmorphic accents, and smooth scroll animations, this portfolio showcases my engineering milestones, technical competencies, and ongoing projects.
 
-🌐 **Live Demo:** [Open Portfolio](html/index.html) (or open `/html/index.html` directly in your browser)
-
 ---
 
-## 🚀 Key Highlights
+## Key Highlights
 
 *   **Premium Interactive UX:** Features a responsive layout with custom mouse-tracking hover glows, a filterable infinite-scroll project carousel, and integrated scroll triggers (AOS).
 *   **Live GitHub Contributions integration:** Dynamically fetches and renders contribution stats using the jogruber GitHub contributions API.
@@ -15,7 +13,7 @@ Welcome to the official repository of my premium developer portfolio. Designed w
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 ├── assets/                  # Visual showcases, diagrams, and project images
@@ -32,12 +30,12 @@ Welcome to the official repository of my premium developer portfolio. Designed w
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## Tech Stack & Architecture
 
 ### Core Frontend Stack
 *   **Markup & Layout:** HTML5 (Semantic Structure) & [Tailwind CSS](https://tailwindcss.com/)
 *   **Styles & Theming:** Custom Vanilla CSS (tokens, radial micro-gradients, glassmorphic layouts, and 3D card flips)
-*   **Interactivity:** Vanilla JavaScript ES6+ (Scroll anchors, local clipboard controls, dynamic DOM generation)
+*   **Interactivity:** Vanilla JavaScript (Scroll anchors, local clipboard controls, dynamic DOM generation)
 
 ### Third-Party Services & APIs
 *   **Animations:** [AOS (Animate on Scroll)](https://michalsnik.github.io/aos/)
@@ -47,7 +45,7 @@ Welcome to the official repository of my premium developer portfolio. Designed w
 
 ---
 
-## 💻 Projects Highlighted
+## Projects Highlighted
 
 1.  **FinPulse AI (System 01 - In Development)**
     *   *Role:* AI Full Stack Developer
@@ -58,7 +56,7 @@ Welcome to the official repository of my premium developer portfolio. Designed w
 3.  **FocusoraHQ (System 03 - Live)**
     *   *Role:* React & WebSocket Developer
     *   *Description:* Unified, high-performance focus workspace and productivity dashboard featuring synchronized real-time sessions.
-4.  **Fitness Planet (System 04 - Live)**
+4.  **[Fitness Planet](https://fitness-planet-vans.vercel.app/) (System 04 - Live)**
     *   *Role:* Web Developer
     *   *Description:* Robust workout tracker and fitness telemetry dashboard to collect user metrics and render progress indicator arrays.
 5.  **[Autonomous Floor Robot](html/floorcleaning-details.html) (System 05 - Hardware)**
@@ -70,7 +68,7 @@ Welcome to the official repository of my premium developer portfolio. Designed w
 
 ---
 
-## 🏃 Local Run Instructions
+## Local Run Instructions
 
 Since this is a fully static client-side web application, running it locally is incredibly simple:
 
@@ -85,7 +83,7 @@ Since this is a fully static client-side web application, running it locally is 
 
 ---
 
-## ✉️ Contact & Network
+## Contact & Network
 
 *   **LinkedIn:** [linkedin.com/in/vansh-thakur-vans30m/](https://linkedin.com/in/vansh-thakur-vans30m/)
 *   **GitHub:** [github.com/Vans30m](https://github.com/Vans30m)

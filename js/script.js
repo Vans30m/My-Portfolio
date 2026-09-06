@@ -147,83 +147,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initAnimatedCounters();
 
     /* ==========================================================================
-       Floating Blob Subtle Mouse Parallax
-       ========================================================================== */
-    const initBlobParallax = () => {
-        const blobs = document.querySelectorAll('.blob');
-        if (!blobs.length) return;
 
-        let mouseX = 0, mouseY = 0;
-        let raf = null;
-
-        window.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;  // -1 to +1
-            mouseY = (e.clientY / window.innerHeight - 0.5) * 2; // -1 to +1
-
-            if (!raf) {
-                raf = requestAnimationFrame(() => {
-                    blobs.forEach((blob, i) => {
-                        // Each blob moves at a different depth factor
-                        const depth = (i + 1) * 12;
-                        blob.style.transform = `translate(${mouseX * depth}px, ${mouseY * depth}px)`;
-                    });
-                    raf = null;
-                });
-            }
-        });
-    };
-
-    initBlobParallax();
-
-    /* ==========================================================================
-       Mouse Spotlight Effect
-       ========================================================================== */
-    const initMouseSpotlight = () => {
-        const spotlight = document.getElementById('mouse-spotlight');
-        if (!spotlight) return;
-
-        let rafSpotlight = null;
-        let hasMovedOnce = false;
-
-        const update = (x, y) => {
-            spotlight.style.setProperty('--spotlight-x', `${x}px`);
-            spotlight.style.setProperty('--spotlight-y', `${y}px`);
-            rafSpotlight = null;
-        };
-
-        window.addEventListener('mousemove', (e) => {
-            // Reveal on first move
-            if (!hasMovedOnce) {
-                spotlight.classList.add('visible');
-                hasMovedOnce = true;
-            }
-
-            if (!rafSpotlight) {
-                rafSpotlight = requestAnimationFrame(() => update(e.clientX, e.clientY));
-            }
-        }, { passive: true });
-
-        // Hide when cursor leaves the window
-        document.addEventListener('mouseleave', () => {
-            spotlight.classList.remove('visible');
-            hasMovedOnce = false;
-        });
-
-        document.addEventListener('mouseenter', () => {
-            spotlight.classList.add('visible');
-        });
-    };
-
-    initMouseSpotlight();
 
     /* ==========================================================================
        Animated Gradient Borders (auto-applied to cards)
        ========================================================================== */
     const initGradientBorders = () => {
-        const targets = document.querySelectorAll(
-            '.bentocard, .bento-card-dark, .carousel-card'
-        );
-        targets.forEach(el => el.classList.add('grad-border'));
+        // Gradient borders removed
     };
 
     initGradientBorders();
@@ -232,48 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
        Card 3D Tilt with Cursor Tracking
        ========================================================================== */
     const initCardTilt = () => {
-        // Apply tilt class to all tilting targets
-        const tiltTargets = document.querySelectorAll(
-            '.bentocard, .bento-card-dark, .carousel-card'
-        );
-        tiltTargets.forEach(el => el.classList.add('tilt-card'));
-
-        const MAX_TILT = 8; // max degrees of tilt
-
-        const onMove = (e, card) => {
-            const rect = card.getBoundingClientRect();
-
-            // Cursor position relative to card center, normalized -1 to +1
-            const cx = (e.clientX - rect.left) / rect.width;
-            const cy = (e.clientY - rect.top) / rect.height;
-
-            const tiltY = (cx - 0.5) * MAX_TILT * 2;  // left/right
-            const tiltX = -(cy - 0.5) * MAX_TILT * 2;  // up/down (inverted)
-
-            card.classList.remove('tilt-resetting');
-            card.style.setProperty('--tilt-x', `${tiltX}deg`);
-            card.style.setProperty('--tilt-y', `${tiltY}deg`);
-            card.style.setProperty('--tilt-glow-x', `${cx * 100}%`);
-            card.style.setProperty('--tilt-glow-y', `${cy * 100}%`);
-        };
-
-        const onLeave = (card) => {
-            card.classList.add('tilt-resetting');
-            card.style.setProperty('--tilt-x', '0deg');
-            card.style.setProperty('--tilt-y', '0deg');
-            card.style.setProperty('--tilt-glow-x', '50%');
-            card.style.setProperty('--tilt-glow-y', '50%');
-
-            // Remove resetting class after spring animation finishes
-            card.addEventListener('transitionend', () => {
-                card.classList.remove('tilt-resetting');
-            }, { once: true });
-        };
-
-        tiltTargets.forEach(card => {
-            card.addEventListener('mousemove', (e) => onMove(e, card), { passive: true });
-            card.addEventListener('mouseleave', () => onLeave(card), { passive: true });
-        });
+        // Card hover tilt and tracking removed
     };
 
     initCardTilt();
@@ -486,20 +375,9 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        4. Premium Hover Mouse Coordinate Tracking
        ========================================================================== */
-    const updateMouseCoordinates = (e, card) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-    };
+    const updateMouseCoordinates = (e, card) => { };
 
-    const attachCardMouseTracking = () => {
-        const cards = document.querySelectorAll('.bentocard, .bento-card-dark');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => updateMouseCoordinates(e, card));
-        });
-    };
+    const attachCardMouseTracking = () => { };
     attachCardMouseTracking();
 
     /* ==========================================================================
@@ -595,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('carousel-next');
 
     if (filterTabs.length && carouselContainer) {
-        let speedPxPerMs = 0.08; // optimized autoscroll speed (80px/sec)
+        let speedPxPerMs = 0.22; // increased autoscroll speed (~220px/sec)
         let animationFrameId = null;
         let scrollAnimFrameId = null;
         let isInteracting = false;
@@ -813,15 +691,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 const filterValue = tab.getAttribute('data-filter');
                 const cards = carouselContainer.querySelectorAll('.carousel-card:not(.cloned)');
 
+                let visibleCount = 0;
                 cards.forEach(card => {
                     const cardCategory = card.getAttribute('data-category');
                     if (filterValue === 'all' || cardCategory === filterValue) {
                         card.dataset.visible = 'true';
+                        visibleCount++;
                     } else {
                         card.dataset.visible = 'false';
                         card.style.display = 'none';
                     }
                 });
+
+                // Hide prev/next navigation arrows if filtering hardware/indev or visible cards count is <= 2
+                const navContainer = prevBtn ? prevBtn.parentElement : null;
+                if (navContainer) {
+                    if (filterValue === 'hardware' || filterValue === 'indev' || visibleCount <= 2) {
+                        navContainer.style.display = 'none';
+                    } else {
+                        navContainer.style.display = 'flex';
+                    }
+                }
 
                 setupInfiniteScroll(filterValue);
             });
@@ -1080,7 +970,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             { id: 'action-recruiter', title: 'Recruiter Mode', desc: 'Open 30-second candidate summary (Press R)', url: 'action:recruiter', category: 'Actions', icon: 'fa-user-tie', shortcut: 'R' },
             { id: 'social-github', title: 'GitHub Profile', desc: 'Check repositories & contributions', url: 'https://github.com/Vans30m', category: 'Connect', icon: 'fa-brands fa-github', shortcut: '↗', external: true },
-            { id: 'social-linkedin', title: 'LinkedIn Profile', desc: 'Professional network presence', url: 'https://linkedin.com/in/Vansh Thakur-thakur-vans30m/', category: 'Connect', icon: 'fa-brands fa-linkedin', shortcut: '↗', external: true },
+            { id: 'social-linkedin', title: 'LinkedIn Profile', desc: 'Professional network presence', url: 'https://linkedin.com/in/vansh-thakur-vans30m/', category: 'Connect', icon: 'fa-brands fa-linkedin', shortcut: '↗', external: true },
             { id: 'action-email', title: 'Send Email', desc: 'vthakur.290905@gmail.com', url: 'mailto:vthakur.290905@gmail.com', category: 'Connect', icon: 'fa-paper-plane', shortcut: '↗' }
         ];
 
@@ -1439,41 +1329,7 @@ document.addEventListener('DOMContentLoaded', () => {
        Coding Profiles Click-to-Flip Interaction
        ========================================================================== */
     const initCodingProfileFlips = () => {
-        const flipCards = document.querySelectorAll('.flip');
-        if (!flipCards.length) return;
-
-        flipCards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                // Prevent click from propagating to the document body immediately
-                e.stopPropagation();
-
-                // Check if user clicked a link inside the card
-                const isLink = e.target.closest('a');
-                if (isLink) {
-                    // Let navigation proceed, then restore card to its place after a brief delay
-                    setTimeout(() => {
-                        card.classList.remove('flipped');
-                    }, 400);
-                    return;
-                }
-
-                // Toggle flipped state for this card
-                const isAlreadyFlipped = card.classList.contains('flipped');
-                
-                // Clear flipped state from all cards
-                flipCards.forEach(c => c.classList.remove('flipped'));
-
-                // If it wasn't flipped, flip it
-                if (!isAlreadyFlipped) {
-                    card.classList.add('flipped');
-                }
-            });
-        });
-
-        // Close any flipped cards when user clicks anywhere else on the document
-        document.addEventListener('click', () => {
-            flipCards.forEach(c => c.classList.remove('flipped'));
-        });
+        // Direct links enabled on cards; flip functionality disabled
     };
 
     initCommandPalette();
