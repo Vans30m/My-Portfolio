@@ -894,8 +894,7 @@ html {
     box-shadow: 0 5px 18px rgba(124, 140, 255, 0.35);
 }
 
-/* CTA / connect section button */
-.connect-btn {
+.connect-btn, #email-btn-cta {
     position: relative;
     overflow: hidden;
     display: inline-flex;
@@ -903,9 +902,9 @@ html {
     justify-content: center;
     padding: 0.875rem 1.75rem;
     border-radius: 9999px;
-    background: rgba(20, 20, 22, 0.7);
-    border: 1px solid rgba(124, 140, 255, 0.3);
-    color: var(--primary);
+    background: rgba(20, 20, 22, 0.85);
+    border: 1px solid rgba(124, 140, 255, 0.35);
+    color: #F4F2EE !important;
     cursor: pointer;
     font-family: var(--font-mono);
     transition:
@@ -916,24 +915,25 @@ html {
         transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.connect-btn::before {
+.connect-btn::before, #email-btn-cta::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(105deg, transparent 35%, rgba(124, 140, 255, 0.1) 50%, transparent 65%);
+    background: linear-gradient(105deg, transparent 35%, rgba(124, 140, 255, 0.12) 50%, transparent 65%);
     transform: translateX(-100%);
     transition: transform 0.45s ease;
     pointer-events: none;
 }
 
-.connect-btn:hover::before {
+.connect-btn:hover::before, #email-btn-cta:hover::before {
     transform: translateX(100%);
 }
 
-.connect-btn:hover {
-    border-color: var(--primary);
-    background: rgba(124, 140, 255, 0.1);
-    box-shadow: 0 0 20px rgba(124, 140, 255, 0.25), 0 6px 20px rgba(0, 0, 0, 0.3);
+.connect-btn:hover, #email-btn-cta:hover {
+    border-color: var(--primary) !important;
+    background: rgba(124, 140, 255, 0.15) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 25px rgba(124, 140, 255, 0.3), 0 6px 20px rgba(0, 0, 0, 0.4) !important;
     transform: translateY(-3px);
 }
 
@@ -1066,20 +1066,7 @@ html {
     pointer-events: none;
 }
 
-.connect-btn {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-    color: var(--bg-main);
-    padding: 0.85rem 2rem;
-    border-radius: 999px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 25px -5px rgba(85, 214, 190, 0.3);
-}
 
-.connect-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px -5px rgba(124, 140, 255, 0.4);
-}
 
 /* ==========================================================================
    Bento Dashboard Theme Extensions
@@ -2164,37 +2151,40 @@ footer {
     bottom: 24px;
     right: 24px;
     z-index: 9990;
-    background: rgba(20, 20, 22, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(232, 163, 61, 0.3);
-    /* gold border */
+    background: rgba(18, 18, 20, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(232, 163, 61, 0.35);
     color: var(--text-main);
     padding: 10px 18px;
     border-radius: 999px;
     font-family: var(--font-mono);
     font-size: 11px;
     cursor: pointer;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(232, 163, 61, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(232, 163, 61, 0.15);
     display: flex;
     align-items: center;
     gap: 8px;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.recruiter-pill-dot {
+    display: none !important;
+}
+
 .recruiter-pill:hover {
     transform: scale(1.05) translateY(-2px);
-    border-color: rgba(232, 163, 61, 0.6);
-    box-shadow: 0 12px 28px -5px rgba(0, 0, 0, 0.6), 0 0 20px rgba(232, 163, 61, 0.2);
+    border-color: rgba(232, 163, 61, 0.7);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.7), 0 0 25px rgba(232, 163, 61, 0.3);
 }
 
 .recruiter-overlay {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: rgba(11, 11, 12, 0.75);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(8, 8, 9, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2210,18 +2200,23 @@ footer {
 }
 
 .recruiter-modal {
+    position: relative;
     width: 100%;
     max-width: 720px;
     max-height: 90vh;
     overflow-y: auto;
-    background: rgba(20, 20, 22, 0.94);
-    border: 1px solid rgba(232, 163, 61, 0.25);
+    background: rgba(18, 18, 21, 0.96);
+    border: 1px solid rgba(232, 163, 61, 0.35);
     border-radius: 20px;
-    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 0 50px rgba(232, 163, 61, 0.08);
+    box-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.9), 0 0 60px rgba(232, 163, 61, 0.12);
     transform: scale(0.95) translateY(10px);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+.recruiter-modal::before {
+    display: none;
 }
 
 .recruiter-overlay.active .recruiter-modal {
@@ -2283,7 +2278,6 @@ footer {
     color: var(--text-main);
     background: rgba(232, 163, 61, 0.1);
     border-color: rgba(232, 163, 61, 0.3);
-    transform: rotate(90deg);
 }
 
 .recruiter-body {
@@ -2388,42 +2382,29 @@ footer {
 }
 
 .recruiter-stat-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
-    padding: 16px 10px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 18px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 6px;
     text-align: center;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.recruiter-stat-card:hover {
-    transform: translateY(-3px);
-    background: rgba(232, 163, 61, 0.03);
-    border-color: rgba(232, 163, 61, 0.3);
-    box-shadow: 0 10px 20px -8px rgba(232, 163, 61, 0.15);
 }
 
 .recruiter-stat-icon {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--acc3);
     margin-bottom: 2px;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.recruiter-stat-card:hover .recruiter-stat-icon {
-    transform: scale(1.15);
-    color: #f0b555;
 }
 
 .recruiter-stat-val {
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
-    color: var(--text-main);
+    color: #E8A33D;
+    -webkit-text-fill-color: #E8A33D;
 }
 
 .recruiter-stat-lbl {
@@ -2431,6 +2412,7 @@ footer {
     font-family: var(--font-mono);
     color: var(--muted);
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .recruiter-skills-list {
@@ -2442,19 +2424,11 @@ footer {
 .recruiter-skill-tag {
     font-family: var(--font-mono);
     font-size: 10px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 5px 10px;
-    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    padding: 6px 12px;
+    border-radius: 8px;
     color: rgba(244, 242, 238, 0.9);
-    transition: all 0.25s ease;
-}
-
-.recruiter-skill-tag:hover {
-    background: rgba(232, 163, 61, 0.08);
-    border-color: rgba(232, 163, 61, 0.4);
-    color: var(--acc3);
-    transform: translateY(-1px);
 }
 
 .recruiter-footer {
@@ -2496,4 +2470,49 @@ footer {
     .recruiter-title {
         font-size: 18px;
     }
+}
+
+/* ==========================================================================
+   Coding Profiles - Slow Border Hover Animation
+   ========================================================================== */
+#about .grid > a {
+    transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#about .grid > a:hover {
+    animation: slowBorderGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes slowBorderGlow {
+    0% {
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.05), inset 0 0 8px rgba(255, 255, 255, 0.02);
+    }
+    50% {
+        box-shadow: 0 0 22px rgba(124, 140, 255, 0.25), inset 0 0 12px rgba(124, 140, 255, 0.08);
+    }
+    100% {
+        box-shadow: 0 0 16px rgba(85, 214, 190, 0.2), inset 0 0 10px rgba(85, 214, 190, 0.05);
+    }
+}
+
+/* Hero Tech Stack Icons */
+.hero-tech-icons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.hero-tech-icons i {
+    font-size: 1.75rem;
+    color: rgba(255, 255, 255, 0.45);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+
+.hero-tech-icons i:hover {
+    color: var(--primary);
+    transform: translateY(-4px) scale(1.2);
+    filter: drop-shadow(0 0 10px rgba(124, 140, 255, 0.6));
 }

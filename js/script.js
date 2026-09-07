@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize EmailJS
     try {
-        emailjs.init("VlUq-Vn5S6V2_G1d7"); // Customize with actual key
+        emailjs.init("srFwZDukLxplPt3Vr");
     } catch (e) {
         console.warn("EmailJS context offline.");
     }
@@ -258,9 +258,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        let activeNavId = currentSectionId;
+        if (activeNavId === 'other-systems-preview') {
+            activeNavId = 'projects';
+        }
+
         navLinks.forEach(link => {
             link.classList.remove('clicked');
-            if (link.getAttribute('href') === `#${currentSectionId}`) {
+            if (link.getAttribute('href') === `#${activeNavId}`) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
@@ -268,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         mobileNavLinks.forEach(link => {
             link.classList.remove('clicked');
-            if (link.getAttribute('href') === `#${currentSectionId}`) {
+            if (link.getAttribute('href') === `#${activeNavId}`) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
@@ -383,25 +388,30 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        5. Clipboard Copy Utility
        ========================================================================== */
-    if (emailBtn && emailText) {
-        emailBtn.addEventListener('click', () => {
+    const setupEmailCopy = (btn, textEl) => {
+        if (!btn) return;
+        btn.addEventListener('click', () => {
             const rawEmail = "vthakur.290905@gmail.com";
             navigator.clipboard.writeText(rawEmail).then(() => {
-                const originalText = emailText.innerText;
-                emailText.innerText = "COPIED TO CLIPBOARD!";
-                emailBtn.style.borderColor = "var(--accent)";
-                emailBtn.style.color = "var(--accent)";
+                const targetText = textEl || btn;
+                const originalText = targetText.innerText;
+                targetText.innerText = "COPIED TO CLIPBOARD!";
+                btn.style.borderColor = "var(--accent)";
+                btn.style.color = "#55D6BE";
 
                 setTimeout(() => {
-                    emailText.innerText = originalText;
-                    emailBtn.style.borderColor = "";
-                    emailBtn.style.color = "";
+                    targetText.innerText = originalText;
+                    btn.style.borderColor = "";
+                    btn.style.color = "";
                 }, 2000);
             }).catch(err => {
                 console.error("Clipboard copy failed:", err);
             });
         });
-    }
+    };
+
+    setupEmailCopy(emailBtn, emailText);
+    setupEmailCopy(document.getElementById('email-btn-cta'), null);
 
     /* ==========================================================================
        6. Asynchronous EmailJS Form Handler
@@ -410,33 +420,58 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
+            const nameEl = document.getElementById('form-name');
+            const emailEl = document.getElementById('form-email');
+            const messageEl = document.getElementById('form-message');
+
+            const name = nameEl ? nameEl.value.trim() : '';
+            const email = emailEl ? emailEl.value.trim() : '';
+            const message = messageEl ? messageEl.value.trim() : '';
+
             formSubmit.disabled = true;
             formSubmit.innerText = "TRANSMITTING SIGNAL DATA...";
             formStatus.classList.remove('hidden', 'bg-red-500/10', 'text-red-400', 'bg-emerald-500/10', 'text-emerald-400');
 
             const params = {
-                from_name: document.getElementById('form-name').value,
-                reply_to: document.getElementById('form-email').value,
-                message: document.getElementById('form-message').value
+                from_name: name,
+                reply_to: email,
+                message: message
             };
 
-            emailjs.send('service_default', 'template_default', params)
-                .then(() => {
-                    formStatus.innerText = "SUCCESS: Correspondence packet parsed and dispatched.";
-                    formStatus.classList.add('bg-emerald-500/10', 'text-emerald-400');
-                    formStatus.classList.remove('hidden');
-                    contactForm.reset();
-                })
-                .catch((err) => {
-                    formStatus.innerText = "CRITICAL FAILURE: Delivery channel offline. Try direct email.";
-                    formStatus.classList.add('bg-red-500/10', 'text-red-400');
-                    formStatus.classList.remove('hidden');
-                    console.error("Mail Dispatch Failure:", err);
-                })
-                .finally(() => {
-                    formSubmit.disabled = false;
-                    formSubmit.innerText = "TRANSMIT SIGNAL PACKAGE";
-                });
+            const triggerMailtoFallback = () => {
+                const mailtoUrl = `mailto:vthakur.290905@gmail.com?subject=${encodeURIComponent("Portfolio Contact from " + name)}&body=${encodeURIComponent(message + "\n\nReply To: " + email)}`;
+                window.location.href = mailtoUrl;
+                formStatus.innerText = "SUCCESS: Correspondence packet prepared and opened in your email app!";
+                formStatus.classList.add('bg-emerald-500/10', 'text-emerald-400');
+                formStatus.classList.remove('hidden');
+                contactForm.reset();
+            };
+
+            if (window.emailjs && typeof emailjs.send === 'function') {
+                // Send primary notification email to Vansh
+                emailjs.send('service_t3hkbsw', 'template_1894rk8', params)
+                    .then(() => {
+                        // Send optional auto-reply to visitor
+                        emailjs.send('service_t3hkbsw', 'template_qx3u0d8', params).catch(() => {});
+
+                        formStatus.innerText = "SUCCESS: Correspondence packet parsed and dispatched.";
+                        formStatus.classList.add('bg-emerald-500/10', 'text-emerald-400');
+                        formStatus.classList.remove('hidden');
+                        contactForm.reset();
+                    })
+                    .catch((err) => {
+                        console.warn("EmailJS API key placeholder or offline. Opening mail client fallback...", err);
+                        triggerMailtoFallback();
+                    })
+                    .finally(() => {
+                        formSubmit.disabled = false;
+                        formSubmit.innerText = "TRANSMIT SIGNAL PACKAGE";
+                    });
+            } else {
+                triggerMailtoFallback();
+                formSubmit.disabled = false;
+                formSubmit.innerText = "TRANSMIT SIGNAL PACKAGE";
+            }
         });
     }
 
@@ -1199,7 +1234,8 @@ document.addEventListener('DOMContentLoaded', () => {
         pill.id = 'recruiter-pill';
         pill.setAttribute('aria-label', 'Open Recruiter Mode');
         pill.innerHTML = `
-            <span>Recruiter Mode <kbd style="margin-left: 4px; opacity: 0.6; font-size: 9px; font-weight: normal; background: rgba(255,255,255,0.08); padding: 1px 3px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.1);">R</kbd></span>
+            <span class="recruiter-pill-dot"></span>
+            <span>Recruiter Mode <kbd style="margin-left: 4px; opacity: 0.7; font-size: 9px; font-weight: 600; background: rgba(232,163,61,0.15); color: #e8a33d; padding: 2px 5px; border-radius: 4px; border: 1px solid rgba(232,163,61,0.3);">R</kbd></span>
         `;
         document.body.appendChild(pill);
 
@@ -1239,7 +1275,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                                 <div class="recruiter-stat-card">
                                     <i class="fa-solid fa-code-commit recruiter-stat-icon"></i>
-                                    <span class="recruiter-stat-val">35</span>
+                                    <span class="recruiter-stat-val github-month-commits">35</span>
                                     <span class="recruiter-stat-lbl">Commits / Mo</span>
                                 </div>
                                 <div class="recruiter-stat-card">
@@ -1255,8 +1291,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="recruiter-skill-tag">JavaScript / TS</span>
                                 <span class="recruiter-skill-tag">React</span>
                                 <span class="recruiter-skill-tag">Node.js</span>
-                                <span class="recruiter-skill-tag">Java</span>
+                                <span class="recruiter-skill-tag">MongoDB</span>
                                 <span class="recruiter-skill-tag">PostgreSQL</span>
+                                <span class="recruiter-skill-tag">Java</span>
                             </div>
                         </div>
                     </div>
