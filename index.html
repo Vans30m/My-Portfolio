@@ -24,8 +24,9 @@
 
     <!-- FontAwesome Icons & Devicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 
     <!-- Tailwind Play CDN -->
@@ -170,11 +171,7 @@
             <!-- Hero Section -->
             <div
                 class="min-h-[60vh] md:min-h-[75vh] flex flex-col justify-center pt-8 pb-6 md:pt-16 md:pb-12 border-b border-[rgba(255,255,255,.08)] relative overflow-hidden">
-                <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-                    <div class="absolute w-[500px] h-[500px] rounded-full opacity-10 blur-[100px] pointer-events-none"
-                        style="background:radial-gradient(circle, rgba(124,140,255,0.3) 0%, rgba(85,214,190,0.2) 50%, transparent 70%); left:50%; top:40%; transform:translate(-50%, -50%)">
-                    </div>
-                </div>
+
 
                 <div class="relative z-10 text-center animate-fade-in-up max-w-[850px] mx-auto">
                     <p class="text-base text-muted font-medium tracking-wide uppercase mb-3">Hey, I'm</p>
@@ -249,11 +246,12 @@
                                         class="text-4xl sm:text-5xl font-display font-bold text-white mb-2 tracking-tight">
                                         Vansh Thakur
                                     </h1>
-                                    <p class="text-xs font-mono text-muted mb-4 uppercase tracking-wider">Software
-                                        Engineer
+                                    <p class="text-xs font-mono text-muted mb-4 uppercase tracking-wider">Full-Stack &
+                                        AI Software Engineer
                                     </p>
                                     <p class="text-sm text-zinc-400 max-w-sm leading-relaxed mb-6">
-                                        Building AI-powered financial products and scalable web applications.
+                                        Computer Science Engineer crafting versatile full-stack web applications,
+                                        AI-driven platforms, and hardware/embedded systems.
                                     </p>
                                 </div>
 
@@ -291,26 +289,26 @@
                                     <li class="flex items-start gap-3">
                                         <span
                                             class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[9px] shrink-0 mt-0.5">01</span>
-                                        <span class="leading-relaxed text-zinc-300">Building FinPulse AI (Market
-                                            Intelligence Platform)</span>
+                                        <span class="leading-relaxed text-zinc-300">Building Full-Stack & AI Web
+                                            Applications (FinPulse AI, Xplorism, CheckinPass)</span>
                                     </li>
                                     <li class="flex items-start gap-3">
                                         <span
                                             class="flex items-center justify-center w-5 h-5 rounded bg-accent/15 border border-accent/30 text-accent font-bold text-[9px] shrink-0 mt-0.5">02</span>
-                                        <span class="leading-relaxed text-zinc-300">Learning System Design (Scalable
-                                            architectures)</span>
+                                        <span class="leading-relaxed text-zinc-300">Mastering System Design & Scalable
+                                            Web Architectures</span>
                                     </li>
                                     <li class="flex items-start gap-3">
                                         <span
                                             class="flex items-center justify-center w-5 h-5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-400 font-bold text-[9px] shrink-0 mt-0.5">03</span>
-                                        <span class="leading-relaxed text-zinc-300">Exploring Cloud & DevOps
-                                            Services</span>
+                                        <span class="leading-relaxed text-zinc-300">Hardware & Embedded Robotics Builds
+                                            (Piezoelectric, Floor Cleaner)</span>
                                     </li>
                                     <li class="flex items-start gap-3">
                                         <span
                                             class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[9px] shrink-0 mt-0.5">04</span>
-                                        <span class="leading-relaxed text-zinc-300">Preparing for SWE placement
-                                            cycles</span>
+                                        <span class="leading-relaxed text-zinc-300">Competitive Programming & DSA
+                                            Problem Solving (LeetCode 250+)</span>
                                     </li>
                                 </ul>
                             </div>
@@ -363,18 +361,25 @@
                             <div class="bento-card-dark bento-border-glow p-4 sm:p-6 flex flex-col justify-between min-h-[220px]"
                                 data-aos="fade-up" data-aos-delay="50">
                                 <span
-                                    class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-4">GitHub
+                                    class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">GitHub
                                     Activity</span>
-                                <div class="flex items-baseline gap-1.5">
-                                    <span class="text-3xl font-display font-bold text-white github-month-commits"
-                                        data-count="35">0</span>
-                                    <span class="text-xs text-zinc-400 font-mono leading-tight flex flex-col">
-                                        <span>commits this</span>
-                                        <span>month</span>
-                                    </span>
+                                <div class="flex items-baseline justify-between mb-1">
+                                    <div class="flex items-baseline gap-1.5">
+                                        <span
+                                            class="text-2xl sm:text-3xl font-display font-bold text-white github-month-commits">35</span>
+                                        <span class="text-[10px] text-zinc-400 font-mono leading-tight flex flex-col">
+                                            <span>commits this</span>
+                                            <span>month</span>
+                                        </span>
+                                    </div>
+                                    <span class="text-[10px] text-accent font-mono"><span
+                                            class="github-total-contributions">342</span> yearly</span>
                                 </div>
+                                <div id="github-bento-grid" class="github-grid my-2"></div>
                                 <a href="https://github.com/Vans30m" target="_blank"
-                                    class="text-xs font-mono text-muted hover:text-white">View Profile &rarr;</a>
+                                    class="text-xs font-mono text-muted hover:text-white transition-colors flex items-center justify-between pt-1">
+                                    <span>View Profile &rarr;</span>
+                                </a>
                             </div>
 
                             <!-- Coding Journey Card -->
@@ -486,21 +491,28 @@
                     <div class="lg:col-span-6 space-y-4">
                         <h4 class="text-xs font-mono text-accent uppercase tracking-wider">[ Featured Project Overview ]
                         </h4>
-                        <h3 class="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight">Intelligent Stream Analytics</h3>
+                        <h3 class="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight">Intelligent
+                            Stream Analytics</h3>
                         <p class="text-sm text-muted leading-relaxed">
                             FinPulse AI layers intelligent data parsing right over standard transaction records,
                             dynamically tracking trends, categorizing risks, and mapping anomalies down to the
                             millisecond.
                         </p>
                         <div class="flex flex-wrap gap-2 pt-3">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">TypeScript</span>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">React</span>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">Node</span>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">LLM APIs</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">TypeScript</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">React</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">Node</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-white">LLM
+                                APIs</span>
                         </div>
                     </div>
                     <div class="lg:col-span-6">
-                        <div class="rounded-xl overflow-hidden border border-white/10 shadow-2xl relative aspect-[16/10] group">
+                        <div
+                            class="rounded-xl overflow-hidden border border-white/10 shadow-2xl relative aspect-[16/10] group">
                             <img src="assets/Images/finpulseai.webp" alt="FinPulse AI Dashboard Screenshot"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
@@ -510,9 +522,11 @@
                     class="flex flex-col sm:flex-row sm:items-center justify-end gap-4 mt-8 pt-4 border-t border-borderSpec/40 relative z-10">
                     <div class="flex flex-wrap gap-x-4 gap-y-2">
                         <a href="https://finpulse-frontend-jrsd.onrender.com/pulse" target="_blank"
-                            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent/15 text-accent border border-accent/30 text-xs font-mono font-semibold hover:bg-accent/25 transition-all hover:scale-[1.02]">Live Demo ↗</a>
+                            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent/15 text-accent border border-accent/30 text-xs font-mono font-semibold hover:bg-accent/25 transition-all hover:scale-[1.02]">Live
+                            Demo ↗</a>
                         <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
-                            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/5 text-muted border border-white/10 text-xs font-mono font-semibold hover:text-white hover:bg-white/10 transition-all hover:scale-[1.02]">Code ↗</a>
+                            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/5 text-muted border border-white/10 text-xs font-mono font-semibold hover:text-white hover:bg-white/10 transition-all hover:scale-[1.02]">Code
+                            ↗</a>
                     </div>
                 </div>
             </div>
@@ -568,14 +582,14 @@
                             </div>
                             <h3 class="text-2xl font-display font-bold text-white mb-2">CheckinPass</h3>
                             <p class="text-xs text-muted leading-relaxed">
-                                Digital access & verification platform streamlining event entry, dynamic pass generation, and access control.
+                                Digital access & verification platform streamlining event entry, dynamic pass
+                                generation, and access control.
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
                             <span class="text-[11px] font-mono text-primary">React.js • Node.js • Express</span>
                             <div class="flex items-center gap-3">
-                                <a href="#contact"
-                                    class="text-xs font-mono text-accent hover:underline">Inquire ↗</a>
+                                <a href="#contact" class="text-xs font-mono text-accent hover:underline">Inquire ↗</a>
                             </div>
                         </div>
                     </div>
@@ -756,7 +770,7 @@
             <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">Comprehensive overview of
                 languages, frameworks, databases, and developer tooling.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                 <!-- Languages Card -->
                 <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="150">
                     <div class="mb-4 pb-2 border-b border-borderSpec/40">
@@ -807,25 +821,49 @@
                                     class="devicon-tailwindcss-original text-sky-400"></i> Tailwind CSS</span>
                             <span class="text-[10px] text-accent">Styling</span>
                         </li>
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-html5-plain text-orange-500"></i> HTML5</span>
+                            <span class="text-[10px] text-accent">Semantic</span>
+                        </li>
                         <li class="flex items-center justify-between">
                             <span class="text-white flex items-center gap-2"><i
-                                    class="devicon-html5-plain text-orange-500"></i> HTML5 / CSS3</span>
-                            <span class="text-[10px] text-accent">Semantic</span>
+                                    class="devicon-css3-plain text-blue-500"></i> CSS3</span>
+                            <span class="text-[10px] text-accent">Styling</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Backend & Cloud Card -->
+                <!-- Backend Card -->
                 <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="250">
                     <div class="mb-4 pb-2 border-b border-borderSpec/40">
-                        <h3 class="font-display font-bold text-white text-base">Backend & DB</h3>
+                        <h3 class="font-display font-bold text-white text-base">Backend</h3>
                     </div>
                     <ul class="space-y-2.5 text-xs text-muted font-mono">
                         <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
                             <span class="text-white flex items-center gap-2"><i
-                                    class="devicon-nodejs-plain text-green-500"></i> Node.js </span>
+                                    class="devicon-nodejs-plain text-green-500"></i> Node.js</span>
+                            <span class="text-[10px] text-accent">Runtime</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-express-original text-gray-300"></i> Express.js</span>
                             <span class="text-[10px] text-accent">REST APIs</span>
                         </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="devicon-fastapi-plain text-teal-400"></i> FastAPI</span>
+                            <span class="text-[10px] text-accent">Python API</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Databases Card -->
+                <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="280">
+                    <div class="mb-4 pb-2 border-b border-borderSpec/40">
+                        <h3 class="font-display font-bold text-white text-base">Databases</h3>
+                    </div>
+                    <ul class="space-y-2.5 text-xs text-muted font-mono">
                         <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
                             <span class="text-white flex items-center gap-2"><i
                                     class="devicon-postgresql-plain text-blue-400"></i> PostgreSQL</span>
@@ -838,8 +876,8 @@
                         </li>
                         <li class="flex items-center justify-between">
                             <span class="text-white flex items-center gap-2"><i
-                                    class="devicon-fastapi-plain text-teal-400"></i> FastAPI</span>
-                            <span class="text-[10px] text-accent">Python API</span>
+                                    class="fa-solid fa-database text-purple-400"></i> SQL</span>
+                            <span class="text-[10px] text-accent">Queries</span>
                         </li>
                     </ul>
                 </div>
@@ -862,12 +900,17 @@
                         </li>
                         <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
                             <span class="text-white flex items-center gap-2"><i
-                                    class="devicon-vercel-original text-white"></i> Vercel & Render</span>
-                            <span class="text-[10px] text-accent">Deploy</span>
+                                    class="fa-solid fa-cloud-arrow-up text-white"></i> Vercel</span>
+                            <span class="text-[10px] text-accent">Frontend Host</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-borderSpec/30 pb-2">
+                            <span class="text-white flex items-center gap-2"><i
+                                    class="fa-solid fa-server text-teal-400"></i> Render</span>
+                            <span class="text-[10px] text-accent">Backend Host</span>
                         </li>
                         <li class="flex items-center justify-between">
                             <span class="text-white flex items-center gap-2"><i
-                                    class="devicon-vscode-plain text-blue-500"></i> VS Code / Linux</span>
+                                    class="devicon-vscode-plain text-blue-500"></i> VS Code</span>
                             <span class="text-[10px] text-accent">Dev Env</span>
                         </li>
                     </ul>
@@ -1273,48 +1316,76 @@
         </section>
 
         <!-- Contact Section (#contact) -->
-        <section id="contact" class="section-container space-y-16">
+        <section id="contact" class="section-container space-y-12">
             <!-- Direct Form Grid (Contact Section) -->
             <div id="contact-form-block">
                 <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2" data-aos="fade-up">//
                     CORRESPONDENCE PORT</span>
-                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-4" data-aos="fade-up"
-                    data-aos-delay="50">Initialize Secure Interconnect</h2>
-                <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">Submit project details
-                    or placement criteria directly into my communication handler.</p>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-3" data-aos="fade-up"
+                    data-aos-delay="50">Let's build <span class="editorial-serif text-primary">something that matters.</span></h2>
+                <p class="section-desc mb-8 text-muted max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+                    Open to software engineering opportunities, freelance work, and technical collaborations. Drop me a line directly below.
+                </p>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-12">
-                    <!-- Left Info Panel -->
-                    <div class="lg:col-span-5 space-y-6" data-aos="fade-right" data-aos-delay="150">
-                        <div class="bentocard flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-xs font-mono text-accent uppercase tracking-wider mb-3">// Direct Email
-                                </h3>
-                                <p class="text-base font-semibold text-white mb-1">vthakur.290905@gmail.com</p>
-                                <p class="text-xs text-muted">Primary address for recruitment and placement inquiries.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bentocard flex flex-col justify-between">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mt-8">
+                    <!-- Left Info Panel (Combined Email & Networks Card) -->
+                    <div class="lg:col-span-5 flex flex-col h-full" data-aos="fade-right" data-aos-delay="150">
+                        <div class="bentocard p-6 sm:p-8 flex flex-col justify-between h-full space-y-6">
                             <div class="card-glow-wash glow-purple"></div>
-                            <div>
-                                <h3 class="text-xs font-mono text-primary uppercase tracking-wider mb-3">// Networks
+                            
+                            <!-- Email Section -->
+                            <div class="border-b border-borderSpec/40 pb-4">
+                                <h3 class="text-xs font-mono text-accent uppercase tracking-wider mb-2">// Direct Email
                                 </h3>
-                                <div class="space-y-2 mt-1">
-                                    <a href="https://www.linkedin.com/in/vansh-thakur-vans30m/" target="_blank"
-                                        class="text-sm text-white hover:underline block">LinkedIn Profile ↗</a>
+                                <p class="text-base font-semibold text-white mb-1 break-all">vthakur.290905@gmail.com</p>
+                                <p class="text-xs text-muted leading-relaxed mb-3">
+                                    Primary address for software roles, freelance collaborations, and placement inquiries.
+                                </p>
+                                <button id="email-btn-cta" type="button"
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-mono text-accent hover:bg-accent/15 hover:border-accent/30 transition-all cursor-pointer">
+                                    <i class="fa-regular fa-copy text-[10px]"></i> Copy Email
+                                </button>
+                            </div>
+
+                            <!-- Operational Status Section -->
+                            <div class="border-b border-borderSpec/40 pb-4 space-y-2.5 font-mono text-xs">
+                                <h3 class="text-xs font-mono text-acc3 uppercase tracking-wider mb-2.5">// Operational Status</h3>
+                                <div class="flex items-center gap-2.5">
+                                    <span class="px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-semibold uppercase">Status</span>
+                                    <span class="text-white/90">Available for SWE Roles (2026)</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <span class="px-1.5 py-0.5 rounded bg-accent/10 border border-accent/20 text-accent text-[10px] font-semibold uppercase">Location</span>
+                                    <span class="text-muted">India • Remote & Relocation Ready</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <span class="px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary text-[10px] font-semibold uppercase">SLA</span>
+                                    <span class="text-muted">Response within 24 hours</span>
+                                </div>
+                            </div>
+
+                            <!-- Professional Networks -->
+                            <div class="pt-2">
+                                <h3 class="text-xs font-mono text-primary uppercase tracking-wider mb-3">// Professional Networks
+                                </h3>
+                                <div class="grid grid-cols-2 gap-3 font-mono text-xs">
+                                    <a href="https://linkedin.com/in/vansh-thakur-vans30m/" target="_blank"
+                                        class="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/5 border border-white/10 text-white hover:border-primary/40 hover:text-primary transition-all">
+                                        <i class="devicon-linkedin-plain text-sm text-blue-400"></i> LinkedIn ↗
+                                    </a>
                                     <a href="https://github.com/Vans30m/" target="_blank"
-                                        class="text-sm text-white hover:underline block">GitHub Pipeline ↗</a>
+                                        class="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/5 border border-white/10 text-white hover:border-accent/40 hover:text-accent transition-all">
+                                        <i class="devicon-github-original text-sm text-white"></i> GitHub ↗
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Contact Form Panel -->
-                    <div class="lg:col-span-7" data-aos="fade-left" data-aos-delay="150">
-                        <div class="bentocard p-6 sm:p-8 relative">
-                            <form id="contact-form" class="space-y-5 relative z-10">
+                    <div class="lg:col-span-7 flex flex-col h-full" data-aos="fade-left" data-aos-delay="150">
+                        <div class="bentocard p-6 sm:p-8 flex flex-col justify-between h-full relative">
+                            <form id="contact-form" class="relative z-10 flex flex-col justify-between h-full space-y-5 flex-1">
                                 <div>
                                     <label
                                         class="block text-xs font-mono text-muted uppercase tracking-wider mb-2">Caller
@@ -1329,46 +1400,22 @@
                                     <input type="email" id="form-email" required placeholder="name@enterprise.com"
                                         class="w-full bg-bgMain border border-borderSpec rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition-colors">
                                 </div>
-                                <div>
+                                <div class="flex-1 flex flex-col">
                                     <label
                                         class="block text-xs font-mono text-muted uppercase tracking-wider mb-2">Message
                                         Payload</label>
                                     <textarea id="form-message" required rows="4"
                                         placeholder="State operational directives, project specifications, or recruitment parameters..."
-                                        class="w-full bg-bgMain border border-borderSpec rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
+                                        class="w-full flex-1 min-h-[130px] bg-bgMain border border-borderSpec rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
                                 </div>
 
                                 <button type="submit" id="form-submit"
-                                    class="w-full inline-flex items-center justify-center py-3 rounded-lg bg-primary text-bgMain text-xs font-mono tracking-wide uppercase font-bold transition-transform hover:scale-[1.01]">Transmit
+                                    class="w-full inline-flex items-center justify-center py-3.5 rounded-lg bg-primary text-bgMain text-xs font-mono tracking-wide uppercase font-bold transition-transform hover:scale-[1.01] mt-auto">Transmit
                                     Signal Package</button>
                             </form>
                             <div id="form-status"
                                 class="hidden font-mono text-xs text-center mt-4 p-2 rounded relative z-10"></div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Call to Action Section -->
-            <div id="cta" class="py-10" data-aos="fade-up">
-                <div class="connect-card p-10 text-center relative z-10">
-                    <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">LET'S
-                        CONNECT</span>
-                    <h2 class="text-4xl sm:text-5xl font-display font-bold text-white mb-6 leading-tight">
-                        Let's build <span class="editorial-serif">something that matters.</span>
-                    </h2>
-                    <p class="text-muted text-sm leading-relaxed max-w-xl mx-auto mb-8">
-                        Open to software engineering opportunities, freelance work and collaborations. Drop me a line.
-                    </p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button id="email-btn-cta"
-                            class="connect-btn text-xs font-mono tracking-wider w-full sm:w-auto">
-                            vthakur.290905@gmail.com
-                        </button>
-                        <a href="https://github.com/Vans30m/" target="_blank"
-                            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-surface border border-borderSpec text-xs font-mono text-muted hover:text-textMain transition-colors w-full sm:w-auto justify-center">
-                            GitHub ↗
-                        </a>
                     </div>
                 </div>
             </div>
