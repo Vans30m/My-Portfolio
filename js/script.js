@@ -838,12 +838,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const todayStr = new Date().toISOString().split('T')[0];
             const pastContributions = data.contributions.filter(c => c.date <= todayStr);
 
-            // Update yearly totals dynamically
+            // Update yearly totals dynamically (last 365 days)
             const totalElements = document.querySelectorAll('.github-total-contributions');
-            const currentYear = new Date().getFullYear();
-            const yearTotal = data.total[currentYear] || data.total[Object.keys(data.total).sort().pop()] || '342';
+            const last365Days = pastContributions.slice(-365);
+            const total365 = last365Days.reduce((acc, curr) => acc + curr.count, 0);
             totalElements.forEach(el => {
-                el.innerText = yearTotal;
+                el.innerText = total365;
             });
 
             // Calculate last 30 days contributions for bento monthly commit indicator
@@ -856,34 +856,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Populate Main Calendar Grid (371 cells)
+            // Populate Main Calendar Grid (371 cells = 53 weeks * 7 days)
             if (githubGrid) {
                 githubGrid.innerHTML = '';
+                const gridParent = githubGrid.parentElement;
+                // Clean up previous divider lines
+                if (gridParent) {
+                    gridParent.querySelectorAll('.github-month-divider').forEach(d => d.remove());
+                }
+
+                // Take exactly 371 past contributions to fill a 53-column x 7-row grid
                 const lastYearConts = pastContributions.slice(-371);
 
-                // Render Month Labels dynamically
-                const githubMonths = document.getElementById('github-months-container');
-                if (githubMonths) {
-                    githubMonths.innerHTML = '';
-                    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                    let lastMonthIdx = -1;
+                // Render month barrier divider lines after each month transition
+                let lastMonthIdx = -1;
+                const totalCols = Math.ceil(lastYearConts.length / 7);
 
-                    for (let col = 0; col < 53; col++) {
-                        const dayIdx = col * 7;
-                        if (dayIdx >= lastYearConts.length) break;
-
-                        const d = new Date(lastYearConts[dayIdx].date);
-                        const currentMonthIdx = d.getMonth();
-
-                        if (currentMonthIdx !== lastMonthIdx) {
-                            const span = document.createElement('span');
-                            span.innerText = monthNames[currentMonthIdx];
-                            // Each column is 13px wide with 2px gap (15px total offset)
-                            span.style.left = `${col * 15}px`;
-                            span.style.position = 'absolute';
-                            githubMonths.appendChild(span);
-                            lastMonthIdx = currentMonthIdx;
+                for (let col = 0; col < totalCols; col++) {
+                    let firstMonthInWeek = -1;
+                    for (let row = 0; row < 7; row++) {
+                        const idx = col * 7 + row;
+                        if (idx < lastYearConts.length) {
+                            const parts = lastYearConts[idx].date.split('-');
+                            const monthIdx = parseInt(parts[1], 10) - 1;
+                            if (firstMonthInWeek === -1) {
+                                firstMonthInWeek = monthIdx;
+                            }
                         }
+                    }
+
+                    if (firstMonthInWeek !== -1) {
+                        if (lastMonthIdx !== -1 && firstMonthInWeek !== lastMonthIdx && col > 0) {
+                            // Place vertical barrier line right between tile columns in gap center
+                            const divider = document.createElement('div');
+                            divider.className = 'github-month-divider';
+                            const pixelPos = col * 13 - 2; // Exact 3px column gap midpoint
+                            divider.style.left = `${pixelPos}px`;
+                            githubGrid.appendChild(divider);
+                        }
+                        lastMonthIdx = firstMonthInWeek;
                     }
                 }
 
