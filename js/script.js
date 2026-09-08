@@ -3,12 +3,14 @@
  * Highly optimized, merged UI/UX scripts.
  */
 document.addEventListener('DOMContentLoaded', () => {
-    // Reset to top target (#home) on reload
+    // Keep URL bar clean without #hash fragments while retaining scroll restoration
     if (history.scrollRestoration) {
         history.scrollRestoration = 'manual';
     }
     window.scrollTo(0, 0);
-    window.location.hash = '#home';
+    if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
 
     // Initialize Custom Scroll Animations (IntersectionObserver)
     const initScrollAnimations = () => {
@@ -281,14 +283,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Click handler to add active status immediately to clicked links
-    const handleLinkClick = (clickedLink) => {
+    // Click handler to add active status immediately to clicked links and keep URL bar clean
+    const handleLinkClick = (e, clickedLink) => {
+        const targetHref = clickedLink.getAttribute('href');
+        if (targetHref && targetHref.startsWith('#')) {
+            e.preventDefault();
+            const targetEl = document.querySelector(targetHref);
+            if (targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
         isScrollingFromClick = true;
 
         navLinks.forEach(link => link.classList.remove('active'));
         mobileNavLinks.forEach(link => link.classList.remove('active'));
 
-        const targetHref = clickedLink.getAttribute('href');
         navLinks.forEach(link => {
             if (link.getAttribute('href') === targetHref) link.classList.add('active');
         });
@@ -303,11 +313,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     };
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => handleLinkClick(link));
-    });
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => handleLinkClick(link));
+    // Attach click listeners to all links pointing to hash sections across the document
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => handleLinkClick(e, link));
     });
 
     // Initialize Home link as active on start
@@ -1000,6 +1008,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: 'nav-journey', title: 'Journey Log', desc: 'View academic & coding timeline', url: '#journey', category: 'Navigation', icon: 'fa-road', shortcut: '↵' },
             { id: 'nav-contact', title: 'Contact', desc: 'Get in touch / hire me', url: '#contact', category: 'Navigation', icon: 'fa-envelope', shortcut: '↵' },
 
+            { id: 'proj-focusora', title: 'FocusoraHQ Workspace', desc: 'Productivity & study workspace ecosystem', url: 'https://focusorahq.vercel.app', category: 'Projects', icon: 'fa-laptop-code', shortcut: '↗', external: true },
             { id: 'proj-piezo', title: 'Piezoelectric Floor Case Study', desc: 'Energy harvesting floor design', url: 'html/piezoelectric-details.html', category: 'Case Studies', icon: 'fa-plug', shortcut: '↗' },
             { id: 'proj-floor', title: 'Floor Cleaning Robot Case Study', desc: 'Autonomous Arduino cleaner', url: 'html/floorcleaning-details.html', category: 'Case Studies', icon: 'fa-robot', shortcut: '↗' },
 
@@ -1149,14 +1158,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             if (item.url.startsWith('#')) {
-                // Smooth scroll to the target element
+                // Smooth scroll to the target element without altering URL bar hash
                 const target = document.querySelector(item.url);
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth' });
-                    // Update location hash silently
-                    setTimeout(() => {
-                        window.location.hash = item.url;
-                    }, 500);
                 }
             } else {
                 if (item.external) {
@@ -1280,7 +1285,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                                 <div class="recruiter-stat-card">
                                     <i class="fa-solid fa-laptop-code recruiter-stat-icon"></i>
-                                    <span class="recruiter-stat-val">5</span>
+                                    <span class="recruiter-stat-val">6</span>
                                     <span class="recruiter-stat-lbl">Projects</span>
                                 </div>
                             </div>
