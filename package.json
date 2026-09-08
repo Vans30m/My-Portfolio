@@ -1,0 +1,13 @@
+{
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Vansh Thakur",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "test": "echo \"No tests configured\" && exit 0"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
+  },
+  "devDependencies": {}
+}
