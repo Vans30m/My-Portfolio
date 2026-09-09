@@ -122,6 +122,57 @@
     .bentocard,
     .bento-card-dark {
         padding: 1rem !important;
+        border-radius: 0.85rem !important;
+    }
+
+    #skills .bentocard {
+        padding: 0.75rem 0.85rem !important;
+    }
+
+    #skills .bentocard h3 {
+        font-size: 0.875rem !important;
+    }
+
+    #skills .bentocard .mb-4 {
+        margin-bottom: 0.5rem !important;
+        padding-bottom: 0.25rem !important;
+    }
+
+    #skills .bentocard ul {
+        gap: 0.35rem !important;
+    }
+
+    #skills .bentocard ul li {
+        padding-bottom: 0.35rem !important;
+        font-size: 10.5px !important;
+    }
+
+    #skills .bentocard ul li span {
+        font-size: 10.5px !important;
+    }
+
+    #about .bentocard {
+        padding: 0.85rem !important;
+    }
+
+    #about .bentocard p {
+        margin-bottom: 0.5rem !important;
+    }
+
+    #about .bentocard .w-9.h-9 {
+        width: 1.75rem !important;
+        height: 1.75rem !important;
+        font-size: 0.875rem !important;
+        border-radius: 0.5rem !important;
+    }
+
+    #about .bentocard h3 {
+        font-size: 0.95rem !important;
+    }
+
+    #about .bentocard .bg-black\/30 {
+        padding: 0.5rem 0.65rem !important;
+        border-radius: 0.6rem !important;
     }
 
     .flip {
@@ -149,26 +200,160 @@
         font-size: 9px !important;
     }
 
-    /* Carousel Cards Mobile Optimization */
-    .carousel-container {
-        scroll-snap-type: x mandatory;
+    /* Home Bento Section Mobile Compression */
+    #home .grid {
+        gap: 0.5rem !important;
     }
-    .carousel-card {
-        flex: 0 0 calc(100% - 12px) !important;
-        scroll-snap-align: center;
-        padding: 1.15rem !important;
-        min-height: 360px !important;
+    #home .bento-card-dark {
+        padding: 0.75rem 0.85rem !important;
+        min-h: auto !important;
+        min-height: 0 !important;
     }
-    .carousel-card h3 {
-        font-size: 1.3rem !important;
+    #home .bento-card-dark h3 {
+        font-size: 1rem !important;
+        margin-bottom: 0.25rem !important;
     }
-    .carousel-card p {
+    #home .bento-card-dark p {
         font-size: 11px !important;
+        line-height: 1.35 !important;
+    }
+
+    /* Tech Stack & Current Focus Mobile Compression */
+    #home .bento-card-dark:has(ul) {
+        padding: 0.9rem 1rem 0.75rem !important;
+        min-height: 240px !important;
+    }
+    #home .bento-card-dark ul {
+        space-y: 0.6rem !important;
+    }
+    #home .bento-card-dark ul > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 0.6rem !important;
+    }
+    #home .bento-card-dark ul li {
+        gap: 0.65rem !important;
+    }
+    #home .bento-card-dark ul li span.leading-relaxed {
+        font-size: 10.5px !important;
         line-height: 1.4 !important;
     }
+
+    /* Compressed Tech Stack Widget Card */
+    #home .bento-card-dark:has(.grid-cols-4) {
+        padding: 0.6rem 0.75rem !important;
+        min-height: 0 !important;
+    }
+    #home .bento-card-dark:has(.grid-cols-4) span.text-primary {
+        margin-bottom: 0.35rem !important;
+    }
+    .tech-stack-tile {
+        padding: 0.15rem 0.15rem !important;
+        height: 1.75rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .tech-stack-tile i {
+        font-size: 0.9rem !important;
+    }
+
+    /* Flagship Product Card Mobile Compression */
+    #projects .bentocard {
+        padding: 0.85rem 1rem !important;
+    }
+    #projects .bentocard h3 {
+        font-size: 1.2rem !important;
+    }
+    #projects .bentocard p {
+        font-size: 11px !important;
+        line-height: 1.35 !important;
+    }
+
+    /* Selected Work Carousel Mobile Compression */
+    .carousel-btn,
+    .carousel-card + .flex.items-center.justify-end {
+        display: none !important;
+    }
+    .carousel-card {
+        flex: 0 0 calc(100% - 20px) !important;
+        scroll-snap-align: center;
+        padding: 0.85rem !important;
+        min-height: 230px !important;
+    }
+    .carousel-card-img-wrapper {
+        aspect-ratio: 16/9 !important;
+        margin-bottom: 0.5rem !important;
+        border-radius: 0.5rem !important;
+    }
+    .carousel-card h3 {
+        font-size: 1.05rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+    .carousel-card p {
+        font-size: 10px !important;
+        line-height: 1.3 !important;
+    }
     .carousel-card .flex.items-center.justify-between.mt-6.pt-3 {
-        margin-top: 1rem !important;
-        padding-top: 0.75rem !important;
+        margin-top: 0.5rem !important;
+        padding-top: 0.4rem !important;
+    }
+
+    /* Engineering Journey (Evolution Log) Mobile Compression */
+    #journey .space-y-8 {
+        space-y: 1rem !important;
+    }
+    #journey .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 0.85rem !important;
+    }
+    #journey .timeline-item {
+        padding-left: 1.75rem !important;
+    }
+    #journey .bentocard {
+        padding: 0.75rem 0.85rem !important;
+    }
+    #journey h4 {
+        font-size: 0.95rem !important;
+    }
+    #journey p {
+        font-size: 11px !important;
+        line-height: 1.35 !important;
+    }
+
+    /* GitHub Section Mobile Compression */
+    #github .bentocard {
+        padding: 0.85rem 1rem !important;
+    }
+    #github h3 {
+        font-size: 1.15rem !important;
+    }
+
+    /* Contact Section (Correspondence Port) Mobile Compression */
+    #contact {
+        space-y: 1.5rem !important;
+    }
+    #contact h2 {
+        font-size: 1.65rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    #contact .section-desc {
+        margin-bottom: 1rem !important;
+        font-size: 11.5px !important;
+    }
+    #contact .bentocard {
+        padding: 0.85rem 1rem !important;
+    }
+    #contact input,
+    #contact textarea {
+        padding: 0.6rem 0.75rem !important;
+        font-size: 12px !important;
+    }
+    #contact textarea {
+        min-height: 90px !important;
+    }
+    #contact form {
+        space-y: 0.75rem !important;
+    }
+    #contact form > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 0.65rem !important;
     }
 }
 
@@ -190,7 +375,8 @@
     }
     .carousel-card {
         flex: 0 0 100% !important;
-        padding: 1rem !important;
+        padding: 0.85rem !important;
+        min-height: 250px !important;
     }
     .nav-container {
         padding: 0.5rem 0.75rem;
