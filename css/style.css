@@ -2162,25 +2162,21 @@ footer {
     bottom: 24px;
     right: 24px;
     z-index: 9990;
+    width: 42px;
+    height: 42px;
     background: rgba(18, 18, 20, 0.88);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(232, 163, 61, 0.35);
+    border: 1px solid rgba(232, 163, 61, 0.4);
     color: var(--text-main);
-    padding: 10px 18px;
-    border-radius: 999px;
+    border-radius: 50%;
     font-family: var(--font-mono);
-    font-size: 11px;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(232, 163, 61, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(232, 163, 61, 0.2);
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.recruiter-pill-dot {
-    display: none !important;
 }
 
 .recruiter-pill:hover {
@@ -2298,7 +2294,7 @@ footer {
     gap: 24px;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 540px) {
     .recruiter-body {
         grid-template-columns: 1.2fr 0.8fr;
     }

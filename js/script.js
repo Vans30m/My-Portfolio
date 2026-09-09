@@ -531,9 +531,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (interactionTimeout) {
                     clearTimeout(interactionTimeout);
                 }
-                carouselContainer.style.scrollSnapType = 'x mandatory';
-            } else {
-                carouselContainer.style.scrollSnapType = 'none';
             }
         };
 
@@ -557,25 +554,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentWidth > 0) {
                 // If we scroll past the second set of cards, shift back by one set width
                 if (carouselContainer.scrollLeft >= currentWidth * 2) {
-                    const originalSnap = carouselContainer.style.scrollSnapType;
-                    const originalBehavior = carouselContainer.style.scrollBehavior;
-                    carouselContainer.style.scrollSnapType = 'none';
-                    carouselContainer.style.scrollBehavior = 'auto';
                     carouselContainer.scrollLeft -= currentWidth;
-                    const _ = carouselContainer.offsetHeight; // force reflow
-                    carouselContainer.style.scrollSnapType = originalSnap;
-                    carouselContainer.style.scrollBehavior = originalBehavior;
                 }
                 // If we scroll to the left past the start of the second set, shift forward by one set width
                 else if (carouselContainer.scrollLeft < currentWidth) {
-                    const originalSnap = carouselContainer.style.scrollSnapType;
-                    const originalBehavior = carouselContainer.style.scrollBehavior;
-                    carouselContainer.style.scrollSnapType = 'none';
-                    carouselContainer.style.scrollBehavior = 'auto';
                     carouselContainer.scrollLeft += currentWidth;
-                    const _ = carouselContainer.offsetHeight; // force reflow
-                    carouselContainer.style.scrollSnapType = originalSnap;
-                    carouselContainer.style.scrollBehavior = originalBehavior;
                 }
             }
         });
@@ -700,15 +683,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Delta-time based animation loop for consistent speed regardless of refresh rate (e.g. 60Hz/120Hz screens)
             const scrollLoop = (timestamp) => {
+                if (lastTime === 0) lastTime = timestamp;
                 let delta = timestamp - lastTime;
                 lastTime = timestamp;
 
-                // If tab was inactive or frame dropped, clamp delta to prevent jumping
+                // Clamp delta to prevent huge jumps when coming back from background tab
                 if (delta > 64) {
                     delta = 16;
                 }
 
-                if (!isInteracting && currentWidth > 0) {
+                if (!isInteracting && currentWidth > 0 && isVisibleInViewport) {
                     carouselContainer.scrollLeft += speedPxPerMs * delta;
                 }
                 animationFrameId = requestAnimationFrame(scrollLoop);
@@ -719,7 +703,6 @@ document.addEventListener('DOMContentLoaded', () => {
             carouselContainer.scrollLeft = currentWidth; // Start at the second set of cards to enable wrapping immediately in both directions
             const _ = carouselContainer.offsetHeight; // force reflow
             carouselContainer.style.scrollBehavior = originalBehavior;
-            carouselContainer.style.scrollSnapType = isInteracting ? 'x mandatory' : 'none';
 
             lastTime = performance.now();
             animationFrameId = requestAnimationFrame(scrollLoop);
@@ -760,6 +743,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        let isVisibleInViewport = true;
+
+        // Pause animation loop when carousel is out of viewport to save performance and prevent offset glitches
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isVisibleInViewport = entry.isIntersecting;
+                    if (entry.isIntersecting) {
+                        lastTime = performance.now();
+                    }
+                });
+            }, { threshold: 0.1 });
+            observer.observe(carouselContainer);
+        }
+
         // Hover events for pausing autoscroll on desktop
         carouselContainer.addEventListener('mouseenter', () => setInteracting(true));
         carouselContainer.addEventListener('mouseleave', () => resumeAfterDelay());
@@ -767,6 +765,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Touch events for pausing autoscroll on mobile swipes
         carouselContainer.addEventListener('touchstart', () => setInteracting(true), { passive: true });
         carouselContainer.addEventListener('touchend', () => resumeAfterDelay(), { passive: true });
+        carouselContainer.addEventListener('touchcancel', () => resumeAfterDelay(), { passive: true });
 
         // Prev/Next manual button triggers
         if (prevBtn && nextBtn) {
@@ -1250,8 +1249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pill.id = 'recruiter-pill';
         pill.setAttribute('aria-label', 'Open Recruiter Mode');
         pill.innerHTML = `
-            <span class="recruiter-pill-dot"></span>
-            <span>Recruiter Mode <kbd style="margin-left: 4px; opacity: 0.7; font-size: 9px; font-weight: 600; background: rgba(232,163,61,0.15); color: #e8a33d; padding: 2px 5px; border-radius: 4px; border: 1px solid rgba(232,163,61,0.3);">R</kbd></span>
+            <span style="font-weight: 700; font-size: 13px; color: #e8a33d;">R</span>
         `;
         document.body.appendChild(pill);
 
