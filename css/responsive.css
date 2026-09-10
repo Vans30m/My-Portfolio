@@ -246,14 +246,14 @@
         margin-bottom: 0.35rem !important;
     }
     .tech-stack-tile {
-        padding: 0.15rem 0.15rem !important;
-        height: 1.75rem !important;
+        padding: 0.2rem 0.2rem !important;
+        height: 2rem !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
     }
     .tech-stack-tile i {
-        font-size: 0.9rem !important;
+        font-size: 1.15rem !important;
     }
 
     /* Flagship Product Card Mobile Compression */
