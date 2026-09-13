@@ -176,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Selectors for all buttons that should get ripple effect
         const rippleTargetSelectors = [
             '.filter-tab',
-            '.carousel-btn',
             '.connect-btn',
             '#email-btn',
             '#form-submit',
@@ -512,8 +511,6 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================== */
     const filterTabs = document.querySelectorAll('.filter-tab');
     const carouselContainer = document.getElementById('project-carousel');
-    const prevBtn = document.getElementById('carousel-prev');
-    const nextBtn = document.getElementById('carousel-next');
 
     if (filterTabs.length && carouselContainer) {
         let speedPxPerMs = 0.22; // increased autoscroll speed (~220px/sec)
@@ -729,16 +726,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                // Hide prev/next navigation arrows if filtering hardware/indev or visible cards count is <= 2
-                const navContainer = prevBtn ? prevBtn.parentElement : null;
-                if (navContainer) {
-                    if (filterValue === 'hardware' || filterValue === 'indev' || visibleCount <= 2) {
-                        navContainer.style.display = 'none';
-                    } else {
-                        navContainer.style.display = 'flex';
-                    }
-                }
-
                 setupInfiniteScroll(filterValue);
             });
         });
@@ -766,19 +753,6 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselContainer.addEventListener('touchstart', () => setInteracting(true), { passive: true });
         carouselContainer.addEventListener('touchend', () => resumeAfterDelay(), { passive: true });
         carouselContainer.addEventListener('touchcancel', () => resumeAfterDelay(), { passive: true });
-
-        // Prev/Next manual button triggers
-        if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => {
-                setInteracting(true);
-                animateScroll(-380, 300);
-            });
-
-            nextBtn.addEventListener('click', () => {
-                setInteracting(true);
-                animateScroll(380, 300);
-            });
-        }
 
         // Initialize carousel
         const cards = carouselContainer.querySelectorAll('.carousel-card:not(.cloned)');
@@ -1018,7 +992,6 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: 'nav-journey', title: 'Journey Log', desc: 'View academic & coding timeline', url: '#journey', category: 'Navigation', icon: 'fa-road', shortcut: '↵' },
             { id: 'nav-contact', title: 'Contact', desc: 'Get in touch / hire me', url: '#contact', category: 'Navigation', icon: 'fa-envelope', shortcut: '↵' },
 
-            { id: 'proj-focusora', title: 'FocusoraHQ Workspace', desc: 'Productivity & study workspace ecosystem', url: 'https://focusorahq.vercel.app', category: 'Projects', icon: 'fa-laptop-code', shortcut: '↗', external: true },
             { id: 'proj-piezo', title: 'Piezoelectric Floor Case Study', desc: 'Energy harvesting floor design', url: 'html/piezoelectric-details.html', category: 'Case Studies', icon: 'fa-plug', shortcut: '↗' },
             { id: 'proj-floor', title: 'Floor Cleaning Robot Case Study', desc: 'Autonomous Arduino cleaner', url: 'html/floorcleaning-details.html', category: 'Case Studies', icon: 'fa-robot', shortcut: '↗' },
 

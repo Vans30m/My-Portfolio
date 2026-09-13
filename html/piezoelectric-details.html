@@ -127,40 +127,14 @@
     <div class="fixed bottom-[10%] right-[-15%] w-[550px] h-[550px] bg-accent glow-wash"></div>
     <div class="fixed top-[45%] left-[25%] w-[400px] h-[400px] bg-acc3 glow-wash"></div>
 
-    <!-- Global Navigation Header -->
-    <nav id="navbar" class="fixed top-0 inset-x-0 z-50 w-full">
-        <div class="nav-container">
-            <div class="flex items-center justify-between">
-                <a href="../index.html"
-                    class="text-sm sm:text-lg font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
-                    Vansh Thakur<span class="text-accent">.</span>
-                </a>
-                <div class="flex items-center space-x-3 sm:space-x-6 text-xs sm:text-sm">
-                    <a href="../index.html" class="text-muted hover:text-textMain transition-colors">← Dashboard</a>
-                    <a href="#overview"
-                        class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Overview</a>
-                    <a href="#schematic"
-                        class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Schematic</a>
-                    <a href="#calculator"
-                        class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Harvest Calculator</a>
-                    <a href="#firmware"
-                        class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Firmware</a>
-                    <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
-                        target="_blank" class="text-accent font-mono text-[10px] sm:text-xs hover:underline shrink-0">Repository ↗</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
     <!-- Main Blueprint Wrapper -->
-    <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-32 pb-24 relative z-10">
+    <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-12 pb-24 relative z-10">
 
         <!-- 1. HERO ARCHITECTURE SECTION -->
         <header class="relative mb-24 reveal">
             <div class="flex flex-wrap items-center gap-3 mb-6">
                 <span
                     class="inline-flex items-center gap-1.5 bg-acc3/10 border border-acc3/20 text-acc3 px-4 py-1 rounded-full text-xs font-mono">
-                    <span class="w-1.5 h-1.5 rounded-full bg-acc3 animate-pulse"></span>
                     Solid-State Power Generation
                 </span>
                 <span class="text-xs font-mono text-muted uppercase tracking-wider">// SYSTEM_05 // HARDWARE &
@@ -199,14 +173,7 @@
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Grid Pattern</div>
                     <div class="text-xs font-semibold text-white font-display">Parallel-Series Hybrid</div>
                 </div>
-                <div class="bentocard-blueprint p-4">
-                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Rectification</div>
-                    <div class="text-xs font-semibold text-accent font-mono">Schottky Barrier</div>
-                </div>
-                <div class="bentocard-blueprint p-4">
-                    <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Monitoring Bus</div>
-                    <div class="text-xs font-semibold text-primary font-mono">10-Bit ADC</div>
-                </div>
+
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Status</div>
                     <div class="text-xs font-semibold text-emerald-400 font-display">Field Tested</div>
@@ -595,14 +562,7 @@
                                     upon deflection.</td>
                                 <td class="p-4 text-right">6</td>
                             </tr>
-                            <tr>
-                                <td class="p-4 text-white font-bold">D1 - D24</td>
-                                <td class="p-4 text-accent">Schottky Diodes (BAT43)</td>
-                                <td class="p-4 font-semibold">30V 200mA, VF ≈ 0.35V</td>
-                                <td class="p-4 font-light">Configured as 6 independent full-wave bridge rectifiers to
-                                    capture polar kinetic changes.</td>
-                                <td class="p-4 text-right">24</td>
-                            </tr>
+
                             <tr>
                                 <td class="p-4 text-white font-bold">C1</td>
                                 <td class="p-4 text-primary">Electrolytic Smoothing Cap</td>
@@ -792,81 +752,7 @@
             </div>
         </section>
 
-        <!-- 9. FIRMWARE EXPOSITION (Embedded C/C++) -->
-        <section id="firmware" class="mb-24 reveal">
-            <div class="mb-12">
-                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">08 // FIRMWARE REGISTER
-                    LOGIC</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Embedded C Telemetry Code</h2>
-            </div>
 
-            <div class="bentocard-blueprint p-6 md:p-8">
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-xs font-mono text-muted">// main_harvester_telemetry.ino</span>
-                    <span class="text-xs font-mono text-accent bg-accent/10 px-2.5 py-1 rounded">Embedded C++</span>
-                </div>
-                <pre
-                    class="bg-bgMain p-6 rounded-xl border border-borderSpec overflow-x-auto text-[11.5px] font-mono text-zinc-300 leading-relaxed custom-scroll">
-<span class="text-zinc-600">// Core telemetry config for Smart Energy Tile</span>
-<span class="text-primary">const int</span> analogPin = A0;      <span class="text-zinc-600">// Transducer monitoring voltage divider input</span>
-<span class="text-primary">const float</span> V_REF = 5.0;       <span class="text-zinc-600">// Arduino analog operational reference voltage</span>
-<span class="text-primary">const float</span> R1 = 10000.0;      <span class="text-zinc-600">// Voltage divider Resistor 1 (10K ohms)</span>
-<span class="text-primary">const float</span> R2 = 4700.0;       <span class="text-zinc-600">// Voltage divider Resistor 2 (4.7K ohms)</span>
-<span class="text-primary">const float</span> divisionRatio = (R1 + R2) / R2; <span class="text-zinc-600">// Division factor scaling ratio</span>
-
-<span class="text-primary">void</span> <span class="text-accent">setup</span>() {
-  Serial.<span class="text-accent">begin</span>(9600);
-  <span class="text-accent">pinMode</span>(analogPin, INPUT);
-  Serial.<span class="text-accent">println</span>(<span class="text-acc3">"--- SMART PIEZOELECTRIC HARVESTER INITIALIZED ---"</span>);
-}
-
-<span class="text-primary">void</span> <span class="text-accent">loop</span>() {
-  <span class="text-primary">int</span> rawADC = <span class="text-accent">analogRead</span>(analogPin);
-  
-  <span class="text-zinc-600">// Interpolate analog readings to absolute capacitor terminal volts</span>
-  <span class="text-primary">float</span> measuredVoltage = (rawADC * V_REF) / 1023.0;
-  <span class="text-primary">float</span> capacitorVoltage = measuredVoltage * divisionRatio;
-
-  <span class="text-zinc-600">// Telemetry terminal diagnostic print</span>
-  Serial.<span class="text-accent">print</span>(<span class="text-acc3">"ADC Value: "</span>);
-  Serial.<span class="text-accent">print</span>(rawADC);
-  Serial.<span class="text-accent">print</span>(<span class="text-acc3">" | Terminal Voltage: "</span>);
-  Serial.<span class="text-accent">print</span>(capacitorVoltage, 2);
-  Serial.<span class="text-accent">println</span>(<span class="text-acc3">"V"</span>);
-
-  <span class="text-accent">delay</span>(250); <span class="text-zinc-600">// Non-blocking timer loops deployed in deployment builds</span>
-}</pre>
-            </div>
-        </section>
-
-        <!-- 10. REAL-WORLD TESTING & ENGINEERING METRICS -->
-        <section class="mb-24 reveal">
-            <div class="mb-12">
-                <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">09 // BENCH TESTING
-                    SUMMARY</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Performance Diagnostics</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center font-display">
-                <div class="bentocard-blueprint p-6">
-                    <div class="text-4xl font-bold text-white mb-2">28.4 V</div>
-                    <div class="text-xs font-mono text-acc3 uppercase tracking-wider">Unloaded Peak Voltage</div>
-                    <p class="text-xs text-muted font-light mt-2">Maximum transient open-circuit voltage recorded during
-                        high-intensity foot strikes.</p>
-                </div>
-                <div class="bentocard-blueprint p-6">
-                    <div class="text-4xl font-bold text-white mb-2">0.32 mW</div>
-                    <div class="text-xs font-mono text-primary uppercase tracking-wider">Nominal Power Yield</div>
-                    <p class="text-xs text-muted font-light mt-2">Average power delivered into storage cap
-                        configurations at 1.0Hz pedestrian steps.</p>
-                </div>
-                <div class="bentocard-blueprint p-6">
-                    <div class="text-4xl font-bold text-white mb-2">&lt; 350mV</div>
-                    <div class="text-xs font-mono text-accent uppercase tracking-wider">Rectifier Voltage Drop</div>
-                    <p class="text-xs text-muted font-light mt-2">Minimized phase loss by replacing standard silicon
-                        diodes with high-speed Schottky bridges.</p>
-                </div>
-            </div>
-        </section>
 
         <!-- 11. HARDWARE CHALLENGES (Problem / Approach / Result) -->
         <section class="mb-24 reveal">
@@ -920,15 +806,11 @@
                     open-source repository.
                 </p>
 
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
                     <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
                         target="_blank"
-                        class="px-6 py-3.5 rounded-full bg-acc3 text-bgMain text-xs font-mono tracking-wider font-bold hover:bg-acc3/90 transition-all transform hover:scale-[1.01] w-full sm:w-auto text-center shadow-lg shadow-acc3/25">
+                        class="px-4 py-2 rounded-lg bg-acc3 text-bgMain text-[11px] font-mono tracking-wide font-bold hover:bg-acc3/90 transition-all transform hover:scale-[1.01] w-full sm:w-auto text-center shadow-md shadow-acc3/20">
                         Access Source Repository
-                    </a>
-                    <a href="../index.html"
-                        class="px-6 py-3.5 rounded-full bg-bgMain border border-borderSpec text-xs font-mono text-muted hover:text-textMain transition-colors w-full sm:w-auto text-center">
-                        ← Central Dashboard Overview
                     </a>
                 </div>
             </div>
