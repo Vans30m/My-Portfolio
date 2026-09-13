@@ -127,38 +127,14 @@
     <div class="fixed bottom-[10%] right-[-15%] w-[550px] h-[550px] bg-accent glow-wash"></div>
     <div class="fixed top-[45%] left-[25%] w-[400px] h-[400px] bg-acc3 glow-wash"></div>
 
-    <!-- Global Navigation Header -->
-    <nav id="navbar" class="fixed top-0 inset-x-0 z-50 w-full">
-        <div class="nav-container">
-            <div class="flex items-center justify-between">
-                <a href="../index.html"
-                    class="text-sm sm:text-lg font-display font-bold tracking-tight text-white hover:text-primary transition-colors">
-                    Vansh Thakur<span class="text-accent">.</span>
-                </a>
-                <div class="flex items-center space-x-3 sm:space-x-6 text-xs sm:text-sm">
-                    <a href="../index.html" class="text-muted hover:text-textMain transition-colors">← Dashboard</a>
-                    <a href="#overview"
-                        class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Overview</a>
-                    <a href="#hardware"
-                        class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Hardware Layer</a>
-                    <a href="#kinematics"
-                        class="text-muted hover:text-textMain transition-colors hidden sm:inline-block">Kinematics</a>
-                    <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank"
-                        class="text-accent font-mono text-[10px] sm:text-xs hover:underline shrink-0">Repository ↗</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
     <!-- Main Blueprint Wrapper -->
-    <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-32 pb-24 relative z-10">
+    <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-12 pb-24 relative z-10">
 
         <!-- 1. HERO ARCHITECTURE SECTION -->
         <header class="relative mb-24 reveal">
             <div class="flex flex-wrap items-center gap-3 mb-6">
                 <span
                     class="inline-flex items-center gap-1.5 bg-accent/10 border border-accent/20 text-accent px-4 py-1 rounded-full text-xs font-mono">
-                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
                     Production Grade Firmware
                 </span>
                 <span class="text-xs font-mono text-muted uppercase tracking-wider">// SYSTEM_04 // MECHATRONICS</span>
@@ -449,26 +425,7 @@
                     </div>
                 </div>
 
-                <!-- PERIPHERAL IR -->
-                <div class="bentocard-blueprint p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4 font-mono text-[10px]">
-                            <span class="text-muted">PROXIMITY RAY ARRAY</span>
-                            <span class="text-accent bg-accent/10 px-2 py-0.5 rounded">SEN2</span>
-                        </div>
-                        <h3 class="text-lg font-display font-bold text-white mb-2">Infrared Sensor Array</h3>
-                        <p class="text-xs text-muted font-light mb-4 leading-relaxed">
-                            Provides quick digital edge triggers to cover lateral areas outside the narrow acoustic beam
-                            vector.
-                        </p>
-                    </div>
-                    <div
-                        class="bg-bgMain p-3 rounded-lg border border-borderSpec text-[11px] font-mono text-muted space-y-1">
-                        <div>Output Node: Binary Status Tracking</div>
-                        <div>Response Speed: Sub-millisecond Read Logic</div>
-                        <div>Calibration: On-Board Potentiometers</div>
-                    </div>
-                </div>
+
 
                 <!-- DRIVER BRIDGE -->
                 <div class="bentocard-blueprint p-6 flex flex-col justify-between">
@@ -738,197 +695,7 @@
             </div>
         </section>
 
-        <!-- 12 & 13. KINEMATICS MATRIX & TABLE -->
-        <section id="kinematics" class="mb-24 reveal">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Kinematics Table -->
-                <div class="bentocard-blueprint p-8 flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs font-mono text-primary uppercase block mb-1">09 // DRIVE CONVERSIONS</span>
-                        <h3 class="text-xl font-display font-bold text-white mb-4">Motor Steering Processing Matrix</h3>
-                        <p class="text-sm text-muted font-light leading-relaxed mb-4">
-                            Direction adjustments balance relative power levels applied to the H-Bridge lines.
-                            Manipulating polarity combinations allows the vehicle to spin inside tight spaces
-                            efficiently.
-                        </p>
-                    </div>
-                    <div class="overflow-x-auto custom-scroll border border-borderSpec rounded-xl">
-                        <table class="w-full text-left font-mono text-xs">
-                            <thead class="bg-bgMain text-muted">
-                                <tr>
-                                    <th class="p-3">State Node</th>
-                                    <th class="p-3">Left/Right Pins</th>
-                                    <th class="p-3">Duty Value</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-borderSpec text-muted">
-                                <tr>
-                                    <td class="p-3 text-white font-bold">FORWARD</td>
-                                    <td class="p-3 text-accent">HIGH / HIGH</td>
-                                    <td class="p-3">85% Output</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 text-primary">PIVOT_LEFT</td>
-                                    <td class="p-3 text-acc3">LOW / HIGH</td>
-                                    <td class="p-3">100% Max Torque</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 text-acc3">REVERSE</td>
-                                    <td class="p-3 text-red-400">LOW / LOW</td>
-                                    <td class="p-3">70% Low Ripple</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
 
-                <!-- Navigation Tree Logic -->
-                <div class="bentocard-blueprint p-8 flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs font-mono text-primary uppercase block mb-1">10 // TREE STRUCTURES</span>
-                        <h3 class="text-xl font-display font-bold text-white mb-4">Autonomous Navigation Tree Logic</h3>
-                        <p class="text-sm text-muted font-light leading-relaxed mb-4">
-                            The choice sequencer prioritizes clear space paths. When obstacle distances fall below safe
-                            minimum markers, the background checks halt linear runs to prioritize defensive course
-                            changes.
-                        </p>
-                    </div>
-                    <div
-                        class="bg-bgMain p-4 rounded-xl border border-borderSpec text-[11px] font-mono text-muted space-y-1">
-                        <div class="text-zinc-600">// Conditional State Tree</div>
-                        <div><span class="text-primary">if</span> (readUltrasonicDistance() &lt; <span
-                                class="text-accent">20</span>) {</div>
-                        <div class="pl-4 text-acc3">executeEscapePivotSequence();</div>
-                        <div>} <span class="text-primary">else</span> {</div>
-                        <div class="pl-4 text-accent">maintainNominalForwardVelocity();</div>
-                        <div>}</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 14. ENGINEERING CHALLENGES (Problem / Approach / Result) -->
-        <section class="mb-24 reveal">
-            <div class="mb-12">
-                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">11 // DEBUGGING
-                    REGISTERS</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Engineering Challenges Faced</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bentocard-blueprint p-6">
-                    <span class="text-xs font-mono text-acc3 block mb-1">PROBLEM NODE //</span>
-                    <h4 class="text-lg font-display font-bold text-white mb-2">Inductive Ripple Resets</h4>
-                    <p class="text-xs text-muted font-light leading-relaxed mb-4">
-                        Brushed DC motor starts created heavy feedback ripples, causing the core logic chip to undergo
-                        random memory drops.
-                    </p>
-                    <span class="text-xs font-mono text-accent block mb-1">MITIGATION LOGIC //</span>
-                    <p class="text-xs text-slate-300 font-light bg-surface p-3 rounded border border-borderSpec">
-                        Added electrolytic filters directly across power terminals and completely separated logic buses
-                        from actuation power lines.
-                    </p>
-                </div>
-                <div class="bentocard-blueprint p-6">
-                    <span class="text-xs font-mono text-acc3 block mb-1">PROBLEM NODE //</span>
-                    <h4 class="text-lg font-display font-bold text-white mb-2">Ultrasonic Ghost Reflections</h4>
-                    <p class="text-xs text-muted font-light leading-relaxed mb-4">
-                        Acoustic waves bounced off flat corner surfaces incorrectly, occasionally hiding major walls
-                        from the processing checks.
-                    </p>
-                    <span class="text-xs font-mono text-accent block mb-1">MITIGATION LOGIC //</span>
-                    <p class="text-xs text-slate-300 font-light bg-surface p-3 rounded border border-borderSpec">
-                        Updated firmware algorithms to use a rolling average buffer, checking distance consistency
-                        before executing turns.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 15. PERFORMANCE METRICS -->
-        <section class="mb-24 reveal">
-            <div class="mb-12">
-                <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">12 // VALIDATION
-                    TELEMETRY</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Performance Optimization Metrics
-                </h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center font-display">
-                <div class="bentocard-blueprint p-6">
-                    <div class="text-4xl font-bold text-white mb-2">0 ms</div>
-                    <div class="text-xs font-mono text-accent uppercase tracking-wider">Blocking Loop Overhead</div>
-                    <p class="text-xs text-muted font-light mt-2">Removed all standard programmatic delays to maintain
-                        continuous sensor monitoring.</p>
-                </div>
-                <div class="bentocard-blueprint p-6">
-                    <div class="text-4xl font-bold text-white mb-2">&lt; 12 KB</div>
-                    <div class="text-xs font-mono text-primary uppercase tracking-wider">Flash Storage Allocations</div>
-                    <p class="text-xs text-muted font-light mt-2">Streamlined variable structures to keep code compact
-                        and efficient on basic microchips.</p>
-                </div>
-                <div class="bentocard-blueprint p-6">
-                    <div class="text-4xl font-bold text-white mb-2">100%</div>
-                    <div class="text-xs font-mono text-acc3 uppercase tracking-wider">Logic Rail Isolation</div>
-                    <p class="text-xs text-muted font-light mt-2">Eliminated electrical logic faults completely during
-                        continuous high-load operations.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 17. TUNING PARAMETER STATS -->
-        <section class="mb-24 reveal">
-            <div class="mb-12">
-                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">13 // OUTCOME
-                    PARAMETERS</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Validated Metrics</h2>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center font-mono">
-                <div class="bentocard-blueprint p-6">
-                    <div class="text-2xl font-bold text-white mb-1">08</div>
-                    <div class="text-[10px] text-muted uppercase tracking-wider">Hardware Subsystems</div>
-                </div>
-                <div class="bentocard-blueprint p-6">
-                    <div class="text-2xl font-bold text-primary mb-1">04</div>
-                    <div class="text-[10px] text-muted uppercase tracking-wider">State Allocations</div>
-                </div>
-                <div class="bentocard-blueprint p-6">
-                    <div class="text-2xl font-bold text-accent mb-1">100%</div>
-                    <div class="text-[10px] text-muted uppercase tracking-wider">Avoidance Profile Accuracy</div>
-                </div>
-                <div class="bentocard-blueprint p-6">
-                    <div class="text-2xl font-bold text-acc3 mb-1">40+ Hrs</div>
-                    <div class="text-[10px] text-muted uppercase tracking-wider">Active Bench Validation</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 18. SYSTEM ROADMAP FUTURE -->
-        <section class="mb-24 reveal">
-            <div class="mb-12">
-                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">14 // FUTURE ROADMAP
-                    PLANS</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Future Engineering Iterations</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-muted font-light">
-                <div class="bentocard-blueprint p-6">
-                    <h4 class="font-display font-bold text-white font-mono mb-2 text-primary">// 01 / Planar LiDAR Nodes
-                    </h4>
-                    <p class="text-xs">Upgrading distance detection with high-resolution 2D laser mapping scanners to
-                        construct accurate spatial floorplans.</p>
-                </div>
-                <div class="bentocard-blueprint p-6">
-                    <h4 class="font-display font-bold text-white font-mono mb-2 text-accent">// 02 / ROS2 Micro-Nodes
-                    </h4>
-                    <p class="text-xs">Migrating basic navigation scripts onto standard micro-ROS setups to integrate
-                        open-source pathfinding libraries.</p>
-                </div>
-                <div class="bentocard-blueprint p-6">
-                    <h4 class="font-display font-bold text-white font-mono mb-2 text-acc3">// 03 / High-Res Encoders
-                    </h4>
-                    <p class="text-xs">Adding optical code discs onto wheel drive shafts to track precise vehicle
-                        velocity variations directly.</p>
-                </div>
-            </div>
-        </section>
 
         <hr class="border-borderSpec/40 my-16">
 
@@ -945,18 +712,17 @@
                     active open-source codebase.
                 </p>
 
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
                     <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank"
-                        class="px-6 py-3.5 rounded-full bg-primary text-bgMain text-xs font-mono tracking-wider font-bold hover:bg-primary/90 transition-all transform hover:scale-[1.01] w-full sm:w-auto text-center shadow-lg shadow-primary/25">
+                        class="px-4 py-2 rounded-lg bg-primary text-bgMain text-[11px] font-mono tracking-wide font-bold hover:bg-primary/90 transition-all transform hover:scale-[1.01] w-full sm:w-auto text-center shadow-md shadow-primary/20">
                         Access Source Repository
                     </a>
-                    <a href="#"
-                        class="px-6 py-3.5 rounded-full bg-surface border border-borderSpec text-xs font-mono text-muted hover:text-textMain transition-colors w-full sm:w-auto text-center">
-                        Download Documentation [.PDF]
-                    </a>
-                    <a href="../index.html"
-                        class="px-6 py-3.5 rounded-full bg-bgMain border border-borderSpec text-xs font-mono text-muted hover:text-textMain transition-colors w-full sm:w-auto text-center">
-                        ← Central Dashboard Overview
+                    <a href="https://youtu.be/uRAujHWnYvk" target="_blank"
+                        class="px-4 py-2 rounded-lg bg-surface border border-borderSpec text-[11px] font-mono text-muted hover:text-textMain transition-colors w-full sm:w-auto text-center inline-flex items-center justify-center gap-2">
+                        <svg class="w-3.5 h-3.5 text-red-500 fill-current" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        Watch Video Demo ↗
                     </a>
                 </div>
             </div>
