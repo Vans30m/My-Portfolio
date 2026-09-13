@@ -269,7 +269,6 @@
     }
 
     /* Selected Work Carousel Mobile Compression */
-    .carousel-btn,
     .carousel-card + .flex.items-center.justify-end {
         display: none !important;
     }
