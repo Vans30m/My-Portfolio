@@ -52,53 +52,63 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
 
     // Timeline Scroll Progress Animation
-    const initTimelineProgress = () => {
-        const timeline = document.querySelector('#journey .relative');
-        const line = document.querySelector('.timeline-line');
-        if (!timeline || !line) return;
+    /* ==========================================================================
+       Engineering Journey Stacking Cards Controller
+       ========================================================================== */
+    const initJourneyStack = () => {
+        const journeyCards = document.querySelectorAll('.journey-card');
+        const phaseNumEl = document.getElementById('journey-phase-num');
+        const prevBtn = document.getElementById('journey-prev-btn');
+        const nextBtn = document.getElementById('journey-next-btn');
 
-        const updateTimelineLine = () => {
-            const rect = timeline.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
+        if (!journeyCards.length) return;
 
-            // Trigger point is at 70% of the viewport height
-            const triggerPoint = viewportHeight * 0.7;
+        let currentActivePhase = 1;
 
-            // Calculate how much of the timeline has scrolled past the trigger point
-            const totalHeight = rect.height;
-            const scrolledHeight = triggerPoint - rect.top;
-
-            // Clamp progress percentage between 0 and 100
-            const progress = Math.max(0, Math.min(100, (scrolledHeight / totalHeight) * 100));
-            line.style.setProperty('--scroll-progress', `${progress}%`);
-
-            // Illuminate dots as they are reached
-            const dots = timeline.querySelectorAll('.timeline-dot');
-            dots.forEach(dot => {
-                const dotRect = dot.getBoundingClientRect();
-                if (dotRect.top < triggerPoint) {
-                    dot.classList.add('active-dot');
-                } else {
-                    dot.classList.remove('active-dot');
-                }
-            });
+        const updateActiveCard = (index) => {
+            currentActivePhase = index;
+            if (phaseNumEl) {
+                phaseNumEl.textContent = String(index).padStart(2, '0');
+            }
         };
 
-        const timelineObserver = new IntersectionObserver((entries) => {
+        // Scroll observer to update phase counter as user scrolls down the stacked cards
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    window.addEventListener('scroll', updateTimelineLine, { passive: true });
-                    updateTimelineLine();
-                } else {
-                    window.removeEventListener('scroll', updateTimelineLine);
+                    const phase = parseInt(entry.target.getAttribute('data-phase'), 10);
+                    if (phase) updateActiveCard(phase);
                 }
             });
-        }, { rootMargin: '100px 0px' });
+        }, { threshold: 0.6 });
 
-        timelineObserver.observe(timeline);
+        journeyCards.forEach(card => observer.observe(card));
+
+        // Prev & Next Buttons smooth scroll into view
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                const targetPhase = Math.max(1, currentActivePhase - 1);
+                const targetCard = document.querySelector(`.journey-card[data-phase="${targetPhase}"]`);
+                if (targetCard) {
+                    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    updateActiveCard(targetPhase);
+                }
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                const targetPhase = Math.min(journeyCards.length, currentActivePhase + 1);
+                const targetCard = document.querySelector(`.journey-card[data-phase="${targetPhase}"]`);
+                if (targetCard) {
+                    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    updateActiveCard(targetPhase);
+                }
+            });
+        }
     };
 
-    initTimelineProgress();
+    initJourneyStack();
 
     /* ==========================================================================
        Animated Counters (IntersectionObserver triggered)
@@ -403,11 +413,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetText = textEl || btn;
                 const originalText = targetText.innerText;
                 targetText.innerText = "COPIED TO CLIPBOARD!";
-                btn.style.borderColor = "var(--accent)";
-                btn.style.color = "#55D6BE";
+                targetText.style.color = "#111111";
+                btn.style.borderColor = "rgba(0, 0, 0, 0.4)";
+                btn.style.color = "#111111";
 
                 setTimeout(() => {
                     targetText.innerText = originalText;
+                    targetText.style.color = "";
                     btn.style.borderColor = "";
                     btn.style.color = "";
                 }, 2000);
@@ -1222,7 +1234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pill.id = 'recruiter-pill';
         pill.setAttribute('aria-label', 'Open Recruiter Mode');
         pill.innerHTML = `
-            <span style="font-weight: 700; font-size: 13px; color: #e8a33d;">R</span>
+            <span class="recruiter-pill-text">Click <kbd class="recruiter-pill-key">R</kbd></span>
         `;
         document.body.appendChild(pill);
 
@@ -1235,9 +1247,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="recruiter-modal" role="dialog" aria-modal="true" aria-labelledby="recruiter-modal-title">
                 <div class="recruiter-header">
                     <div class="recruiter-title-group">
-                        <h2 class="recruiter-title" id="recruiter-modal-title">Vansh Thakur Summary</h2>
+                        <span class="recruiter-badge">Recruiter Mode</span>
+                        <h2 class="recruiter-title" id="recruiter-modal-title">Brief</h2>
                     </div>
-                    <button class="recruiter-close" id="recruiter-close-btn" aria-label="Close Recruiter Mode">&times;</button>
                 </div>
                 <div class="recruiter-body">
                     <div class="recruiter-pitch-sec">
@@ -1262,7 +1274,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                                 <div class="recruiter-stat-card">
                                     <i class="fa-solid fa-code-commit recruiter-stat-icon"></i>
-                                    <span class="recruiter-stat-val github-month-commits">35</span>
+                                    <span class="recruiter-stat-val github-month-commits">95</span>
                                     <span class="recruiter-stat-lbl">Commits / Mo</span>
                                 </div>
                                 <div class="recruiter-stat-card">
@@ -1287,7 +1299,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="recruiter-footer">
                     <span>Press <kbd class="recruiter-footer-shortcut">R</kbd> again or <kbd class="recruiter-footer-shortcut">Esc</kbd> to close</span>
-                    <a href="mailto:vthakur.290905@gmail.com" style="color: var(--acc3); text-decoration: none;" class="hover:underline">vthakur.290905@gmail.com</a>
+                    <a href="mailto:vthakur.290905@gmail.com" style="color: #FBBF24; text-decoration: none;" class="hover:underline">vthakur.290905@gmail.com</a>
                 </div>
             </div>
         </div>
@@ -1341,19 +1353,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Click binds
         pill.addEventListener('click', toggleRecruiterMode);
-        closeBtn.addEventListener('click', closeRecruiterMode);
+        if (closeBtn) closeBtn.addEventListener('click', closeRecruiterMode);
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) {
                 closeRecruiterMode();
             }
         });
-    };
-
-    /* ==========================================================================
-       Coding Profiles Click-to-Flip Interaction
-       ========================================================================== */
-    const initCodingProfileFlips = () => {
-        // Direct links enabled on cards; flip functionality disabled
     };
 
     initCommandPalette();
