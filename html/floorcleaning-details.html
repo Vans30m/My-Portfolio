@@ -21,21 +21,21 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.16.0/devicon.min.css">
 
-    <!-- Tailwind Play CDN (Synced perfectly with index.html tokens) -->
+    <!-- Tailwind Play CDN (Synced with monochrome studio tokens) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        bgMain: '#0B0B0C',
-                        surface: 'rgba(20, 20, 22, 0.65)',
-                        primary: '#7C8CFF',
-                        accent: '#55D6BE',
-                        acc3: '#E8A33D',
-                        textMain: '#F4F2EE',
-                        muted: '#A1A1AA',
-                        borderSpec: 'rgba(255,255,255,.08)'
+                        bgMain: '#F3F3F1',
+                        surface: '#FFFFFF',
+                        primary: '#111111',
+                        accent: '#111111',
+                        acc3: '#222222',
+                        textMain: '#111111',
+                        muted: '#6B7280',
+                        borderSpec: 'rgba(0,0,0,0.08)'
                     },
                     fontFamily: {
                         sans: ['Hanken Grotesk', 'sans-serif'],
@@ -50,32 +50,44 @@
 
     <style>
         body {
-            background-color: #0B0B0C;
+            background-color: var(--bg-main) !important;
+            color: var(--text-main) !important;
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+
+        /* Enforce crisp contrast text across case studies */
+        h1, h2, h3, h4 {
+            color: var(--text-main) !important;
         }
 
         /* Premium Bento Blueprint Custom Layer */
-        .bentocard-blueprint {
-            background: rgba(20, 20, 22, 0.7);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, .08);
+        .bentocard-blueprint,
+        .glass-panel {
+            background: var(--surface-card) !important;
+            border: 1px solid var(--border-spec) !important;
             border-radius: 1.25rem;
             position: relative;
+            box-shadow: var(--card-shadow) !important;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .bentocard-blueprint:hover {
-            border-color: rgba(85, 214, 190, 0.3);
-            /* Accent teal highlight */
-            box-shadow: 0 0 35px rgba(85, 214, 190, 0.05);
+        .bentocard-blueprint:hover,
+        .glass-panel:hover {
+            border-color: var(--border-hover) !important;
+            box-shadow: var(--card-shadow-hover) !important;
             transform: translateY(-2px);
         }
 
-        /* Technical Grid Overlay */
+        /* Subtle Technical Grid Overlay */
         .grid-bg-blueprint {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        html[data-theme="dark"] .grid-bg-blueprint {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
         }
 
         /* Non-blocking Scroll Reveal States */
@@ -90,14 +102,9 @@
             transform: translateY(0);
         }
 
-        /* Controlled Radial Atmospheric Glow */
+        /* Controlled Radial Atmospheric Wash */
         .glow-wash {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.1;
+            display: none !important;
         }
 
         .editorial-serif {
@@ -111,8 +118,244 @@
         }
 
         .custom-scroll::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.15);
             border-radius: 2px;
+        }
+
+        /* Dynamic Theme Component Adapters */
+        .case-data-box {
+            background-color: var(--surface-secondary) !important;
+            border: 1px solid var(--border-spec) !important;
+            color: var(--text-main) !important;
+        }
+
+        /* Interactive Simulator Components */
+        #arena-grid {
+            background: #141416 !important;
+            border: 1px solid var(--border-spec) !important;
+        }
+
+        .arena-container {
+            background-color: var(--surface-card) !important;
+            border: 1px solid var(--border-spec) !important;
+        }
+
+        #firmware-logs {
+            background: var(--surface-secondary) !important;
+            color: var(--text-secondary) !important;
+        }
+
+        /* Action & Gateway Buttons Base / Light Mode */
+        #sim-run-btn {
+            background: #111111 !important;
+            color: #FFFFFF !important;
+            border: 1px solid #111111 !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        #sim-run-btn:hover {
+            background: #000000 !important;
+            color: #FFFFFF !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        #sim-reset-btn {
+            background: var(--surface-card) !important;
+            color: var(--text-main) !important;
+            border: 1px solid var(--border-spec) !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        #sim-reset-btn:hover {
+            background: var(--surface-secondary) !important;
+            border-color: var(--border-hover) !important;
+            color: var(--text-main) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        .gateway-btn-primary {
+            background: #111111 !important;
+            color: #FFFFFF !important;
+            border: 1px solid #111111 !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .gateway-btn-primary:hover {
+            background: #000000 !important;
+            color: #FFFFFF !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+        }
+
+        .gateway-btn-secondary {
+            background: var(--surface-card) !important;
+            color: var(--text-main) !important;
+            border: 1px solid var(--border-spec) !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .gateway-btn-secondary:hover {
+            background: var(--surface-secondary) !important;
+            border-color: var(--border-hover) !important;
+            color: var(--text-main) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        /* ==========================================================================
+           Comprehensive Dark Mode Color Fixes for Case Study Elements
+           ========================================================================== */
+        html[data-theme="dark"] h1,
+        html[data-theme="dark"] h2,
+        html[data-theme="dark"] h3,
+        html[data-theme="dark"] h4,
+        html[data-theme="dark"] .text-textMain,
+        html[data-theme="dark"] .font-display,
+        html[data-theme="dark"] strong,
+        html[data-theme="dark"] .editorial-serif,
+        html[data-theme="dark"] span.editorial-serif {
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+        }
+
+        html[data-theme="dark"] p,
+        html[data-theme="dark"] .text-muted,
+        html[data-theme="dark"] .text-zinc-500,
+        html[data-theme="dark"] .text-neutral-500 {
+            color: #A1A1AA !important;
+        }
+
+        html[data-theme="dark"] .text-zinc-400,
+        html[data-theme="dark"] .text-zinc-600 {
+            color: #D4D4D8 !important;
+        }
+
+        html[data-theme="dark"] .editorial-serif {
+            color: #FFFFFF !important;
+        }
+
+        /* Simulation Buttons in Dark Mode: High-contrast visible text & hover lift */
+        html[data-theme="dark"] #sim-run-btn {
+            background: #FFFFFF !important;
+            color: #0B0B0C !important;
+            -webkit-text-fill-color: #0B0B0C !important;
+            border-color: #FFFFFF !important;
+            font-weight: 700 !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        html[data-theme="dark"] #sim-run-btn:hover {
+            background: #F4F4F5 !important;
+            border-color: #FFFFFF !important;
+            color: #000000 !important;
+            -webkit-text-fill-color: #000000 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25) !important;
+        }
+
+        #sim-run-btn.is-running {
+            background: #27272A !important;
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        html[data-theme="dark"] #sim-run-btn.is-running {
+            background: #18181B !important;
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+
+        html[data-theme="dark"] #sim-run-btn.is-running:hover {
+            background: #27272A !important;
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+        }
+
+        html[data-theme="dark"] #sim-reset-btn {
+            background: #18181B !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            font-weight: 700 !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        html[data-theme="dark"] #sim-reset-btn:hover {
+            background: #27272A !important;
+            border-color: rgba(255, 255, 255, 0.35) !important;
+            color: #FFFFFF !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        /* Review Code & Circuit Schematics Gateway Buttons in Dark Mode */
+        html[data-theme="dark"] .gateway-btn-primary {
+            background: #FFFFFF !important;
+            color: #0B0B0C !important;
+            border: 1px solid #FFFFFF !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        html[data-theme="dark"] .gateway-btn-primary:hover {
+            background: #F4F4F5 !important;
+            color: #000000 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25) !important;
+        }
+
+        html[data-theme="dark"] .gateway-btn-secondary {
+            background: #18181B !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        html[data-theme="dark"] .gateway-btn-secondary:hover {
+            background: #27272A !important;
+            border-color: rgba(255, 255, 255, 0.35) !important;
+            color: #FFFFFF !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        html[data-theme="dark"] #case-theme-toggle {
+            background-color: #1F1F23 !important;
+            border-color: rgba(255, 255, 255, 0.14) !important;
+            color: #F4F2EE !important;
+        }
+
+        html[data-theme="dark"] #case-theme-toggle:hover {
+            border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+
+        html[data-theme="dark"] .case-data-box,
+        html[data-theme="dark"] .arena-container {
+            background-color: #18181B !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        html[data-theme="dark"] .arch-node {
+            background-color: #18181B !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        html[data-theme="dark"] .arch-node h4 {
+            color: #F4F2EE !important;
+        }
+
+        html[data-theme="dark"] .arch-node ul li {
+            color: #D4D4D8 !important;
+        }
+
+        html[data-theme="dark"] .badge-chip {
+            background-color: #1F1F23 !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+            color: #E4E4E7 !important;
+        }
+
+        /* Distinct Divider Lines in Dark Mode */
+        html[data-theme="dark"] hr,
+        html[data-theme="dark"] hr[class*="border-borderSpec"] {
+            border-color: rgba(255, 255, 255, 0.16) !important;
         }
     </style>
     <link rel="stylesheet" href="../css/style.css">
@@ -120,30 +363,43 @@
 </head>
 
 <body
-    class="bg-bgMain text-textMain font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden grid-bg-blueprint">
+    class="bg-bgMain text-textMain font-sans antialiased selection:bg-black/10 selection:text-black overflow-x-hidden grid-bg-blueprint">
 
     <!-- Atmospheric Brand Light Targets -->
-    <div class="fixed top-[-10%] left-[-5%] w-[600px] h-[600px] bg-primary glow-wash"></div>
-    <div class="fixed bottom-[10%] right-[-15%] w-[550px] h-[550px] bg-accent glow-wash"></div>
-    <div class="fixed top-[45%] left-[25%] w-[400px] h-[400px] bg-acc3 glow-wash"></div>
+    <div class="fixed top-[-10%] left-[-5%] w-[600px] h-[600px] bg-black glow-wash"></div>
+    <div class="fixed bottom-[10%] right-[-15%] w-[550px] h-[550px] bg-black glow-wash"></div>
+    <div class="fixed top-[45%] left-[25%] w-[400px] h-[400px] bg-black glow-wash"></div>
 
     <!-- Main Blueprint Wrapper -->
     <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-12 pb-24 relative z-10">
 
         <!-- 1. HERO ARCHITECTURE SECTION -->
         <header class="relative mb-24 reveal">
+            <!-- Back to Portfolio Navigation Link & Theme Switcher -->
+            <div class="mb-8 flex items-center justify-between">
+                <a href="../index.html#projects" class="inline-flex items-center gap-2 text-xs font-mono text-muted hover:text-primary transition-colors">
+                    &larr; Back to Portfolio Projects
+                </a>
+                <button id="case-theme-toggle"
+                    class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface border border-borderSpec text-xs text-textMain hover:border-black/30 transition-all font-mono shadow-sm cursor-pointer"
+                    aria-label="Toggle Theme" title="Toggle Theme">
+                    <i id="case-theme-icon" class="fa-solid fa-moon text-xs"></i>
+                    <span id="case-theme-text" class="text-[11px]">Theme</span>
+                </button>
+            </div>
+
             <div class="flex flex-wrap items-center gap-3 mb-6">
                 <span
-                    class="inline-flex items-center gap-1.5 bg-accent/10 border border-accent/20 text-accent px-4 py-1 rounded-full text-xs font-mono">
+                    class="badge-chip inline-flex items-center gap-1.5 bg-black/[0.04] border border-black/10 text-neutral-800 px-4 py-1 rounded-full text-xs font-mono">
                     Production Grade Firmware
                 </span>
                 <span class="text-xs font-mono text-muted uppercase tracking-wider">// SYSTEM_04 // MECHATRONICS</span>
             </div>
 
             <div class="max-w-[950px] mb-12">
-                <h1 class="text-3xl sm:text-5xl md:text-7xl font-display font-bold tracking-tight text-white mb-6 leading-tight">
+                <h1 class="text-3xl sm:text-5xl md:text-7xl font-display font-bold tracking-tight text-textMain mb-6 leading-tight">
                     Autonomous Floor <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-acc3">
+                    <span class="text-textMain">
                         Cleaning Robot Architecture
                     </span>
                 </h1>
@@ -158,58 +414,51 @@
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Role</div>
-                    <div class="text-xs font-semibold text-white font-display">Lead Systems Eng.</div>
+                    <div class="text-xs font-semibold text-textMain font-display">Lead Systems Eng.</div>
                 </div>
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Duration</div>
-                    <div class="text-xs font-semibold text-white font-display">Academic Term</div>
+                    <div class="text-xs font-semibold text-textMain font-display">Academic Term</div>
                 </div>
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Category</div>
-                    <div class="text-xs font-semibold text-white font-display">Robotics & IoT</div>
+                    <div class="text-xs font-semibold text-textMain font-display">Robotics & IoT</div>
                 </div>
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Platform</div>
-                    <div class="text-xs font-semibold text-white font-display">ATmega Silicon</div>
+                    <div class="text-xs font-semibold text-textMain font-display">ATmega Silicon</div>
                 </div>
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Firmware</div>
-                    <div class="text-xs font-semibold text-primary font-mono">C++ (.ino)</div>
+                    <div class="text-xs font-semibold text-textMain font-mono">C++ (.ino)</div>
                 </div>
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Hardware Matrix</div>
-                    <div class="text-xs font-semibold text-accent font-mono">8-Bit Core</div>
+                    <div class="text-xs font-semibold text-textMain font-mono">8-Bit Core</div>
                 </div>
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Status</div>
-                    <div class="text-xs font-semibold text-emerald-400 font-display">Validated</div>
+                    <div class="text-xs font-semibold text-emerald-500 font-display">Validated</div>
                 </div>
                 <div class="bentocard-blueprint p-4 flex flex-col justify-between items-start">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Pipeline</div>
                     <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank"
-                        class="text-xs text-primary font-mono hover:underline">
+                        class="text-xs text-textMain font-mono font-medium hover:underline">
                         GitHub ↗
                     </a>
                 </div>
             </div>
         </header>
 
-        </div>
-        </div>
-        </section>
+        <hr class="border-borderSpec/40 my-16">
 
         <!-- 1.5. INTERACTIVE DEMO SIMULATOR SECTION -->
         <section id="demo" class="mb-24 reveal scroll-mt-24">
             <div
-                class="glass-panel p-8 rounded-2xl border border-accent/20 hover:border-accent/40 transition-all duration-300 relative overflow-hidden">
-                <div
-                    class="absolute top-0 right-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[80px] pointer-events-none">
-                </div>
-
+                class="bentocard-blueprint p-8 relative overflow-hidden">
                 <div class="mb-8">
-                    <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">// INTERACTIVE
-                        SHOWCASE</span>
-                    <h2 class="text-3xl font-display font-bold text-white">Autonomous Obstacle Avoidance Simulator</h2>
+                    <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest block mb-2">// INTERACTIVE SHOWCASE</span>
+                    <h2 class="text-3xl font-display font-bold text-textMain">Autonomous Obstacle Avoidance Simulator</h2>
                     <p class="text-sm text-muted mt-1">Watch the robot's sensor-fusion pathfinding algorithms in action.
                         Click cells to place/remove obstacles in real-time.</p>
                 </div>
@@ -218,20 +467,20 @@
                     <!-- Column 1: Clean Arena Grid -->
                     <div class="lg:col-span-6 flex justify-center items-center">
                         <div
-                            class="glass-panel p-4 rounded-xl border border-borderSpec bg-zinc-950/60 flex flex-col items-center">
-                            <div class="mb-3 flex gap-4 text-[10px] font-mono text-zinc-500">
-                                <span class="flex items-center gap-1"><span
-                                        class="w-2.5 h-2.5 bg-zinc-800 rounded"></span>Dirty</span>
-                                <span class="flex items-center gap-1"><span
-                                        class="w-2.5 h-2.5 bg-emerald-500/20 border border-emerald-500/40 rounded"></span>Cleaned</span>
-                                <span class="flex items-center gap-1"><span
-                                        class="w-2.5 h-2.5 bg-red-500/40 border border-red-500/60 rounded"></span>Obstacle</span>
-                                <span class="flex items-center gap-1"><span
+                            class="arena-container p-4 rounded-xl border border-black/10 bg-[#FAFAFA] flex flex-col items-center shadow-inner">
+                            <div class="mb-3 flex gap-4 text-[10px] font-mono text-zinc-600">
+                                <span class="flex items-center gap-1.5"><span
+                                        class="w-2.5 h-2.5 bg-zinc-400 rounded"></span>Dirty</span>
+                                <span class="flex items-center gap-1.5"><span
+                                        class="w-2.5 h-2.5 bg-emerald-500 rounded"></span>Cleaned</span>
+                                <span class="flex items-center gap-1.5"><span
+                                        class="w-2.5 h-2.5 bg-red-500 rounded"></span>Obstacle</span>
+                                <span class="flex items-center gap-1.5"><span
                                         class="w-2.5 h-2.5 bg-primary rounded-full"></span>Robot</span>
                             </div>
                             <!-- Arena (10x10 grid) -->
                             <div id="arena-grid"
-                                class="grid grid-cols-10 gap-1 bg-zinc-900/80 p-2 rounded-lg border border-borderSpec w-[280px] h-[280px]">
+                                class="grid grid-cols-10 gap-1 bg-[#18181B] p-2 rounded-lg border border-black/15 w-[280px] h-[280px]">
                                 <!-- Dynamic cell grid -->
                             </div>
                         </div>
@@ -241,27 +490,24 @@
                     <div class="lg:col-span-6 flex flex-col justify-between space-y-6">
                         <!-- Sensor Stats -->
                         <div class="grid grid-cols-2 gap-4">
-                            <div class="glass-panel p-4 rounded-xl border border-borderSpec">
-                                <span class="text-[9px] font-mono text-muted uppercase block mb-1">Ultrasonic
-                                    Range</span>
-                                <span id="telemetry-distance" class="text-base font-bold text-white font-mono">100
-                                    cm</span>
+                            <div class="case-data-box p-4 rounded-xl border border-black/10 bg-[#FAFAFA]">
+                                <span class="text-[9px] font-mono text-muted uppercase block mb-1">Ultrasonic Range</span>
+                                <span id="telemetry-distance" class="text-base font-bold text-textMain font-mono">100 cm</span>
                             </div>
-                            <div class="glass-panel p-4 rounded-xl border border-borderSpec">
-                                <span class="text-[9px] font-mono text-muted uppercase block mb-1">Coverage
-                                    Efficiency</span>
+                            <div class="case-data-box p-4 rounded-xl border border-black/10 bg-[#FAFAFA]">
+                                <span class="text-[9px] font-mono text-muted uppercase block mb-1">Coverage Efficiency</span>
                                 <span id="telemetry-coverage"
-                                    class="text-base font-bold text-primary font-mono">0%</span>
+                                    class="text-base font-bold text-textMain font-mono">0%</span>
                             </div>
                         </div>
 
                         <!-- Real-time Control Logs -->
                         <div
-                            class="glass-panel p-4 rounded-xl border border-borderSpec bg-zinc-950/50 font-mono text-xs flex flex-col justify-between h-[150px]">
+                            class="case-data-box p-4 rounded-xl border border-black/10 bg-[#FAFAFA] font-mono text-xs flex flex-col justify-between h-[150px]">
                             <span
                                 class="text-[10px] text-zinc-500 border-b border-borderSpec pb-1 mb-1 block">FIRMWARE_SERIAL_MONITOR</span>
                             <div id="firmware-logs"
-                                class="flex-grow overflow-y-auto space-y-1 text-[10px] text-zinc-400">
+                                class="flex-grow overflow-y-auto space-y-1 text-[10px] text-zinc-600">
                                 <!-- Logs -->
                             </div>
                         </div>
@@ -269,11 +515,9 @@
                         <!-- Sim Buttons -->
                         <div class="flex gap-2">
                             <button id="sim-run-btn"
-                                class="px-4 py-2 bg-accent text-bgMain font-mono font-bold rounded-lg hover:scale-105 transition-transform flex-grow">START
-                                PATHFINDING</button>
+                                class="px-4 py-2.5 font-mono font-bold text-xs rounded-lg flex-grow cursor-pointer">START PATHFINDING</button>
                             <button id="sim-reset-btn"
-                                class="px-4 py-2 bg-zinc-800 text-white font-mono font-bold rounded-lg hover:bg-zinc-700 transition-colors">RESET
-                                MAP</button>
+                                class="px-4 py-2.5 font-mono font-bold text-xs rounded-lg cursor-pointer">RESET MAP</button>
                         </div>
                     </div>
                 </div>
@@ -286,7 +530,7 @@
                 <div class="lg:col-span-4">
                     <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">01 // STRUCTURAL
                         DIRECTIVE</span>
-                    <h2 class="text-3xl font-display font-bold text-white tracking-tight">Project Context</h2>
+                    <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Project Context</h2>
                 </div>
                 <div class="lg:col-span-8 space-y-6 text-muted font-light leading-relaxed text-base">
                     <p>
@@ -310,12 +554,12 @@
             <div class="mb-12">
                 <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">02 // THE ENGINEERING
                     CRUCIBLE</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Problem Statement</h2>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Problem Statement</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bentocard-blueprint p-8 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
-                    <h3 class="text-lg font-display font-bold text-white mb-3">Kinematic Collision Risk</h3>
+                    <h3 class="text-lg font-display font-bold text-textMain mb-3">Kinematic Collision Risk</h3>
                     <p class="text-xs text-muted leading-relaxed font-light">
                         Standard blind execution loops often cause hard impacts against moving room hazards, requiring
                         responsive fallback loops to adjust navigation profiles safely.
@@ -323,7 +567,7 @@
                 </div>
                 <div class="bentocard-blueprint p-8 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
-                    <h3 class="text-lg font-display font-bold text-white mb-3">Signal Echo & Phase Jitters</h3>
+                    <h3 class="text-lg font-display font-bold text-textMain mb-3">Signal Echo & Phase Jitters</h3>
                     <p class="text-xs text-muted leading-relaxed font-light">
                         Acoustic pulse cancellation and external infrared noise introduce severe tracking interference,
                         creating loop errors if data isn't properly debounced.
@@ -331,7 +575,7 @@
                 </div>
                 <div class="bentocard-blueprint p-8 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-1 h-full bg-acc3"></div>
-                    <h3 class="text-lg font-display font-bold text-white mb-3">Constrained Allocations</h3>
+                    <h3 class="text-lg font-display font-bold text-textMain mb-3">Constrained Allocations</h3>
                     <p class="text-xs text-muted leading-relaxed font-light">
                         Running multi-stage choice trees on limited 8-bit registers requires careful code optimization
                         to prevent memory limits or stack overflows.
@@ -345,30 +589,30 @@
             <div class="mb-12">
                 <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">03 // STRATEGIC
                     BLUEPRINT</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Technical Objectives</h2>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Technical Objectives</h2>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
                     <div class="text-primary font-mono text-[10px] mb-2">[OBJ_01]</div>
-                    <h4 class="text-sm font-display font-bold text-white mb-2">Continuous Scanning</h4>
+                    <h4 class="text-sm font-display font-bold text-textMain mb-2">Continuous Scanning</h4>
                     <p class="text-xs text-muted font-light">Deploy non-blocking background read cycles to check
                         environmental space without stopping active movement paths.</p>
                 </div>
                 <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
                     <div class="text-primary font-mono text-[10px] mb-2">[OBJ_02]</div>
-                    <h4 class="text-sm font-display font-bold text-white mb-2">H-Bridge Matching</h4>
+                    <h4 class="text-sm font-display font-bold text-textMain mb-2">H-Bridge Matching</h4>
                     <p class="text-xs text-muted font-light">Calibrate duty cycles directly on controller pins to enable
                         reliable straight runs and clean turning transitions.</p>
                 </div>
                 <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
                     <div class="text-primary font-mono text-[10px] mb-2">[OBJ_03]</div>
-                    <h4 class="text-sm font-display font-bold text-white mb-2">Low-BOM Layout</h4>
+                    <h4 class="text-sm font-display font-bold text-textMain mb-2">Low-BOM Layout</h4>
                     <p class="text-xs text-muted font-light">Maximize performance metrics while using budget-friendly
                         microcontrollers and standard peripheral sensors.</p>
                 </div>
                 <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
                     <div class="text-primary font-mono text-[10px] mb-2">[OBJ_04]</div>
-                    <h4 class="text-sm font-display font-bold text-white mb-2">Automatic Corner Release</h4>
+                    <h4 class="text-sm font-display font-bold text-textMain mb-2">Automatic Corner Release</h4>
                     <p class="text-xs text-muted font-light">Build reactive choice sequences to pull the robot out of
                         unexpected physical traps or dead ends autonomously.</p>
                 </div>
@@ -380,7 +624,7 @@
             <div class="mb-12">
                 <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">04 // MECHATRONICS
                     LAYER SPECS</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Hardware Layer Deep-Dive</h2>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Hardware Layer Deep-Dive</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Core MCU -->
@@ -390,7 +634,7 @@
                             <span class="text-muted">CENTRAL COMPUTE</span>
                             <span class="text-accent bg-accent/10 px-2 py-0.5 rounded">U1</span>
                         </div>
-                        <h3 class="text-lg font-display font-bold text-white mb-2">Microcontroller Core</h3>
+                        <h3 class="text-lg font-display font-bold text-textMain mb-2">Microcontroller Core</h3>
                         <p class="text-xs text-muted font-light mb-4 leading-relaxed">
                             Orchestrates the primary asynchronous loop, handles raw signal debouncing, and generates
                             independent PWM channels for velocity control.
@@ -411,7 +655,7 @@
                             <span class="text-muted">ACOUSTIC TELEMETRY</span>
                             <span class="text-accent bg-accent/10 px-2 py-0.5 rounded">SEN1</span>
                         </div>
-                        <h3 class="text-lg font-display font-bold text-white mb-2">Ultrasonic Arrays (HC-SR04)</h3>
+                        <h3 class="text-lg font-display font-bold text-textMain mb-2">Ultrasonic Arrays (HC-SR04)</h3>
                         <p class="text-xs text-muted font-light mb-4 leading-relaxed">
                             Calculates spatial distance lines using Time-of-Flight sound reflections to build a
                             structural barrier map ahead of the platform.
@@ -434,7 +678,7 @@
                             <span class="text-muted">INDUCTIVE ISOLATION</span>
                             <span class="text-primary bg-primary/10 px-2 py-0.5 rounded">DRV1</span>
                         </div>
-                        <h3 class="text-lg font-display font-bold text-white mb-2">L298N Dual H-Bridge Platform</h3>
+                        <h3 class="text-lg font-display font-bold text-textMain mb-2">L298N Dual H-Bridge Platform</h3>
                         <p class="text-xs text-muted font-light mb-4 leading-relaxed">
                             Isolates sensitive logic lines from inductive motor draw, safely distributing power to twin
                             drive tracks.
@@ -455,7 +699,7 @@
                             <span class="text-muted">BUS ISOLATION</span>
                             <span class="text-primary bg-primary/10 px-2 py-0.5 rounded">PWR1</span>
                         </div>
-                        <h3 class="text-lg font-display font-bold text-white mb-2">Li-Ion Power Subsystem</h3>
+                        <h3 class="text-lg font-display font-bold text-textMain mb-2">Li-Ion Power Subsystem</h3>
                         <p class="text-xs text-muted font-light mb-4 leading-relaxed">
                             High-capacity battery configurations deployed with independent regulator lines to filter
                             motor ripple noise out of processing circuits.
@@ -476,7 +720,7 @@
                             <span class="text-muted">KINEMATIC ACTUATION</span>
                             <span class="text-primary bg-primary/10 px-2 py-0.5 rounded">MOT1-2</span>
                         </div>
-                        <h3 class="text-lg font-display font-bold text-white mb-2">High-Torque Geared DC Motors</h3>
+                        <h3 class="text-lg font-display font-bold text-textMain mb-2">High-Torque Geared DC Motors</h3>
                         <p class="text-xs text-muted font-light mb-4 leading-relaxed">
                             Delivers steady rotational force across varying surface transitions, maintaining predictable
                             platform tracking over time.
@@ -496,7 +740,7 @@
         <section class="mb-24 reveal">
             <div class="mb-12">
                 <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">05 // SIGNAL COHERENCE</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Firmware & System Architecture</h2>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Firmware & System Architecture</h2>
             </div>
 
             <div class="bentocard-blueprint p-8 rounded-2xl relative overflow-hidden">
@@ -504,10 +748,10 @@
                 <div class="grid grid-cols-1 lg:grid-cols-11 gap-6 items-center">
                     
                     <!-- Node 1: Sensor Substrate -->
-                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/10 border border-borderSpec text-left relative">
                         <div class="absolute top-3 right-3 text-[9px] font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">Telemetry</div>
                         <span class="text-xs font-mono text-muted block mb-1">Inputs Layer</span>
-                        <h4 class="text-md font-display font-bold text-white mb-2">Sensor Array</h4>
+                        <h4 class="text-md font-display font-bold text-textMain mb-2">Sensor Array</h4>
                         <ul class="text-[11px] text-zinc-400 space-y-1 font-mono font-light">
                             <li>• Sonar Echo Pins</li>
                             <li>• IR Proximity Status</li>
@@ -523,10 +767,10 @@
                     </div>
                     
                     <!-- Node 2: AVR Processor -->
-                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/10 border border-borderSpec text-left relative">
                         <div class="absolute top-3 right-3 text-[9px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full">Firmware</div>
                         <span class="text-xs font-mono text-accent block mb-1">Decision Layer</span>
-                        <h4 class="text-md font-display font-bold text-white mb-2">ATmega328P Core</h4>
+                        <h4 class="text-md font-display font-bold text-textMain mb-2">ATmega328P Core</h4>
                         <ul class="text-[11px] text-zinc-400 space-y-1 font-mono font-light">
                             <li>• Debounce Registers</li>
                             <li>• Non-Blocking State Loop</li>
@@ -542,10 +786,10 @@
                     </div>
                     
                     <!-- Node 3: H-Bridge Actuation -->
-                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/60 border border-borderSpec text-left relative">
+                    <div class="lg:col-span-3 p-5 rounded-2xl bg-bgMain/10 border border-borderSpec text-left relative">
                         <div class="absolute top-3 right-3 text-[9px] font-mono text-acc3 bg-acc3/10 border border-acc3/20 px-2 py-0.5 rounded-full">Motors</div>
                         <span class="text-xs font-mono text-acc3 block mb-1">Actuator Layer</span>
-                        <h4 class="text-md font-display font-bold text-white mb-2">H-Bridge Drive</h4>
+                        <h4 class="text-md font-display font-bold text-textMain mb-2">H-Bridge Drive</h4>
                         <ul class="text-[11px] text-zinc-400 space-y-1 font-mono font-light">
                             <li>• Isolated H-Bridge</li>
                             <li>• PWM Speed Drivers</li>
@@ -564,52 +808,48 @@
         <!-- 8. RUN LOOP TIME LOGS -->
         <section class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-purple-400 uppercase tracking-widest block mb-2">06 // TIME
+                <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest block mb-2">06 // TIME
                     CONVERSION SCHEMAS</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Main Run Loop Lifecycle</h2>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Main Run Loop Lifecycle</h2>
             </div>
 
             <div class="space-y-4">
                 <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
-                    <div class="font-mono text-accent font-bold min-w-[50px]">01 //</div>
+                    <div class="font-mono text-primary font-bold min-w-[50px]">01 //</div>
                     <div>
-                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Boot Config & Register
-                            Allocation</h4>
+                        <h4 class="text-textMain font-display font-semibold text-sm mb-0.5">Boot Config & Register Allocation</h4>
                         <p class="text-xs text-muted font-light">Configures I/O pin states, sets up timer presets for
                             PWM, and assigns initial safety boundaries.</p>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
-                    <div class="font-mono text-accent font-bold min-w-[50px]">02 //</div>
+                    <div class="font-mono text-primary font-bold min-w-[50px]">02 //</div>
                     <div>
-                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Ultrasonic Interrogation Wave
-                        </h4>
+                        <h4 class="text-textMain font-display font-semibold text-sm mb-0.5">Ultrasonic Interrogation Wave</h4>
                         <p class="text-xs text-muted font-light">Fires a 10-microsecond trigger pulse to capture
                             real-time distance metrics via low-latency hardware counter checks.</p>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
-                    <div class="font-mono text-accent font-bold min-w-[50px]">03 //</div>
+                    <div class="font-mono text-primary font-bold min-w-[50px]">03 //</div>
                     <div>
-                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Telemetry Boundary Verification
-                        </h4>
+                        <h4 class="text-textMain font-display font-semibold text-sm mb-0.5">Telemetry Boundary Verification</h4>
                         <p class="text-xs text-muted font-light">Compares raw echo tracking vectors against safe
                             thresholds to quickly flag oncoming hazards.</p>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
-                    <div class="font-mono text-accent font-bold min-w-[50px]">04 //</div>
+                    <div class="font-mono text-primary font-bold min-w-[50px]">04 //</div>
                     <div>
-                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Adaptive Correction Sequences
-                        </h4>
+                        <h4 class="text-textMain font-display font-semibold text-sm mb-0.5">Adaptive Correction Sequences</h4>
                         <p class="text-xs text-muted font-light">When obstacles block the forward path, the logic alters
                             individual motor tracks, executing a sharp pivot away from the barrier.</p>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
-                    <div class="font-mono text-accent font-bold min-w-[50px]">05 //</div>
+                    <div class="font-mono text-primary font-bold min-w-[50px]">05 //</div>
                     <div>
-                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Velocity Output Dispatch</h4>
+                        <h4 class="text-textMain font-display font-semibold text-sm mb-0.5">Velocity Output Dispatch</h4>
                         <p class="text-xs text-muted font-light">Applies calculated power levels to the driver control
                             registers, keeping platform transitions smooth and controlled.</p>
                     </div>
@@ -620,44 +860,44 @@
         <!-- 9. TECHNICAL GRID SHOWCASE -->
         <section class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">07 // SYSTEM FUNCTION
+                <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest block mb-2">07 // SYSTEM FUNCTION
                     ARRAYS</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Feature Showcase</h2>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Feature Showcase</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bentocard-blueprint p-6">
-                    <div class="font-mono text-xs text-primary mb-3">[FUNC_01]</div>
-                    <h4 class="text-md font-display font-bold text-white mb-2">Real-Time Aversion Matrix</h4>
+                    <div class="font-mono text-xs text-primary mb-3 font-bold">[FUNC_01]</div>
+                    <h4 class="text-md font-display font-bold text-textMain mb-2">Real-Time Aversion Matrix</h4>
                     <p class="text-xs text-muted font-light leading-relaxed">Monitors physical environment boundaries
                         continuously to reliably adjust drive behaviors before contact occurs.</p>
                 </div>
                 <div class="bentocard-blueprint p-6">
-                    <div class="font-mono text-xs text-primary mb-3">[FUNC_02]</div>
-                    <h4 class="text-md font-display font-bold text-white mb-2">Differential Traction Steering</h4>
+                    <div class="font-mono text-xs text-primary mb-3 font-bold">[FUNC_02]</div>
+                    <h4 class="text-md font-display font-bold text-textMain mb-2">Differential Traction Steering</h4>
                     <p class="text-xs text-muted font-light leading-relaxed">Enables high-efficiency rotational turning
                         profiles, reducing wheel drag across tricky carpet-to-hardwood flooring transitions.</p>
                 </div>
                 <div class="bentocard-blueprint p-6">
-                    <div class="font-mono text-xs text-primary mb-3">[FUNC_03]</div>
-                    <h4 class="text-md font-display font-bold text-white mb-2">Asynchronous Logic Loop</h4>
+                    <div class="font-mono text-xs text-primary mb-3 font-bold">[FUNC_03]</div>
+                    <h4 class="text-md font-display font-bold text-textMain mb-2">Asynchronous Logic Loop</h4>
                     <p class="text-xs text-muted font-light leading-relaxed">Leverages non-blocking check loops to
                         execute sensor sweeping routines without halting motor propulsion cycles.</p>
                 </div>
                 <div class="bentocard-blueprint p-6">
-                    <div class="font-mono text-xs text-accent mb-3">[FUNC_04]</div>
-                    <h4 class="text-md font-display font-bold text-white mb-2">Hardware Power Separation</h4>
+                    <div class="font-mono text-xs text-primary mb-3 font-bold">[FUNC_04]</div>
+                    <h4 class="text-md font-display font-bold text-textMain mb-2">Hardware Power Separation</h4>
                     <p class="text-xs text-muted font-light leading-relaxed">Features split power rails that shield
                         sensitive microcontroller boards from high-amp motor feedback spikes.</p>
                 </div>
                 <div class="bentocard-blueprint p-6">
-                    <div class="font-mono text-xs text-accent mb-3">[FUNC_05]</div>
-                    <h4 class="text-md font-display font-bold text-white mb-2">Fallback Escape Sequences</h4>
+                    <div class="font-mono text-xs text-primary mb-3 font-bold">[FUNC_05]</div>
+                    <h4 class="text-md font-display font-bold text-textMain mb-2">Fallback Escape Sequences</h4>
                     <p class="text-xs text-muted font-light leading-relaxed">Monitors for potential trap states,
                         automatically executing reverse-and-pivoting paths to free the robot from tight corners.</p>
                 </div>
                 <div class="bentocard-blueprint p-6">
-                    <div class="font-mono text-xs text-accent mb-3">[FUNC_06]</div>
-                    <h4 class="text-md font-display font-bold text-white mb-2">Modular Frame Geometry</h4>
+                    <div class="font-mono text-xs text-primary mb-3 font-bold">[FUNC_06]</div>
+                    <h4 class="text-md font-display font-bold text-textMain mb-2">Modular Frame Geometry</h4>
                     <p class="text-xs text-muted font-light leading-relaxed">Built with an balanced chassis layout that
                         lowers the center of gravity while keeping components accessible for quick updates.</p>
                 </div>
@@ -667,45 +907,43 @@
         <!-- 11. SENSOR MATH DEEP DIVE -->
         <section class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">08 // MATH
+                <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest block mb-2">08 // MATH
                     MATRICES</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Sensor Interfacing & Conversion
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Sensor Interfacing & Conversion
                     Calculations</h2>
             </div>
             <div class="bentocard-blueprint p-8">
-                <h3 class="text-xl font-display font-bold text-accent mb-3">Ultrasonic Echo Time-of-Flight Calculus</h3>
+                <h3 class="text-xl font-display font-bold text-textMain mb-3">Ultrasonic Echo Time-of-Flight Calculus</h3>
                 <p class="text-sm text-muted font-light mb-4 leading-relaxed">
                     The logic driver converts raw acoustic return times into structural space metrics. The distance
                     calculation relies on standard high-speed sound velocities:
                 </p>
                 <div
-                    class="bg-bgMain p-4 rounded-xl border border-borderSpec font-mono text-center text-sm text-white my-4">
+                    class="case-data-box p-4 rounded-xl border border-borderSpec font-mono text-center text-sm text-textMain font-semibold my-4">
                     Distance = (Measured Pulse Travel Time &times; 0.0343) / 2
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted font-light mt-4">
-                    <div class="p-4 bg-bgMain rounded-lg border border-borderSpec">
-                        <strong>Reflection Limits:</strong> Irregular layout corners or dampening fabrics can weaken
+                    <div class="p-4 case-data-box rounded-lg border border-borderSpec">
+                        <strong class="text-textMain font-semibold">Reflection Limits:</strong> Irregular layout corners or dampening fabrics can weaken
                         echo returns, leading to brief pulse scattering.
                     </div>
-                    <div class="p-4 bg-bgMain rounded-lg border border-borderSpec">
-                        <strong>Firmware Patch:</strong> Runs values through an integrated multi-step comparison window
+                    <div class="p-4 case-data-box rounded-lg border border-borderSpec">
+                        <strong class="text-textMain font-semibold">Firmware Patch:</strong> Runs values through an integrated multi-step comparison window
                         to filter out single-point sensor errors cleanly.
                     </div>
                 </div>
             </div>
         </section>
 
-
-
         <hr class="border-borderSpec/40 my-16">
 
         <!-- 22. PREMIUM CALL TO ACTION BLOCK -->
         <section class="reveal">
-            <div class="bentocard-blueprint p-10 text-center relative z-10 max-w-[850px] mx-auto border-primary/20">
-                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">SYSTEM GATEWAY
+            <div class="bentocard-blueprint p-10 text-center relative z-10 max-w-[850px] mx-auto border-borderSpec">
+                <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest block mb-4">SYSTEM GATEWAY
                     INTERCONNECT</span>
-                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-6 leading-tight">
-                    Review Code & <span class="editorial-serif">Circuit Schematics.</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-textMain mb-6 leading-tight">
+                    Review Code & Circuit Schematics.
                 </h2>
                 <p class="text-muted text-sm leading-relaxed max-w-xl mx-auto mb-8">
                     Explore firmware structures, physical pin mappings, and optimization logic configurations inside the
@@ -714,11 +952,11 @@
 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
                     <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank"
-                        class="px-4 py-2 rounded-lg bg-primary text-bgMain text-[11px] font-mono tracking-wide font-bold hover:bg-primary/90 transition-all transform hover:scale-[1.01] w-full sm:w-auto text-center shadow-md shadow-primary/20">
+                        class="gateway-btn-secondary px-5 py-2.5 rounded-lg text-[11px] font-mono tracking-wide font-bold w-full sm:w-auto text-center shadow-md">
                         Access Source Repository
                     </a>
                     <a href="https://youtu.be/uRAujHWnYvk" target="_blank"
-                        class="px-4 py-2 rounded-lg bg-surface border border-borderSpec text-[11px] font-mono text-muted hover:text-textMain transition-colors w-full sm:w-auto text-center inline-flex items-center justify-center gap-2">
+                        class="gateway-btn-secondary px-5 py-2.5 rounded-lg text-[11px] font-mono tracking-wide font-bold w-full sm:w-auto text-center inline-flex items-center justify-center gap-2">
                         <svg class="w-3.5 h-3.5 text-red-500 fill-current" viewBox="0 0 24 24">
                             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                         </svg>
@@ -750,6 +988,42 @@
             }, { threshold: 0.08 });
 
             revealElements.forEach(el => observer.observe(el));
+
+            // Theme Controller for Case Study Page
+            const themeBtn = document.getElementById('case-theme-toggle');
+            const themeIcon = document.getElementById('case-theme-icon');
+            const themeText = document.getElementById('case-theme-text');
+
+            const applyCaseTheme = (theme, persist = true) => {
+                if (theme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
+                    }
+                    if (themeText) themeText.textContent = 'Light';
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                    }
+                    if (themeText) themeText.textContent = 'Dark';
+                }
+                if (persist) {
+                    localStorage.setItem('portfolio-theme', theme);
+                }
+            };
+
+            const storedTheme = localStorage.getItem('portfolio-theme') || 'light';
+            applyCaseTheme(storedTheme, false);
+
+            if (themeBtn) {
+                themeBtn.addEventListener('click', () => {
+                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    applyCaseTheme(isDark ? 'light' : 'dark', true);
+                });
+            }
 
             // Floor Cleaning Robot Simulator Script
             const arenaGrid = document.getElementById('arena-grid');
@@ -967,8 +1241,7 @@
                         clearInterval(runInterval);
                         isRunning = false;
                         simRunBtn.innerText = 'START PATHFINDING';
-                        simRunBtn.classList.remove('bg-zinc-800', 'text-white');
-                        simRunBtn.classList.add('bg-accent', 'text-bgMain');
+                        simRunBtn.classList.remove('is-running');
                         logFirmware("COVERAGE COMPLETED: All reachable areas cleaned.");
                     }
                 }
@@ -980,15 +1253,13 @@
                 if (isRunning) {
                     clearInterval(runInterval);
                     simRunBtn.innerText = 'START PATHFINDING';
-                    simRunBtn.classList.remove('bg-red-500/20', 'border-red-500/40', 'text-red-400');
-                    simRunBtn.classList.add('bg-accent', 'text-bgMain');
+                    simRunBtn.classList.remove('is-running');
                     isRunning = false;
                     logFirmware("SYSTEM PAUSED.");
                 } else {
                     isRunning = true;
                     simRunBtn.innerText = 'PAUSE ROBOT';
-                    simRunBtn.classList.remove('bg-accent', 'text-bgMain');
-                    simRunBtn.classList.add('bg-zinc-800', 'text-white');
+                    simRunBtn.classList.add('is-running');
                     logFirmware("SYSTEM RESUMED: Executing path sweep.");
                     runInterval = setInterval(stepSimulation, 450);
                 }
@@ -998,8 +1269,7 @@
                 if (isRunning) {
                     clearInterval(runInterval);
                     simRunBtn.innerText = 'START PATHFINDING';
-                    simRunBtn.classList.remove('bg-zinc-800', 'text-white');
-                    simRunBtn.classList.add('bg-accent', 'text-bgMain');
+                    simRunBtn.classList.remove('is-running');
                     isRunning = false;
                 }
                 initArena();
