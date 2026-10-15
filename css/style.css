@@ -1517,14 +1517,19 @@ footer svg {
 }
 
 /* Bento Dashboard Sub-Widgets & Tiles (Clean dark black logos by default, vibrant real brand colors on hover) */
-/* Row 1 Bento Compact Height Tuning */
+/* Row 1, 2, 3 Bento Dashboard Compact Height Tuning */
+#bento-dashboard .bento-card-dark {
+    padding: 1rem 1.15rem !important;
+    border-radius: 1.15rem !important;
+}
+
 #current-focus-card,
 #core-tech-stack-card {
-    padding: 1.15rem 1.25rem !important;
+    padding: 0.95rem 1.15rem !important;
 }
 
 #current-focus-card ul li {
-    line-height: 1.35 !important;
+    line-height: 1.25 !important;
 }
 
 #bento-dashboard .tech-stack-tile {
@@ -1721,10 +1726,30 @@ html[data-theme="dark"] .bento-focus-project {
     background-color: #FFFFFF !important;
     border: 1px solid rgba(0, 0, 0, 0.08) !important;
     box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04) !important;
+    padding: 1rem 1.15rem !important;
+    border-radius: 1.15rem !important;
 }
 
 #skills .bentocard:hover {
     border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+#skills .bentocard .mb-4 {
+    margin-bottom: 0.65rem !important;
+    padding-bottom: 0.35rem !important;
+}
+
+#skills .bentocard h3 {
+    font-size: 0.875rem !important;
+}
+
+#skills .bentocard ul {
+    gap: 0.25rem !important;
+}
+
+#skills .bentocard ul li {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
 }
 
 /* Make all skill icons in #skills solid dark black by default, and real brand colored on hover */
@@ -2599,16 +2624,16 @@ html {
 }
 
 .journey-cards-deck {
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
 }
 
 .journey-card {
     background: #FFFFFF !important;
     border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    border-radius: 1.15rem !important;
+    border-radius: 1rem !important;
     box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
     backdrop-filter: blur(8px);
-    padding: 1.25rem 1.5rem !important;
+    padding: 1rem 1.25rem !important;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
 }
 
@@ -2627,40 +2652,41 @@ html {
 #journey .journey-card h3 {
     color: #111111 !important;
     font-weight: 700 !important;
-    font-size: 1.1rem !important;
+    font-size: 1rem !important;
 }
 
 #journey .journey-card p {
     color: #52525B !important;
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 0.65rem !important;
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0.45rem !important;
 }
 
-#journey .journey-card .grid-cols-2 {
-    margin-top: 0.65rem !important;
-    margin-bottom: 0.65rem !important;
-    padding: 0.65rem 0.85rem !important;
+#journey .journey-card .grid {
+    margin-top: 0.45rem !important;
+    margin-bottom: 0.45rem !important;
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.5rem !important;
 }
 
-#journey .journey-card .grid-cols-2 span.font-bold {
-    font-size: 0.875rem !important;
+#journey .journey-card .grid span.font-bold {
+    font-size: 0.825rem !important;
 }
 
-#journey .journey-card .grid-cols-2 span.text-\[11px\] {
-    font-size: 10px !important;
-    line-height: 1.3 !important;
+#journey .journey-card .grid span.text-\[11px\] {
+    font-size: 9.5px !important;
+    line-height: 1.25 !important;
 }
 
 #journey .journey-card .text-xs.font-mono {
-    padding-bottom: 0.5rem !important;
-    margin-bottom: 0.65rem !important;
-    font-size: 11px !important;
+    padding-bottom: 0.35rem !important;
+    margin-bottom: 0.45rem !important;
+    font-size: 10.5px !important;
 }
 
 #journey .journey-card .pt-3 {
-    padding-top: 0.5rem !important;
-    font-size: 10px !important;
+    padding-top: 0.35rem !important;
+    font-size: 9.5px !important;
 }
 
 .timeline-item:hover .timeline-dot {
