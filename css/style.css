@@ -6,13 +6,21 @@
 :root {
     --bg-main: #F3F3F1;
     --surface: #FFFFFF;
+    --surface-card: #FFFFFF;
+    --surface-secondary: #F4F4F5;
     --primary: #111111;
     --accent: #111111;
     --acc3: #222222;
     --acc4: #333333;
     --text-main: #111111;
+    --text-secondary: #52525B;
     --muted: #6B7280;
     --border-spec: rgba(0, 0, 0, 0.08);
+    --border-hover: rgba(0, 0, 0, 0.2);
+    --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+    --card-shadow-hover: 0 12px 30px -4px rgba(0, 0, 0, 0.08);
+    --nav-bg: rgba(243, 243, 241, 0.88);
+    --nav-border: rgba(0, 0, 0, 0.07);
 
     --font-sans: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-display: 'Space Grotesk', sans-serif;
@@ -20,39 +28,1108 @@
     --font-mono: 'Geist Mono', SFMono-Regular, Consolas, monospace;
 }
 
+/* Crisp Text Selection Colors */
+::selection {
+    background-color: #111111 !important;
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] ::selection {
+    background-color: #FFFFFF !important;
+    color: #0B0B0C !important;
+    -webkit-text-fill-color: #0B0B0C !important;
+}
+
+/* ==========================================================================
+   Dark Mode Theme Overrides
+   ========================================================================== */
+html[data-theme="dark"] {
+    --bg-main: #0B0B0C;
+    --surface: #141416;
+    --surface-card: #141416;
+    --surface-secondary: #1F1F23;
+    --primary: #7C8CFF;
+    --accent: #55D6BE;
+    --acc3: #E8A33D;
+    --acc4: #FF7A59;
+    --text-main: #F4F2EE;
+    --text-secondary: #A1A1AA;
+    --muted: #8E8E93;
+    --border-spec: rgba(255, 255, 255, 0.09);
+    --border-hover: rgba(255, 255, 255, 0.24);
+    --card-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: 0 16px 40px -4px rgba(0, 0, 0, 0.7), 0 0 20px rgba(124, 140, 255, 0.12);
+    --nav-bg: rgba(11, 11, 12, 0.88);
+    --nav-border: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   Dark Mode Component & Section Specific Rules
+   ========================================================================== */
+html[data-theme="dark"] #navbar {
+    background-color: var(--nav-bg) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
+}
+
+html[data-theme="dark"] .progress-line {
+    background: #FFFFFF !important;
+}
+
+
+html[data-theme="dark"] #navbar a[href="index.html"],
+html[data-theme="dark"] #navbar a[href="index.html"] span {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #theme-toggle-btn {
+    background-color: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #theme-toggle-btn:hover {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    background-color: #27272A !important;
+}
+
+html[data-theme="dark"] .nav-link {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .nav-link:hover,
+html[data-theme="dark"] .nav-link.active {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .nav-link::after {
+    background: #FFFFFF !important;
+}
+
+html[data-theme="dark"] #cmd-palette-btn {
+    background-color: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #D4D4D8 !important;
+}
+
+html[data-theme="dark"] #cmd-palette-btn kbd {
+    background-color: #27272A !important;
+    border-color: rgba(255, 255, 255, 0.16) !important;
+    color: #E4E4E7 !important;
+}
+
+html[data-theme="dark"] .hero-name-type,
+html[data-theme="dark"] .editorial-serif {
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .text-zinc-200,
+html[data-theme="dark"] .text-zinc-300 {
+    color: #E4E4E7 !important;
+}
+
+html[data-theme="dark"] .text-zinc-400,
+html[data-theme="dark"] .text-zinc-500,
+html[data-theme="dark"] .text-muted {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .techtile {
+    background: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .techtile:hover {
+    background: #27272A !important;
+    border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+html[data-theme="dark"] .techtile span {
+    color: #E4E4E7 !important;
+}
+
+/* Bento Dashboard Dark Mode Overrides */
+html[data-theme="dark"] #bento-dashboard .bento-card-dark,
+html[data-theme="dark"] .bento-card-dark,
+html[data-theme="dark"] #skills .bentocard {
+    background-color: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+    box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.5) !important;
+}
+
+html[data-theme="dark"] #bento-dashboard .bento-card-dark:hover,
+html[data-theme="dark"] .bento-card-dark:hover,
+html[data-theme="dark"] #skills .bentocard:hover {
+    border-color: rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 16px 40px -4px rgba(0, 0, 0, 0.7) !important;
+}
+
+html[data-theme="dark"] #bento-dashboard h3,
+html[data-theme="dark"] #bento-dashboard h4,
+html[data-theme="dark"] .bento-card-dark h3,
+html[data-theme="dark"] .bento-card-dark h4,
+html[data-theme="dark"] #about .bentocard h3 {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #bento-dashboard span.uppercase,
+html[data-theme="dark"] .bento-card-dark span.uppercase {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .tech-stack-tile i:not(:hover),
+html[data-theme="dark"] .tech-stack-tile i.colored:not(:hover),
+html[data-theme="dark"] .tech-stack-tile i.text-zinc-400:not(:hover),
+html[data-theme="dark"] #skills i:not(:hover),
+html[data-theme="dark"] #skills [class*="devicon-"]:not(:hover),
+html[data-theme="dark"] #skills [class*="fa-"]:not(:hover),
+html[data-theme="dark"] .connect-icon i:not(:hover) {
+    color: #E4E4E7 !important;
+}
+
+/* Authentic Tech Brand Colors on Hover in Dark Mode */
+html[data-theme="dark"] .tech-stack-tile[data-tech="javascript"]:hover i,
+html[data-theme="dark"] .tech-stack-tile:has(.devicon-javascript-plain):hover i {
+    color: #F7DF1E !important;
+    filter: drop-shadow(0 0 14px rgba(247, 223, 30, 0.65)) !important;
+}
+
+html[data-theme="dark"] .tech-stack-tile[data-tech="react"]:hover i,
+html[data-theme="dark"] .tech-stack-tile:has(.devicon-react-original):hover i {
+    color: #61DAFB !important;
+    filter: drop-shadow(0 0 14px rgba(97, 218, 251, 0.65)) !important;
+}
+
+html[data-theme="dark"] .tech-stack-tile[data-tech="nodejs"]:hover i,
+html[data-theme="dark"] .tech-stack-tile:has(.devicon-nodejs-plain):hover i {
+    color: #339933 !important;
+    filter: drop-shadow(0 0 14px rgba(51, 153, 51, 0.65)) !important;
+}
+
+html[data-theme="dark"] .tech-stack-tile[data-tech="postgresql"]:hover i,
+html[data-theme="dark"] .tech-stack-tile:has(.devicon-postgresql-plain):hover i {
+    color: #4169E1 !important;
+    filter: drop-shadow(0 0 14px rgba(65, 105, 225, 0.65)) !important;
+}
+
+html[data-theme="dark"] .tech-stack-tile[data-tech="mongodb"]:hover i,
+html[data-theme="dark"] .tech-stack-tile:has(.devicon-mongodb-plain):hover i {
+    color: #47A248 !important;
+    filter: drop-shadow(0 0 14px rgba(71, 162, 72, 0.65)) !important;
+}
+
+html[data-theme="dark"] .tech-stack-tile[data-tech="tailwind"]:hover i,
+html[data-theme="dark"] .tech-stack-tile:has(.devicon-tailwindcss-original):hover i {
+    color: #38BDF8 !important;
+    filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.65)) !important;
+}
+
+html[data-theme="dark"] .tech-stack-tile[data-tech="java"]:hover i,
+html[data-theme="dark"] .tech-stack-tile:has(.devicon-java-plain):hover i {
+    color: #EA2D2E !important;
+    filter: drop-shadow(0 0 14px rgba(234, 45, 46, 0.65)) !important;
+}
+
+html[data-theme="dark"] .tech-stack-tile[data-tech="github"]:hover i,
+html[data-theme="dark"] .tech-stack-tile:has(.devicon-github-original):hover i {
+    color: #FFFFFF !important;
+    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.65)) !important;
+}
+
+html[data-theme="dark"] #bento-dashboard .bg-zinc-950\/40,
+html[data-theme="dark"] #bento-dashboard .bg-zinc-900\/50,
+html[data-theme="dark"] #bento-dashboard .bg-zinc-900\/60,
+html[data-theme="dark"] #bento-dashboard .bg-zinc-900,
+html[data-theme="dark"] #bento-dashboard .bg-zinc-800\/60 {
+    background-color: #1C1C1F !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] #bento-dashboard .text-zinc-400 {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #bento-dashboard .text-zinc-300 {
+    color: #E4E4E7 !important;
+}
+
+html[data-theme="dark"] .github-heatmap-wrapper {
+    background: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .github-grid .bg-zinc-800,
+html[data-theme="dark"] .github-grid .bg-zinc-900,
+html[data-theme="dark"] .github-grid .github-cell-empty {
+    background-color: #27272A !important;
+}
+
+html[data-theme="dark"] .github-month-commits {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] span.github-total-contributions,
+html[data-theme="dark"] span.github-total-contributions + span,
+html[data-theme="dark"] .bento-card-dark span:has(> .github-total-contributions) {
+    background-color: #1F1F23 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #bento-dashboard .bento-card-dark p.font-serif {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #bento-dashboard a.text-muted:hover,
+html[data-theme="dark"] #bento-dashboard a.text-accent:hover {
+    color: #FFFFFF !important;
+}
+
+/* About Section Dark Overrides */
+html[data-theme="dark"] #about .bentocard p {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #about .metric-box {
+    background-color: #1C1C1F !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] #about .metric-box .metric-label {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #about .metric-box .metric-val {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #about .bentocard .fa-arrow-up-right-from-square {
+    color: #F4F2EE !important;
+}
+
+/* Hero Studio Framing & Intro Dark Overrides */
+html[data-theme="dark"] #home .bg-\[\#FAFAF9\]\/90 {
+    background-color: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+    box-shadow: 0 12px 36px -6px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-theme="dark"] #home span[class*="border-black/30"] {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+html[data-theme="dark"] #home h1,
+html[data-theme="dark"] #home h1 * {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #home .editorial-serif {
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] #home p,
+html[data-theme="dark"] #home .text-\[\#52525B\] {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #home strong,
+html[data-theme="dark"] #home .hero-author-name,
+html[data-theme="dark"] .hero-author-name {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    font-weight: 700 !important;
+}
+
+html[data-theme="dark"] #home #email-btn {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #home #email-btn:hover {
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] #home #email-btn i {
+    color: #A1A1AA !important;
+    transition: color 0.2s ease;
+}
+
+html[data-theme="dark"] #home #email-btn:hover i {
+    color: #FFFFFF !important;
+}
+
+/* Selected Masterpieces Carousel Dark Overrides */
+html[data-theme="dark"] .carousel-card {
+    background-color: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+    box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.5) !important;
+}
+
+html[data-theme="dark"] .carousel-card:hover {
+    border-color: rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 16px 40px -4px rgba(0, 0, 0, 0.7) !important;
+}
+
+html[data-theme="dark"] .carousel-card-img-wrapper {
+    background: #1C1C1F !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .carousel-card h3 {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] .carousel-card p {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .carousel-card span.text-muted,
+html[data-theme="dark"] .carousel-card span.font-mono {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .carousel-card a[href*="http"].rounded-full,
+html[data-theme="dark"] .carousel-card span.rounded-full {
+    background-color: #1F1F23 !important;
+    color: #F4F2EE !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .carousel-card .border-t {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .carousel-card .border-t > span,
+html[data-theme="dark"] .carousel-card .border-t span.text-primary {
+    color: #71717A !important;
+}
+
+/* Brighter High-Contrast Action Links (Source, Demo, Case Study) to stand out from tech stack */
+html[data-theme="dark"] .carousel-card .border-t a,
+html[data-theme="dark"] .carousel-card a.hover\:underline,
+html[data-theme="dark"] .carousel-card a.text-muted,
+html[data-theme="dark"] .carousel-card a.text-accent,
+html[data-theme="dark"] .carousel-card a[href*="details.html"] {
+    color: #F4F4F5 !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    transition: color 0.2s ease, transform 0.2s ease !important;
+}
+
+html[data-theme="dark"] .carousel-card .border-t a:hover,
+html[data-theme="dark"] .carousel-card a.hover\:underline:hover,
+html[data-theme="dark"] .carousel-card a.text-muted:hover,
+html[data-theme="dark"] .carousel-card a.text-accent:hover,
+html[data-theme="dark"] .carousel-card a[href*="details.html"]:hover {
+    color: #FFFFFF !important;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* Filter Tab Pills Dark Overrides */
+html[data-theme="dark"] .filter-tab {
+    background: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #D4D4D8 !important;
+}
+
+html[data-theme="dark"] .filter-tab:hover {
+    background: #27272A !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .filter-tab.active {
+    background: #F4F2EE !important;
+    border-color: #F4F2EE !important;
+    color: #0B0B0C !important;
+}
+
+/* Bento Quick Stats & Sub-widgets Dark Overrides */
+html[data-theme="dark"] #bento-dashboard .bg-\[\#F4F4F5\],
+html[data-theme="dark"] #projects .bg-\[\#F4F4F5\] {
+    background-color: #1C1C1F !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] #bento-dashboard .text-\[\#111111\],
+html[data-theme="dark"] #projects .text-\[\#111111\] {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #bento-dashboard .text-\[\#52525B\],
+html[data-theme="dark"] #projects .text-\[\#52525B\],
+html[data-theme="dark"] #bento-dashboard .text-\[\#71717A\],
+html[data-theme="dark"] #projects .text-\[\#71717A\] {
+    color: #A1A1AA !important;
+}
+
+/* Flagship Product Feature Card Dark Overrides */
+html[data-theme="dark"] #projects .bentocard {
+    background-color: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+}
+
+html[data-theme="dark"] #projects h2,
+html[data-theme="dark"] #projects h3 {
+    color: #F4F2EE !important;
+}
+
+/* Featured project code button in dark mode */
+html[data-theme="dark"] #projects a[href*="github.com/Vans30m/FinPulse-AI"] {
+    background-color: #1C1C1F !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #projects a[href*="github.com/Vans30m/FinPulse-AI"]:hover {
+    background-color: #27272A !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+}
+
+/* Skills Matrix Dark Overrides */
+html[data-theme="dark"] #skills .bentocard {
+    background-color: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+}
+
+html[data-theme="dark"] #skills h2 {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #skills h3,
+html[data-theme="dark"] #skills .bentocard h3 {
+    color: #FFFFFF !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em !important;
+}
+
+html[data-theme="dark"] #skills li {
+    border-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+html[data-theme="dark"] #skills li span {
+    color: #D4D4D8 !important;
+    font-size: 0.8125rem !important; /* 13px: distinctively smaller than headings */
+    font-weight: 500 !important;
+    letter-spacing: normal !important;
+}
+
+html[data-theme="dark"] #skills li:hover span {
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] #skills div[class*="border-b"] {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] #theme-toggle-mobile {
+    background-color: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #menu-toggle span {
+    background-color: #F4F2EE !important;
+}
+
+/* Mobile Floating Dropdown Navigation Dark Mode Overrides - Pure Monochrome Studio */
+html[data-theme="dark"] #mobile-menu {
+    background-color: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Category headers (// NAVIGATE, // CONNECT) in high clean white */
+html[data-theme="dark"] #mobile-menu span[class*="text-accent"] {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+}
+
+/* Navigation Links - clear, readable high-brightness white */
+html[data-theme="dark"] #mobile-menu .mobile-nav-link {
+    color: #F4F2EE !important;
+    font-weight: 500 !important;
+}
+
+/* Number prefixes (01 /, 02 /, etc.) in clean secondary white */
+html[data-theme="dark"] #mobile-menu .mobile-nav-link span {
+    color: #A1A1AA !important;
+}
+
+/* Active and Hovered links - crisp pure white with no green tint */
+html[data-theme="dark"] #mobile-menu .mobile-nav-link:hover,
+html[data-theme="dark"] #mobile-menu .mobile-nav-link.active {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+html[data-theme="dark"] #mobile-menu .mobile-nav-link:hover span,
+html[data-theme="dark"] #mobile-menu .mobile-nav-link.active span {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+html[data-theme="dark"] #mobile-menu div[class*="border-borderSpec"] {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Footer email & social links in high-visibility white */
+html[data-theme="dark"] #mobile-menu-footer a {
+    color: #E4E4E7 !important;
+}
+
+html[data-theme="dark"] #mobile-menu-footer a:first-of-type {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+html[data-theme="dark"] #mobile-menu-footer a:hover {
+    color: #FFFFFF !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Problem Solving & Profiles (#about) Dark Overrides */
+html[data-theme="dark"] #about .bentocard {
+    background-color: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+}
+
+html[data-theme="dark"] #about .bentocard:hover {
+    border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+html[data-theme="dark"] #about h3,
+html[data-theme="dark"] #about .text-\[\#111111\],
+html[data-theme="dark"] #about .metric-val {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #about p,
+html[data-theme="dark"] #about .text-\[\#52525B\],
+html[data-theme="dark"] #about .metric-label,
+html[data-theme="dark"] #about .text-\[\#71717A\] {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #about .metric-box {
+    background-color: #1C1C1F !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] #about div[class*="border-t"] {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Engineering Journey (#journey) Dark Overrides */
+html[data-theme="dark"] #journey .journey-card {
+    background-color: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+}
+
+html[data-theme="dark"] #journey .journey-card h3,
+html[data-theme="dark"] #journey .journey-card .text-\[\#111111\] {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #journey .journey-card p,
+html[data-theme="dark"] #journey .journey-card .text-\[\#52525B\],
+html[data-theme="dark"] #journey .journey-card .text-\[\#71717A\] {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #journey .journey-card .bg-\[\#F4F4F5\] {
+    background-color: #1C1C1F !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] #journey .journey-card div[class*="border-b"],
+html[data-theme="dark"] #journey .journey-card div[class*="border-t"] {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] #journey .journey-card .bg-black\/5 {
+    background-color: #27272A !important;
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #journey .journey-card .bg-black\/\[0\.06\] {
+    background-color: #242428 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme="dark"] #journey .journey-card .bg-black\/\[0\.06\] i {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #journey .journey-card .w-10.h-10.bg-white,
+html[data-theme="dark"] #journey .journey-card .w-11.h-11.bg-white {
+    background-color: #1F1F23 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* GitHub Activity Section (#github) Dark Overrides */
+html[data-theme="dark"] #github .bentocard {
+    background-color: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+}
+
+html[data-theme="dark"] #github .bg-surface {
+    background-color: #1C1C1F !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #github .bg-surface:hover,
+html[data-theme="dark"] .github-profile-btn:hover {
+    background-color: #27272A !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .github-profile-btn {
+    background-color: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #E4E4E7 !important;
+}
+
+html[data-theme="dark"] .github-profile-btn:hover svg {
+    transform: translateX(3px);
+}
+
+/* Contact & Socials Dark Overrides */
+html[data-theme="dark"] #contact #contact-form-block {
+    background-color: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+html[data-theme="dark"] #contact #contact-form-block h2,
+html[data-theme="dark"] #contact #contact-form-block .text-\[\#111111\] {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #contact #contact-form-block p,
+html[data-theme="dark"] #contact #contact-form-block .text-\[\#52525B\],
+html[data-theme="dark"] #contact #contact-form-block .text-\[\#71717A\] {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #contact #contact-form-block div[class*="border-b"] {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] #contact #email-btn-cta {
+    background-color: #1F1F23 !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #contact #email-btn-cta:hover {
+    background-color: #27272A !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    color: #FFFFFF !important;
+}
+
+/* Contact Dark Card & Form Elements in Dark Mode */
+html[data-theme="dark"] .contact-dark-card {
+    background-color: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-theme="dark"] .contact-dark-card h3 {
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .contact-dark-card p {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #contact input,
+html[data-theme="dark"] #contact textarea {
+    background-color: #27272A !important;
+    color: #FFFFFF !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+html[data-theme="dark"] #contact input::placeholder,
+html[data-theme="dark"] #contact textarea::placeholder {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #contact input:focus,
+html[data-theme="dark"] #contact textarea:focus {
+    background-color: #27272A !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Contact Form Submit Button in Dark Mode */
+html[data-theme="dark"] #contact #form-submit {
+    background-color: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+    color: #0B0B0C !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] #contact #form-submit span,
+html[data-theme="dark"] #contact #form-submit * {
+    color: #0B0B0C !important;
+    -webkit-text-fill-color: #0B0B0C !important;
+}
+
+html[data-theme="dark"] #contact #form-submit:hover {
+    background-color: #F4F2EE !important;
+    color: #000000 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15) !important;
+}
+
+html[data-theme="dark"] #contact #form-submit:hover span,
+html[data-theme="dark"] #contact #form-submit:hover * {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+html[data-theme="dark"] #contact a[aria-label],
+html[data-theme="dark"] footer a[aria-label] {
+    background-color: #1C1C1F !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #contact a[aria-label] i,
+html[data-theme="dark"] #contact a[aria-label] svg,
+html[data-theme="dark"] footer a[aria-label] i,
+html[data-theme="dark"] footer a[aria-label] svg {
+    color: #F4F2EE !important;
+    fill: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #contact a[aria-label]:hover,
+html[data-theme="dark"] footer a[aria-label]:hover {
+    background-color: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] #contact a[aria-label]:hover i,
+html[data-theme="dark"] #contact a[aria-label]:hover svg,
+html[data-theme="dark"] footer a[aria-label]:hover i,
+html[data-theme="dark"] footer a[aria-label]:hover svg {
+    color: #0B0B0C !important;
+    fill: #0B0B0C !important;
+}
+
+/* Studio Monochrome Footer Dark Mode Layer */
+html[data-theme="dark"] div:has(> footer),
+html[data-theme="dark"] div.bg-\[\#EAEAE7\]:has(footer) {
+    background-color: #0E0E10 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] footer h4,
+html[data-theme="dark"] footer svg {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] footer .text-black,
+html[data-theme="dark"] footer a.text-black {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] footer a,
+html[data-theme="dark"] footer button,
+html[data-theme="dark"] footer #footer-totop,
+html[data-theme="dark"] footer .text-\[\#52525B\],
+html[data-theme="dark"] footer .text-\[\#71717A\] {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] footer a:hover,
+html[data-theme="dark"] footer button:hover,
+html[data-theme="dark"] footer #footer-totop:hover {
+    color: #D4D4D8 !important;
+    text-shadow: none !important;
+}
+
+html[data-theme="dark"] footer a:hover i,
+html[data-theme="dark"] footer a:hover svg,
+html[data-theme="dark"] footer button:hover svg {
+    color: #D4D4D8 !important;
+}
+
+html[data-theme="dark"] .totop {
+    background: #1C1C1F !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #F4F2EE !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .totop:hover svg {
+    stroke: #7C8CFF !important;
+}
+
+/* Command Palette Dark Overrides */
+html[data-theme="dark"] .cmd-palette-modal {
+    background: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.7) !important;
+}
+
+html[data-theme="dark"] .cmd-palette-header {
+    background: #141416 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .cmd-palette-input {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] .cmd-palette-close-btn {
+    background: #27272A !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .cmd-palette-results {
+    background: #141416 !important;
+}
+
+html[data-theme="dark"] .cmd-palette-group-title {
+    color: #71717A !important;
+}
+
+html[data-theme="dark"] .cmd-palette-item {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] .cmd-palette-item-icon {
+    background: #1F1F23 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .cmd-palette-item-title {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] .cmd-palette-item-desc {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .cmd-palette-item-shortcut {
+    color: #A1A1AA !important;
+    background: #1F1F23 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .cmd-palette-item.active,
+html[data-theme="dark"] .cmd-palette-item:hover {
+    background: #1F1F23 !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+html[data-theme="dark"] .cmd-palette-item.active .cmd-palette-item-title,
+html[data-theme="dark"] .cmd-palette-item:hover .cmd-palette-item-title {
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .cmd-palette-footer {
+    background: #101012 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #71717A !important;
+}
+
+html[data-theme="dark"] .cmd-palette-key {
+    background: #1C1C1F !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    color: #E4E4E7 !important;
+}
+
+/* Recruiter Modal Dark Overrides */
+html[data-theme="dark"] .recruiter-pill {
+    background: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] .recruiter-pill-text {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] .recruiter-pill-key {
+    background: #27272A !important;
+    border-color: rgba(255, 255, 255, 0.16) !important;
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] .recruiter-modal {
+    background: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] .recruiter-header {
+    background: #101012 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .recruiter-badge {
+    background: #1F1F23 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .recruiter-title {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] .recruiter-close {
+    background: #1F1F23 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .recruiter-close:hover {
+    color: #0B0B0C !important;
+    background: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .recruiter-body {
+    background: #141416 !important;
+}
+
+html[data-theme="dark"] .recruiter-pitch-title {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .recruiter-pitch-text {
+    color: #D4D4D8 !important;
+}
+
+html[data-theme="dark"] .recruiter-resume-btn {
+    background: #1F1F23 !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .recruiter-resume-btn i {
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .recruiter-resume-btn:hover {
+    background: #27272A !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .recruiter-stat-card {
+    background: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .recruiter-stat-card:hover {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    background: #1F1F23 !important;
+}
+
+/* Icons in high-white */
+html[data-theme="dark"] .recruiter-stat-icon {
+    color: #FFFFFF !important;
+}
+
+/* Metric value in high-white */
+html[data-theme="dark"] .recruiter-stat-val {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* Metric label subtle/secondary below icon */
+html[data-theme="dark"] .recruiter-stat-lbl {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .recruiter-skill-tag {
+    background: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: #D4D4D8 !important;
+}
+
+html[data-theme="dark"] .recruiter-skill-tag:hover {
+    background: #27272A !important;
+    border-color: rgba(255, 255, 255, 0.22) !important;
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .recruiter-footer {
+    background: #101012 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #A1A1AA !important;
+}
+
+/* Email ID in high-color pure white */
+html[data-theme="dark"] .recruiter-footer a {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    text-decoration: underline !important;
+    transition: all 0.2s ease !important;
+}
+
+html[data-theme="dark"] .recruiter-footer a:hover {
+    color: #FFFFFF !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6) !important;
+}
+
+html[data-theme="dark"] .recruiter-footer-shortcut {
+    background: #1C1C1F !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    color: #FFFFFF !important;
+}
+
 /* Base Monochrome Elements & Overrides */
 html,
 body {
     background-color: var(--bg-main) !important;
     color: var(--text-main) !important;
+    transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bentocard,
 .bento-card-dark {
-    background: #FFFFFF !important;
-    border-color: rgba(0, 0, 0, 0.08) !important;
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+    background: var(--surface-card) !important;
+    border-color: var(--border-spec) !important;
+    box-shadow: var(--card-shadow) !important;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bentocard:hover,
 .bento-card-dark:hover {
-    border-color: rgba(0, 0, 0, 0.2) !important;
-    box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.08) !important;
+    border-color: var(--border-hover) !important;
+    box-shadow: var(--card-shadow-hover) !important;
 }
 
 #navbar {
-    background-color: rgba(243, 243, 241, 0.88) !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+    background-color: var(--nav-bg) !important;
+    border-bottom: 1px solid var(--nav-border) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: background-color 0.35s ease, border-color 0.35s ease;
 }
 
 #mobile-menu {
-    background-color: #FFFFFF !important;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
-}
-
-.text-white {
-    color: #111111;
+    background-color: var(--surface-card) !important;
+    border: 1px solid var(--border-spec) !important;
+    box-shadow: var(--card-shadow-hover) !important;
 }
 
 /* Ensure dark buttons, dark badges, and dark containers preserve high-contrast white text */
@@ -164,44 +1241,101 @@ a[href="#other-systems-preview"].bg-primary {
     color: #111111 !important;
 }
 
+/* GitHub Activity Action Button: High-Refinement Light Mode Style & Hover */
+.github-profile-btn {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    color: #18181B !important;
+    font-weight: 600 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.github-profile-btn svg {
+    color: #52525B !important;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease !important;
+}
+
+.github-profile-btn:hover {
+    background-color: #111111 !important;
+    border-color: #111111 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.18), 0 2px 6px -1px rgba(0, 0, 0, 0.08) !important;
+}
+
+.github-profile-btn:hover span {
+    color: #FFFFFF !important;
+}
+
+.github-profile-btn:hover svg {
+    color: #FFFFFF !important;
+    transform: translateX(3px) !important;
+}
+
 #contact #contact-form-block {
     background-color: #EAEAE7 !important;
     border-color: rgba(0, 0, 0, 0.09) !important;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04) !important;
 }
 
+/* Light Theme Styling for Send Us a Message Card */
+.contact-dark-card {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    color: #111111 !important;
+    box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+.contact-dark-card h3 {
+    color: #111111 !important;
+}
+
+.contact-dark-card p {
+    color: #52525B !important;
+}
+
 #contact input,
 #contact textarea {
-    background-color: rgba(39, 39, 42, 0.85) !important;
-    color: #FFFFFF !important;
-    border-color: rgba(255, 255, 255, 0.15) !important;
+    background-color: #F4F4F5 !important;
+    color: #111111 !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
     border-radius: 0.75rem !important;
+    transition: all 0.2s ease !important;
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+    color: #71717A !important;
 }
 
 #contact input:focus,
 #contact textarea:focus {
-    border-color: rgba(255, 255, 255, 0.45) !important;
+    background-color: #FFFFFF !important;
+    border-color: rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* Studio Monochrome Submit Button */
+/* Light Theme Submit Button: High-contrast Dark/Black Button on Light Card */
 #contact #form-submit {
-    background-color: #FFFFFF !important;
-    color: #111111 !important;
+    background-color: #18181B !important;
+    color: #FFFFFF !important;
     font-weight: 700 !important;
     border-radius: 0.75rem !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+    border: 1px solid #18181B !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12) !important;
 }
 
 #contact #form-submit * {
-    color: #111111 !important;
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
 }
 
 #contact #form-submit:hover {
-    background-color: #EAEAE8 !important;
-    color: #000000 !important;
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
     transform: translateY(-1px) !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Connect / Social Circle Buttons in Contact & Footer */
@@ -383,20 +1517,30 @@ footer svg {
 }
 
 /* Bento Dashboard Sub-Widgets & Tiles (Clean dark black logos by default, vibrant real brand colors on hover) */
-.tech-stack-tile {
+/* Row 1 Bento Compact Height Tuning */
+#current-focus-card,
+#core-tech-stack-card {
+    padding: 1.15rem 1.25rem !important;
+}
+
+#current-focus-card ul li {
+    line-height: 1.35 !important;
+}
+
+#bento-dashboard .tech-stack-tile {
     background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 0.5rem !important;
+    padding: 0.35rem 0.25rem !important;
     cursor: pointer;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.tech-stack-tile:hover {
+#bento-dashboard .tech-stack-tile:hover {
     background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    transform: translateY(-3px) scale(1.22) !important;
+    transform: translateY(-2px) scale(1.18) !important;
 }
 
 .tech-stack-tile i,
@@ -509,6 +1653,19 @@ footer svg {
 
 #bento-dashboard .text-zinc-300 {
     color: #27272A !important;
+}
+
+#bento-dashboard strong,
+.bento-card-dark strong,
+.bento-focus-project {
+    color: #111111 !important;
+    font-weight: 600;
+}
+
+html[data-theme="dark"] #bento-dashboard strong,
+html[data-theme="dark"] .bento-card-dark strong,
+html[data-theme="dark"] .bento-focus-project {
+    color: #FFFFFF !important;
 }
 
 #bento-dashboard .text-zinc-500 {
@@ -693,10 +1850,26 @@ footer svg {
     filter: drop-shadow(0 3px 8px rgba(0, 122, 204, 0.45)) !important;
 }
 
-/* Skill titles (Java, React.js, Node.js, etc.) */
-#skills li span.text-white {
+/* Skill titles (Java, React.js, Node.js, etc.) - soft, lower-contrast black to distinguish from bold category headings */
+#skills li span {
+    color: #52525B !important;
+    font-size: 0.8125rem !important;
+    font-weight: 500 !important;
+    letter-spacing: normal !important;
+    transition: color 0.2s ease !important;
+}
+
+#skills li span.text-white,
+#skills li span.text-\[\#111111\] {
+    color: #52525B !important;
+    font-size: 0.8125rem !important;
+    font-weight: 500 !important;
+}
+
+#skills li:hover span,
+#skills li:hover span.text-white,
+#skills li:hover span.text-\[\#111111\] {
     color: #111111 !important;
-    font-weight: 600 !important;
 }
 
 /* Skill tags (OOP / Core, Advanced, Styling, etc.) - Make clearly visible */
@@ -712,7 +1885,9 @@ footer svg {
 #skills .bentocard h3,
 #skills [class*="font-display"] {
     color: #111111 !important;
+    font-size: 1.05rem !important;
     font-weight: 700 !important;
+    letter-spacing: -0.01em !important;
 }
 
 #skills .border-b {
@@ -787,10 +1962,11 @@ footer svg {
 .carousel-card .border-t {
     border-color: rgba(0, 0, 0, 0.08) !important;
     display: flex !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 0.5rem 0.75rem !important;
+    gap: 0.75rem !important;
+    margin-top: auto !important;
 }
 
 .carousel-card .border-t > span {
@@ -799,17 +1975,20 @@ footer svg {
     font-size: 11px !important;
     font-family: var(--font-mono) !important;
     flex: 1 1 auto !important;
-    min-width: 140px !important;
+    min-width: 0 !important;
     line-height: 1.4 !important;
 }
 
 .carousel-card .border-t > div {
     display: flex !important;
     align-items: center !important;
-    gap: 0.65rem !important;
+    justify-content: flex-end !important;
+    gap: 0.75rem !important;
     flex-shrink: 0 !important;
+    white-space: nowrap !important;
 }
 
+.carousel-card .border-t a,
 .carousel-card a.hover\:underline {
     color: #111111 !important;
     font-weight: 600 !important;
@@ -819,9 +1998,11 @@ footer svg {
     align-items: center !important;
     gap: 2px !important;
     text-decoration: none !important;
+    white-space: nowrap !important;
     transition: all 0.2s ease !important;
 }
 
+.carousel-card .border-t a:hover,
 .carousel-card a.hover\:underline:hover {
     color: #000000 !important;
     transform: translateY(-1px) !important;
@@ -1005,13 +2186,23 @@ html {
     color: #111111 !important;
 }
 
-.nav-link.active,
-.mobile-nav-link.active {
+.nav-link.active {
     background: none !important;
     -webkit-background-clip: unset !important;
     background-clip: unset !important;
     -webkit-text-fill-color: #111111 !important;
     color: #111111 !important;
+    animation: none !important;
+    font-weight: 700 !important;
+    filter: none !important;
+}
+
+.mobile-nav-link.active {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: var(--text-main) !important;
+    color: var(--text-main) !important;
     animation: none !important;
     font-weight: 700 !important;
     filter: none !important;
@@ -1184,8 +2375,8 @@ html {
 }
 
 .flip:hover .flip-face {
-    border-color: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(124, 140, 255, 0.15);
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.1);
 }
 
 .flip-front {
@@ -1538,8 +2729,8 @@ html {
 
 .totop:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 14px 34px -8px rgba(124, 140, 255, 0.3);
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 14px 34px -8px rgba(0, 0, 0, 0.15);
 }
 
 .totop:hover svg {
@@ -1648,8 +2839,8 @@ html {
 
 .carousel-card:hover {
     transform: translateY(-6px) scale(1.01);
-    border-color: rgba(124, 140, 255, 0.35);
-    box-shadow: 0 20px 40px -15px rgba(124, 140, 255, 0.15);
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -1705,7 +2896,7 @@ html {
     border-color: var(--primary);
     color: var(--bg-main);
     font-weight: 600;
-    box-shadow: 0 5px 18px rgba(124, 140, 255, 0.35);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .connect-btn {
@@ -1716,8 +2907,8 @@ html {
     justify-content: center;
     padding: 0.875rem 1.75rem;
     border-radius: 9999px;
-    background: rgba(20, 20, 22, 0.85);
-    border: 1px solid rgba(124, 140, 255, 0.35);
+    background: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #F4F2EE !important;
     cursor: pointer;
     font-family: var(--font-mono);
@@ -1733,7 +2924,7 @@ html {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(105deg, transparent 35%, rgba(124, 140, 255, 0.12) 50%, transparent 65%);
+    background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.12) 50%, transparent 65%);
     transform: translateX(-100%);
     transition: transform 0.45s ease;
     pointer-events: none;
@@ -1744,10 +2935,10 @@ html {
 }
 
 .connect-btn:hover {
-    border-color: var(--primary) !important;
-    background: rgba(124, 140, 255, 0.15) !important;
+    border-color: #FFFFFF !important;
+    background: #222222 !important;
     color: #ffffff !important;
-    box-shadow: 0 0 25px rgba(124, 140, 255, 0.3), 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.4) !important;
     transform: translateY(-3px);
 }
 
@@ -1832,7 +3023,7 @@ html {
 
 .learning-chip:hover {
     border-color: var(--accent);
-    box-shadow: 0 0 12px rgba(85, 214, 190, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transform: translateY(-2px);
 }
 
@@ -1907,7 +3098,7 @@ html {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(124, 140, 255, 0.05) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.02) 0%, transparent 60%);
     pointer-events: none;
 }
 
@@ -1917,15 +3108,11 @@ html {
    Bento Dashboard Theme Extensions
    ========================================================================== */
 .bento-glow-violet {
-    background: radial-gradient(circle at 50% 50%, rgba(124, 140, 255, 0.15), transparent 60%);
+    background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.03), transparent 60%);
 }
 
 .bento-glow-teal {
-    background: radial-gradient(circle at 50% 50%, rgba(85, 214, 190, 0.12), transparent 60%);
-}
-
-.bento-border-glow {
-    position: relative;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.02), transparent 60%);
 }
 
 .bento-border-glow::after {
@@ -1934,7 +3121,7 @@ html {
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(124, 140, 255, 0.15) 50%, rgba(85, 214, 190, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.04) 50%, rgba(0, 0, 0, 0.02) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -1942,11 +3129,10 @@ html {
 }
 
 .bento-card-dark {
-    background: rgba(13, 14, 24, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 1.5rem;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.4s;
     position: relative;
     overflow: hidden;
@@ -1959,8 +3145,8 @@ html {
 
 .bento-card-dark:hover {
     transform: translateY(-4px);
-    border-color: rgba(124, 140, 255, 0.25);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(124, 140, 255, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.08);
 }
 
 /* ==========================================================================
@@ -2129,13 +3315,7 @@ html {
 }
 
 .tech-stack-tile i {
-    transition: transform 0.25s ease, opacity 0.25s ease;
-    color: #111111 !important;
-}
-
-.tech-stack-tile:hover i {
-    color: #000000 !important;
-    opacity: 0.8;
+    transition: transform 0.25s ease, opacity 0.25s ease, color 0.25s ease, filter 0.25s ease;
 }
 
 /* Interactive GitHub Grid */
@@ -2239,7 +3419,7 @@ html {
 }
 
 /* ==========================================================================
-   Premium Loader Screen Overlay
+   Premium Loader Screen Overlay (Dark Mode Theme Only)
    ========================================================================== */
 .loader-overlay {
     position: fixed;
@@ -2247,7 +3427,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--bg-main);
+    background-color: #0B0B0C !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2272,9 +3452,10 @@ html {
     bottom: 0;
     width: 10px;
     height: 50%;
-    background: var(--primary);
+    background: #E4E4E7 !important;
     transform-origin: center bottom;
-    box-shadow: 1px 1px 0 rgba(0, 0, 0, .2);
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    border-radius: 2px 2px 0 0;
 }
 
 .loader__bar:nth-child(1) {
@@ -2313,7 +3494,8 @@ html {
     left: 0;
     width: 10px;
     height: 10px;
-    background: var(--accent);
+    background: #FFFFFF !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.75) !important;
     border-radius: 50%;
     animation: ball 4s infinite;
 }
@@ -2581,44 +3763,44 @@ html {
     animation: blobFloat 20s ease-in-out infinite;
 }
 
-/* Primary purple blob — top left */
+/* Ambient Monochrome Light Accents */
 .blob-1 {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(124, 140, 255, 0.14) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.03) 0%, transparent 70%);
     top: -200px;
     left: -150px;
     animation-duration: 22s;
     animation-delay: 0s;
 }
 
-/* Teal blob — bottom right */
+/* Neutral blob — bottom right */
 .blob-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(85, 214, 190, 0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.025) 0%, transparent 70%);
     bottom: -150px;
     right: -100px;
     animation-duration: 28s;
     animation-delay: -7s;
 }
 
-/* Gold accent blob — center */
+/* Neutral blob — center */
 .blob-3 {
     width: 450px;
     height: 450px;
-    background: radial-gradient(circle, rgba(232, 163, 61, 0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.02) 0%, transparent 70%);
     top: 40%;
     left: 35%;
     animation-duration: 34s;
     animation-delay: -14s;
 }
 
-/* Peach secondary blob — top right */
+/* Neutral blob — top right */
 .blob-4 {
     width: 380px;
     height: 380px;
-    background: radial-gradient(circle, rgba(255, 122, 89, 0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.02) 0%, transparent 70%);
     top: 10%;
     right: 5%;
     animation-duration: 26s;
@@ -2962,7 +4144,7 @@ footer {
    Recruiter Mode Floating Pill & Overlay
    ========================================================================== */
 /* ==========================================================================
-   Recruiter Mode Floating Pill & Overlay (Black & Golden Theme)
+   Recruiter Mode Floating Pill & Overlay (Studio Monochrome Theme)
    ========================================================================== */
 .recruiter-pill {
     position: fixed;
@@ -2971,13 +4153,13 @@ footer {
     z-index: 9990;
     height: 40px;
     padding: 0 16px;
-    background: #0D0D0E !important;
-    border: 1px solid rgba(234, 179, 8, 0.45) !important;
-    color: #FBBF24 !important;
+    background: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    color: #111111 !important;
     border-radius: 9999px !important;
     font-family: var(--font-mono);
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(234, 179, 8, 0.25) !important;
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -2989,36 +4171,36 @@ footer {
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.03em;
-    color: #FBBF24;
+    color: #111111 !important;
     display: inline-flex;
     align-items: center;
     gap: 5px;
 }
 
 .recruiter-pill-key {
-    background: #1F1F24;
-    border: 1px solid rgba(234, 179, 8, 0.5);
-    color: #FDE68A;
+    background: #F4F4F5 !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    color: #111111 !important;
     font-size: 11px;
     font-weight: 700;
     padding: 1px 6px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .recruiter-pill:hover {
     transform: scale(1.05) translateY(-2px);
-    border-color: #F59E0B !important;
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.8), 0 0 28px rgba(245, 158, 11, 0.4) !important;
+    border-color: rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.15) !important;
 }
 
 .recruiter-overlay {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: rgba(5, 5, 6, 0.88) !important;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(17, 17, 17, 0.45) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -3039,15 +4221,15 @@ footer {
     max-width: 720px;
     max-height: 90vh;
     overflow-y: auto;
-    background: #111113 !important;
-    border: 1px solid rgba(234, 179, 8, 0.35) !important;
+    background: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
     border-radius: 20px;
-    box-shadow: 0 30px 80px -10px rgba(0, 0, 0, 0.95), 0 0 50px rgba(234, 179, 8, 0.12) !important;
-    transform: scale(0.95) translateY(10px);
+    box-shadow: 0 30px 80px -10px rgba(0, 0, 0, 0.22), 0 0 1px rgba(0, 0, 0, 0.1) !important;
+    transform: scale(0.96) translateY(8px);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    color: #F3F4F6 !important;
+    color: #111111 !important;
 }
 
 .recruiter-modal::before {
@@ -3063,8 +4245,8 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 22px 28px;
-    border-bottom: 1px solid rgba(234, 179, 8, 0.15) !important;
-    background: rgba(20, 20, 24, 0.6) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    background: #FAFAFA !important;
 }
 
 .recruiter-title-group {
@@ -3075,9 +4257,9 @@ footer {
 
 .recruiter-badge {
     align-self: flex-start;
-    background: rgba(234, 179, 8, 0.12) !important;
-    border: 1px solid rgba(234, 179, 8, 0.35) !important;
-    color: #FBBF24 !important;
+    background: #F4F4F5 !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #52525B !important;
     font-family: var(--font-mono);
     font-size: 9px;
     font-weight: 600;
@@ -3091,20 +4273,17 @@ footer {
     font-family: var(--font-display);
     font-size: 22px;
     font-weight: 700;
-    color: #FFFFFF !important;
-    background: linear-gradient(135deg, #FFFFFF 30%, #FBBF24 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #111111 !important;
     margin: 0;
     letter-spacing: -0.02em;
 }
 
 .recruiter-close {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(234, 179, 8, 0.25) !important;
-    color: #D1D5DB !important;
+    background: #F4F4F5 !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #52525B !important;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 20px;
     width: 34px;
     height: 34px;
     border-radius: 50%;
@@ -3116,9 +4295,9 @@ footer {
 }
 
 .recruiter-close:hover {
-    color: #111111 !important;
-    background: #FBBF24 !important;
-    border-color: #FBBF24 !important;
+    color: #FFFFFF !important;
+    background: #111111 !important;
+    border-color: #111111 !important;
     transform: scale(1.05);
 }
 
@@ -3127,7 +4306,7 @@ footer {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-    background: #111113 !important;
+    background: #FFFFFF !important;
 }
 
 @media (min-width: 540px) {
@@ -3145,7 +4324,7 @@ footer {
 .recruiter-pitch-title {
     font-size: 11px !important;
     font-family: var(--font-mono) !important;
-    color: #F59E0B !important;
+    color: #71717A !important;
     text-transform: uppercase !important;
     letter-spacing: 0.08em !important;
     font-weight: 600 !important;
@@ -3154,7 +4333,7 @@ footer {
 .recruiter-pitch-text {
     font-size: 14.5px !important;
     line-height: 1.65 !important;
-    color: #E5E7EB !important;
+    color: #3F3F46 !important;
     margin: 0;
 }
 
@@ -3170,23 +4349,27 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
-    color: #0A0A0C !important;
-    font-weight: 700 !important;
+    background: #111111 !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
     font-size: 13.5px !important;
-    padding: 14px 22px;
+    padding: 13px 22px;
     border-radius: 12px;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35) !important;
-    border: 1px solid rgba(254, 240, 138, 0.4) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid #111111 !important;
+}
+
+.recruiter-resume-btn * {
+    color: #FFFFFF !important;
 }
 
 .recruiter-resume-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(245, 158, 11, 0.5) !important;
-    filter: brightness(1.08);
-    color: #000000 !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25) !important;
+    background: #000000 !important;
+    color: #FFFFFF !important;
 }
 
 .recruiter-side-sec {
@@ -3228,8 +4411,8 @@ footer {
 }
 
 .recruiter-stat-card {
-    background: #18181B !important;
-    border: 1px solid rgba(234, 179, 8, 0.22) !important;
+    background: #F9F9FB !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
     border-radius: 14px;
     padding: 16px 8px;
     display: flex;
@@ -3237,17 +4420,18 @@ footer {
     align-items: center;
     gap: 6px;
     text-align: center;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .recruiter-stat-card:hover {
-    border-color: rgba(234, 179, 8, 0.5) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     transform: translateY(-2px);
 }
 
 .recruiter-stat-icon {
     font-size: 16px;
-    color: #F59E0B !important;
+    color: #111111 !important;
     margin-bottom: 2px;
 }
 
@@ -3255,14 +4439,14 @@ footer {
     font-family: var(--font-display);
     font-size: 19px !important;
     font-weight: 700 !important;
-    color: #FBBF24 !important;
-    -webkit-text-fill-color: #FBBF24 !important;
+    color: #111111 !important;
+    -webkit-text-fill-color: #111111 !important;
 }
 
 .recruiter-stat-lbl {
     font-size: 9px !important;
     font-family: var(--font-mono) !important;
-    color: #9CA3AF !important;
+    color: #71717A !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
 }
@@ -3276,18 +4460,18 @@ footer {
 .recruiter-skill-tag {
     font-family: var(--font-mono);
     font-size: 10.5px;
-    background: #19191D !important;
-    border: 1px solid rgba(234, 179, 8, 0.25) !important;
+    background: #F4F4F5 !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
     padding: 6px 11px;
     border-radius: 8px;
-    color: #F3F4F6 !important;
+    color: #18181B !important;
     transition: all 0.2s ease;
 }
 
 .recruiter-skill-tag:hover {
-    border-color: #F59E0B !important;
-    color: #FBBF24 !important;
-    background: #202026 !important;
+    border-color: rgba(0, 0, 0, 0.25) !important;
+    color: #000000 !important;
+    background: #E4E4E7 !important;
 }
 
 .recruiter-footer {
@@ -3295,32 +4479,34 @@ footer {
     align-items: center;
     justify-content: space-between;
     padding: 16px 28px;
-    background: #0E0E10 !important;
-    border-top: 1px solid rgba(234, 179, 8, 0.15) !important;
+    background: #FAFAFA !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
     font-size: 10.5px;
-    color: #9CA3AF !important;
+    color: #71717A !important;
     font-family: var(--font-mono);
 }
 
 .recruiter-footer a {
-    color: #FBBF24 !important;
+    color: #111111 !important;
     text-decoration: none;
+    font-weight: 600;
     transition: color 0.2s;
 }
 
 .recruiter-footer a:hover {
-    color: #FDE68A !important;
+    color: #000000 !important;
     text-decoration: underline;
 }
 
 .recruiter-footer-shortcut {
-    background: #1E1E22 !important;
-    border: 1px solid rgba(234, 179, 8, 0.3) !important;
-    color: #FBBF24 !important;
+    background: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    color: #111111 !important;
     padding: 2px 6px;
     border-radius: 4px;
     font-family: var(--font-mono);
     font-size: 9.5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 @media (max-width: 520px) {
@@ -3439,5 +4625,5 @@ footer {
 .hero-tech-icons i:hover {
     color: var(--primary);
     transform: translateY(-4px) scale(1.2);
-    filter: drop-shadow(0 0 10px rgba(124, 140, 255, 0.6));
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
 }

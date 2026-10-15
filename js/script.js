@@ -243,6 +243,65 @@ document.addEventListener('DOMContentLoaded', () => {
     const formSubmit = document.getElementById('form-submit');
     const emailBtn = document.getElementById('email-btn');
     const emailText = document.getElementById('email-text');
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const themeToggleIcon = document.getElementById('theme-toggle-icon');
+    const themeToggleMobileIcon = document.getElementById('theme-toggle-mobile-icon');
+
+    /* ==========================================================================
+       Dark Mode Theme Controller (Light Studio Default + Dark Mode Switcher)
+       ========================================================================== */
+    const getStoredTheme = () => {
+        return localStorage.getItem('portfolio-theme') || 'light';
+    };
+
+    const updateThemeIcons = (theme) => {
+        const isDark = theme === 'dark';
+        const iconClass = isDark ? 'fa-sun' : 'fa-moon';
+        const removeClass = isDark ? 'fa-moon' : 'fa-sun';
+        
+        if (themeToggleIcon) {
+            themeToggleIcon.classList.remove(removeClass);
+            themeToggleIcon.classList.add(iconClass);
+        }
+        if (themeToggleMobileIcon) {
+            themeToggleMobileIcon.classList.remove(removeClass);
+            themeToggleMobileIcon.classList.add(iconClass);
+        }
+    };
+
+    const applyTheme = (theme, persist = true) => {
+        const root = document.documentElement;
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+        } else {
+            root.removeAttribute('data-theme');
+        }
+        updateThemeIcons(theme);
+        if (persist) {
+            localStorage.setItem('portfolio-theme', theme);
+        }
+    };
+
+    const toggleTheme = () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme, true);
+    };
+
+    // Expose globally for command palette and external scripts
+    window.togglePortfolioTheme = toggleTheme;
+    window.setPortfolioTheme = applyTheme;
+
+    // Initialize theme on page load
+    applyTheme(getStoredTheme(), false);
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', toggleTheme);
+    }
+    if (themeToggleMobile) {
+        themeToggleMobile.addEventListener('click', toggleTheme);
+    }
 
     /* ==========================================================================
        1. Single-page Scroll Active Anchor Highlight
@@ -409,24 +468,52 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!btn) return;
         btn.addEventListener('click', () => {
             const rawEmail = "vthakur.290905@gmail.com";
-            navigator.clipboard.writeText(rawEmail).then(() => {
-                const targetText = textEl || btn;
-                const originalText = targetText.innerText;
+            const targetText = textEl || btn;
+            const originalText = targetText.innerText;
+
+            const notifySuccess = () => {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
                 targetText.innerText = "COPIED TO CLIPBOARD!";
-                targetText.style.color = "#111111";
-                btn.style.borderColor = "rgba(0, 0, 0, 0.4)";
-                btn.style.color = "#111111";
+                targetText.style.setProperty('color', isDark ? '#FFFFFF' : '#111111', 'important');
+                if (btn !== targetText) {
+                    btn.style.setProperty('color', isDark ? '#FFFFFF' : '#111111', 'important');
+                }
 
                 setTimeout(() => {
                     targetText.innerText = originalText;
-                    targetText.style.color = "";
-                    btn.style.borderColor = "";
-                    btn.style.color = "";
-                }, 2000);
-            }).catch(err => {
-                console.error("Clipboard copy failed:", err);
-            });
+                    targetText.style.removeProperty('color');
+                    if (btn !== targetText) {
+                        btn.style.removeProperty('color');
+                    }
+                }, 2200);
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(rawEmail).then(notifySuccess).catch(() => {
+                    fallbackCopyText(rawEmail, notifySuccess);
+                });
+            } else {
+                fallbackCopyText(rawEmail, notifySuccess);
+            }
         });
+    };
+
+    const fallbackCopyText = (text, callback) => {
+        try {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.top = "-9999px";
+            textArea.style.left = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            if (callback) callback();
+        } catch (e) {
+            console.error("Fallback clipboard copy failed:", e);
+        }
     };
 
     setupEmailCopy(emailBtn, emailText);
@@ -927,7 +1014,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
     updateScrollProgress(); // Initial check
 
-    // Dismiss Loading Screen Overlay 2 seconds after page finishes loading
+    // Dismiss Loading Screen Overlay after exactly 1 second
     const loadingOverlay = document.getElementById('loading-overlay');
     if (loadingOverlay) {
         let dismissed = false;
@@ -937,12 +1024,8 @@ document.addEventListener('DOMContentLoaded', () => {
             loadingOverlay.classList.add('hidden');
         };
 
-        window.addEventListener('load', () => {
-            setTimeout(dismissLoader, 2000); // Hold for 2 seconds after load completes
-        });
-
-        // Safety timeout to guarantee loader hides even if assets get stuck
-        setTimeout(dismissLoader, 5000);
+        // Guarantee loading screen displays for 1 second
+        setTimeout(dismissLoader, 1000);
     }
 
     // Typewriter effect loop (typing & erasing) for the hero name text
@@ -1007,6 +1090,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: 'proj-piezo', title: 'Piezoelectric Floor Case Study', desc: 'Energy harvesting floor design', url: 'html/piezoelectric-details.html', category: 'Case Studies', icon: 'fa-plug', shortcut: '↗' },
             { id: 'proj-floor', title: 'Floor Cleaning Robot Case Study', desc: 'Autonomous Arduino cleaner', url: 'html/floorcleaning-details.html', category: 'Case Studies', icon: 'fa-robot', shortcut: '↗' },
 
+            { id: 'action-theme', title: 'Toggle Dark / Light Theme', desc: 'Switch visual appearance', url: 'action:theme', category: 'Actions', icon: 'fa-circle-half-stroke', shortcut: 'T' },
             { id: 'action-recruiter', title: 'Recruiter Mode', desc: 'Open 30-second candidate summary (Press R)', url: 'action:recruiter', category: 'Actions', icon: 'fa-user-tie', shortcut: 'R' },
             { id: 'social-github', title: 'GitHub Profile', desc: 'Check repositories & contributions', url: 'https://github.com/Vans30m', category: 'Connect', icon: 'fa-brands fa-github', shortcut: '↗', external: true },
             { id: 'social-linkedin', title: 'LinkedIn Profile', desc: 'Professional network presence', url: 'https://linkedin.com/in/vansh-thakur-vans30m/', category: 'Connect', icon: 'fa-brands fa-linkedin', shortcut: '↗', external: true },
@@ -1146,6 +1230,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const triggerAction = (item) => {
             closePalette();
+            if (item.url === 'action:theme') {
+                if (window.togglePortfolioTheme) {
+                    window.togglePortfolioTheme();
+                }
+                return;
+            }
             if (item.url === 'action:recruiter') {
                 if (window.toggleRecruiterMode) {
                     window.toggleRecruiterMode();
@@ -1250,6 +1340,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="recruiter-badge">Recruiter Mode</span>
                         <h2 class="recruiter-title" id="recruiter-modal-title">Brief</h2>
                     </div>
+                    <button class="recruiter-close" id="recruiter-close-btn" aria-label="Close Recruiter Mode">&times;</button>
                 </div>
                 <div class="recruiter-body">
                     <div class="recruiter-pitch-sec">
@@ -1299,10 +1390,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="recruiter-footer">
                     <span>Press <kbd class="recruiter-footer-shortcut">R</kbd> again or <kbd class="recruiter-footer-shortcut">Esc</kbd> to close</span>
-                    <a href="mailto:vthakur.290905@gmail.com" style="color: #FBBF24; text-decoration: none;" class="hover:underline">vthakur.290905@gmail.com</a>
+                    <a href="mailto:vthakur.290905@gmail.com" class="hover:underline">vthakur.290905@gmail.com</a>
                 </div>
             </div>
-        </div>
         `;
         document.body.appendChild(overlay);
 

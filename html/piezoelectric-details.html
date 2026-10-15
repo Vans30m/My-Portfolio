@@ -21,21 +21,21 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.16.0/devicon.min.css">
 
-    <!-- Tailwind Play CDN (Synced perfectly with index.html tokens) -->
+    <!-- Tailwind Play CDN (Synced with monochrome studio tokens) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        bgMain: '#0B0B0C',
-                        surface: 'rgba(20, 20, 22, 0.65)',
-                        primary: '#7C8CFF',
-                        accent: '#55D6BE',
-                        acc3: '#E8A33D',
-                        textMain: '#F4F2EE',
-                        muted: '#A1A1AA',
-                        borderSpec: 'rgba(255,255,255,.08)'
+                        bgMain: '#F3F3F1',
+                        surface: '#FFFFFF',
+                        primary: '#111111',
+                        accent: '#111111',
+                        acc3: '#222222',
+                        textMain: '#111111',
+                        muted: '#6B7280',
+                        borderSpec: 'rgba(0,0,0,0.08)'
                     },
                     fontFamily: {
                         sans: ['Hanken Grotesk', 'sans-serif'],
@@ -50,32 +50,44 @@
 
     <style>
         body {
-            background-color: #0B0B0C;
+            background-color: var(--bg-main) !important;
+            color: var(--text-main) !important;
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+
+        /* Enforce crisp contrast text across case studies */
+        h1, h2, h3, h4 {
+            color: var(--text-main) !important;
         }
 
         /* Premium Bento Blueprint Custom Layer */
-        .bentocard-blueprint {
-            background: rgba(20, 20, 22, 0.7);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, .08);
+        .bentocard-blueprint,
+        .glass-panel {
+            background: var(--surface-card) !important;
+            border: 1px solid var(--border-spec) !important;
             border-radius: 1.25rem;
             position: relative;
+            box-shadow: var(--card-shadow) !important;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .bentocard-blueprint:hover {
-            border-color: rgba(232, 163, 61, 0.3);
-            /* Accent orange highlight */
-            box-shadow: 0 0 35px rgba(232, 163, 61, 0.05);
+        .bentocard-blueprint:hover,
+        .glass-panel:hover {
+            border-color: var(--border-hover) !important;
+            box-shadow: var(--card-shadow-hover) !important;
             transform: translateY(-2px);
         }
 
-        /* Technical Grid Overlay */
+        /* Subtle Technical Grid Overlay */
         .grid-bg-blueprint {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        html[data-theme="dark"] .grid-bg-blueprint {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
         }
 
         /* Non-blocking Scroll Reveal States */
@@ -90,14 +102,9 @@
             transform: translateY(0);
         }
 
-        /* Controlled Radial Atmospheric Glow */
+        /* Controlled Radial Atmospheric Wash */
         .glow-wash {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.08;
+            display: none !important;
         }
 
         .editorial-serif {
@@ -111,8 +118,283 @@
         }
 
         .custom-scroll::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.15);
             border-radius: 2px;
+        }
+
+        /* Interactive Simulator Components */
+        #step-tile-btn {
+            background: var(--surface-card) !important;
+            border: 2px solid var(--border-spec) !important;
+            box-shadow: var(--card-shadow) !important;
+            transition: all 0.25s ease;
+        }
+        #step-tile-btn:hover {
+            border-color: var(--text-main) !important;
+            box-shadow: var(--card-shadow-hover) !important;
+        }
+        #step-tile-btn svg {
+            color: var(--text-main) !important;
+        }
+        #step-tile-btn span {
+            color: var(--text-secondary) !important;
+        }
+
+        #adc-logs {
+            background: var(--surface-secondary) !important;
+            color: var(--text-secondary) !important;
+        }
+
+        /* Form Inputs & Selects */
+        input[type="number"], select {
+            background-color: var(--surface-secondary) !important;
+            border: 1px solid var(--border-spec) !important;
+            color: var(--text-main) !important;
+        }
+        input[type="number"]:focus, select:focus {
+            border-color: var(--primary) !important;
+            background-color: var(--surface-card) !important;
+        }
+
+        /* High-contrast solid action buttons */
+        .action-btn-dark,
+        button[onclick="calculateEnergy()"] {
+            background: #111111 !important;
+            color: #FFFFFF !important;
+            border: 1px solid #111111 !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .action-btn-dark:hover,
+        button[onclick="calculateEnergy()"]:hover {
+            background: #000000 !important;
+            color: #FFFFFF !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+        }
+
+        html[data-theme="dark"] .action-btn-dark,
+        html[data-theme="dark"] button[onclick="calculateEnergy()"] {
+            background: #FFFFFF !important;
+            color: #0B0B0C !important;
+            -webkit-text-fill-color: #0B0B0C !important;
+            border: 1px solid #FFFFFF !important;
+            font-weight: 700 !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        html[data-theme="dark"] .action-btn-dark:hover,
+        html[data-theme="dark"] button[onclick="calculateEnergy()"]:hover {
+            background: #F4F4F5 !important;
+            color: #000000 !important;
+            -webkit-text-fill-color: #000000 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25) !important;
+        }
+
+        /* ==========================================================================
+           Comprehensive Dark Mode Color Fixes for Piezoelectric Case Study
+           ========================================================================== */
+        html[data-theme="dark"] h1,
+        html[data-theme="dark"] h2,
+        html[data-theme="dark"] h3,
+        html[data-theme="dark"] h4,
+        html[data-theme="dark"] .text-textMain,
+        html[data-theme="dark"] .font-display,
+        html[data-theme="dark"] strong,
+        html[data-theme="dark"] .editorial-serif,
+        html[data-theme="dark"] span.editorial-serif {
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+        }
+
+        html[data-theme="dark"] p,
+        html[data-theme="dark"] .text-muted,
+        html[data-theme="dark"] .text-zinc-500 {
+            color: #A1A1AA !important;
+        }
+
+        html[data-theme="dark"] .text-zinc-600,
+        html[data-theme="dark"] .text-zinc-700 {
+            color: #D4D4D8 !important;
+        }
+
+        html[data-theme="dark"] #case-theme-toggle {
+            background-color: #1F1F23 !important;
+            border-color: rgba(255, 255, 255, 0.14) !important;
+            color: #F4F2EE !important;
+        }
+
+        html[data-theme="dark"] #case-theme-toggle:hover {
+            border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+
+        html[data-theme="dark"] #step-tile-btn {
+            background-color: #18181B !important;
+            border-color: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        html[data-theme="dark"] #step-tile-btn svg {
+            color: #FFFFFF !important;
+        }
+
+        html[data-theme="dark"] #step-tile-btn:hover {
+            border-color: rgba(255, 255, 255, 0.4) !important;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.15) !important;
+        }
+
+        .gateway-btn-primary {
+            background: #111111 !important;
+            color: #FFFFFF !important;
+            border: 1px solid #111111 !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .gateway-btn-primary:hover {
+            background: #000000 !important;
+            color: #FFFFFF !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+        }
+
+        html[data-theme="dark"] .gateway-btn-primary {
+            background: #FFFFFF !important;
+            color: #0B0B0C !important;
+            -webkit-text-fill-color: #0B0B0C !important;
+            border: 1px solid #FFFFFF !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        html[data-theme="dark"] .gateway-btn-primary:hover {
+            background: #F4F4F5 !important;
+            color: #000000 !important;
+            -webkit-text-fill-color: #000000 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25) !important;
+        }
+
+        html[data-theme="dark"] thead.bg-bgMain {
+            background-color: #1C1C1F !important;
+        }
+
+        html[data-theme="dark"] thead th {
+            color: #F4F2EE !important;
+        }
+
+        html[data-theme="dark"] tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.02) !important;
+        }
+
+        html[data-theme="dark"] .badge-chip {
+            background-color: #1F1F23 !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+            color: #E4E4E7 !important;
+        }
+
+        /* Distinct Divider Lines in Dark Mode */
+        html[data-theme="dark"] hr,
+        html[data-theme="dark"] hr[class*="border-borderSpec"] {
+            border-color: rgba(255, 255, 255, 0.16) !important;
+        }
+
+        /* Dark Mode overrides for all inner surface cards, simulator and calculator boxes */
+        html[data-theme="dark"] .bg-surface,
+        html[data-theme="dark"] div[class*="bg-surface"],
+        html[data-theme="dark"] p[class*="bg-surface"],
+        html[data-theme="dark"] input[class*="bg-surface"],
+        html[data-theme="dark"] select[class*="bg-surface"] {
+            background-color: #141416 !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            color: #F4F2EE !important;
+        }
+
+        html[data-theme="dark"] .bg-surface span,
+        html[data-theme="dark"] .bg-surface div,
+        html[data-theme="dark"] .bg-surface p,
+        html[data-theme="dark"] .bg-surface label {
+            color: #D4D4D8 !important;
+        }
+
+        html[data-theme="dark"] .bg-surface div.text-2xl,
+        html[data-theme="dark"] .bg-surface strong,
+        html[data-theme="dark"] #val-energy,
+        html[data-theme="dark"] #val-power,
+        html[data-theme="dark"] #val-hourly {
+            color: #FFFFFF !important;
+        }
+
+        /* Kinetic Sensor Plate and Telemetry Readouts in Dark Mode */
+        html[data-theme="dark"] #step-tile-btn {
+            background-color: #1C1C1F !important;
+            border-color: rgba(255, 255, 255, 0.14) !important;
+        }
+
+        html[data-theme="dark"] #step-tile-btn svg {
+            color: #FFFFFF !important;
+        }
+
+        html[data-theme="dark"] #step-tile-btn span {
+            color: #E4E4E7 !important;
+        }
+
+        html[data-theme="dark"] #adc-logs {
+            background-color: #0E0E10 !important;
+            border-color: rgba(255, 255, 255, 0.08) !important;
+            color: #D4D4D8 !important;
+        }
+
+        html[data-theme="dark"] #adc-logs span {
+            color: #D4D4D8 !important;
+        }
+
+        html[data-theme="dark"] #adc-logs .text-zinc-600 {
+            color: #71717A !important;
+        }
+
+        html[data-theme="dark"] #adc-logs .text-accent {
+            color: #55D6BE !important;
+        }
+
+        html[data-theme="dark"] #adc-logs .text-acc3 {
+            color: #E8A33D !important;
+        }
+
+        /* Schematic Diagram Theme Pass */
+        #schematic svg rect[fill="#070708"] {
+            fill: var(--surface-secondary) !important;
+            stroke: var(--border-spec) !important;
+        }
+        #schematic svg path[stroke="rgba(255,255,255,0.015)"] {
+            stroke: var(--border-spec) !important;
+        }
+        #schematic svg text {
+            fill: var(--text-main) !important;
+        }
+        #schematic svg text[fill="#A1A1AA"] {
+            fill: var(--text-secondary) !important;
+        }
+        #schematic svg rect[fill="rgba(232, 163, 61, 0.05)"],
+        #schematic svg rect[fill="rgba(85, 214, 190, 0.05)"],
+        #schematic svg rect[fill="rgba(124, 140, 255, 0.05)"],
+        #schematic svg rect[fill="rgba(255, 255, 255, 0.02)"] {
+            fill: var(--surface-card) !important;
+            stroke: var(--border-spec) !important;
+            filter: none !important;
+        }
+        #schematic svg circle[fill="#141416"] {
+            fill: var(--surface-secondary) !important;
+            stroke: var(--border-spec) !important;
+        }
+        #schematic svg rect[fill="#141416"] {
+            fill: var(--surface-secondary) !important;
+            stroke: var(--border-spec) !important;
+        }
+        #schematic svg rect[fill="#222"] {
+            fill: var(--surface-card) !important;
+            stroke: var(--border-spec) !important;
+        }
+        #schematic svg path[stroke="rgba(255,255,255,0.3)"] {
+            stroke: var(--border-hover) !important;
+        }
+        #schematic svg marker#arrow path {
+            fill: var(--text-secondary) !important;
         }
     </style>
     <link rel="stylesheet" href="../css/style.css">
@@ -120,21 +402,34 @@
 </head>
 
 <body
-    class="bg-bgMain text-textMain font-sans antialiased selection:bg-acc3/30 selection:text-white overflow-x-hidden grid-bg-blueprint">
+    class="bg-bgMain text-textMain font-sans antialiased selection:bg-black/10 selection:text-black overflow-x-hidden grid-bg-blueprint">
 
     <!-- Atmospheric Brand Light Targets -->
-    <div class="fixed top-[-10%] left-[-5%] w-[600px] h-[600px] bg-primary glow-wash"></div>
-    <div class="fixed bottom-[10%] right-[-15%] w-[550px] h-[550px] bg-accent glow-wash"></div>
-    <div class="fixed top-[45%] left-[25%] w-[400px] h-[400px] bg-acc3 glow-wash"></div>
+    <div class="fixed top-[-10%] left-[-5%] w-[600px] h-[600px] bg-black glow-wash"></div>
+    <div class="fixed bottom-[10%] right-[-15%] w-[550px] h-[550px] bg-black glow-wash"></div>
+    <div class="fixed top-[45%] left-[25%] w-[400px] h-[400px] bg-black glow-wash"></div>
 
     <!-- Main Blueprint Wrapper -->
     <main class="max-w-[1200px] mx-auto px-4 md:px-6 pt-12 pb-24 relative z-10">
 
         <!-- 1. HERO ARCHITECTURE SECTION -->
         <header class="relative mb-24 reveal">
+            <!-- Back to Portfolio Navigation Link & Theme Switcher -->
+            <div class="mb-8 flex items-center justify-between">
+                <a href="../index.html#projects" class="inline-flex items-center gap-2 text-xs font-mono text-muted hover:text-primary transition-colors">
+                    &larr; Back to Portfolio Projects
+                </a>
+                <button id="case-theme-toggle"
+                    class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface border border-borderSpec text-xs text-textMain hover:border-black/30 transition-all font-mono shadow-sm cursor-pointer"
+                    aria-label="Toggle Theme" title="Toggle Theme">
+                    <i id="case-theme-icon" class="fa-solid fa-moon text-xs"></i>
+                    <span id="case-theme-text" class="text-[11px]">Theme</span>
+                </button>
+            </div>
+
             <div class="flex flex-wrap items-center gap-3 mb-6">
                 <span
-                    class="inline-flex items-center gap-1.5 bg-acc3/10 border border-acc3/20 text-acc3 px-4 py-1 rounded-full text-xs font-mono">
+                    class="inline-flex items-center gap-1.5 bg-black/5 border border-black/10 text-primary px-4 py-1 rounded-full text-xs font-mono font-medium">
                     Solid-State Power Generation
                 </span>
                 <span class="text-xs font-mono text-muted uppercase tracking-wider">// SYSTEM_05 // HARDWARE &
@@ -142,9 +437,9 @@
             </div>
 
             <div class="max-w-[950px] mb-12">
-                <h1 class="text-3xl sm:text-5xl md:text-7xl font-display font-bold tracking-tight text-white mb-6 leading-tight">
+                <h1 class="text-3xl sm:text-5xl md:text-7xl font-display font-bold tracking-tight text-textMain mb-6 leading-tight">
                     Smart Energy Tile <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-acc3 via-primary to-accent">
+                    <span class="text-textMain">
                         Harvesting Footstep Kinetics
                     </span>
                 </h1>
@@ -159,29 +454,29 @@
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Role</div>
-                    <div class="text-xs font-semibold text-white font-display">Hardware Designer</div>
+                    <div class="text-xs font-semibold text-textMain font-display">Hardware Designer</div>
                 </div>
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Controller</div>
-                    <div class="text-xs font-semibold text-white font-display">Arduino UNO (ATmega328P)</div>
+                    <div class="text-xs font-semibold text-textMain font-display">Arduino UNO (ATmega328P)</div>
                 </div>
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Transducers</div>
-                    <div class="text-xs font-semibold text-white font-display">PZT Ceramic Discs</div>
+                    <div class="text-xs font-semibold text-textMain font-display">PZT Ceramic Discs</div>
                 </div>
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Grid Pattern</div>
-                    <div class="text-xs font-semibold text-white font-display">Parallel-Series Hybrid</div>
+                    <div class="text-xs font-semibold text-textMain font-display">Parallel-Series Hybrid</div>
                 </div>
 
                 <div class="bentocard-blueprint p-4">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Status</div>
-                    <div class="text-xs font-semibold text-emerald-400 font-display">Field Tested</div>
+                    <div class="text-xs font-semibold text-emerald-600 font-display">Field Tested</div>
                 </div>
                 <div class="bentocard-blueprint p-4 flex flex-col justify-between items-start">
                     <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Firmware</div>
                     <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
-                        target="_blank" class="text-xs text-primary font-mono hover:underline">
+                        target="_blank" class="text-xs text-primary font-mono hover:underline font-bold">
                         GitHub ↗
                     </a>
                 </div>
@@ -194,9 +489,9 @@
         <section id="overview" class="mb-24 reveal">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 <div class="lg:col-span-4">
-                    <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">01 // TRANSDUCTION
+                    <span class="text-xs font-mono text-muted uppercase tracking-widest block mb-2">01 // TRANSDUCTION
                         CONCEPT</span>
-                    <h2 class="text-3xl font-display font-bold text-white tracking-tight">Kinetic Energy Harvesting</h2>
+                    <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Kinetic Energy Harvesting</h2>
                 </div>
                 <div class="lg:col-span-8 space-y-6 text-muted font-light leading-relaxed text-base">
                     <p>
@@ -220,15 +515,12 @@
         <!-- 1.5. INTERACTIVE DEMO SIMULATOR SECTION -->
         <section id="demo" class="mb-24 reveal scroll-mt-24">
             <div
-                class="glass-panel p-8 rounded-2xl border border-accent/20 hover:border-accent/40 transition-all duration-300 relative overflow-hidden">
-                <div
-                    class="absolute top-0 right-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[80px] pointer-events-none">
-                </div>
+                class="glass-panel p-8 rounded-2xl relative overflow-hidden">
 
                 <div class="mb-8">
-                    <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">// INTERACTIVE
+                    <span class="text-xs font-mono text-muted uppercase tracking-widest block mb-2">// INTERACTIVE
                         SHOWCASE</span>
-                    <h2 class="text-3xl font-display font-bold text-white">Kinetic Step Energy Harvester Simulator</h2>
+                    <h2 class="text-3xl font-display font-bold text-textMain">Kinetic Step Energy Harvester Simulator</h2>
                     <p class="text-sm text-muted mt-1">Tap or click the tile below to simulate footsteps and watch
                         kinetic force compress the PZT crystal grid, generating voltage spikes.</p>
                 </div>
@@ -237,17 +529,14 @@
                     <!-- Column 1: Clickable step tile -->
                     <div class="lg:col-span-6 flex flex-col justify-center items-center">
                         <div
-                            class="glass-panel p-6 rounded-xl border border-borderSpec bg-zinc-950/60 w-full max-w-[340px] flex flex-col items-center">
-                            <span class="text-[9px] font-mono text-zinc-500 uppercase block mb-4">Interactive Floor
+                            class="p-6 rounded-xl border border-borderSpec bg-surface w-full max-w-[340px] flex flex-col items-center">
+                            <span class="text-[9px] font-mono text-muted uppercase block mb-4">Interactive Floor
                                 Sensor Plate</span>
 
                             <!-- Interactive Button -->
                             <button id="step-tile-btn"
-                                class="w-[200px] h-[200px] rounded-2xl bg-zinc-900 border-2 border-borderSpec hover:border-accent active:bg-zinc-800 active:scale-95 transition-all duration-100 flex flex-col items-center justify-center gap-2 relative overflow-hidden shadow-inner group">
-                                <div
-                                    class="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 active:bg-accent/15 transition-colors">
-                                </div>
-                                <svg class="w-12 h-12 text-zinc-600 group-hover:text-accent transition-colors"
+                                class="w-[200px] h-[200px] rounded-2xl bg-surface border-2 border-borderSpec active:scale-95 transition-all duration-100 flex flex-col items-center justify-center gap-2 relative overflow-hidden shadow-sm group">
+                                <svg class="w-12 h-12 text-primary transition-colors"
                                     fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
@@ -268,26 +557,25 @@
                         <div class="grid grid-cols-3 gap-4">
                             <div class="glass-panel p-4 rounded-xl border border-borderSpec text-center">
                                 <span class="text-[9px] font-mono text-muted uppercase block mb-1">Peak Voltage</span>
-                                <span id="telemetry-volts" class="text-base font-bold text-white font-mono">0.0 V</span>
+                                <span id="telemetry-volts" class="text-base font-bold text-textMain font-mono">0.0 V</span>
                             </div>
                             <div class="glass-panel p-4 rounded-xl border border-borderSpec text-center">
                                 <span class="text-[9px] font-mono text-muted uppercase block mb-1">Charge Stored</span>
-                                <span id="telemetry-joules" class="text-base font-bold text-primary font-mono">0.0
-                                    uJ</span>
+                                <span id="telemetry-joules" class="text-base font-bold text-textMain font-mono">0.0 uJ</span>
                             </div>
                             <div class="glass-panel p-4 rounded-xl border border-borderSpec text-center">
                                 <span class="text-[9px] font-mono text-muted uppercase block mb-1">Total Steps</span>
-                                <span id="telemetry-steps" class="text-base font-bold text-acc3 font-mono">0</span>
+                                <span id="telemetry-steps" class="text-base font-bold text-textMain font-mono">0</span>
                             </div>
                         </div>
 
                         <!-- Spark logs -->
                         <div
-                            class="glass-panel p-4 rounded-xl border border-borderSpec bg-zinc-950/50 font-mono text-xs flex flex-col justify-between h-[180px]">
+                            class="glass-panel p-4 rounded-xl border border-borderSpec bg-surface font-mono text-xs flex flex-col justify-between h-[180px]">
                             <span
-                                class="text-[10px] text-zinc-500 border-b border-borderSpec pb-1 mb-1 block">ANALOG_ADC_TRANSDUCTION_STREAM</span>
-                            <div id="adc-logs" class="flex-grow overflow-y-auto space-y-1 text-[9px] text-zinc-400">
-                                <p class="text-zinc-600">// Awaiting kinetic transducer activation...</p>
+                                class="text-[10px] text-muted border-b border-borderSpec pb-1 mb-1 block">ANALOG_ADC_TRANSDUCTION_STREAM</span>
+                            <div id="adc-logs" class="flex-grow overflow-y-auto space-y-1 text-[9px] text-zinc-600 p-2 rounded">
+                                <p class="text-zinc-500">// Awaiting kinetic transducer activation...</p>
                             </div>
                         </div>
                     </div>
@@ -298,37 +586,31 @@
         <!-- 3. HARDWARE SPECIFIC CRUCIBLE -->
         <section class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">02 // HARDWARE
+                <span class="text-xs font-mono text-muted uppercase tracking-widest block mb-2">02 // HARDWARE
                     CONSTRAINTS</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">The Hardware Crucibles</h2>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">The Hardware Crucibles</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bentocard-blueprint p-8 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-accent"></div>
-                    <h3 class="text-lg font-display font-bold text-white mb-3">High-Voltage Transient Spikes</h3>
-                    <p class="text-xs text-muted leading-relaxed font-light font-mono text-[11px] mb-2">// RISK: 35V+
-                        Over-voltage</p>
+                <div class="bentocard-blueprint p-8 relative overflow-hidden border-t-2 border-t-primary">
+                    <h3 class="text-lg font-display font-bold text-textMain mb-3">High-Voltage Transient Spikes</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light font-mono text-[11px] mb-2">// RISK: 35V+ Over-voltage</p>
                     <p class="text-xs text-muted leading-relaxed font-light">
                         Piezoelectric discs under heavy dynamic loads generate high-amplitude voltage spikes. Direct
                         connections to microcontrollers would fry internal clamping diodes, requiring zener-based
                         limiters.
                     </p>
                 </div>
-                <div class="bentocard-blueprint p-8 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-accent"></div>
-                    <h3 class="text-lg font-display font-bold text-white mb-3">AC-to-DC Phase Losses</h3>
-                    <p class="text-xs text-muted leading-relaxed font-light font-mono text-[11px] mb-2">// RISK:
-                        Rectifier Forward Drop</p>
+                <div class="bentocard-blueprint p-8 relative overflow-hidden border-t-2 border-t-primary">
+                    <h3 class="text-lg font-display font-bold text-textMain mb-3">AC-to-DC Phase Losses</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light font-mono text-[11px] mb-2">// RISK: Rectifier Forward Drop</p>
                     <p class="text-xs text-muted leading-relaxed font-light">
                         Standard silicon diodes (like 1N4007) introduce a 0.7V forward voltage drop, wasting a large
                         percentage of micro-harvested power. Schottky diodes are required to lower these thresholds.
                     </p>
                 </div>
-                <div class="bentocard-blueprint p-8 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-accent"></div>
-                    <h3 class="text-lg font-display font-bold text-white mb-3">Impedance Mismatch</h3>
-                    <p class="text-xs text-muted leading-relaxed font-light font-mono text-[11px] mb-2">// RISK: Source
-                        Impedance > 1MΩ</p>
+                <div class="bentocard-blueprint p-8 relative overflow-hidden border-t-2 border-t-primary">
+                    <h3 class="text-lg font-display font-bold text-textMain mb-3">Impedance Mismatch</h3>
+                    <p class="text-xs text-muted leading-relaxed font-light font-mono text-[11px] mb-2">// RISK: Source Impedance > 1MΩ</p>
                     <p class="text-xs text-muted leading-relaxed font-light">
                         Piezo transducers behave electrically as capacitive voltage sources with huge source impedance.
                         Matching them to low-impedance storage elements requires precise grid configurations.
@@ -340,32 +622,32 @@
         <!-- 4. TECHNICAL OBJECTIVES -->
         <section class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">03 // PHYSICAL
+                <span class="text-xs font-mono text-muted uppercase tracking-widest block mb-2">03 // PHYSICAL
                     SPECIFICATION</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Technical Objectives</h2>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Technical Objectives</h2>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
-                    <div class="text-primary font-mono text-[10px] mb-2">[OBJ_01]</div>
-                    <h4 class="text-sm font-display font-bold text-white mb-2">Grid Optimization</h4>
+                    <div class="text-primary font-mono text-[10px] mb-2 font-bold">[OBJ_01]</div>
+                    <h4 class="text-sm font-display font-bold text-textMain mb-2">Grid Optimization</h4>
                     <p class="text-xs text-muted font-light">Wire the PZT array in a balanced parallel-series layout to
                         balance voltage output against current delivery.</p>
                 </div>
                 <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
-                    <div class="text-primary font-mono text-[10px] mb-2">[OBJ_02]</div>
-                    <h4 class="text-sm font-display font-bold text-white mb-2">Low-Drop Rectification</h4>
+                    <div class="text-primary font-mono text-[10px] mb-2 font-bold">[OBJ_02]</div>
+                    <h4 class="text-sm font-display font-bold text-textMain mb-2">Low-Drop Rectification</h4>
                     <p class="text-xs text-muted font-light">Utilize BAT43 or 1N5817 Schottky diode bridges to rectify
                         high-frequency alternating currents with minimal drops.</p>
                 </div>
                 <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
-                    <div class="text-primary font-mono text-[10px] mb-2">[OBJ_03]</div>
-                    <h4 class="text-sm font-display font-bold text-white mb-2">ADC Telemetry Scaling</h4>
+                    <div class="text-primary font-mono text-[10px] mb-2 font-bold">[OBJ_03]</div>
+                    <h4 class="text-sm font-display font-bold text-textMain mb-2">ADC Telemetry Scaling</h4>
                     <p class="text-xs text-muted font-light">Configure voltage division scaling filters to map 0-25V
                         charging lines safely to the 5V ADC input of the Arduino.</p>
                 </div>
                 <div class="bentocard-blueprint p-6 border-l-2 border-l-primary">
-                    <div class="text-primary font-mono text-[10px] mb-2">[OBJ_04]</div>
-                    <h4 class="text-sm font-display font-bold text-white mb-2">Interactive Display</h4>
+                    <div class="text-primary font-mono text-[10px] mb-2 font-bold">[OBJ_04]</div>
+                    <h4 class="text-sm font-display font-bold text-textMain mb-2">Interactive Display</h4>
                     <p class="text-xs text-muted font-light">Establish real-time data calculations displaying
                         instantaneous voltage levels and cumulative harvested energy.</p>
                 </div>
@@ -377,7 +659,7 @@
             <div class="mb-12">
                 <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">04 // CIRCUIT SCHEMATICS
                     & BLOCK LAYOUT</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Signal Conditioning Topology</h2>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Signal Conditioning Topology</h2>
             </div>
 
             <div class="bentocard-blueprint p-6 md:p-10">
@@ -536,64 +818,64 @@
         <!-- 6. BILL OF MATERIALS (Hardware Characteristic) -->
         <section class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-2">05 // COMPONENT
+                <span class="text-xs font-mono text-muted uppercase tracking-widest block mb-2">05 // COMPONENT
                     SPECIFICATIONS</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Bill of Materials (BOM)</h2>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Bill of Materials (BOM)</h2>
             </div>
 
             <div class="bentocard-blueprint p-6 md:p-8">
                 <div class="overflow-x-auto custom-scroll">
                     <table class="w-full text-left font-mono text-xs">
-                        <thead class="bg-bgMain text-muted">
+                        <thead class="bg-bgMain text-textMain border-b border-borderSpec">
                             <tr>
-                                <th class="p-4 border-b border-borderSpec">Ref Descriptor</th>
-                                <th class="p-4 border-b border-borderSpec">Component Name</th>
-                                <th class="p-4 border-b border-borderSpec">Value / Rating</th>
-                                <th class="p-4 border-b border-borderSpec">Description</th>
-                                <th class="p-4 border-b border-borderSpec text-right">Qty</th>
+                                <th class="p-4 border-b border-borderSpec font-bold">Ref Descriptor</th>
+                                <th class="p-4 border-b border-borderSpec font-bold">Component Name</th>
+                                <th class="p-4 border-b border-borderSpec font-bold">Value / Rating</th>
+                                <th class="p-4 border-b border-borderSpec font-bold">Description</th>
+                                <th class="p-4 border-b border-borderSpec text-right font-bold">Qty</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-borderSpec text-muted">
                             <tr>
-                                <td class="p-4 text-white font-bold">P1 - P6</td>
-                                <td class="p-4 text-acc3">Piezoelectric Ceramic Discs</td>
-                                <td class="p-4 font-semibold">35mm Diameter, Lead Zirconate Titanate</td>
+                                <td class="p-4 text-textMain font-bold">P1 - P6</td>
+                                <td class="p-4 text-textMain font-semibold">Piezoelectric Ceramic Discs</td>
+                                <td class="p-4 font-semibold text-zinc-700">35mm Diameter, Lead Zirconate Titanate</td>
                                 <td class="p-4 font-light">Solid-state sensor conversion elements that generate charge
                                     upon deflection.</td>
-                                <td class="p-4 text-right">6</td>
+                                <td class="p-4 text-right text-textMain font-bold">6</td>
                             </tr>
 
                             <tr>
-                                <td class="p-4 text-white font-bold">C1</td>
-                                <td class="p-4 text-primary">Electrolytic Smoothing Cap</td>
-                                <td class="p-4 font-semibold">10μF / 50V Rating</td>
+                                <td class="p-4 text-textMain font-bold">C1</td>
+                                <td class="p-4 text-textMain font-semibold">Electrolytic Smoothing Cap</td>
+                                <td class="p-4 font-semibold text-zinc-700">10μF / 50V Rating</td>
                                 <td class="p-4 font-light">Integrates pulsed charges into a smooth, stable DC voltage
                                     ready for measurement.</td>
-                                <td class="p-4 text-right">1</td>
+                                <td class="p-4 text-right text-textMain font-bold">1</td>
                             </tr>
                             <tr>
-                                <td class="p-4 text-white font-bold">ZD1</td>
-                                <td class="p-4 text-primary">Zener Diode Limiter</td>
-                                <td class="p-4 font-semibold">5.1V / 1W rating</td>
+                                <td class="p-4 text-textMain font-bold">ZD1</td>
+                                <td class="p-4 text-textMain font-semibold">Zener Diode Limiter</td>
+                                <td class="p-4 font-semibold text-zinc-700">5.1V / 1W rating</td>
                                 <td class="p-4 font-light">Clamps voltage lines to 5.1V maximum to prevent transient
                                     spikes from entering the MCU pin.</td>
-                                <td class="p-4 text-right">1</td>
+                                <td class="p-4 text-right text-textMain font-bold">1</td>
                             </tr>
                             <tr>
-                                <td class="p-4 text-white font-bold">MCU1</td>
-                                <td class="p-4">Arduino UNO Rev 3</td>
-                                <td class="p-4 font-semibold">16MHz ATmega328P</td>
+                                <td class="p-4 text-textMain font-bold">MCU1</td>
+                                <td class="p-4 text-textMain font-semibold">Arduino UNO Rev 3</td>
+                                <td class="p-4 font-semibold text-zinc-700">16MHz ATmega328P</td>
                                 <td class="p-4 font-light">Reads scaled analog voltage inputs, computes harvested
                                     kinetics, outputs telemetry data.</td>
-                                <td class="p-4 text-right">1</td>
+                                <td class="p-4 text-right text-textMain font-bold">1</td>
                             </tr>
                             <tr>
-                                <td class="p-4 text-white font-bold">R1, R2</td>
-                                <td class="p-4">Voltage Divider Resistors</td>
-                                <td class="p-4 font-semibold">10KΩ & 4.7KΩ Metal Film</td>
+                                <td class="p-4 text-textMain font-bold">R1, R2</td>
+                                <td class="p-4 text-textMain font-semibold">Voltage Divider Resistors</td>
+                                <td class="p-4 font-semibold text-zinc-700">10KΩ & 4.7KΩ Metal Film</td>
                                 <td class="p-4 font-light">Reduces the rectified voltage line scaling factor by roughly
                                     3.1x for broader safety margin.</td>
-                                <td class="p-4 text-right">2</td>
+                                <td class="p-4 text-right text-textMain font-bold">2</td>
                             </tr>
                         </tbody>
                     </table>
@@ -604,9 +886,9 @@
         <!-- 7. INTERACTIVE KINETIC ENERGY CALCULATOR (Interactive & Educational Hardware Flavor) -->
         <section id="calculator" class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">06 // ELECTRICAL CALCULUS
+                <span class="text-xs font-mono text-muted uppercase tracking-widest block mb-2">06 // ELECTRICAL CALCULUS
                     LABORATORY</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Kinetic Harvester Lab Calculator
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Kinetic Harvester Lab Calculator
                 </h2>
             </div>
 
@@ -614,27 +896,27 @@
                 <!-- Calculator Inputs -->
                 <div class="bentocard-blueprint p-8 lg:col-span-1 flex flex-col justify-between">
                     <div>
-                        <h3 class="text-lg font-display font-bold text-white mb-4">Input Parameters</h3>
+                        <h3 class="text-lg font-display font-bold text-textMain mb-4">Input Parameters</h3>
                         <div class="space-y-4">
                             <div>
                                 <label
                                     class="block text-xs font-mono text-muted uppercase tracking-wider mb-2">Footsteps /
                                     Minute</label>
                                 <input type="number" id="calc-steps" value="60" min="1" max="300"
-                                    class="w-full bg-bgMain border border-borderSpec rounded-lg p-3 text-white text-sm font-mono focus:border-acc3 focus:outline-none">
+                                    class="w-full bg-surface border border-borderSpec rounded-lg p-3 text-textMain text-sm font-mono focus:border-black focus:outline-none">
                             </div>
                             <div>
                                 <label class="block text-xs font-mono text-muted uppercase tracking-wider mb-2">Average
                                     Impact Weight (kg)</label>
                                 <input type="number" id="calc-weight" value="70" min="1" max="150"
-                                    class="w-full bg-bgMain border border-borderSpec rounded-lg p-3 text-white text-sm font-mono focus:border-acc3 focus:outline-none">
+                                    class="w-full bg-surface border border-borderSpec rounded-lg p-3 text-textMain text-sm font-mono focus:border-black focus:outline-none">
                             </div>
                             <div>
                                 <label
                                     class="block text-xs font-mono text-muted uppercase tracking-wider mb-2">Transducer
                                     Output Voltage Peak</label>
                                 <select id="calc-voltage"
-                                    class="w-full bg-bgMain border border-borderSpec rounded-lg p-3 text-white text-sm font-mono focus:border-acc3 focus:outline-none">
+                                    class="w-full bg-surface border border-borderSpec rounded-lg p-3 text-textMain text-sm font-mono focus:border-black focus:outline-none">
                                     <option value="5">5.0V (Soft Compression)</option>
                                     <option value="12" selected>12.0V (Standard Walking Run)</option>
                                     <option value="20">20.0V (Rigid Direct Strike)</option>
@@ -644,7 +926,7 @@
                     </div>
 
                     <button onclick="calculateEnergy()"
-                        class="mt-6 w-full py-3.5 rounded-lg bg-acc3 text-bgMain text-xs font-mono font-bold tracking-wider hover:bg-acc3/90 transition-all uppercase">
+                        class="mt-6 w-full py-3.5 rounded-lg bg-primary text-white text-xs font-mono font-bold tracking-wider hover:bg-black transition-all uppercase shadow-sm">
                         Recompute Harvester Dynamics
                     </button>
                 </div>
@@ -652,40 +934,33 @@
                 <!-- Calculator Display -->
                 <div
                     class="bentocard-blueprint p-8 lg:col-span-2 flex flex-col justify-between relative overflow-hidden">
-                    <div
-                        class="absolute -right-20 -bottom-20 w-80 h-80 bg-acc3/5 rounded-full blur-3xl pointer-events-none">
-                    </div>
                     <div>
-                        <span class="text-xs font-mono text-accent uppercase block mb-1">REAL-TIME MATHEMATICS</span>
-                        <h3 class="text-xl font-display font-bold text-white mb-4">Calculated Energy Telemetry</h3>
+                        <span class="text-xs font-mono text-muted uppercase block mb-1">REAL-TIME MATHEMATICS</span>
+                        <h3 class="text-xl font-display font-bold text-textMain mb-4">Calculated Energy Telemetry</h3>
 
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-6">
-                            <div class="bg-bgMain p-4 rounded-xl border border-borderSpec">
-                                <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Energy
-                                    Stored / Step</div>
-                                <div class="text-2xl font-bold text-white font-mono" id="val-energy">0.72 mJ</div>
-                                <div class="text-[9px] text-muted font-mono mt-1">E = ½ C V²</div>
+                            <div class="bg-surface p-4 rounded-xl border border-borderSpec">
+                                <span class="text-[10px] font-mono text-muted uppercase block mb-1">Energy / Step</span>
+                                <div class="text-2xl font-bold text-textMain font-mono" id="val-energy">0.72 mJ</div>
+                                <span class="text-[9px] font-mono text-muted mt-1 block">Kinetic charge dump</span>
                             </div>
-                            <div class="bg-bgMain p-4 rounded-xl border border-borderSpec">
-                                <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Continuous
-                                    Power</div>
-                                <div class="text-2xl font-bold text-accent font-mono" id="val-power">0.72 mW</div>
-                                <div class="text-[9px] text-muted font-mono mt-1">P = E × Frequency</div>
+                            <div class="bg-surface p-4 rounded-xl border border-borderSpec">
+                                <span class="text-[10px] font-mono text-muted uppercase block mb-1">Power Harvested</span>
+                                <div class="text-2xl font-bold text-textMain font-mono" id="val-power">0.72 mW</div>
+                                <span class="text-[9px] font-mono text-muted mt-1 block">Continuous generation</span>
                             </div>
-                            <div class="bg-bgMain p-4 rounded-xl border border-borderSpec">
-                                <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-1">Hourly
-                                    Generation</div>
-                                <div class="text-2xl font-bold text-primary font-mono" id="val-hourly">2.59 Joules</div>
-                                <div class="text-[9px] text-muted font-mono mt-1">Total over 3,600 steps</div>
+                            <div class="bg-surface p-4 rounded-xl border border-borderSpec">
+                                <span class="text-[10px] font-mono text-muted uppercase block mb-1">Yield / Hour</span>
+                                <div class="text-2xl font-bold text-textMain font-mono" id="val-hourly">2.59 J</div>
+                                <span class="text-[9px] font-mono text-muted mt-1 block">Cumulative storage</span>
                             </div>
                         </div>
-                    </div>
 
-                    <div
-                        class="text-xs text-muted font-light leading-relaxed p-4 bg-bgMain rounded-lg border border-borderSpec/60 font-mono">
-                        <strong class="text-white">Transducer Physics Theorem:</strong> Calculations assume a 10μF
-                        smoothing capacitor bank. Real-world returns will vary slightly depending on step pressure speed
-                        (dV/dt) and the mechanical flexing coefficient of the tile housing layout.
+                        <div
+                            class="text-xs text-muted font-light leading-relaxed p-4 bg-surface rounded-lg border border-borderSpec font-mono">
+                            <strong class="text-textMain font-bold">Transducer Physics Theorem:</strong> Calculations assume a 10μF
+                            smoothing capacitance with standard ceramic PZT response curves under repetitive foot impacts.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -694,17 +969,17 @@
         <!-- 8. RUN LOOP TIME LOGS -->
         <section class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-2">07 // WAVEFORM
-                    DIGITIZATION PROCESS</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Main Signal Processing Lifecycle
+                <span class="text-xs font-mono text-muted uppercase tracking-widest block mb-2">07 // SIGNAL
+                    TOPOLOGY</span>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Main Signal Processing Lifecycle
                 </h2>
             </div>
 
             <div class="space-y-4">
                 <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
-                    <div class="font-mono text-acc3 font-bold min-w-[50px]">01 //</div>
+                    <div class="font-mono text-primary font-bold min-w-[50px]">01 //</div>
                     <div>
-                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Piezo Mechanical Displacement
+                        <h4 class="text-textMain font-display font-semibold text-sm mb-0.5">Piezo Mechanical Displacement
                         </h4>
                         <p class="text-xs text-muted font-light">Physical impact deflections squeeze the inner lead
                             zirconate titanate crystal lattices, forcing free charge separation between surface silver
@@ -712,27 +987,27 @@
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
-                    <div class="font-mono text-acc3 font-bold min-w-[50px]">02 //</div>
+                    <div class="font-mono text-primary font-bold min-w-[50px]">02 //</div>
                     <div>
-                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Full-Wave Rectification Wave
+                        <h4 class="text-textMain font-display font-semibold text-sm mb-0.5">Full-Wave Rectification Wave
                         </h4>
                         <p class="text-xs text-muted font-light">High-amplitude AC voltage curves pass through Schottky
                             diode structures, folding negative peaks into positive pulses with under 0.35V loss.</p>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
-                    <div class="font-mono text-acc3 font-bold min-w-[50px]">03 //</div>
+                    <div class="font-mono text-primary font-bold min-w-[50px]">03 //</div>
                     <div>
-                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Capacitive Charge Storing</h4>
+                        <h4 class="text-textMain font-display font-semibold text-sm mb-0.5">Capacitive Charge Storing</h4>
                         <p class="text-xs text-muted font-light">The rectified pulse stream dumps charge into a
                             low-leakage 10μF electrolytic reservoir capacitor, smoothing voltage ripples into steady
                             lines.</p>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
-                    <div class="font-mono text-acc3 font-bold min-w-[50px]">04 //</div>
+                    <div class="font-mono text-primary font-bold min-w-[50px]">04 //</div>
                     <div>
-                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">Zener Limiting & Voltage
+                        <h4 class="text-textMain font-display font-semibold text-sm mb-0.5">Zener Limiting & Voltage
                             Division</h4>
                         <p class="text-xs text-muted font-light">Overvoltage protection circuits clamp inputs above
                             5.1V. A precision resistance divider scales values so the MCU A0 line measures safe analog
@@ -740,9 +1015,9 @@
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 p-5 rounded-xl bentocard-blueprint">
-                    <div class="font-mono text-acc3 font-bold min-w-[50px]">05 //</div>
+                    <div class="font-mono text-primary font-bold min-w-[50px]">05 //</div>
                     <div>
-                        <h4 class="text-white font-display font-semibold text-sm mb-0.5">ADC Interpolation &
+                        <h4 class="text-textMain font-display font-semibold text-sm mb-0.5">ADC Interpolation &
                             Calculations</h4>
                         <p class="text-xs text-muted font-light">The ATmega328P runs 10-bit analog conversion sweeps,
                             translates digitized metrics back to original voltage values, and logs cumulative power
@@ -752,38 +1027,36 @@
             </div>
         </section>
 
-
-
         <!-- 11. HARDWARE CHALLENGES (Problem / Approach / Result) -->
         <section class="mb-24 reveal">
             <div class="mb-12">
-                <span class="text-xs font-mono text-acc3 uppercase tracking-widest block mb-2">10 // ENGINEERING
+                <span class="text-xs font-mono text-muted uppercase tracking-widest block mb-2">10 // ENGINEERING
                     ADAPTATIONS</span>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Physical Calibration Log</h2>
+                <h2 class="text-3xl font-display font-bold text-textMain tracking-tight">Physical Calibration Log</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bentocard-blueprint p-6">
-                    <span class="text-xs font-mono text-acc3 block mb-1">ENGINEERING CHALLENGE //</span>
-                    <h4 class="text-lg font-display font-bold text-white mb-2">Ceramic Crystal Fragility</h4>
+                    <span class="text-xs font-mono text-muted font-semibold block mb-1">ENGINEERING CHALLENGE //</span>
+                    <h4 class="text-lg font-display font-bold text-textMain mb-2">Ceramic Crystal Fragility</h4>
                     <p class="text-xs text-muted font-light leading-relaxed mb-4">
                         Direct dynamic foot impacts quickly cracked the thin ceramic lead zirconate titanate layers,
                         ruining the output charge yield.
                     </p>
-                    <span class="text-xs font-mono text-accent block mb-1">PHYSICAL SOLUTION //</span>
-                    <p class="text-xs text-slate-300 font-light bg-surface p-3 rounded border border-borderSpec">
+                    <span class="text-xs font-mono text-primary font-bold block mb-1">PHYSICAL SOLUTION //</span>
+                    <p class="text-xs text-textMain font-light bg-surface p-3 rounded border border-borderSpec">
                         Designed an acrylic tile housing with neoprene spacer rings, distributing the mechanical
                         compression force evenly and limiting direct shear stresses.
                     </p>
                 </div>
                 <div class="bentocard-blueprint p-6">
-                    <span class="text-xs font-mono text-acc3 block mb-1">ENGINEERING CHALLENGE //</span>
-                    <h4 class="text-lg font-display font-bold text-white mb-2">Rapid Capacitor Self-Discharge</h4>
+                    <span class="text-xs font-mono text-muted font-semibold block mb-1">ENGINEERING CHALLENGE //</span>
+                    <h4 class="text-lg font-display font-bold text-textMain mb-2">Rapid Capacitor Self-Discharge</h4>
                     <p class="text-xs text-muted font-light leading-relaxed mb-4">
                         Stored energy leaked back through cheap filtering caps and high divider resistance branches,
                         draining reserves during quiet intervals.
                     </p>
-                    <span class="text-xs font-mono text-accent block mb-1">PHYSICAL SOLUTION //</span>
-                    <p class="text-xs text-slate-300 font-light bg-surface p-3 rounded border border-borderSpec">
+                    <span class="text-xs font-mono text-primary font-bold block mb-1">PHYSICAL SOLUTION //</span>
+                    <p class="text-xs text-textMain font-light bg-surface p-3 rounded border border-borderSpec">
                         Implemented high-spec tantalum capacitors with ultra-low leakage profiles and scaled division
                         resistors up to 10KΩ/4.7KΩ limits.
                     </p>
@@ -795,11 +1068,11 @@
 
         <!-- 12. CALL TO ACTION -->
         <section class="reveal">
-            <div class="bentocard-blueprint p-10 text-center relative z-10 max-w-[850px] mx-auto border-primary/20">
-                <span class="text-xs font-mono text-accent uppercase tracking-widest block mb-4">HARDWARE INTERFACE
+            <div class="bentocard-blueprint p-10 text-center relative z-10 max-w-[850px] mx-auto">
+                <span class="text-xs font-mono text-muted uppercase tracking-widest block mb-4">HARDWARE INTERFACE
                     SCHEMATICS</span>
-                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mb-6 leading-tight">
-                    Explore Circuit <span class="editorial-serif">Designs & Firmware.</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-textMain mb-6 leading-tight">
+                    Explore Circuit Designs & Firmware.
                 </h2>
                 <p class="text-muted text-sm leading-relaxed max-w-xl mx-auto mb-8">
                     View full wiring diagrams, component footprints, firmware files, and microgrid experiments in the
@@ -809,8 +1082,8 @@
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
                     <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
                         target="_blank"
-                        class="px-4 py-2 rounded-lg bg-acc3 text-bgMain text-[11px] font-mono tracking-wide font-bold hover:bg-acc3/90 transition-all transform hover:scale-[1.01] w-full sm:w-auto text-center shadow-md shadow-acc3/20">
-                        Access Source Repository
+                        class="gateway-btn-primary px-5 py-2.5 rounded-xl text-xs font-mono tracking-wide font-bold w-full sm:w-auto text-center shadow-md">
+                        Access Source Repository ↗
                     </a>
                 </div>
             </div>
@@ -841,6 +1114,42 @@
 
             // Initial computation
             calculateEnergy();
+
+            // Theme Controller for Case Study Page
+            const themeBtn = document.getElementById('case-theme-toggle');
+            const themeIcon = document.getElementById('case-theme-icon');
+            const themeText = document.getElementById('case-theme-text');
+
+            const applyCaseTheme = (theme, persist = true) => {
+                if (theme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
+                    }
+                    if (themeText) themeText.textContent = 'Light';
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                    }
+                    if (themeText) themeText.textContent = 'Dark';
+                }
+                if (persist) {
+                    localStorage.setItem('portfolio-theme', theme);
+                }
+            };
+
+            const storedTheme = localStorage.getItem('portfolio-theme') || 'light';
+            applyCaseTheme(storedTheme, false);
+
+            if (themeBtn) {
+                themeBtn.addEventListener('click', () => {
+                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    applyCaseTheme(isDark ? 'light' : 'dark', true);
+                });
+            }
 
             // Piezoelectric Tile Simulator Script
             const stepTileBtn = document.getElementById('step-tile-btn');

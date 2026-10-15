@@ -102,8 +102,14 @@
                     <a href="#about" class="nav-link">About</a>
                     <a href="#journey" class="nav-link">Journey</a>
                     <a href="#contact" class="nav-link">Contact</a>
+                    <button id="theme-toggle-btn"
+                        class="flex items-center justify-center w-8 h-8 rounded-lg bg-white border border-black/10 text-xs text-[#52525B] hover:text-[#111111] hover:border-black/30 transition-all ml-1 shadow-sm cursor-pointer"
+                        aria-label="Toggle Dark Mode" title="Toggle Theme">
+                        <i id="theme-toggle-icon"
+                            class="fa-solid fa-moon text-xs transition-transform duration-300"></i>
+                    </button>
                     <button id="cmd-palette-btn"
-                        class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-black/10 text-xs text-[#52525B] hover:text-[#111111] hover:border-black/30 transition-all font-mono ml-2 shadow-sm"
+                        class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-black/10 text-xs text-[#52525B] hover:text-[#111111] hover:border-black/30 transition-all font-mono ml-1 shadow-sm"
                         aria-label="Open Command Palette">
                         <i class="fa-solid fa-magnifying-glass text-[10px] text-[#52525B]"></i>
                         <span>Search</span>
@@ -115,6 +121,12 @@
 
                 <!-- Mobile Hamburger Group -->
                 <div class="flex items-center gap-2 md:hidden">
+                    <!-- Mobile Theme Toggle -->
+                    <button id="theme-toggle-mobile"
+                        class="flex items-center justify-center w-9 h-9 rounded-lg bg-white border border-black/10 text-xs text-[#52525B] hover:text-[#111111] transition-all cursor-pointer shadow-sm"
+                        aria-label="Toggle Dark Mode" title="Toggle Theme">
+                        <i id="theme-toggle-mobile-icon" class="fa-solid fa-moon text-xs"></i>
+                    </button>
                     <!-- Hamburger Button -->
                     <button id="menu-toggle"
                         class="relative w-11 h-11 flex flex-col justify-center items-center gap-1.5 focus:outline-none z-50 group"
@@ -191,7 +203,6 @@
                             <!-- Status Pill (Matches reference image) -->
                             <div
                                 class="mb-5 inline-flex items-center gap-2 bg-[#E7F6ED] text-[#1E7E34] px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide">
-                                <span class="w-2 h-2 rounded-full bg-[#28A745] animate-pulse"></span>
                                 Available for Freelance &amp; SWE Roles
                             </div>
 
@@ -206,7 +217,8 @@
 
                             <!-- Intro Paragraph -->
                             <p class="text-sm sm:text-base text-[#52525B] leading-relaxed max-w-xl mb-8">
-                                Hi, I'm <strong class="text-[#111111] font-semibold">Vansh Thakur</strong> — A
+                                Hi, I'm <strong class="hero-author-name text-[#111111] font-semibold">Vansh
+                                    Thakur</strong> — A
                                 Full-Stack &amp; AI Software Engineer specializing in scalable web systems, low-latency
                                 AI integrations, and high-performance product experiences. Focused on turning complex
                                 architectures into intuitive digital products.
@@ -259,118 +271,100 @@
             <div id="bento-dashboard" class="pt-8 pb-6 md:pt-12 md:pb-8 border-b border-borderSpec/40">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
 
-                    <!-- ROW 1: Profile & Laptop Showcase -->
-                    <div class="lg:col-span-7 bento-card-dark bento-border-glow p-8 relative overflow-hidden flex flex-col justify-between min-h-[380px]"
+                    <!-- ROW 1: Current Focus & Tech Stack Ecosystem (Compact Height) -->
+                    <!-- Current Focus Widget -->
+                    <div id="current-focus-card"
+                        class="lg:col-span-7 bento-card-dark bento-border-glow p-5 sm:p-5 flex flex-col justify-between"
                         data-aos="fade-up">
-                        <div class="bento-glow-violet absolute inset-0 pointer-events-none"></div>
-                        <div class="relative z-10 flex flex-col justify-between h-full">
-                            <div>
-                                <span
-                                    class="inline-flex items-center gap-1.5 bg-zinc-800/60 border border-zinc-700/50 text-[11px] text-zinc-300 px-3 py-1 rounded-full font-mono mb-6">
-                                    Hello, I'm
-                                </span>
-                                <h1 class="text-4xl sm:text-5xl font-display font-bold text-white mb-2 tracking-tight">
-                                    Vansh Thakur
-                                </h1>
-                                <p class="text-xs font-mono text-muted mb-4 uppercase tracking-wider">Full-Stack &
-                                    AI Software Engineer
-                                </p>
-                                <p class="text-sm text-zinc-400 max-w-sm leading-relaxed mb-6">
-                                    Computer Science Engineer crafting versatile full-stack web applications,
-                                    AI-driven platforms, and hardware/embedded systems.
-                                </p>
+                        <div>
+                            <div class="flex items-center justify-between mb-2.5">
+                                <span class="text-xs font-mono text-accent uppercase tracking-widest">// CURRENT FOCUS
+                                    &amp; ACTIVE BUILDS</span>
                             </div>
-
-                            <div class="flex items-center gap-4 flex-wrap mt-auto">
-                                <a href="#other-systems-preview"
-                                    class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-primary text-bgMain text-xs font-semibold hover:scale-[1.02] transition-transform">
-                                    View My Work &rarr;
-                                </a>
-                            </div>
-
-                            <div class="flex items-center gap-4 mt-8 text-xs text-zinc-500 font-mono">
-                                <span>Let's connect</span>
-                                <a href="https://github.com/Vans30m" target="_blank"
-                                    class="connect-icon github-connect"><i
-                                        class="devicon-github-original text-base"></i></a>
-                                <a href="https://linkedin.com/in/vansh-thakur-vans30m/" target="_blank"
-                                    class="connect-icon linkedin-connect"><i
-                                        class="devicon-linkedin-plain text-base"></i></a>
-                                <a href="mailto:vthakur.290905@gmail.com" class="connect-icon google-connect"><i
-                                        class="devicon-google-plain text-base"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ROW 1 Right: Focus, Today's Build & Tech Stack -->
-                    <div class="lg:col-span-5 flex flex-col gap-4">
-                        <!-- Current Focus Widget -->
-                        <div id="current-focus-card" class="bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-start gap-3 flex-1"
-                            data-aos="fade-up" data-aos-delay="50">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-mono text-accent uppercase tracking-widest">Current
-                                    Focus</span>
-                            </div>
-                            <ul class="space-y-2.5 sm:space-y-3 text-[11px] text-zinc-400 font-mono">
-                                <li class="flex items-start gap-3">
+                            <ul class="space-y-2 sm:space-y-2 text-xs text-zinc-400 font-mono">
+                                <li class="flex items-start gap-2.5">
                                     <span
-                                        class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[9px] shrink-0 mt-0.5">01</span>
-                                    <span class="leading-relaxed text-zinc-300">Building Full-Stack & AI Web
-                                        Applications (FinPulse AI, Xplorism, CheckinPass)</span>
+                                        class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[10px] shrink-0 mt-0.5">01</span>
+                                    <span class="leading-snug text-zinc-300">Building Full-Stack &amp; AI Web
+                                        Applications (<strong class="bento-focus-project font-semibold">FinPulse
+                                            AI</strong>, <strong
+                                            class="bento-focus-project font-semibold">Xplorism</strong>, <strong
+                                            class="bento-focus-project font-semibold">CheckInPass</strong>)</span>
                                 </li>
-                                <li class="flex items-start gap-3">
+                                <li class="flex items-start gap-2.5">
                                     <span
-                                        class="flex items-center justify-center w-5 h-5 rounded bg-accent/15 border border-accent/30 text-accent font-bold text-[9px] shrink-0 mt-0.5">02</span>
-                                    <span class="leading-relaxed text-zinc-300">Mastering System Design & Scalable
-                                        Web Architectures</span>
+                                        class="flex items-center justify-center w-5 h-5 rounded bg-accent/15 border border-accent/30 text-accent font-bold text-[10px] shrink-0 mt-0.5">02</span>
+                                    <span class="leading-snug text-zinc-300">Mastering Distributed System Design &amp;
+                                        Scalable Web Architectures</span>
                                 </li>
-                                <li class="flex items-start gap-3">
+                                <li class="flex items-start gap-2.5">
                                     <span
-                                        class="flex items-center justify-center w-5 h-5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-400 font-bold text-[9px] shrink-0 mt-0.5">03</span>
-                                    <span class="leading-relaxed text-zinc-300">Hardware & Embedded Robotics Builds
-                                        (Piezoelectric, Floor Cleaner)</span>
+                                        class="flex items-center justify-center w-5 h-5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-400 font-bold text-[10px] shrink-0 mt-0.5">03</span>
+                                    <span class="leading-snug text-zinc-300">Hardware &amp; Embedded Robotics Builds
+                                        (<strong class="bento-focus-project font-semibold">Piezoelectric Tile</strong>,
+                                        <strong class="bento-focus-project font-semibold">Floor Cleaner</strong>)</span>
                                 </li>
-                                <li class="flex items-start gap-3">
+                                <li class="flex items-start gap-2.5">
                                     <span
-                                        class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[9px] shrink-0 mt-0.5">04</span>
-                                    <span class="leading-relaxed text-zinc-300">Competitive Programming & DSA
-                                        Problem Solving (LeetCode 250+)</span>
+                                        class="flex items-center justify-center w-5 h-5 rounded bg-primary/15 border border-primary/30 text-primary font-bold text-[10px] shrink-0 mt-0.5">04</span>
+                                    <span class="leading-snug text-zinc-300">Competitive Programming &amp; DSA Problem
+                                        Solving (<strong class="bento-focus-project font-semibold">LeetCode 250+
+                                            solved</strong>)</span>
                                 </li>
                             </ul>
                         </div>
-
-                        <!-- Tech Stack Widget -->
-                        <div class="bento-card-dark bento-border-glow p-4 sm:p-6 flex flex-col justify-between flex-1 min-h-[140px]"
-                            data-aos="fade-up" data-aos-delay="100">
-                            <span
-                                class="text-xs font-mono text-primary uppercase tracking-widest block mb-2.5 sm:mb-4">Tech
-                                Stack</span>
-                            <div class="grid grid-cols-4 gap-3">
-                                <div class="tech-stack-tile" data-tech="javascript" title="JavaScript"><i
-                                        class="devicon-javascript-plain text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="react" title="React"><i
-                                        class="devicon-react-original text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="nodejs" title="Node.js"><i
-                                        class="devicon-nodejs-plain text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="postgresql" title="PostgreSQL"><i
-                                        class="devicon-postgresql-plain text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="mongodb" title="MongoDB"><i
-                                        class="devicon-mongodb-plain text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="tailwind" title="Tailwind CSS"><i
-                                        class="devicon-tailwindcss-original text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="java" title="Java"><i
-                                        class="devicon-java-plain text-lg colored"></i></div>
-                                <div class="tech-stack-tile" data-tech="github" title="GitHub"><i
-                                        class="devicon-github-original text-lg text-zinc-400"></i></div>
-                            </div>
+                        <div
+                            class="mt-4 pt-3 border-t border-borderSpec/30 flex items-center justify-between text-xs font-mono text-zinc-400">
+                            <span>Open to Full-Stack &amp; AI Roles</span>
+                            <a href="#contact"
+                                class="text-secondary hover:underline font-bold inline-flex items-center gap-1">Get In
+                                Touch &rarr;</a>
                         </div>
                     </div>
 
-                    <!-- ROW 2: Featured Case Study, GitHub Activity, Coding Journey, Philosophy -->
-                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-6 flex flex-col justify-between min-h-[220px]"
+                    <!-- Tech Stack Widget -->
+                    <div id="core-tech-stack-card"
+                        class="lg:col-span-5 bento-card-dark bento-border-glow p-5 sm:p-5 flex flex-col justify-between"
+                        data-aos="fade-up" data-aos-delay="50">
+                        <div>
+                            <div class="flex items-center justify-between mb-2.5">
+                                <span class="text-xs font-mono text-primary uppercase tracking-widest block">// CORE
+                                    TECH STACK</span>
+                                <span class="text-[10px] font-mono text-zinc-500">8 Primary Technologies</span>
+                            </div>
+                            <div class="grid grid-cols-4 gap-2.5 my-1.5">
+                                <div class="tech-stack-tile" data-tech="javascript" title="JavaScript"><i
+                                        class="devicon-javascript-plain text-xl colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="react" title="React"><i
+                                        class="devicon-react-original text-xl colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="nodejs" title="Node.js"><i
+                                        class="devicon-nodejs-plain text-xl colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="postgresql" title="PostgreSQL"><i
+                                        class="devicon-postgresql-plain text-xl colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="mongodb" title="MongoDB"><i
+                                        class="devicon-mongodb-plain text-xl colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="tailwind" title="Tailwind CSS"><i
+                                        class="devicon-tailwindcss-original text-xl colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="java" title="Java"><i
+                                        class="devicon-java-plain text-xl colored"></i></div>
+                                <div class="tech-stack-tile" data-tech="github" title="GitHub"><i
+                                        class="devicon-github-original text-xl text-zinc-400"></i></div>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-4 pt-3 border-t border-borderSpec/30 flex items-center justify-between text-xs font-mono text-zinc-400">
+                            <span>Explore detailed stack</span>
+                            <a href="#skills"
+                                class="text-primary hover:underline font-bold inline-flex items-center gap-1">All Skills
+                                &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- ROW 2: Featured Product & GitHub Activity (6 + 6 = 12 Cols) -->
+                    <div class="lg:col-span-6 bento-card-dark bento-border-glow p-6 sm:p-7 flex flex-col justify-between min-h-[220px]"
                         data-aos="fade-up">
-                        <span class="text-[10px] font-mono text-acc3 uppercase tracking-widest block mb-4">Featured
-                            Product</span>
+                        <span class="text-[10px] font-mono text-acc3 uppercase tracking-widest block mb-4">// FEATURED
+                            PRODUCT</span>
                         <div>
                             <h3 class="text-xl font-display font-bold text-white mb-2">FinPulse AI</h3>
                             <p class="text-xs text-zinc-400 leading-relaxed mb-4">
@@ -379,112 +373,102 @@
                             </p>
                         </div>
                         <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
-                            class="text-xs font-mono text-primary hover:underline">View Source &rarr;</a>
+                            class="text-xs font-mono text-primary hover:underline font-bold inline-flex items-center gap-1">View
+                            Source &rarr;</a>
                     </div>
 
-                    <!-- Mobile/Tablet Side-by-Side Wrapper for GitHub Activity & Coding Journey -->
-                    <div class="col-span-1 lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <!-- GitHub Activity Card -->
-                        <div class="bento-card-dark bento-border-glow p-4 sm:p-6 flex flex-col justify-between min-h-[220px]"
-                            data-aos="fade-up" data-aos-delay="50">
-                            <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">GitHub
-                                Activity</span>
-                            <div class="flex items-baseline justify-between mb-1">
-                                <div class="flex items-baseline gap-2">
-                                    <span
-                                        class="text-3xl sm:text-4xl font-display font-black text-[#111111] github-month-commits">95</span>
-                                    <span class="text-[11px] text-[#52525B] font-mono font-semibold leading-tight flex flex-col">
-                                        <span>commits this</span>
-                                        <span>month</span>
-                                    </span>
-                                </div>
-                                <span class="text-[11px] text-[#111111] font-mono font-bold bg-[#F4F4F5] border border-black/[0.08] px-2 py-0.5 rounded-md"><span
-                                        class="github-total-contributions">342</span> yearly</span>
-                            </div>
-                            <div id="github-bento-grid" class="github-grid my-2"></div>
-                            <a href="https://github.com/Vans30m" target="_blank"
-                                class="text-xs font-mono text-muted hover:text-white transition-colors flex items-center justify-between pt-1">
-                                <span>View Profile &rarr;</span>
-                            </a>
-                        </div>
-
-                        <!-- Coding Journey Card -->
-                        <div class="bento-card-dark bento-border-glow p-4 sm:p-6 flex flex-col justify-between min-h-[220px]"
-                            data-aos="fade-up" data-aos-delay="100">
-                            <span class="text-[10px] font-mono text-primary uppercase tracking-widest block mb-3">Coding
-                                Journey</span>
-                            <div class="space-y-3 text-[11px] font-mono">
-                                <div
-                                    class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
-                                    <span class="text-zinc-400">
-                                        LeetCode
-                                    </span>
-                                    <span class="text-white font-bold bg-acc3/10 px-2 py-0.5 rounded text-[10px]"
-                                        data-count="250" data-suffix="+">0+</span>
-                                </div>
-                                <div
-                                    class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
-                                    <span class="text-zinc-400">
-                                        CodeChef
-                                    </span>
-                                    <span class="text-white font-bold bg-accent/10 px-2 py-0.5 rounded text-[10px]">★
-                                        Coder</span>
-                                </div>
-                                <div
-                                    class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
-                                    <span class="text-zinc-400">
-                                        GeeksforGeeks
-                                    </span>
-                                    <span
-                                        class="text-white font-bold bg-primary/10 px-2 py-0.5 rounded text-[10px]">Rank
-                                        +</span>
-                                </div>
-                            </div>
-                            <a href="#about" class="text-xs font-mono text-accent hover:underline mt-2">All Profiles
-                                &rarr;</a>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-2 bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-between min-h-[110px] lg:min-h-[220px]"
-                        data-aos="fade-up" data-aos-delay="150">
-                        <span
-                            class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2 sm:mb-4">Philosophy</span>
-                        <p class="text-xs italic text-zinc-300 leading-relaxed font-serif">
-                            "I don't build projects. I build products."
-                        </p>
-                    </div>
-
-                    <!-- ROW 3: Stats, Open Source, Let's Connect -->
-                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-between min-h-[120px] lg:min-h-[160px]"
-                        data-aos="fade-up">
-                        <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">Quick
-                            Stats</span>
-                        <div class="grid grid-cols-2 gap-2.5 text-center font-mono">
-                            <div class="p-3 bg-[#F4F4F5] rounded-xl border border-black/[0.08] shadow-sm"><span class="text-xl font-bold text-[#111111] block">6</span><span class="text-[10px] text-[#71717A] font-semibold">Projects</span></div>
-                            <div class="p-3 bg-[#F4F4F5] rounded-xl border border-black/[0.08] shadow-sm"><span class="text-xl font-bold text-[#111111] block">15+</span><span class="text-[10px] text-[#71717A] font-semibold">Repos</span></div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-between min-h-[120px] lg:min-h-[160px]"
+                    <!-- GitHub Activity Card -->
+                    <div class="lg:col-span-6 bento-card-dark bento-border-glow p-6 sm:p-7 flex flex-col justify-between min-h-[220px]"
                         data-aos="fade-up" data-aos-delay="50">
-                        <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">Open
-                            Source</span>
-                        <p class="text-[10px] text-zinc-400 leading-relaxed font-mono">
-                            Contributing to community libraries.
-                        </p>
+                        <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">// GITHUB
+                            ACTIVITY</span>
+                        <div class="flex items-baseline justify-between mb-1">
+                            <div class="flex items-baseline gap-2">
+                                <span
+                                    class="text-3xl sm:text-4xl font-display font-black text-[#111111] github-month-commits">95</span>
+                                <span
+                                    class="text-[11px] text-[#52525B] font-mono font-semibold leading-tight flex flex-col">
+                                    <span>commits this</span>
+                                    <span>month</span>
+                                </span>
+                            </div>
+                            <span
+                                class="text-[11px] text-[#111111] font-mono font-bold bg-[#F4F4F5] border border-black/[0.08] px-2 py-0.5 rounded-md"><span
+                                    class="github-total-contributions">342</span> yearly</span>
+                        </div>
+                        <div id="github-bento-grid" class="github-grid my-2"></div>
                         <a href="https://github.com/Vans30m" target="_blank"
-                            class="text-xs font-mono text-primary hover:underline">View Repos &rarr;</a>
+                            class="text-xs font-mono text-muted hover:text-white transition-colors flex items-center justify-between pt-1">
+                            <span>View Profile &rarr;</span>
+                        </a>
                     </div>
 
-                    <div class="lg:col-span-4 bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-between min-h-[120px] lg:min-h-[160px]"
+                    <!-- ROW 3: Coding Journey, Quick Stats, Philosophy (5 + 3 + 4 = 12 Cols) -->
+                    <!-- Coding Journey Card -->
+                    <div class="lg:col-span-5 bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-between"
                         data-aos="fade-up" data-aos-delay="100">
-                        <span class="text-[10px] font-mono text-primary uppercase tracking-widest block mb-2">Let's
-                            Connect</span>
-                        <p class="text-[10px] text-zinc-400 leading-relaxed font-mono">
-                            Open for software roles.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-accent hover:underline">Get In Touch
-                            &rarr;</a>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[10px] font-mono text-primary uppercase tracking-widest block">// CODING
+                                JOURNEY</span>
+                            <span class="text-[10px] font-mono text-zinc-500">Competitive Metrics</span>
+                        </div>
+                        <div class="space-y-2.5 text-[11px] font-mono">
+                            <div
+                                class="flex items-center justify-between p-2.5 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
+                                <span class="text-zinc-400">LeetCode</span>
+                                <span class="text-white font-bold bg-acc3/10 px-2.5 py-0.5 rounded text-[11px]"
+                                    data-count="250" data-suffix="+">250+</span>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-2.5 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
+                                <span class="text-zinc-400">CodeChef</span>
+                                <span class="text-white font-bold bg-accent/10 px-2.5 py-0.5 rounded text-[11px]">★
+                                    Coder</span>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-2.5 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
+                                <span class="text-zinc-400">GeeksforGeeks</span>
+                                <span class="text-white font-bold bg-primary/10 px-2.5 py-0.5 rounded text-[11px]">Rank
+                                    +</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-borderSpec/20 flex items-center justify-between">
+                            <a href="#about"
+                                class="text-xs font-mono text-accent hover:underline font-bold inline-flex items-center gap-1">All
+                                Profiles &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats Card -->
+                    <div class="lg:col-span-3 bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-between"
+                        data-aos="fade-up" data-aos-delay="150">
+                        <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">// QUICK STATS</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5 my-auto text-center font-mono">
+                            <div class="p-3 bg-[#F4F4F5] rounded-xl border border-black/[0.08] shadow-sm"><span
+                                    class="text-xl font-bold text-[#111111] block">6</span><span
+                                    class="text-[10px] text-[#71717A] font-semibold">Projects</span></div>
+                            <div class="p-3 bg-[#F4F4F5] rounded-xl border border-black/[0.08] shadow-sm"><span
+                                    class="text-xl font-bold text-[#111111] block">15+</span><span
+                                    class="text-[10px] text-[#71717A] font-semibold">Repos</span></div>
+                        </div>
+                        <div class="pt-3 border-t border-borderSpec/20 text-[10px] font-mono text-zinc-500 text-center">
+                            // Metrics &amp; Repos
+                        </div>
+                    </div>
+
+                    <!-- Philosophy Card -->
+                    <div id="philosophy-card" class="lg:col-span-4 bento-card-dark bento-border-glow p-5 sm:p-6 flex flex-col justify-between"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <span class="text-[10px] font-mono text-accent uppercase tracking-widest block mb-2">//
+                            PHILOSOPHY</span>
+                        <div class="my-auto py-2">
+                            <p class="text-base sm:text-lg italic text-zinc-100 leading-snug font-serif">
+                                "I don't build projects. I build products."
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-borderSpec/20 text-[10px] font-mono text-zinc-500">
+                            // Intent &amp; precision
+                        </div>
                     </div>
 
                 </div>
@@ -590,30 +574,31 @@
             <div class="relative" data-aos="fade-up" data-aos-delay="100">
                 <div id="project-carousel" class="carousel-container">
 
-                    <!-- Card 1: CheckinPass -->
+                    <!-- Card 1: CheckInPass -->
                     <div class="carousel-card" data-category="projects">
                         <div>
                             <div class="carousel-card-img-wrapper p-4 flex items-center justify-center bg-[#F4F4F5]">
-                                <img src="assets/Images/checkinpass_logo.webp" alt="CheckinPass Logo"
+                                <img src="assets/Images/CheckInPass_logo.webp" alt="CheckInPass Logo"
                                     class="object-contain w-3/4 h-3/4" loading="lazy">
                             </div>
                             <div class="flex justify-between items-start mb-4">
-                                <a href="https://checkinpass.onrender.com/" target="_blank"
+                                <a href="https://CheckInPass.onrender.com/" target="_blank"
                                     class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full hover:bg-accent/20 transition-all">LIVE</a>
                                 <span class="text-[10px] text-muted font-mono">SYSTEM_01</span>
                             </div>
-                            <h3 class="text-2xl font-display font-bold text-white mb-2">CheckinPass</h3>
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">CheckInPass</h3>
                             <p class="text-xs text-muted leading-relaxed">
                                 Digital access & verification platform streamlining event entry, dynamic pass
                                 generation, and access control.
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                            <span class="text-[11px] font-mono text-primary leading-tight">React.js • Node.js<br>Express • MongoDB</span>
+                            <span class="text-[11px] font-mono text-primary leading-tight">React.js • Node.js<br>Express
+                                • MongoDB</span>
                             <div class="flex items-center gap-3 shrink-0">
                                 <a href="https://github.com/Vans30m/CheckInPass" target="_blank"
                                     class="text-xs font-mono text-muted hover:underline">Source ↗</a>
-                                <a href="https://checkinpass.onrender.com/" target="_blank"
+                                <a href="https://CheckInPass.onrender.com/" target="_blank"
                                     class="text-xs font-mono text-accent hover:underline">Demo ↗</a>
                             </div>
                         </div>
@@ -638,7 +623,8 @@
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                            <span class="text-[11px] font-mono text-primary leading-tight">TypeScript • React<br>Node • LLM APIs</span>
+                            <span class="text-[11px] font-mono text-primary leading-tight">TypeScript • React<br>Node •
+                                LLM APIs</span>
                             <div class="flex items-center gap-3 shrink-0">
                                 <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
                                     class="text-xs font-mono text-muted hover:underline">Source ↗</a>
@@ -668,7 +654,8 @@
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                            <span class="text-[11px] font-mono text-primary leading-tight">React.js • Node.js<br>Tailwind • LLM APIs</span>
+                            <span class="text-[11px] font-mono text-primary leading-tight">React.js •
+                                Node.js<br>Tailwind • LLM APIs</span>
                             <div class="flex items-center gap-3 shrink-0">
                                 <a href="https://github.com/Vans30m/xplorism-travel-ai" target="_blank"
                                     class="text-xs font-mono text-muted hover:underline">Source ↗</a>
@@ -698,7 +685,8 @@
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                            <span class="text-[11px] font-mono text-primary leading-tight">React.js • Node.js<br>Express • MongoDB</span>
+                            <span class="text-[11px] font-mono text-primary leading-tight">React.js • Node.js<br>Express
+                                • MongoDB</span>
                             <div class="flex items-center gap-3 shrink-0">
                                 <a href="https://github.com/Vans30m/FocusoraHQ" target="_blank"
                                     class="text-xs font-mono text-muted hover:underline">Source ↗</a>
@@ -728,7 +716,8 @@
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                            <span class="text-[11px] font-mono text-primary leading-tight">HTML5 • CSS3<br>JavaScript • Chart.js</span>
+                            <span class="text-[11px] font-mono text-primary leading-tight">HTML5 • CSS3<br>JavaScript •
+                                Chart.js</span>
                             <div class="flex items-center gap-3 shrink-0">
                                 <a href="https://github.com/Vans30m/fitness-planet" target="_blank"
                                     class="text-xs font-mono text-muted hover:underline">Source ↗</a>
@@ -759,8 +748,9 @@
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                            <span class="text-[11px] font-mono text-primary leading-tight">C++ • ROS<br>Sensors • Firmware</span>
-                            <div class="flex items-center gap-3 shrink-0">
+                            <span class="text-[11px] font-mono text-primary leading-tight">C++ • ROS<br>Sensors •
+                                Firmware</span>
+                            <div class="flex items-center gap-3 shrink-0 whitespace-nowrap">
                                 <a href="https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot" target="_blank"
                                     class="text-xs font-mono text-muted hover:underline">Source ↗</a>
                                 <a href="html/floorcleaning-details.html"
@@ -790,11 +780,11 @@
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                            <span class="text-[11px] font-mono text-primary leading-tight">C++ • Arduino<br>Sensors • Microgrid</span>
-                            <div class="flex items-center gap-3 shrink-0">
+                            <span class="text-[11px] font-mono text-primary leading-tight">C++ • Arduino<br>Sensors •
+                                Microgrid</span>
+                            <div class="flex items-center gap-3 shrink-0 whitespace-nowrap">
                                 <a href="https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO"
-                                    target="_blank" class="text-xs font-mono text-muted hover:underline">Source
-                                    ↗</a>
+                                    target="_blank" class="text-xs font-mono text-muted hover:underline">Source ↗</a>
                                 <a href="html/piezoelectric-details.html"
                                     class="text-xs font-mono text-accent hover:underline">Case Study ↗</a>
                             </div>
@@ -949,7 +939,7 @@
             <p class="section-desc mb-12 text-muted" data-aos="fade-up" data-aos-delay="100">Live competitive
                 programming metrics, algorithmic problem-solving records, and developer profile links.</p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
                 <!-- LeetCode Card -->
                 <a href="https://leetcode.com/u/Vans30m/" target="_blank"
                     class="bentocard p-4 sm:p-4.5 flex flex-col justify-between relative overflow-hidden group cursor-pointer border border-black/[0.08] hover:border-black/25 transition-all block"
@@ -974,63 +964,6 @@
                             <div class="flex justify-between items-center pt-1 border-t border-black/[0.05]">
                                 <span class="metric-label text-[#71717A] text-[10px]">Primary Focus:</span>
                                 <span class="metric-val text-[#111111] text-[11px] font-semibold">DSA</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- GitHub Card -->
-                <a href="https://github.com/Vans30m" target="_blank"
-                    class="bentocard p-4 sm:p-4.5 flex flex-col justify-between relative overflow-hidden group cursor-pointer border border-black/[0.08] hover:border-black/25 transition-all block"
-                    data-aos="fade-up" data-aos-delay="150">
-                    <div>
-                        <div class="flex justify-between items-center mb-2.5">
-                            <div class="w-7 h-7 flex items-center justify-center text-[#111111] text-base">
-                                <i class="devicon-github-original text-lg"></i>
-                            </div>
-                            <i
-                                class="fa-solid fa-arrow-up-right-from-square text-xs text-[#71717A] group-hover:text-[#111111] transition-colors"></i>
-                        </div>
-                        <h3 class="text-base font-display font-bold text-[#111111] mb-0.5">GitHub</h3>
-                        <p class="text-[11px] text-[#52525B] mb-2.5 font-mono">Open Source & Repositories</p>
-                        <div
-                            class="metric-box bg-[#F4F4F5] border border-black/[0.06] rounded-lg p-2 space-y-1 font-mono text-xs">
-                            <div class="flex justify-between items-center">
-                                <span class="metric-label text-[#71717A] text-[10px]">Yearly Commits:</span>
-                                <span class="metric-val text-[#111111] font-bold text-xs" data-count="342">342</span>
-                            </div>
-                            <div class="flex justify-between items-center pt-1 border-t border-black/[0.05]">
-                                <span class="metric-label text-[#71717A] text-[10px]">Developer Handle:</span>
-                                <span class="metric-val text-[#111111] text-[11px] font-semibold">@Vans30m</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- LinkedIn Card -->
-                <a href="https://linkedin.com/in/vansh-thakur-vans30m/" target="_blank"
-                    class="bentocard p-4 sm:p-4.5 flex flex-col justify-between relative overflow-hidden group cursor-pointer border border-black/[0.08] hover:border-black/25 transition-all block"
-                    data-aos="fade-up" data-aos-delay="200">
-                    <div>
-                        <div class="flex justify-between items-center mb-2.5">
-                            <div class="w-7 h-7 flex items-center justify-center text-[#111111] text-base">
-                                <i class="devicon-linkedin-plain text-lg"></i>
-                            </div>
-                            <i
-                                class="fa-solid fa-arrow-up-right-from-square text-xs text-[#71717A] group-hover:text-[#111111] transition-colors"></i>
-                        </div>
-                        <h3 class="text-base font-display font-bold text-[#111111] mb-0.5">LinkedIn</h3>
-                        <p class="text-[11px] text-[#52525B] mb-2.5 font-mono">Professional Network</p>
-                        <div
-                            class="metric-box bg-[#F4F4F5] border border-black/[0.06] rounded-lg p-2 space-y-1 font-mono text-xs">
-                            <div class="flex justify-between items-center">
-                                <span class="metric-label text-[#71717A] text-[10px]">Availability:</span>
-                                <span class="metric-val text-[#111111] font-bold text-[11px]">SWE 2026 Roles</span>
-                            </div>
-                            <div class="flex justify-between items-center pt-1 border-t border-black/[0.05]">
-                                <span class="metric-label text-[#71717A] text-[10px]">Network Type:</span>
-                                <span class="metric-val text-[#111111] text-[11px] font-semibold">Engineers &
-                                    Tech</span>
                             </div>
                         </div>
                     </div>
@@ -1143,7 +1076,7 @@
                         data-phase="1">
                         <div
                             class="flex items-center justify-between text-xs font-mono text-[#71717A] pb-3 border-b border-black/[0.06] mb-4">
-                            <span class="font-bold text-[#111111]">2024 // Phase 01</span>
+                            <span class="font-bold text-[#111111]">2024</span>
                             <span>Embedded Systems & C++</span>
                         </div>
                         <div class="flex items-start justify-between gap-4 mb-4">
@@ -1154,19 +1087,35 @@
                         </div>
                         <!-- Impact / Key Metric Highlights -->
                         <div
-                            class="grid grid-cols-2 gap-4 my-4 p-3.5 bg-[#F4F4F5] rounded-xl border border-black/[0.05]">
-                            <div>
-                                <span class="text-base sm:text-lg font-display font-bold text-[#111111] block">Core C++
-                                    & DSA</span>
-                                <span class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Pointers,
-                                    memory management & algorithmic foundations</span>
+                            class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 p-3 sm:p-3.5 bg-[#F4F4F5] rounded-xl border border-black/[0.05]">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-black/[0.06] flex items-center justify-center shrink-0 border border-black/[0.06]">
+                                    <i class="devicon-cplusplus-plain text-xl sm:text-2xl text-[#111111]"></i>
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] block leading-snug">Core
+                                        C &amp; Python</span>
+                                    <span
+                                        class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Pointers,
+                                        memory management &amp; algorithmic foundations</span>
+                                </div>
                             </div>
-                            <div>
-                                <span class="text-base sm:text-lg font-display font-bold text-[#111111] block">Hardware
-                                    Build</span>
-                                <span
-                                    class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Piezoelectric
-                                    energy harvesting tile via Arduino</span>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-1">
+                                    <img src="assets/Images/piezoPlates.webp" alt="Piezoelectric Tile"
+                                        class="w-full h-full object-cover rounded">
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] block leading-snug">Hardware
+                                        Build</span>
+                                    <span
+                                        class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Piezoelectric
+                                        energy harvesting tile via Arduino</span>
+                                </div>
                             </div>
                         </div>
                         <p class="text-xs sm:text-sm text-[#52525B] leading-relaxed mb-4">
@@ -1186,7 +1135,7 @@
                         data-phase="2">
                         <div
                             class="flex items-center justify-between text-xs font-mono text-[#71717A] pb-3 border-b border-black/[0.06] mb-4">
-                            <span class="font-bold text-[#111111]">2024 - 2025 // Phase 02</span>
+                            <span class="font-bold text-[#111111]">2024 - 2025</span>
                             <span>Interfaces & Robotics</span>
                         </div>
                         <div class="flex items-start justify-between gap-4 mb-4">
@@ -1196,18 +1145,35 @@
                             <span class="text-sm font-mono text-[#71717A] shrink-0 mt-1">↗</span>
                         </div>
                         <div
-                            class="grid grid-cols-2 gap-4 my-4 p-3.5 bg-[#F4F4F5] rounded-xl border border-black/[0.05]">
-                            <div>
-                                <span class="text-base sm:text-lg font-display font-bold text-[#111111] block">Web
-                                    UI</span>
-                                <span class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Fitness
-                                    Planet tracking dashboard with responsive telemetry</span>
+                            class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 p-3 sm:p-3.5 bg-[#F4F4F5] rounded-xl border border-black/[0.05]">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-1">
+                                    <img src="assets/Images/fitnessplanet_logo.webp" alt="Fitness Planet"
+                                        class="w-full h-full object-cover rounded">
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] block leading-snug">Web
+                                        UI</span>
+                                    <span
+                                        class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Fitness
+                                        Planet tracking dashboard with responsive telemetry</span>
+                                </div>
                             </div>
-                            <div>
-                                <span class="text-base sm:text-lg font-display font-bold text-[#111111] block">Firmware
-                                    System</span>
-                                <span class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Floor
-                                    cleaning robot with sensor path-planning</span>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-1">
+                                    <img src="assets/Images/floorRobot.webp" alt="Floor Robot"
+                                        class="w-full h-full object-cover rounded">
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] block leading-snug">Firmware
+                                        System</span>
+                                    <span class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Floor
+                                        cleaning robot with sensor path-planning</span>
+                                </div>
                             </div>
                         </div>
                         <p class="text-xs sm:text-sm text-[#52525B] leading-relaxed mb-4">
@@ -1227,7 +1193,7 @@
                         data-phase="3">
                         <div
                             class="flex items-center justify-between text-xs font-mono text-[#71717A] pb-3 border-b border-black/[0.06] mb-4">
-                            <span class="font-bold text-[#111111]">2025 // Phase 03</span>
+                            <span class="font-bold text-[#111111]">2025</span>
                             <span>Full-Stack & Cloud Deployments</span>
                         </div>
                         <div class="flex items-start justify-between gap-4 mb-4">
@@ -1237,19 +1203,34 @@
                             <span class="text-sm font-mono text-[#71717A] shrink-0 mt-1">↗</span>
                         </div>
                         <div
-                            class="grid grid-cols-2 gap-4 my-4 p-3.5 bg-[#F4F4F5] rounded-xl border border-black/[0.05]">
-                            <div>
-                                <span
-                                    class="text-base sm:text-lg font-display font-bold text-[#111111] block">FocusoraHQ</span>
-                                <span
-                                    class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Productivity
-                                    workspace with synchronized study rooms</span>
+                            class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 p-3 sm:p-3.5 bg-[#F4F4F5] rounded-xl border border-black/[0.05]">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-1">
+                                    <img src="assets/Images/focusorahq_Logo.webp" alt="FocusoraHQ"
+                                        class="w-full h-full object-cover rounded">
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] block leading-snug">FocusoraHQ</span>
+                                    <span
+                                        class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Productivity
+                                        workspace with synchronized study rooms</span>
+                                </div>
                             </div>
-                            <div>
-                                <span class="text-base sm:text-lg font-display font-bold text-[#111111] block">Data
-                                    Pipelines</span>
-                                <span class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">MongoDB
-                                    schemas, RESTful Express APIs, and JWT auth</span>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-black/[0.06] flex items-center justify-center shrink-0 border border-black/[0.06]">
+                                    <i class="devicon-mongodb-plain text-xl sm:text-2xl text-[#111111]"></i>
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] block leading-snug">Data
+                                        Pipelines</span>
+                                    <span
+                                        class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">MongoDB
+                                        schemas, RESTful Express APIs, and JWT auth</span>
+                                </div>
                             </div>
                         </div>
                         <p class="text-xs sm:text-sm text-[#52525B] leading-relaxed mb-4">
@@ -1269,7 +1250,7 @@
                         data-phase="4">
                         <div
                             class="flex items-center justify-between text-xs font-mono text-[#71717A] pb-3 border-b border-black/[0.06] mb-4">
-                            <span class="font-bold text-[#111111]">2025 - 2026 // Phase 04</span>
+                            <span class="font-bold text-[#111111]">2025 - 2026</span>
                             <span>AI Platforms & Live Telemetry</span>
                         </div>
                         <div class="flex items-start justify-between gap-4 mb-4">
@@ -1279,19 +1260,35 @@
                             <span class="text-sm font-mono text-[#71717A] shrink-0 mt-1">↗</span>
                         </div>
                         <div
-                            class="grid grid-cols-2 gap-4 my-4 p-3.5 bg-[#F4F4F5] rounded-xl border border-black/[0.05]">
-                            <div>
-                                <span class="text-base sm:text-lg font-display font-bold text-[#111111] block">FinPulse
-                                    AI</span>
-                                <span class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">High-speed
-                                    financial data parsing and anomaly detection</span>
+                            class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 p-3 sm:p-3.5 bg-[#F4F4F5] rounded-xl border border-black/[0.05]">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-1">
+                                    <img src="assets/Images/finpulseai_Logo.webp" alt="FinPulse AI"
+                                        class="w-full h-full object-cover rounded">
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] block leading-snug">FinPulse
+                                        AI</span>
+                                    <span
+                                        class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">High-speed
+                                        financial data parsing and anomaly detection</span>
+                                </div>
                             </div>
-                            <div>
-                                <span
-                                    class="text-base sm:text-lg font-display font-bold text-[#111111] block">Xplorism</span>
-                                <span
-                                    class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">AI-assisted
-                                    travel booking with instant itinerary logic</span>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-1">
+                                    <img src="assets/Images/xplorism_logo.webp" alt="Xplorism"
+                                        class="w-full h-full object-cover rounded">
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] block leading-snug">Xplorism</span>
+                                    <span
+                                        class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">AI-assisted
+                                        travel booking with instant itinerary logic</span>
+                                </div>
                             </div>
                         </div>
                         <p class="text-xs sm:text-sm text-[#52525B] leading-relaxed mb-4">
@@ -1311,32 +1308,47 @@
                         data-phase="5">
                         <div
                             class="flex items-center justify-between text-xs font-mono text-[#71717A] pb-3 border-b border-black/[0.06] mb-4">
-                            <span class="font-bold text-[#111111]">2026 - 2027 // Phase 05</span>
+                            <span class="font-bold text-[#111111]">2026 - 2027</span>
                             <span>System Design & Placement Cycle</span>
                         </div>
                         <div class="flex items-start justify-between gap-4 mb-4">
                             <h3 class="text-lg sm:text-xl font-display font-bold text-[#111111] leading-snug">
-                                Advanced System Design & CheckinPass Ecosystem
+                                Advanced System Design & CheckInPass Ecosystem
                             </h3>
                             <span class="text-sm font-mono text-[#71717A] shrink-0 mt-1">↗</span>
                         </div>
                         <div
-                            class="grid grid-cols-2 gap-4 my-4 p-3.5 bg-[#F4F4F5] rounded-xl border border-black/[0.05]">
-                            <div>
-                                <span
-                                    class="text-base sm:text-lg font-display font-bold text-[#111111] block">CheckinPass</span>
-                                <span class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Event
-                                    admission verification & dynamic ticket pass system</span>
+                            class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 p-3 sm:p-3.5 bg-[#F4F4F5] rounded-xl border border-black/[0.05]">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-1">
+                                    <img src="assets/Images/CheckInPass_logo.webp" alt="CheckInPass"
+                                        class="w-full h-full object-contain rounded">
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] block leading-snug">CheckInPass</span>
+                                    <span class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">Event
+                                        admission verification & dynamic ticket pass system</span>
+                                </div>
                             </div>
-                            <div>
-                                <span class="text-base sm:text-lg font-display font-bold text-[#111111] block">250+
-                                    DSA</span>
-                                <span class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">High-rate
-                                    LeetCode / GFG problem-solving and systems mastery</span>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-black/[0.06] flex items-center justify-center shrink-0 border border-black/[0.06]">
+                                    <i class="fa-solid fa-code text-xl sm:text-2xl text-[#111111]"></i>
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] block leading-snug">250+
+                                        DSA</span>
+                                    <span
+                                        class="text-[11px] text-[#52525B] font-mono leading-tight block mt-0.5">High-rate
+                                        LeetCode / GFG problem-solving and systems mastery</span>
+                                </div>
                             </div>
                         </div>
                         <p class="text-xs sm:text-sm text-[#52525B] leading-relaxed mb-4">
-                            Optimizing core system configurations while building CheckinPass. Rigorous review of
+                            Optimizing core system configurations while building CheckInPass. Rigorous review of
                             distributed architectures, high-concurrency event handling, and technical milestones for SWE
                             2026 roles.
                         </p>
@@ -1381,9 +1393,10 @@
                 </div>
                 <div class="w-full md:w-auto">
                     <a href="https://github.com/Vans30m" target="_blank"
-                        class="inline-flex w-full md:w-auto justify-center items-center gap-2 px-5 py-3 rounded-xl bg-surface border border-borderSpec text-sm font-mono text-muted hover:text-textMain hover:border-primary/30 hover:bg-primary/5 transition-all">
-                        View GitHub Profile
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        class="github-profile-btn inline-flex w-full md:w-auto justify-center items-center gap-2.5 px-6 py-3.5 rounded-xl border text-sm font-mono transition-all">
+                        <span>View GitHub Profile</span>
+                        <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                     </a>
@@ -1441,18 +1454,14 @@
                                     class="text-[11px] font-mono text-[#71717A] uppercase tracking-wider block mb-2">Connect
                                     With Me</span>
                                 <div class="flex items-center gap-3">
-                                    <a href="https://github.com/Vans30m" target="_blank" aria-label="GitHub"
+                                    <a href="mailto:vthakur.290905@gmail.com" aria-label="Email"
                                         class="w-8 h-8 rounded-full bg-white border border-black/15 flex items-center justify-center text-[#111111] hover:bg-black hover:text-white transition-all text-sm shadow-sm">
-                                        <i class="devicon-github-original"></i>
+                                        <i class="fa-solid fa-envelope"></i>
                                     </a>
                                     <a href="https://linkedin.com/in/vansh-thakur-vans30m/" target="_blank"
                                         aria-label="LinkedIn"
                                         class="w-8 h-8 rounded-full bg-white border border-black/15 flex items-center justify-center text-[#111111] hover:bg-black hover:text-white transition-all text-sm shadow-sm">
                                         <i class="devicon-linkedin-plain"></i>
-                                    </a>
-                                    <a href="mailto:vthakur.290905@gmail.com" aria-label="Email"
-                                        class="w-8 h-8 rounded-full bg-white border border-black/15 flex items-center justify-center text-[#111111] hover:bg-black hover:text-white transition-all text-sm shadow-sm">
-                                        <i class="fa-solid fa-envelope"></i>
                                     </a>
                                 </div>
                             </div>
@@ -1574,8 +1583,8 @@
                                 class="hover:text-black hover:pl-1 transition-all inline-flex items-center gap-1">FinPulse
                                 AI <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
                         </li>
-                        <li><a href="https://checkinpass.onrender.com/" target="_blank"
-                                class="hover:text-black hover:pl-1 transition-all inline-flex items-center gap-1">CheckinPass
+                        <li><a href="https://CheckInPass.onrender.com/" target="_blank"
+                                class="hover:text-black hover:pl-1 transition-all inline-flex items-center gap-1">CheckInPass
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
                         </li>
                         <li><a href="https://xplorism.vercel.app" target="_blank"
