@@ -1,90 +1,126 @@
-# Vansh Thakur | Software Engineer & Creator Portfolio
+# Vansh Thakur | Full-Stack & AI Software Engineer Portfolio
 
-Welcome to the official repository of my premium developer portfolio. Designed with a bento-grid layout, dark-mode styling, glassmorphic accents, and smooth scroll animations, this portfolio showcases my engineering milestones, technical competencies, and ongoing projects.
+[![Portfolio Live](https://img.shields.io/badge/Live_Demo-Portfolio-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vansh-thakur.vercel.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/vansh-thakur-vans30m/)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Vans30m)
 
----
-
-## Key Highlights
-
-*   **Premium Interactive UX:** Features a responsive layout with custom mouse-tracking hover glows, a filterable infinite-scroll project carousel, and integrated scroll triggers (AOS).
-*   **Live GitHub Contributions integration:** Dynamically fetches and renders contribution stats using the jogruber GitHub contributions API.
-*   **Contact Synchronization:** Fully configured asynchronous correspondence dispatch via EmailJS integration.
-*   **Fully Responsive:** Crafted carefully using a combination of Tailwind CSS layout helpers and vanilla CSS optimization for high-density displays.
+Welcome to the official repository of my developer portfolio. Built as an editorial, high-performance web experience featuring a technical bento-grid dashboard, dark/light theme switching, interactive command palette (`Ctrl + K`), dynamic project filtering, and real-time telemetry.
 
 ---
 
-## Repository Structure
+## ✨ Key Features & Highlights
+
+* **🎨 Editorial Bento-Grid & Studio Layout:** Aesthetic technical interface with glassmorphism, subtle micro-gradients, card tilt hover effects, and responsive layout.
+* **🌓 Dual Theme Support:** Seamless dark and light mode toggle with state persistence across sessions.
+* **⌨️ Global Command Palette (`Ctrl + K`):** Quick keyboard-driven navigation, section jumping, project search, and quick links.
+* **🚀 Filterable Project Carousel:** Tabbed filtering across full-stack web applications and hardware/embedded systems with live demo and source code links.
+* **📈 Live GitHub Contributions & Telemetry:** Dynamic GitHub metrics via API integration displaying commit activity and stats.
+* **💻 Interactive Coding Profiles:** Live statistics tracking problem-solving across LeetCode (250+ solved), GeeksforGeeks (180+ solved), HackerRank (4★), and Codeforces.
+* **✉️ Direct Asynchronous Inquiries:** Contact dispatch configured with EmailJS with feedback states and local clipboard quick-copy.
+* **⚡ Production-Grade Security & Headers:** Pre-configured `vercel.json` with Content Security Policy (CSP), frame guards, and strict referrer policies.
+
+---
+
+## 🗂️ Project Structure
 
 ```text
-├── assets/                  # Visual showcases, diagrams, and project images
+Portfolio/
+├── assets/                  # High-res showcases, diagrams, logos, and project media
+│   └── Images/              # Project screenshots, portraits, and branding assets
 ├── css/
-│   ├── style.css            # Custom design tokens, transitions, and component layout
-│   └── responsive.css       # Mobile-first layouts and viewport overrides
+│   ├── style.css            # Custom CSS tokens, animations, themes, and bento styling
+│   └── responsive.css       # Responsive breakpoints, layout overrides, and mobile navigation
 ├── html/
-│   ├── index.html           # Principal bento-grid dashboard structure
-│   ├── floorcleaning-details.html # Deep dive: ROS autonomous firmware
-│   └── piezoelectric-details.html # Deep dive: Microgrid energy harvesting
-└── js/
-    └── script.js            # Core UI/UX event router, handlers, and API telemetry
+│   ├── floorcleaning-details.html # Deep-dive case study: ROS autonomous cleaning robot
+│   └── piezoelectric-details.html # Deep-dive case study: Microgrid piezoelectric tile
+├── js/
+│   └── script.js            # Core UI controller, theme toggle, carousel, and API telemetry
+├── index.html               # Main portfolio landing page and bento architecture
+├── package.json             # Project metadata, dependencies, and local dev scripts
+├── vercel.json              # Deployment configuration, redirects, and CSP security headers
+└── README.md                # Repository documentation
 ```
 
 ---
 
-## Tech Stack & Architecture
+## 🛠️ Tech Stack & Architecture
 
-### Core Frontend Stack
-*   **Markup & Layout:** HTML5 (Semantic Structure) & [Tailwind CSS](https://tailwindcss.com/)
-*   **Styles & Theming:** Custom Vanilla CSS (tokens, radial micro-gradients, glassmorphic layouts, and 3D card flips)
-*   **Interactivity:** Vanilla JavaScript (Scroll anchors, local clipboard controls, dynamic DOM generation)
+### Frontend & Styling
+* **Markup:** Semantic HTML5
+* **CSS Framework:** [Tailwind CSS](https://tailwindcss.com/) (CDN utility layer)
+* **Custom Styles:** Vanilla CSS3 (CSS Variables/tokens, glassmorphism, responsive flex/grid)
+* **Typography:** Hanken Grotesk, Space Grotesk, Geist Mono, Instrument Serif
 
-### Third-Party Services & APIs
-*   **Animations:** [AOS (Animate on Scroll)](https://michalsnik.github.io/aos/)
-*   **Icons:** [Devicons CDN](https://devicons.github.io/devicon/)
-*   **Form Dispatch:** [EmailJS SDK](https://www.emailjs.com/)
-*   **Metrics Feed:** [GitHub Contributions API](https://github-contributions-api.jogruber.de/)
+### Interactivity & Logic
+* **JavaScript:** Vanilla ES6+ (IntersectionObserver, Command Palette modal, carousel drag/wheel scroll, clipboard API)
+* **Icons:** [FontAwesome 6](https://fontawesome.com/) & [Devicon](https://devicon.dev/)
+* **Animations:** Custom CSS keyframes and IntersectionObserver-driven scroll reveals
 
----
-
-## Projects Highlighted
-
-1.  **FinPulse AI (System 01 - In Development)**
-    *   *Role:* AI Full Stack Developer
-    *   *Description:* High-speed financial tracking platform utilizing semantic models to map, analyze, and categorize real-time data flows.
-2.  **[Xplorism](https://xplorism.vercel.app) (System 02 - Live)**
-    *   *Role:* Full-Stack AI Developer
-    *   *Description:* AI-assisted travel & hotel booking ecosystem featuring real-time room availability, interactive mapping, dynamic pricing, and instant itinerary generation.
-3.  **FocusoraHQ (System 03 - Live)**
-    *   *Role:* React & WebSocket Developer
-    *   *Description:* Unified, high-performance focus workspace and productivity dashboard featuring synchronized real-time sessions.
-4.  **[Fitness Planet](https://fitness-planet-vans.vercel.app/) (System 04 - Live)**
-    *   *Role:* Web Developer
-    *   *Description:* Robust workout tracker and fitness telemetry dashboard to collect user metrics and render progress indicator arrays.
-5.  **[Autonomous Floor Robot](html/floorcleaning-details.html) (System 05 - Hardware)**
-    *   *Role:* Firmware Engineer (C++ & ROS)
-    *   *Description:* Intelligent pathfinding firmware stack for obstacle-avoiding autonomous cleaning robots utilizing sensor fusion.
-6.  **[Piezoelectric Plates](html/piezoelectric-details.html) (System 06 - Hardware)**
-    *   *Role:* Embedded Systems Developer (Embedded C)
-    *   *Description:* Microgrid voltage harvesting telemetry network monitoring energy generation from piezoelectric sensors.
+### APIs & Third-Party Integrations
+* **Contact Dispatch:** [EmailJS SDK](https://www.emailjs.com/)
+* **Contributions Feed:** [GitHub Contributions API](https://github-contributions-api.jogruber.de/)
+* **Analytics & Hosting:** [Vercel](https://vercel.com/) with `@vercel/analytics` and edge security headers
 
 ---
 
-## Local Run Instructions
+## 💼 Featured Engineering Projects
 
-Since this is a fully static client-side web application, running it locally is incredibly simple:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/Vans30m/Portfolio.git
-    cd Portfolio
-    ```
-2.  **Open the application:**
-    *   Double-click `html/index.html` to run directly in any web browser, OR
-    *   Serve using a local development server extension like **Live Server** in VS Code to ensure smooth local routing and script execution.
+| System | Project | Role / Stack | Status / Links |
+| :--- | :--- | :--- | :--- |
+| **SYSTEM_01** | **CheckInPass** | Full-Stack Developer<br>`React.js` • `Node.js` • `Express` • `MongoDB` | [Source](https://github.com/Vans30m/CheckInPass) • [Demo](https://CheckInPass.onrender.com/) |
+| **SYSTEM_02** | **FinPulse AI** | AI Full-Stack Developer<br>`TypeScript` • `React` • `Node.js` • `LLM APIs` | [Source](https://github.com/Vans30m/FinPulse-AI) • [Demo](https://finpulse-frontend-jrsd.onrender.com/pulse) |
+| **SYSTEM_03** | **Xplorism** | Full-Stack AI Developer<br>`React.js` • `Node.js` • `Tailwind` • `LLM APIs` | [Source](https://github.com/Vans30m/xplorism-travel-ai) • [Demo](https://xplorism.vercel.app) |
+| **SYSTEM_04** | **FocusoraHQ** | React & WebSocket Developer<br>`React.js` • `Node.js` • `Express` • `MongoDB` | [Source](https://github.com/Vans30m/FocusoraHQ) • [Demo](https://focusorahq.vercel.app) |
+| **SYSTEM_05** | **Fitness Planet** | Frontend Developer<br>`HTML5` • `CSS3` • `JavaScript` • `Chart.js` | [Source](https://github.com/Vans30m/fitness-planet) • [Demo](https://fitness-planet-vans.vercel.app/) |
+| **SYSTEM_06** | **Autonomous Floor Robot** | Firmware Engineer<br>`C++` • `ROS` • `Obstacle Avoidance` • `Sensors` | [Source](https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot) • [Case Study](html/floorcleaning-details.html) |
+| **SYSTEM_07** | **Piezoelectric Energy Tile** | Embedded Systems Developer<br>`C++` • `Arduino` • `Sensors` • `Microgrid` | [Source](https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO) • [Case Study](html/piezoelectric-details.html) |
 
 ---
 
-## Contact & Network
+## 📊 Coding & Algorithmic Profiles
 
-*   **LinkedIn:** [linkedin.com/in/vansh-thakur-vans30m/](https://linkedin.com/in/vansh-thakur-vans30m/)
-*   **GitHub:** [github.com/Vans30m](https://github.com/Vans30m)
-*   **Email:** [vthakur.290905@gmail.com](mailto:vthakur.290905@gmail.com)
+* **LeetCode:** [leetcode.com/u/Vans30m/](https://leetcode.com/u/Vans30m/) — 250+ Problems Solved (Data Structures & Algorithms)
+* **GeeksforGeeks:** [geeksforgeeks.org/user/vans30m/](https://www.geeksforgeeks.org/user/vans30m/) — 180+ Problems Solved (Core CS & Algorithms)
+* **HackerRank:** [hackerrank.com/profile/vans30m](https://www.hackerrank.com/profile/vans30m) — 4★ Problem Solving (C++, Python)
+* **Codeforces:** [codeforces.com/profile/vthakur.290905](https://codeforces.com/profile/vthakur.290905) — Contests & Speed Problem Solving
+
+---
+
+## 🚀 Running Locally
+
+Because this is a modern client-side web application, you can run it locally with any lightweight HTTP server:
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Vans30m/Portfolio.git
+cd Portfolio
+```
+
+### 2. Launch local server
+Using Node / npx:
+```bash
+# Using Python built-in server (as defined in package.json)
+npm run dev
+
+# Or using npx serve
+npx serve .
+```
+
+### 3. Open in Browser
+Visit `http://localhost:8000` (or `http://localhost:3000`) in your web browser.
+
+---
+
+## 📬 Contact & Connect
+
+* **Website:** [vansh-thakur.vercel.app](https://vansh-thakur.vercel.app)
+* **LinkedIn:** [linkedin.com/in/vansh-thakur-vans30m/](https://linkedin.com/in/vansh-thakur-vans30m/)
+* **GitHub:** [@Vans30m](https://github.com/Vans30m)
+* **Email:** [vthakur.290905@gmail.com](mailto:vthakur.290905@gmail.com)
+
+---
+
+<p align="center">
+  <sub>Designed & Developed by Vansh Thakur</sub>
+</p>

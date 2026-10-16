@@ -41,6 +41,59 @@ html[data-theme="dark"] ::selection {
     -webkit-text-fill-color: #0B0B0C !important;
 }
 
+/* View Transitions Smooth Reveal (Completely opaque, no transparency cross-fade & navbar excluded) */
+#navbar,
+#mobile-menu,
+#hero-portrait-card,
+#hero-portrait-card * {
+    view-transition-name: none !important;
+}
+
+::view-transition {
+    pointer-events: none;
+}
+
+::view-transition-group(root) {
+    animation-duration: 0.65s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1;
+}
+
+::view-transition-old(root) {
+    animation: none !important;
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    animation: none !important;
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+    z-index: 2;
+}
+
+/* Ensure navbar always stays fixed and strictly above everything with 100% solid background */
+#navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 999999 !important;
+    background-color: #F3F3F1 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+html[data-theme="dark"] #navbar {
+    background-color: #0B0B0C !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+#mobile-menu {
+    z-index: 999998 !important;
+}
+
 /* ==========================================================================
    Dark Mode Theme Overrides
    ========================================================================== */
@@ -119,7 +172,6 @@ html[data-theme="dark"] #cmd-palette-btn kbd {
     color: #E4E4E7 !important;
 }
 
-html[data-theme="dark"] .hero-name-type,
 html[data-theme="dark"] .editorial-serif {
     color: #FFFFFF !important;
 }
@@ -178,12 +230,53 @@ html[data-theme="dark"] .bento-card-dark span.uppercase {
     color: #A1A1AA !important;
 }
 
+/* Hero CTA Button: Black background + White text in Light Mode */
+#hero-connect-btn,
+.hero-connect-btn {
+    background-color: #18181B !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    color: #FFFFFF !important;
+}
+
+#hero-connect-btn:hover,
+.hero-connect-btn:hover {
+    background-color: #000000 !important;
+}
+
+#hero-connect-btn span,
+#hero-connect-btn i,
+.hero-connect-btn span,
+.hero-connect-btn i {
+    color: #FFFFFF !important;
+}
+
+/* Hero CTA Button: White background + Pure Black text in Dark Mode */
+html[data-theme="dark"] #hero-connect-btn,
+html[data-theme="dark"] .hero-connect-btn {
+    background-color: #FFFFFF !important;
+    border-color: transparent !important;
+    color: #111111 !important;
+}
+
+html[data-theme="dark"] #hero-connect-btn:hover,
+html[data-theme="dark"] .hero-connect-btn:hover {
+    background-color: #F4F4F5 !important;
+}
+
+html[data-theme="dark"] #hero-connect-btn span,
+html[data-theme="dark"] #hero-connect-btn i,
+html[data-theme="dark"] .hero-connect-btn span,
+html[data-theme="dark"] .hero-connect-btn i {
+    color: #111111 !important;
+}
+
 html[data-theme="dark"] .tech-stack-tile i:not(:hover),
 html[data-theme="dark"] .tech-stack-tile i.colored:not(:hover),
 html[data-theme="dark"] .tech-stack-tile i.text-zinc-400:not(:hover),
-html[data-theme="dark"] #skills i:not(:hover),
-html[data-theme="dark"] #skills [class*="devicon-"]:not(:hover),
-html[data-theme="dark"] #skills [class*="fa-"]:not(:hover),
+html[data-theme="dark"] #skills li:not(:hover) i,
+html[data-theme="dark"] #skills li:not(:hover) [class*="devicon-"],
+html[data-theme="dark"] #skills li:not(:hover) [class*="fa-"],
+html[data-theme="dark"] #skills:not(:hover) i,
 html[data-theme="dark"] .connect-icon i:not(:hover) {
     color: #E4E4E7 !important;
 }
@@ -270,7 +363,7 @@ html[data-theme="dark"] .github-month-commits {
 }
 
 html[data-theme="dark"] span.github-total-contributions,
-html[data-theme="dark"] span.github-total-contributions + span,
+html[data-theme="dark"] span.github-total-contributions+span,
 html[data-theme="dark"] .bento-card-dark span:has(> .github-total-contributions) {
     background-color: #1F1F23 !important;
     border-color: rgba(255, 255, 255, 0.12) !important;
@@ -399,7 +492,7 @@ html[data-theme="dark"] .carousel-card .border-t {
     border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-html[data-theme="dark"] .carousel-card .border-t > span,
+html[data-theme="dark"] .carousel-card .border-t>span,
 html[data-theme="dark"] .carousel-card .border-t span.text-primary {
     color: #71717A !important;
 }
@@ -511,7 +604,8 @@ html[data-theme="dark"] #skills li {
 
 html[data-theme="dark"] #skills li span {
     color: #D4D4D8 !important;
-    font-size: 0.8125rem !important; /* 13px: distinctively smaller than headings */
+    font-size: 0.8125rem !important;
+    /* 13px: distinctively smaller than headings */
     font-weight: 500 !important;
     letter-spacing: normal !important;
 }
@@ -594,7 +688,7 @@ html[data-theme="dark"] #mobile-menu-footer a:hover {
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
-/* Problem Solving & Profiles (#about) Dark Overrides */
+/* Problem Solving & Profiles (#about) Dark & Brand Overrides */
 html[data-theme="dark"] #about .bentocard {
     background-color: #141416 !important;
     border-color: rgba(255, 255, 255, 0.09) !important;
@@ -605,25 +699,125 @@ html[data-theme="dark"] #about .bentocard:hover {
 }
 
 html[data-theme="dark"] #about h3,
-html[data-theme="dark"] #about .text-\[\#111111\],
-html[data-theme="dark"] #about .metric-val {
-    color: #F4F2EE !important;
+html[data-theme="dark"] #about .bentocard h3,
+html[data-theme="dark"] #about .text-\[\#111111\] {
+    color: #FFFFFF !important;
 }
 
 html[data-theme="dark"] #about p,
-html[data-theme="dark"] #about .text-\[\#52525B\],
+html[data-theme="dark"] #about .text-\[\#52525B\] {
+    color: #D4D4D8 !important;
+}
+
 html[data-theme="dark"] #about .metric-label,
 html[data-theme="dark"] #about .text-\[\#71717A\] {
     color: #A1A1AA !important;
 }
 
 html[data-theme="dark"] #about .metric-box {
-    background-color: #1C1C1F !important;
-    border-color: rgba(255, 255, 255, 0.08) !important;
+    background-color: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 html[data-theme="dark"] #about div[class*="border-t"] {
     border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Subtle Platform Accent & Glow on Coding Profile Cards */
+.profile-card-leetcode:hover {
+    box-shadow: 0 10px 30px -10px rgba(255, 161, 22, 0.25) !important;
+    border-color: rgba(255, 161, 22, 0.45) !important;
+}
+
+.profile-card-gfg:hover {
+    box-shadow: 0 10px 30px -10px rgba(47, 141, 70, 0.25) !important;
+    border-color: rgba(47, 141, 70, 0.45) !important;
+}
+
+.profile-card-hackerrank:hover {
+    box-shadow: 0 10px 30px -10px rgba(0, 234, 100, 0.25) !important;
+    border-color: rgba(0, 168, 67, 0.45) !important;
+}
+
+.profile-card-codeforces:hover {
+    box-shadow: 0 10px 30px -10px rgba(31, 138, 203, 0.25) !important;
+    border-color: rgba(31, 138, 203, 0.45) !important;
+}
+
+html[data-theme="dark"] .profile-card-hackerrank:hover {
+    border-color: rgba(0, 234, 100, 0.45) !important;
+}
+
+/* Platform Badges & Icons in Dark Mode - Crisp, High Contrast & Perfectly Visible */
+html[data-theme="dark"] .profile-card-leetcode .profile-icon-badge {
+    background: rgba(255, 161, 22, 0.12) !important;
+    border: 1px solid rgba(255, 161, 22, 0.4) !important;
+    box-shadow: none !important;
+}
+
+html[data-theme="dark"] .profile-card-leetcode .profile-icon-badge,
+html[data-theme="dark"] .profile-card-leetcode .profile-icon-badge i {
+    color: #FFA116 !important;
+    font-size: 1rem !important;
+}
+
+html[data-theme="dark"] .profile-card-gfg .profile-icon-badge {
+    background: rgba(46, 204, 113, 0.12) !important;
+    border: 1px solid rgba(46, 204, 113, 0.4) !important;
+    color: #2ECC71 !important;
+    font-weight: 700 !important;
+    box-shadow: none !important;
+}
+
+html[data-theme="dark"] .profile-card-hackerrank .profile-icon-badge {
+    background: rgba(0, 234, 100, 0.12) !important;
+    border: 1px solid rgba(0, 234, 100, 0.4) !important;
+    box-shadow: none !important;
+}
+
+html[data-theme="dark"] .profile-card-hackerrank .profile-icon-badge,
+html[data-theme="dark"] .profile-card-hackerrank .profile-icon-badge i {
+    color: #00EA64 !important;
+    font-size: 1.15rem !important;
+}
+
+html[data-theme="dark"] .profile-card-codeforces .profile-icon-badge {
+    background: rgba(56, 189, 248, 0.12) !important;
+    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    box-shadow: none !important;
+}
+
+html[data-theme="dark"] .profile-card-codeforces .profile-icon-badge,
+html[data-theme="dark"] .profile-card-codeforces .profile-icon-badge i {
+    color: #38BDF8 !important;
+    font-size: 1rem !important;
+}
+
+/* Crisp Clean White Text & Numbers (No Glow) */
+html[data-theme="dark"] #about .bentocard h3 {
+    color: #FFFFFF !important;
+    text-shadow: none !important;
+}
+
+html[data-theme="dark"] #about .bentocard p {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #about .metric-val,
+html[data-theme="dark"] #about .profile-card-leetcode .metric-val,
+html[data-theme="dark"] #about .profile-card-gfg .metric-val,
+html[data-theme="dark"] #about .profile-card-hackerrank .metric-val,
+html[data-theme="dark"] #about .profile-card-codeforces .metric-val {
+    color: #FFFFFF !important;
+    text-shadow: none !important;
+}
+
+html[data-theme="dark"] #about .metric-label {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #about .bentocard:hover h3 {
+    color: #FFFFFF !important;
 }
 
 /* Engineering Journey (#journey) Dark Overrides */
@@ -1119,11 +1313,14 @@ body {
 }
 
 #navbar {
-    background-color: var(--nav-bg) !important;
-    border-bottom: 1px solid var(--nav-border) !important;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background-color: #F3F3F1 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
     transition: background-color 0.35s ease, border-color 0.35s ease;
+}
+
+html[data-theme="dark"] #navbar {
+    background-color: #0B0B0C !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
 #mobile-menu {
@@ -1429,10 +1626,7 @@ footer svg {
     stroke: #111111 !important;
 }
 
-.hero-name-type {
-    text-shadow: none !important;
-    color: #111111 !important;
-}
+/* totop */
 
 .nav-link {
     color: #4B5563 !important;
@@ -1773,115 +1967,198 @@ html[data-theme="dark"] .bento-focus-project {
     transform: scale(1.2) translateY(-1px) !important;
 }
 
-/* Individual Brand Colors on Hover */
-#skills li:hover .devicon-java-plain {
+/* Individual Brand Colors on Hover - Works when hovering on icon, row, or text */
+#skills li:hover .devicon-java-plain,
+#skills li:hover i.devicon-java-plain,
+html[data-theme="dark"] #skills li:hover .devicon-java-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-java-plain {
     color: #EA2D2E !important;
     filter: drop-shadow(0 3px 8px rgba(234, 45, 46, 0.45)) !important;
 }
 
-#skills li:hover .devicon-javascript-plain {
+#skills li:hover .devicon-javascript-plain,
+#skills li:hover i.devicon-javascript-plain,
+html[data-theme="dark"] #skills li:hover .devicon-javascript-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-javascript-plain {
     color: #F7DF1E !important;
     filter: drop-shadow(0 3px 8px rgba(247, 223, 30, 0.45)) !important;
 }
 
-#skills li:hover .devicon-cplusplus-plain {
+#skills li:hover .devicon-cplusplus-plain,
+#skills li:hover i.devicon-cplusplus-plain,
+html[data-theme="dark"] #skills li:hover .devicon-cplusplus-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-cplusplus-plain {
     color: #00599C !important;
     filter: drop-shadow(0 3px 8px rgba(0, 89, 156, 0.45)) !important;
 }
 
-#skills li:hover .devicon-python-plain {
+#skills li:hover .devicon-python-plain,
+#skills li:hover i.devicon-python-plain,
+html[data-theme="dark"] #skills li:hover .devicon-python-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-python-plain {
     color: #3776AB !important;
     filter: drop-shadow(0 3px 8px rgba(55, 118, 171, 0.45)) !important;
 }
 
-#skills li:hover .devicon-typescript-plain {
+#skills li:hover .devicon-typescript-plain,
+#skills li:hover i.devicon-typescript-plain,
+html[data-theme="dark"] #skills li:hover .devicon-typescript-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-typescript-plain {
     color: #3178C6 !important;
     filter: drop-shadow(0 3px 8px rgba(49, 120, 198, 0.45)) !important;
 }
 
-#skills li:hover .devicon-react-original {
+#skills li:hover .devicon-react-original,
+#skills li:hover i.devicon-react-original,
+html[data-theme="dark"] #skills li:hover .devicon-react-original,
+html[data-theme="dark"] #skills li:hover i.devicon-react-original {
     color: #61DAFB !important;
     filter: drop-shadow(0 3px 8px rgba(97, 218, 251, 0.45)) !important;
 }
 
 #skills li:hover .devicon-tailwindcss-original,
-#skills li:hover .devicon-tailwindcss-plain {
+#skills li:hover .devicon-tailwindcss-plain,
+#skills li:hover i.devicon-tailwindcss-original,
+#skills li:hover i.devicon-tailwindcss-plain,
+html[data-theme="dark"] #skills li:hover .devicon-tailwindcss-original,
+html[data-theme="dark"] #skills li:hover .devicon-tailwindcss-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-tailwindcss-original,
+html[data-theme="dark"] #skills li:hover i.devicon-tailwindcss-plain {
     color: #38BDF8 !important;
     filter: drop-shadow(0 3px 8px rgba(56, 189, 248, 0.45)) !important;
 }
 
-#skills li:hover .devicon-html5-plain {
+#skills li:hover .devicon-html5-plain,
+#skills li:hover i.devicon-html5-plain,
+html[data-theme="dark"] #skills li:hover .devicon-html5-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-html5-plain {
     color: #E34F26 !important;
     filter: drop-shadow(0 3px 8px rgba(227, 79, 38, 0.45)) !important;
 }
 
-#skills li:hover .devicon-css3-plain {
+#skills li:hover .devicon-css3-plain,
+#skills li:hover i.devicon-css3-plain,
+html[data-theme="dark"] #skills li:hover .devicon-css3-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-css3-plain {
     color: #1572B6 !important;
     filter: drop-shadow(0 3px 8px rgba(21, 114, 182, 0.45)) !important;
 }
 
-#skills li:hover .devicon-nodejs-plain {
+#skills li:hover .devicon-nodejs-plain,
+#skills li:hover i.devicon-nodejs-plain,
+html[data-theme="dark"] #skills li:hover .devicon-nodejs-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-nodejs-plain {
     color: #339933 !important;
     filter: drop-shadow(0 3px 8px rgba(51, 153, 51, 0.45)) !important;
 }
 
-#skills li:hover .devicon-express-original {
+#skills li:hover .devicon-express-original,
+#skills li:hover i.devicon-express-original {
     color: #000000 !important;
     filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35)) !important;
 }
 
-#skills li:hover .devicon-fastapi-plain {
+html[data-theme="dark"] #skills li:hover .devicon-express-original,
+html[data-theme="dark"] #skills li:hover i.devicon-express-original {
+    color: #FFFFFF !important;
+    filter: drop-shadow(0 3px 8px rgba(255, 255, 255, 0.45)) !important;
+}
+
+#skills li:hover .devicon-fastapi-plain,
+#skills li:hover i.devicon-fastapi-plain,
+html[data-theme="dark"] #skills li:hover .devicon-fastapi-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-fastapi-plain {
     color: #059669 !important;
     filter: drop-shadow(0 3px 8px rgba(5, 150, 105, 0.45)) !important;
 }
 
-#skills li:hover .devicon-postgresql-plain {
+#skills li:hover .devicon-postgresql-plain,
+#skills li:hover i.devicon-postgresql-plain,
+html[data-theme="dark"] #skills li:hover .devicon-postgresql-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-postgresql-plain {
     color: #4169E1 !important;
     filter: drop-shadow(0 3px 8px rgba(65, 105, 225, 0.45)) !important;
 }
 
-#skills li:hover .devicon-mongodb-plain {
+#skills li:hover .devicon-mongodb-plain,
+#skills li:hover i.devicon-mongodb-plain,
+html[data-theme="dark"] #skills li:hover .devicon-mongodb-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-mongodb-plain {
     color: #47A248 !important;
     filter: drop-shadow(0 3px 8px rgba(71, 162, 72, 0.45)) !important;
 }
 
-#skills li:hover .fa-database {
+#skills li:hover .fa-database,
+#skills li:hover i.fa-database,
+html[data-theme="dark"] #skills li:hover .fa-database,
+html[data-theme="dark"] #skills li:hover i.fa-database {
     color: #9333EA !important;
     filter: drop-shadow(0 3px 8px rgba(147, 51, 234, 0.45)) !important;
 }
 
-#skills li:hover .devicon-git-plain {
+#skills li:hover .devicon-git-plain,
+#skills li:hover i.devicon-git-plain,
+html[data-theme="dark"] #skills li:hover .devicon-git-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-git-plain {
     color: #F05032 !important;
     filter: drop-shadow(0 3px 8px rgba(240, 80, 50, 0.45)) !important;
 }
 
-#skills li:hover .fa-robot {
+#skills li:hover .fa-robot,
+#skills li:hover i.fa-robot,
+html[data-theme="dark"] #skills li:hover .fa-robot,
+html[data-theme="dark"] #skills li:hover i.fa-robot {
     color: #10B981 !important;
     filter: drop-shadow(0 3px 8px rgba(16, 185, 129, 0.45)) !important;
 }
 
-#skills li:hover .fa-cloud-arrow-up {
+#skills li:hover .fa-cloud-arrow-up,
+#skills li:hover i.fa-cloud-arrow-up {
     color: #000000 !important;
     filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35)) !important;
 }
 
-#skills li:hover .fa-server {
+html[data-theme="dark"] #skills li:hover .fa-cloud-arrow-up,
+html[data-theme="dark"] #skills li:hover i.fa-cloud-arrow-up {
+    color: #FFFFFF !important;
+    filter: drop-shadow(0 3px 8px rgba(255, 255, 255, 0.45)) !important;
+}
+
+#skills li:hover .fa-server,
+#skills li:hover i.fa-server,
+html[data-theme="dark"] #skills li:hover .fa-server,
+html[data-theme="dark"] #skills li:hover i.fa-server {
     color: #14B8A6 !important;
     filter: drop-shadow(0 3px 8px rgba(20, 184, 166, 0.45)) !important;
 }
 
-#skills li:hover .devicon-vscode-plain {
+#skills li:hover .devicon-vscode-plain,
+#skills li:hover i.devicon-vscode-plain,
+html[data-theme="dark"] #skills li:hover .devicon-vscode-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-vscode-plain {
     color: #007ACC !important;
     filter: drop-shadow(0 3px 8px rgba(0, 122, 204, 0.45)) !important;
 }
 
-/* Skill titles (Java, React.js, Node.js, etc.) - soft, lower-contrast black to distinguish from bold category headings */
+/* Make list items interactive cursor */
+#skills li {
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Skill titles (Java, React.js, Node.js, etc.) */
 #skills li span {
     color: #52525B !important;
     font-size: 0.8125rem !important;
     font-weight: 500 !important;
     letter-spacing: normal !important;
     transition: color 0.2s ease !important;
+}
+
+html[data-theme="dark"] #skills li span,
+html[data-theme="dark"] #skills li span.text-white,
+html[data-theme="dark"] #skills li span.text-\[\#111111\] {
+    color: #D4D4D8 !important;
 }
 
 #skills li span.text-white,
@@ -1895,6 +2172,12 @@ html[data-theme="dark"] .bento-focus-project {
 #skills li:hover span.text-white,
 #skills li:hover span.text-\[\#111111\] {
     color: #111111 !important;
+}
+
+html[data-theme="dark"] #skills li:hover span,
+html[data-theme="dark"] #skills li:hover span.text-white,
+html[data-theme="dark"] #skills li:hover span.text-\[\#111111\] {
+    color: #FFFFFF !important;
 }
 
 /* Skill tags (OOP / Core, Advanced, Styling, etc.) - Make clearly visible */
@@ -1947,13 +2230,18 @@ html[data-theme="dark"] .bento-focus-project {
     border-radius: 0.75rem !important;
 }
 
-.carousel-card-img-wrapper img {
-    filter: none !important;
+/* Project Images Only: High Monochrome by default, full authentic color on card hover */
+.carousel-card-img-wrapper img,
+.featured-project-img {
+    filter: grayscale(100%) contrast(110%) brightness(0.95) !important;
+    transition: filter 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.carousel-card:hover .carousel-card-img-wrapper img {
-    filter: none !important;
-    transform: scale(1.04) !important;
+.carousel-card:hover .carousel-card-img-wrapper img,
+.featured-project-img-wrapper:hover .featured-project-img,
+.bentocard:has(.featured-project-img):hover .featured-project-img {
+    filter: grayscale(0%) contrast(100%) brightness(1) !important;
+    transform: scale(1.03) !important;
 }
 
 /* Card typography & metadata */
@@ -1994,7 +2282,7 @@ html[data-theme="dark"] .bento-focus-project {
     margin-top: auto !important;
 }
 
-.carousel-card .border-t > span {
+.carousel-card .border-t>span {
     color: #52525B !important;
     font-weight: 500 !important;
     font-size: 11px !important;
@@ -2004,7 +2292,7 @@ html[data-theme="dark"] .bento-focus-project {
     line-height: 1.4 !important;
 }
 
-.carousel-card .border-t > div {
+.carousel-card .border-t>div {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-end !important;
@@ -2034,27 +2322,82 @@ html[data-theme="dark"] .bento-focus-project {
     text-decoration: underline !important;
 }
 
-/* Filter Tab Pills */
-.filter-tab {
-    background: #FFFFFF !important;
-    border: 1px solid rgba(0, 0, 0, 0.12) !important;
-    color: #52525B !important;
+/* Filter Tab Pills Segmented Capsule (Seamless Light & Dark Mode) */
+.filter-pills-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #5A5D62 !important;
+    padding: 5px 6px;
+    border-radius: 9999px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.filter-pills-capsule .filter-tab {
+    position: relative;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #D1D5DB !important;
+    font-size: 0.82rem !important;
     font-weight: 500 !important;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+    padding: 7px 18px !important;
+    border-radius: 9999px !important;
+    cursor: pointer !important;
+    transition: all 0.22s ease !important;
+    box-shadow: none !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
 }
 
-.filter-tab:hover {
-    background: #F4F4F5 !important;
-    border-color: rgba(0, 0, 0, 0.25) !important;
-    color: #111111 !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important;
-}
-
-.filter-tab.active {
-    background: #111111 !important;
-    border-color: #111111 !important;
+.filter-pills-capsule .filter-tab:hover {
     color: #FFFFFF !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.filter-pills-capsule .filter-tab.active {
+    background: #1F2023 !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Light Mode Overrides for Section Header & Capsule */
+#other-systems-preview .section-title {
+    color: #111111 !important;
+}
+
+#other-systems-preview .section-desc {
+    color: #52525B !important;
+}
+
+/* Dark theme preservation */
+html[data-theme="dark"] #other-systems-preview .section-title {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #other-systems-preview .section-desc {
+    color: #8E8E93 !important;
+}
+
+html[data-theme="dark"] .filter-pills-capsule {
+    background: #2C2D31 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .filter-pills-capsule .filter-tab {
+    color: #9CA3AF !important;
+}
+
+html[data-theme="dark"] .filter-pills-capsule .filter-tab:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+html[data-theme="dark"] .filter-pills-capsule .filter-tab.active {
+    background: #111215 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
 }
 
 html {
@@ -2122,13 +2465,10 @@ html {
     right: 0 !important;
     width: 100% !important;
     max-width: none !important;
-    z-index: 1000 !important;
-    background-color: rgba(243, 243, 241, 0.92) !important;
-    backdrop-filter: blur(20px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    z-index: 999999 !important;
+    background-color: #F3F3F1 !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
     transform: translate3d(0, 0, 0);
-    will-change: transform;
 }
 
 #mobile-menu {
@@ -2617,81 +2957,413 @@ html {
 }
 
 /* ==========================================================================
-   Engineering Journey Stacking Cards Deck (Studio Monochrome)
+   Engineering Journey Metro Line & Station Router (Compact Monochrome Theme)
    ========================================================================== */
-.journey-stack-container {
-    width: 100%;
-}
-
-.journey-cards-deck {
-    padding-bottom: 1.5rem;
-}
-
-.journey-card {
-    background: #FFFFFF !important;
+.metro-journey-container {
+    background-color: #FFFFFF !important;
     border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    border-radius: 1rem !important;
-    box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
-    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.03) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
     padding: 1rem 1.25rem !important;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
 }
 
-.journey-card:hover {
-    border-color: rgba(0, 0, 0, 0.22) !important;
-    box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.08) !important;
+@media (min-width: 640px) {
+    .metro-journey-container {
+        padding: 1.25rem 1.5rem !important;
+    }
 }
 
-/* Stacking layered offsets for desktop scroll */
-.journey-card[data-phase="1"] { z-index: 10; }
-.journey-card[data-phase="2"] { z-index: 11; }
-.journey-card[data-phase="3"] { z-index: 12; }
-.journey-card[data-phase="4"] { z-index: 13; }
-.journey-card[data-phase="5"] { z-index: 14; }
+.metro-station-node {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-#journey .journey-card h3 {
+/* Metro Track Line & Dynamic Scroll Progress */
+.metro-track-line {
+    background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+html[data-theme="dark"] .metro-track-line {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.metro-track-progress {
+    background-color: #111111 !important;
+    border-radius: 9999px;
+    transition: height 0.12s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    will-change: height;
+}
+
+html[data-theme="dark"] .metro-track-progress {
+    background-color: #FFFFFF !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Metro Station Badge (Node Marker) - Compact & Small */
+.metro-station-badge {
+    background-color: #FFFFFF !important;
     color: #111111 !important;
-    font-weight: 700 !important;
-    font-size: 1rem !important;
+    border: 1.5px solid rgba(0, 0, 0, 0.14) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    width: 1.65rem !important;
+    height: 1.65rem !important;
+    font-size: 10px !important;
 }
 
-#journey .journey-card p {
+.metro-station-badge:hover {
+    border-color: rgba(0, 0, 0, 0.5) !important;
+    transform: scale(1.05);
+}
+
+.metro-station-badge.station-passed {
+    border-color: #111111 !important;
+}
+
+html[data-theme="dark"] .metro-station-badge.station-passed {
+    border-color: #FFFFFF !important;
+}
+
+.metro-station-node.active .metro-station-badge {
+    background-color: #111111 !important;
+    color: #FFFFFF !important;
+    border-color: #111111 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    transform: scale(1.06);
+}
+
+/* Metro Station Card - Compact & Crisp in Light Mode */
+.metro-station-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease !important;
+}
+
+.metro-station-card:hover {
+    border-color: rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 4px 14px -3px rgba(0, 0, 0, 0.06) !important;
+}
+
+.metro-station-node.active .metro-station-card {
+    border-color: #111111 !important;
+    box-shadow: 0 4px 18px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Force crystal-clear high contrast typography in Light Mode */
+.metro-journey-container h3,
+.metro-station-card h4,
+.metro-station-card .station-meta,
+.metro-card-details strong,
+.metro-card-details span.font-display {
+    color: #111111 !important;
+}
+
+.metro-station-card p,
+.metro-card-details p,
+.metro-card-details .leading-relaxed {
+    color: #3F3F46 !important;
+}
+
+.metro-card-summary .text-muted,
+.metro-card-summary .text-\[\#71717A\],
+.metro-card-details .text-\[\#52525B\],
+.metro-card-details .text-\[\#71717A\] {
     color: #52525B !important;
-    font-size: 11.5px !important;
-    line-height: 1.45 !important;
-    margin-bottom: 0.45rem !important;
 }
 
-#journey .journey-card .grid {
-    margin-top: 0.45rem !important;
-    margin-bottom: 0.45rem !important;
-    padding: 0.5rem 0.75rem !important;
-    gap: 0.5rem !important;
+.metro-card-summary .metro-toggle-icon {
+    background-color: rgba(0, 0, 0, 0.06) !important;
+    color: #111111 !important;
 }
 
-#journey .journey-card .grid span.font-bold {
-    font-size: 0.825rem !important;
+.metro-station-node.active .metro-toggle-icon {
+    transform: rotate(180deg);
+    background-color: #111111 !important;
+    color: #FFFFFF !important;
 }
 
-#journey .journey-card .grid span.text-\[11px\] {
-    font-size: 9.5px !important;
-    line-height: 1.25 !important;
+.metro-card-details .bg-\[\#F9F9F8\] {
+    background-color: #F4F4F3 !important;
 }
 
-#journey .journey-card .text-xs.font-mono {
-    padding-bottom: 0.35rem !important;
-    margin-bottom: 0.45rem !important;
-    font-size: 10.5px !important;
+.metro-card-details .bg-white {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
 }
 
-#journey .journey-card .pt-3 {
-    padding-top: 0.35rem !important;
-    font-size: 9.5px !important;
+.metro-card-details span.font-mono,
+.metro-card-details .text-\[\#52525B\] {
+    color: #4B5563 !important;
 }
 
-.timeline-item:hover .timeline-dot {
-    transform: scale(1.25);
-    background-color: var(--primary);
+.metro-card-summary .bg-black\/5 {
+    background-color: rgba(0, 0, 0, 0.06) !important;
+    color: #111111 !important;
+    font-weight: 600;
+}
+
+/* Light Mode: Explicit high-contrast icon container & icon color */
+.metro-subcard-icon,
+.metro-card-details .w-8.h-8 {
+    background-color: #ECECED !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    border-radius: 0.375rem !important;
+}
+
+.metro-subcard-icon i,
+.metro-subcard-icon svg,
+.metro-card-details .w-8.h-8 i,
+.metro-card-details .w-8.h-8 svg,
+.metro-card-details .w-8.h-8 .fa-code,
+.metro-card-details .w-8.h-8 .devicon-cplusplus-plain,
+.metro-card-details .w-8.h-8 .devicon-mongodb-plain {
+    color: #111111 !important;
+    fill: #111111 !important;
+    -webkit-text-fill-color: #111111 !important;
+    opacity: 1 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    font-size: 1rem !important;
+    line-height: 1 !important;
+}
+
+/* Dark Mode: Sub-card icon container & icon color */
+html[data-theme="dark"] .metro-subcard-icon,
+html.dark .metro-subcard-icon,
+html[data-theme="dark"] .metro-card-details .w-8.h-8,
+html.dark .metro-card-details .w-8.h-8 {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+html[data-theme="dark"] .metro-subcard-icon i,
+html[data-theme="dark"] .metro-subcard-icon svg,
+html.dark .metro-subcard-icon i,
+html.dark .metro-subcard-icon svg,
+html[data-theme="dark"] .metro-card-details .w-8.h-8 i,
+html[data-theme="dark"] .metro-card-details .w-8.h-8 svg,
+html.dark .metro-card-details .w-8.h-8 i,
+html.dark .metro-card-details .w-8.h-8 svg,
+html[data-theme="dark"] .metro-card-details .w-8.h-8 .fa-code,
+html.dark .metro-card-details .w-8.h-8 .fa-code,
+html[data-theme="dark"] .metro-card-details .w-8.h-8 .devicon-cplusplus-plain,
+html.dark .metro-card-details .w-8.h-8 .devicon-cplusplus-plain,
+html[data-theme="dark"] .metro-card-details .w-8.h-8 .devicon-mongodb-plain,
+html.dark .metro-card-details .w-8.h-8 .devicon-mongodb-plain {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    opacity: 1 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Accordion Smooth Height Transition */
+.metro-card-details {
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.metro-station-node.active .metro-card-details {
+    max-height: 800px;
+}
+
+/* Dark Theme Overrides for Metro Journey */
+html[data-theme="dark"] .metro-journey-container {
+    background-color: #141416 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+html[data-theme="dark"] .metro-journey-container h3,
+html[data-theme="dark"] .metro-station-card h4,
+html[data-theme="dark"] .metro-station-card .station-meta,
+html[data-theme="dark"] .metro-card-details strong,
+html[data-theme="dark"] .metro-card-details span.font-display {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] .metro-station-card p,
+html[data-theme="dark"] .metro-card-details p,
+html[data-theme="dark"] .metro-card-details .leading-relaxed {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .metro-station-badge {
+    background-color: #1C1C1F !important;
+    color: #D4D4D8 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+html[data-theme="dark"] .metro-station-badge:hover {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+html[data-theme="dark"] .metro-station-node.active .metro-station-badge {
+    background-color: #FFFFFF !important;
+    color: #0B0B0C !important;
+    border-color: #FFFFFF !important;
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.25) !important;
+}
+
+html[data-theme="dark"] .metro-station-card {
+    background: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .metro-station-card:hover {
+    border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+html[data-theme="dark"] .metro-station-node.active .metro-station-card {
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 18px rgba(255, 255, 255, 0.05) !important;
+}
+
+html[data-theme="dark"] .metro-station-node.active .metro-toggle-icon {
+    background-color: #FFFFFF !important;
+    color: #0B0B0C !important;
+}
+
+/* Accordion Drawer & Sub-Cards Dark Theme Styling */
+html[data-theme="dark"] .metro-card-details .bg-\[\#F9F9F8\] {
+    background-color: #161618 !important;
+    border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .metro-card-details .bg-white {
+    background-color: #1F1F23 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .metro-card-details span.font-mono,
+html[data-theme="dark"] .metro-card-details .text-\[\#52525B\] {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .metro-card-summary .bg-black\/5 {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #E4E4E7 !important;
+}
+
+html[data-theme="dark"] .metro-card-details a {
+    color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   Full Screen Width GitHub Activity Section (Edge-to-Edge)
+   ========================================================================== */
+#github.full-bleed-github {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    position: relative;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+}
+
+.github-full-banner {
+    width: 100%;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    background-color: #FFFFFF;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.04);
+}
+
+html[data-theme="dark"] .github-full-banner {
+    background-color: #141416 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* GitHub Activity Section Typography & Contrast (Light & Dark Mode) */
+#github h3 {
+    color: #111111 !important;
+}
+
+#github p,
+#github p a {
+    color: #52525B !important;
+}
+
+#github p a {
+    color: #111111 !important;
+}
+
+#github span.uppercase {
+    color: #71717A !important;
+}
+
+#github .github-total-contributions,
+#github .github-month-commits {
+    color: #111111 !important;
+}
+
+/* Dark Theme Overrides for GitHub Section */
+html[data-theme="dark"] #github h3 {
+    color: #F4F2EE !important;
+}
+
+html[data-theme="dark"] #github p {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #github p a {
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] #github span.uppercase {
+    color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] #github .github-total-contributions,
+html[data-theme="dark"] #github .github-month-commits {
+    color: #FFFFFF !important;
+}
+
+/* Follow on GitHub Button - Crisp Contrast */
+#github .github-follow-btn {
+    background-color: #111111 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #111111 !important;
+}
+
+#github .github-follow-btn * {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+}
+
+html[data-theme="dark"] #github .github-follow-btn {
+    background-color: #FFFFFF !important;
+    color: #111111 !important;
+    border: 1px solid #FFFFFF !important;
+}
+
+html[data-theme="dark"] #github .github-follow-btn * {
+    color: #111111 !important;
+    fill: #111111 !important;
+}
+
+#github .github-follow-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ==========================================================================
@@ -2813,7 +3485,6 @@ html {
     padding-top: 16px;
     margin-top: -16px;
     padding-bottom: 2rem;
-    scroll-behavior: smooth;
     scrollbar-width: none;
     /* Firefox */
 }
@@ -2859,8 +3530,7 @@ html {
 
 .carousel-card:hover .carousel-card-img-wrapper img,
 .carousel-card:hover .carousel-card-img-wrapper svg {
-    transform: scale(1.1);
-    filter: brightness(0.65);
+    transform: scale(1.04);
 }
 
 .carousel-card:hover {
@@ -3344,32 +4014,56 @@ html {
     transition: transform 0.25s ease, opacity 0.25s ease, color 0.25s ease, filter 0.25s ease;
 }
 
-/* Interactive GitHub Grid */
+/* Interactive GitHub Grid & Authentic Calendar Layout */
+.github-calendar-board {
+    display: flex;
+    flex-direction: column;
+    padding: 0.25rem 0;
+}
+
+.github-months-row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding-left: 32px;
+    font-size: 10px;
+    color: #57606A;
+    margin-bottom: 6px;
+    height: 14px;
+}
+
+html[data-theme="dark"] .github-months-row {
+    color: #848D97;
+}
+
+.github-days-col {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 24px;
+    font-size: 9px;
+    color: #57606A;
+    text-align: right;
+    padding-right: 4px;
+}
+
+html[data-theme="dark"] .github-days-col {
+    color: #848D97;
+}
+
 .github-grid {
     display: grid;
     grid-template-rows: repeat(7, 10px);
     grid-auto-flow: column;
     gap: 3px;
     height: 88px;
-    margin-top: 0.5rem;
     position: relative;
-}
-
-.github-month-divider {
-    position: absolute;
-    top: 0;
-    height: 88px;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.2);
-    pointer-events: none;
-    z-index: 5;
 }
 
 .github-tile {
     width: 10px;
     height: 10px;
     border-radius: 2px;
-    background: #161b22;
+    background: #EBEDF0;
     transition: all 0.2s ease;
     animation: tileFadeIn 0.5s ease forwards;
     opacity: 0;
@@ -3381,39 +4075,72 @@ html {
     }
 }
 
+/* Studio Monochrome GitHub Activity Tiles */
 .github-tile.level-0 {
-    background: #161b22;
+    background: rgba(0, 0, 0, 0.05);
 }
 
+html[data-theme="dark"] .github-tile,
+html[data-theme="dark"] .github-tile.level-0 {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Light Theme: Subtle light grey to solid black */
 .github-tile.level-1 {
-    background: #0e4429;
-    color: #26a641;
+    background: #D4D4D8;
+    color: #A1A1AA;
 }
 
 .github-tile.level-2 {
-    background: #006d32;
-    color: #26a641;
+    background: #8E8E93;
+    color: #71717A;
 }
 
 .github-tile.level-3 {
-    background: #26a641;
-    color: #39d353;
+    background: #3F3F46;
+    color: #27272A;
 }
 
 .github-tile.level-4 {
-    background: #39d353;
-    color: #39d353;
+    background: #111111;
+    color: #000000;
+}
+
+/* Dark Theme: Subtle dark charcoal to luminous pure white */
+html[data-theme="dark"] .github-tile.level-1 {
+    background: #27272A;
+    color: #3F3F46;
+}
+
+html[data-theme="dark"] .github-tile.level-2 {
+    background: #52525B;
+    color: #71717A;
+}
+
+html[data-theme="dark"] .github-tile.level-3 {
+    background: #A1A1AA;
+    color: #D4D4D8;
+}
+
+html[data-theme="dark"] .github-tile.level-4 {
+    background: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .github-tile:hover {
     transform: scale(1.4) translateY(-1.5px);
-    box-shadow: 0 0 12px currentColor;
+    box-shadow: 0 0 10px currentColor;
     z-index: 10;
 }
 
 .github-tile.level-0:hover {
+    color: #111111;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+
+html[data-theme="dark"] .github-tile.level-0:hover {
     color: #ffffff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
 
 /* Bento Connect Icons Glow & Hover Effect */
@@ -3445,7 +4172,8 @@ html {
 }
 
 /* ==========================================================================
-   Premium Loader Screen Overlay (Dark Mode Theme Only)
+/* ==========================================================================
+   Premium Loader Screen Overlay (Theme Adaptive: Light in Light Mode, Dark in Dark Mode)
    ========================================================================== */
 .loader-overlay {
     position: fixed;
@@ -3453,12 +4181,16 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #0B0B0C !important;
+    background-color: #F3F3F1 !important;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
+}
+
+html[data-theme="dark"] .loader-overlay {
+    background-color: #0B0B0C !important;
 }
 
 .loader-overlay.hidden {
@@ -3478,10 +4210,15 @@ html {
     bottom: 0;
     width: 10px;
     height: 50%;
-    background: #E4E4E7 !important;
+    background: #18181B !important;
     transform-origin: center bottom;
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 2px 2px 0 0;
+}
+
+html[data-theme="dark"] .loader__bar {
+    background: #E4E4E7 !important;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
 }
 
 .loader__bar:nth-child(1) {
@@ -3520,10 +4257,15 @@ html {
     left: 0;
     width: 10px;
     height: 10px;
-    background: #FFFFFF !important;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.75) !important;
+    background: #111111 !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35) !important;
     border-radius: 50%;
     animation: ball 4s infinite;
+}
+
+html[data-theme="dark"] .loader__ball {
+    background: #FFFFFF !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.75) !important;
 }
 
 @keyframes ball {
@@ -3703,38 +4445,378 @@ html {
 }
 
 /* ==========================================================================
-   Typewriter Animation Styles
+   Typewriter Animation Styles (Theme Dynamic)
    ========================================================================== */
 .hero-name-type {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    display: inline-block;
-    min-height: 1.15em;
-    vertical-align: bottom;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: initial !important;
+    color: #111111 !important;
+    font-weight: 600 !important;
+    display: inline !important;
 }
 
 .typing-cursor {
-    font-weight: 200 !important;
-    color: var(--accent) !important;
+    display: inline-block;
+    font-family: monospace, sans-serif !important;
+    font-weight: 300 !important;
+    color: #111111 !important;
     animation: blinkCursor 0.8s step-end infinite !important;
-    margin-left: 4px;
+    margin-left: 3px;
+    margin-right: 1px;
+}
+
+/* Dark Theme Typewriter (Seamlessly matches website hero typography) */
+html[data-theme="dark"] .hero-name-type {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    color: #FFFFFF !important;
+    text-shadow: none !important;
+}
+
+html[data-theme="dark"] .typing-cursor {
+    color: #FFFFFF !important;
+    text-shadow: none !important;
 }
 
 @keyframes blinkCursor {
 
     from,
     to {
-        color: transparent
+        opacity: 0;
     }
 
     50% {
-        color: var(--accent);
+        opacity: 1;
     }
 }
 
 /* ==========================================================================
-   Custom Scroll-Triggered Animations via IntersectionObserver
+   Tech-Stack Infinite Marquee (Devicon Strip)
+   ========================================================================== */
+.marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    padding: 1.5rem 0;
+    position: relative;
+    width: 100%;
+}
+
+.marquee-track {
+    display: flex;
+    gap: 2.5rem;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+    align-items: center;
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.6rem 1.15rem;
+    border-radius: 9999px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: #111111;
+    white-space: nowrap;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    user-select: none;
+}
+
+.marquee-item i {
+    font-size: 1.25rem;
+    transition: transform 0.25s ease;
+}
+
+.marquee-item:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.marquee-item:hover i {
+    transform: scale(1.15);
+}
+
+/* Authentic Tech Brand Colors on Marquee Pill Hover */
+#skills .marquee-item:hover .devicon-react-original,
+#skills .marquee-item i.devicon-react-original:hover,
+.marquee-item:hover .devicon-react-original {
+    color: #61DAFB !important;
+    filter: drop-shadow(0 0 10px rgba(97, 218, 251, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-nextjs-plain,
+#skills .marquee-item i.devicon-nextjs-plain:hover,
+.marquee-item:hover .devicon-nextjs-plain {
+    color: #000000 !important;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-nextjs-plain,
+html[data-theme="dark"] #skills .marquee-item i.devicon-nextjs-plain:hover,
+html[data-theme="dark"] .marquee-item:hover .devicon-nextjs-plain {
+    color: #FFFFFF !important;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) !important;
+}
+
+#skills .marquee-item:hover .devicon-typescript-plain,
+#skills .marquee-item i.devicon-typescript-plain:hover,
+.marquee-item:hover .devicon-typescript-plain {
+    color: #3178C6 !important;
+    filter: drop-shadow(0 0 10px rgba(49, 120, 198, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-nodejs-plain,
+#skills .marquee-item i.devicon-nodejs-plain:hover,
+.marquee-item:hover .devicon-nodejs-plain {
+    color: #339933 !important;
+    filter: drop-shadow(0 0 10px rgba(51, 153, 51, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-python-plain,
+#skills .marquee-item i.devicon-python-plain:hover,
+.marquee-item:hover .devicon-python-plain {
+    color: #3776AB !important;
+    filter: drop-shadow(0 0 10px rgba(55, 118, 171, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-java-plain,
+#skills .marquee-item i.devicon-java-plain:hover,
+.marquee-item:hover .devicon-java-plain {
+    color: #EA2D2E !important;
+    filter: drop-shadow(0 0 10px rgba(234, 45, 46, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-cplusplus-plain,
+#skills .marquee-item i.devicon-cplusplus-plain:hover,
+.marquee-item:hover .devicon-cplusplus-plain {
+    color: #00599C !important;
+    filter: drop-shadow(0 0 10px rgba(0, 89, 156, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-tailwindcss-plain,
+#skills .marquee-item:hover .devicon-tailwindcss-original,
+#skills .marquee-item i.devicon-tailwindcss-plain:hover,
+#skills .marquee-item i.devicon-tailwindcss-original:hover,
+.marquee-item:hover .devicon-tailwindcss-plain,
+.marquee-item:hover .devicon-tailwindcss-original {
+    color: #38BDF8 !important;
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-mongodb-plain,
+#skills .marquee-item i.devicon-mongodb-plain:hover,
+.marquee-item:hover .devicon-mongodb-plain {
+    color: #47A248 !important;
+    filter: drop-shadow(0 0 10px rgba(71, 162, 72, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-postgresql-plain,
+#skills .marquee-item i.devicon-postgresql-plain:hover,
+.marquee-item:hover .devicon-postgresql-plain {
+    color: #4169E1 !important;
+    filter: drop-shadow(0 0 10px rgba(65, 105, 225, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-git-plain,
+#skills .marquee-item i.devicon-git-plain:hover,
+.marquee-item:hover .devicon-git-plain {
+    color: #F05032 !important;
+    filter: drop-shadow(0 0 10px rgba(240, 80, 50, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-docker-plain,
+#skills .marquee-item i.devicon-docker-plain:hover,
+.marquee-item:hover .devicon-docker-plain {
+    color: #2496ED !important;
+    filter: drop-shadow(0 0 10px rgba(36, 150, 237, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-fastapi-plain,
+#skills .marquee-item i.devicon-fastapi-plain:hover,
+.marquee-item:hover .devicon-fastapi-plain {
+    color: #009688 !important;
+    filter: drop-shadow(0 0 10px rgba(0, 150, 136, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-express-original,
+#skills .marquee-item i.devicon-express-original:hover,
+.marquee-item:hover .devicon-express-original {
+    color: #000000 !important;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-express-original,
+html[data-theme="dark"] #skills .marquee-item i.devicon-express-original:hover,
+html[data-theme="dark"] .marquee-item:hover .devicon-express-original {
+    color: #FFFFFF !important;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) !important;
+}
+
+/* In Dark Mode: When cursor is away from this row logos are white in color on dark pill */
+html[data-theme="dark"] .marquee-item {
+    background: #18181B !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+    color: #F4F2EE !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .marquee-item i,
+html[data-theme="dark"] #skills .marquee-item i,
+html[data-theme="dark"] .marquee-item [class*="devicon-"],
+html[data-theme="dark"] #skills .marquee-item [class*="devicon-"] {
+    color: #FFFFFF !important;
+    filter: none !important;
+    transition: all 0.25s ease !important;
+}
+
+/* In Dark Mode: Keep the dark pill background on hover, crisp border, no white pill */
+html[data-theme="dark"] .marquee-item:hover,
+html[data-theme="dark"] #skills .marquee-item:hover {
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    background: #27272A !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* In Dark Mode Hover: Illuminate each icon with its real brand color */
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-react-original,
+html[data-theme="dark"] #skills .marquee-item i.devicon-react-original:hover {
+    color: #61DAFB !important;
+    filter: drop-shadow(0 0 10px rgba(97, 218, 251, 0.65)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-typescript-plain,
+html[data-theme="dark"] #skills .marquee-item i.devicon-typescript-plain:hover {
+    color: #3178C6 !important;
+    filter: drop-shadow(0 0 10px rgba(49, 120, 198, 0.65)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-nodejs-plain,
+html[data-theme="dark"] #skills .marquee-item i.devicon-nodejs-plain:hover {
+    color: #339933 !important;
+    filter: drop-shadow(0 0 10px rgba(51, 153, 51, 0.65)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-python-plain,
+html[data-theme="dark"] #skills .marquee-item i.devicon-python-plain:hover {
+    color: #3776AB !important;
+    filter: drop-shadow(0 0 10px rgba(55, 118, 171, 0.65)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-java-plain,
+html[data-theme="dark"] #skills .marquee-item i.devicon-java-plain:hover {
+    color: #EA2D2E !important;
+    filter: drop-shadow(0 0 10px rgba(234, 45, 46, 0.65)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-cplusplus-plain,
+html[data-theme="dark"] #skills .marquee-item i.devicon-cplusplus-plain:hover {
+    color: #00599C !important;
+    filter: drop-shadow(0 0 10px rgba(0, 89, 156, 0.65)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-tailwindcss-plain,
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-tailwindcss-original,
+html[data-theme="dark"] #skills .marquee-item i.devicon-tailwindcss-plain:hover,
+html[data-theme="dark"] #skills .marquee-item i.devicon-tailwindcss-original:hover {
+    color: #38BDF8 !important;
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.65)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-mongodb-plain,
+html[data-theme="dark"] #skills .marquee-item i.devicon-mongodb-plain:hover {
+    color: #47A248 !important;
+    filter: drop-shadow(0 0 10px rgba(71, 162, 72, 0.65)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-postgresql-plain,
+html[data-theme="dark"] #skills .marquee-item i.devicon-postgresql-plain:hover {
+    color: #4169E1 !important;
+    filter: drop-shadow(0 0 10px rgba(65, 105, 225, 0.65)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-git-plain,
+html[data-theme="dark"] #skills .marquee-item i.devicon-git-plain:hover {
+    color: #F05032 !important;
+    filter: drop-shadow(0 0 10px rgba(240, 80, 50, 0.65)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-fastapi-plain,
+html[data-theme="dark"] #skills .marquee-item i.devicon-fastapi-plain:hover {
+    color: #009688 !important;
+    filter: drop-shadow(0 0 10px rgba(0, 150, 136, 0.65)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-express-original,
+html[data-theme="dark"] #skills .marquee-item i.devicon-express-original:hover {
+    color: #FFFFFF !important;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) !important;
+}
+
+/* ==========================================================================
+   Native Scroll-Driven Animations (No JS Engine)
+   ========================================================================== */
+@supports (animation-timeline: view()) {
+
+    .reveal-native,
+    [data-aos="fade-up"]:not(.aos-animate) {
+        animation: rise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 30%;
+    }
+
+    @keyframes rise {
+        from {
+            opacity: 0;
+            transform: translateY(32px);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    #scroll-progress {
+        width: 100% !important;
+        transform-origin: left;
+        animation: grow linear;
+        animation-timeline: scroll(root);
+        transition: none !important;
+    }
+
+    @keyframes grow {
+        from {
+            transform: scaleX(0);
+        }
+
+        to {
+            transform: scaleX(1);
+        }
+    }
+}
+
+/* ==========================================================================
+   Custom Scroll-Triggered Animations via IntersectionObserver (Fallback)
    ========================================================================== */
 [data-aos] {
     opacity: 0;
@@ -4575,11 +5657,11 @@ footer {
     animation: none !important;
 }
 
-#about .grid > a {
+#about .grid>a {
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s !important;
 }
 
-#about .grid > a:hover {
+#about .grid>a:hover {
     animation: none !important;
 }
 

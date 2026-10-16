@@ -566,59 +566,81 @@
         font-size: 11px !important;
     }
 
-    /* Engineering Journey (Evolution Log) Mobile Stacking Compression */
-    #journey .journey-cards-deck {
-        space-y: 0.65rem !important;
+    /* Engineering Journey Metro Station Mobile Compression */
+    .metro-journey-container {
+        padding: 0.75rem 0.6rem !important;
+        border-radius: 1rem !important;
     }
 
-    #journey .journey-card {
-        padding: 0.75rem 0.85rem !important;
-        border-radius: 0.85rem !important;
-        top: 4.5rem !important;
+    .metro-track-wrapper {
+        padding-left: 2.25rem !important;
+        gap: 0.6rem !important;
     }
 
-    #journey .journey-card .text-xs.font-mono {
-        padding-bottom: 0.35rem !important;
-        margin-bottom: 0.35rem !important;
-        font-size: 10px !important;
+    .metro-track-line {
+        left: 10px !important;
     }
 
-    #journey .journey-card .flex.items-start.justify-between.gap-4 {
-        margin-bottom: 0.35rem !important;
-    }
-
-    #journey .journey-card h3 {
-        font-size: 0.95rem !important;
-        line-height: 1.25 !important;
-    }
-
-    #journey .journey-card .grid-cols-2 {
-        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-        gap: 0.35rem !important;
-        margin-top: 0.35rem !important;
-        margin-bottom: 0.35rem !important;
-        padding: 0.45rem 0.6rem !important;
-        border-radius: 0.5rem !important;
-    }
-
-    #journey .journey-card .grid-cols-2 span.font-bold {
-        font-size: 0.8rem !important;
-    }
-
-    #journey .journey-card .grid-cols-2 span.text-\[11px\] {
+    .metro-station-badge {
+        left: -2.25rem !important;
+        width: 1.45rem !important;
+        height: 1.45rem !important;
         font-size: 9px !important;
+        border-radius: 0.4rem !important;
+    }
+
+    .metro-station-card {
+        border-radius: 0.75rem !important;
+    }
+
+    .metro-card-summary {
+        padding: 0.65rem 0.75rem !important;
+    }
+
+    .metro-card-summary h4 {
+        font-size: 0.85rem !important;
         line-height: 1.25 !important;
     }
 
-    #journey .journey-card p {
-        font-size: 10px !important;
+    .metro-card-summary p {
+        font-size: 11px !important;
         line-height: 1.35 !important;
-        margin-bottom: 0.45rem !important;
+        margin-top: 0.25rem !important;
+        margin-bottom: 0.5rem !important;
     }
 
-    #journey .journey-card .pt-3 {
-        padding-top: 0.35rem !important;
-        font-size: 9px !important;
+    .metro-card-details .px-3\.5 {
+        padding-left: 0.65rem !important;
+        padding-right: 0.65rem !important;
+        padding-bottom: 0.65rem !important;
+        padding-top: 0.5rem !important;
+    }
+
+    .metro-card-details .grid {
+        gap: 0.4rem !important;
+    }
+
+    .metro-card-details .p-2\.5 {
+        padding: 0.5rem !important;
+    }
+
+    .metro-card-details .w-8.h-8 {
+        width: 1.65rem !important;
+        height: 1.65rem !important;
+    }
+
+    .metro-card-details .text-xs.font-display {
+        font-size: 11px !important;
+    }
+
+    .metro-card-details .text-\[10px\] {
+        font-size: 9.5px !important;
+    }
+
+    .metro-card-details .p-3 {
+        padding: 0.6rem !important;
+        font-size: 10.5px !important;
+        line-height: 1.35 !important;
     }
 
     /* GitHub Section Mobile Compression */

@@ -53,62 +53,110 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Timeline Scroll Progress Animation
     /* ==========================================================================
-       Engineering Journey Stacking Cards Controller
+       Engineering Journey Metro Line & Station Router Controller
+       Scroll-driven line progress + click accordion to reveal deep description
        ========================================================================== */
-    const initJourneyStack = () => {
-        const journeyCards = document.querySelectorAll('.journey-card');
-        const phaseNumEl = document.getElementById('journey-phase-num');
-        const prevBtn = document.getElementById('journey-prev-btn');
-        const nextBtn = document.getElementById('journey-next-btn');
+    const initMetroJourneyRouter = () => {
+        const journeySection = document.getElementById('journey');
+        const trackLine = document.querySelector('.metro-track-line');
+        const trackProgress = document.querySelector('.metro-track-progress');
+        const stations = document.querySelectorAll('.metro-station-node');
+        if (!journeySection || !trackProgress || !stations.length) return;
 
-        if (!journeyCards.length) return;
+        let isManualOverride = false;
+        let manualTimeout = null;
 
-        let currentActivePhase = 1;
+        // Dynamic scroll tracking: calculates scroll position relative to the metro track line
+        const handleScrollProgress = () => {
+            if (isManualOverride) return;
+            const lineRect = trackLine ? trackLine.getBoundingClientRect() : journeySection.getBoundingClientRect();
+            const viewportMiddle = window.innerHeight * 0.55;
 
-        const updateActiveCard = (index) => {
-            currentActivePhase = index;
-            if (phaseNumEl) {
-                phaseNumEl.textContent = String(index).padStart(2, '0');
+            // Distance from top of the line to the viewport trigger point
+            const travelDistance = viewportMiddle - lineRect.top;
+            const totalLineHeight = lineRect.height;
+
+            let progressPct = (travelDistance / totalLineHeight) * 100;
+            progressPct = Math.max(0, Math.min(100, progressPct));
+            trackProgress.style.height = `${progressPct}%`;
+
+            // Highlight the latest station passed by the scroll line
+            stations.forEach((st) => {
+                const badge = st.querySelector('.metro-station-badge');
+                if (!badge) return;
+                const bRect = badge.getBoundingClientRect();
+                if (bRect.top <= viewportMiddle + 10) {
+                    badge.classList.add('station-passed');
+                } else {
+                    badge.classList.remove('station-passed');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScrollProgress, { passive: true });
+        window.addEventListener('resize', handleScrollProgress, { passive: true });
+        // Initial run
+        handleScrollProgress();
+
+        const toggleStation = (targetStation) => {
+            const isAlreadyActive = targetStation.classList.contains('active');
+
+            // Close all stations
+            stations.forEach(station => {
+                station.classList.remove('active');
+            });
+
+            // If it wasn't active, activate it
+            if (!isAlreadyActive) {
+                targetStation.classList.add('active');
+                
+                // Temporarily smoothly advance track line to station node
+                isManualOverride = true;
+                clearTimeout(manualTimeout);
+                const badge = targetStation.querySelector('.metro-station-badge');
+                if (badge && trackLine) {
+                    const lineRect = trackLine.getBoundingClientRect();
+                    const bRect = badge.getBoundingClientRect();
+                    const targetHeight = Math.max(0, bRect.top - lineRect.top + (bRect.height / 2));
+                    const percentage = Math.min(100, Math.max(0, (targetHeight / lineRect.height) * 100));
+                    trackProgress.style.height = `${percentage}%`;
+                }
+                manualTimeout = setTimeout(() => {
+                    isManualOverride = false;
+                    handleScrollProgress();
+                }, 900);
+            } else {
+                handleScrollProgress();
             }
         };
 
-        // Scroll observer to update phase counter as user scrolls down the stacked cards
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const phase = parseInt(entry.target.getAttribute('data-phase'), 10);
-                    if (phase) updateActiveCard(phase);
-                }
-            });
-        }, { threshold: 0.6 });
+        stations.forEach((station) => {
+            const card = station.querySelector('.metro-station-card');
+            const badge = station.querySelector('.metro-station-badge');
 
-        journeyCards.forEach(card => observer.observe(card));
+            if (card) {
+                card.addEventListener('click', (e) => {
+                    // Do not close accordion if clicking interactive link/button inside expanded content
+                    if (e.target.closest('a') || e.target.closest('button:not(.metro-station-badge)')) return;
+                    toggleStation(station);
+                });
+            }
 
-        // Prev & Next Buttons smooth scroll into view
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                const targetPhase = Math.max(1, currentActivePhase - 1);
-                const targetCard = document.querySelector(`.journey-card[data-phase="${targetPhase}"]`);
-                if (targetCard) {
-                    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    updateActiveCard(targetPhase);
-                }
-            });
-        }
+            if (badge) {
+                badge.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleStation(station);
+                });
+            }
+        });
 
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                const targetPhase = Math.min(journeyCards.length, currentActivePhase + 1);
-                const targetCard = document.querySelector(`.journey-card[data-phase="${targetPhase}"]`);
-                if (targetCard) {
-                    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    updateActiveCard(targetPhase);
-                }
-            });
+        // Open Station 1 by default for clear orientation
+        if (stations[0]) {
+            stations[0].classList.add('active');
         }
     };
 
-    initJourneyStack();
+    initMetroJourneyRouter();
 
     /* ==========================================================================
        Animated Counters (IntersectionObserver triggered)
@@ -274,8 +322,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const root = document.documentElement;
         if (theme === 'dark') {
             root.setAttribute('data-theme', 'dark');
+            root.classList.add('dark');
         } else {
             root.removeAttribute('data-theme');
+            root.classList.remove('dark');
         }
         updateThemeIcons(theme);
         if (persist) {
@@ -289,18 +339,45 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme(newTheme, true);
     };
 
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const animatedToggle = (e) => {
+        if (!document.startViewTransition || reduce) return toggleTheme();
+        const x = e?.clientX ?? innerWidth / 2;
+        const y = e?.clientY ?? innerHeight / 2;
+        const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+        
+        const transition = document.startViewTransition(() => toggleTheme());
+        transition.ready.then(() => {
+            document.documentElement.animate(
+                { 
+                    clipPath: [
+                        `circle(0px at ${x}px ${y}px)`, 
+                        `circle(${r}px at ${x}px ${y}px)`
+                    ] 
+                },
+                { 
+                    duration: 650, 
+                    easing: 'cubic-bezier(0.22, 1, 0.36, 1)', 
+                    fill: 'forwards',
+                    pseudoElement: '::view-transition-new(root)' 
+                }
+            );
+        });
+    };
+
     // Expose globally for command palette and external scripts
-    window.togglePortfolioTheme = toggleTheme;
+    window.togglePortfolioTheme = (e) => animatedToggle(e);
     window.setPortfolioTheme = applyTheme;
 
     // Initialize theme on page load
     applyTheme(getStoredTheme(), false);
 
     if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleBtn.addEventListener('click', animatedToggle);
     }
     if (themeToggleMobile) {
-        themeToggleMobile.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', animatedToggle);
     }
 
     /* ==========================================================================
@@ -473,17 +550,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const notifySuccess = () => {
                 const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                targetText.innerText = "COPIED TO CLIPBOARD!";
-                targetText.style.setProperty('color', isDark ? '#FFFFFF' : '#111111', 'important');
-                if (btn !== targetText) {
-                    btn.style.setProperty('color', isDark ? '#FFFFFF' : '#111111', 'important');
+                const isCtaBtn = btn.id === 'email-btn-cta';
+                
+                targetText.innerText = isCtaBtn ? "Copied!" : "COPIED TO CLIPBOARD!";
+                
+                if (isCtaBtn) {
+                    btn.style.setProperty('background', isDark ? '#27272A' : '#111111', 'important');
+                    btn.style.setProperty('color', '#FFFFFF', 'important');
+                    btn.style.setProperty('border-color', isDark ? '#52525B' : '#111111', 'important');
+                } else {
+                    targetText.style.setProperty('color', isDark ? '#FFFFFF' : '#111111', 'important');
+                    if (btn !== targetText) {
+                        btn.style.setProperty('color', isDark ? '#FFFFFF' : '#111111', 'important');
+                    }
                 }
 
                 setTimeout(() => {
                     targetText.innerText = originalText;
-                    targetText.style.removeProperty('color');
-                    if (btn !== targetText) {
+                    if (isCtaBtn) {
+                        btn.style.removeProperty('background');
                         btn.style.removeProperty('color');
+                        btn.style.removeProperty('border-color');
+                    } else {
+                        targetText.style.removeProperty('color');
+                        if (btn !== targetText) {
+                            btn.style.removeProperty('color');
+                        }
                     }
                 }, 2200);
             };
@@ -612,7 +704,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselContainer = document.getElementById('project-carousel');
 
     if (filterTabs.length && carouselContainer) {
-        let speedPxPerMs = 0.22; // increased autoscroll speed (~220px/sec)
+        let speedPxPerMs = 0.12; // Smooth, continuous infinite flow (~120px/sec)
         let animationFrameId = null;
         let scrollAnimFrameId = null;
         let isInteracting = false;
@@ -899,83 +991,55 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Try fetching live data
-    fetch('https://github-contributions-api.jogruber.de/v4/Vans30m')
+    // Fetch live GitHub contributions for the recent year (2026)
+    fetch('https://github-contributions-api.jogruber.de/v4/Vans30m?y=2026')
         .then(response => response.json())
         .then(data => {
-            // Sort contributions chronologically since they are returned grouped by year in descending order
-            data.contributions.sort((a, b) => a.date.localeCompare(b.date));
+            const yearConts = data.contributions || [];
+            yearConts.sort((a, b) => a.date.localeCompare(b.date));
 
-            // Filter out future dates placeholders from the contributions list
-            const todayStr = new Date().toISOString().split('T')[0];
-            const pastContributions = data.contributions.filter(c => c.date <= todayStr);
+            // Total contributions in the recent year
+            const yearTotal = (data.total && data.total['2026']) ? data.total['2026'] : yearConts.reduce((acc, curr) => acc + curr.count, 0);
+            
+            const yearTotalEl = document.getElementById('github-year-total');
+            if (yearTotalEl) yearTotalEl.innerText = yearTotal;
 
-            // Update yearly totals dynamically (last 365 days)
             const totalElements = document.querySelectorAll('.github-total-contributions');
-            const last365Days = pastContributions.slice(-365);
-            const total365 = last365Days.reduce((acc, curr) => acc + curr.count, 0);
             totalElements.forEach(el => {
-                el.innerText = total365;
+                el.innerText = yearTotal;
             });
 
-            // Calculate last 30 days contributions for bento monthly commit indicator
+            // Calculate last 30 days commits
+            const todayStr = new Date().toISOString().split('T')[0];
+            const pastDays = yearConts.filter(c => c.date <= todayStr);
             const monthlyCommitsElements = document.querySelectorAll('.github-month-commits');
             if (monthlyCommitsElements.length) {
-                const last30Days = pastContributions.slice(-30);
+                const last30Days = pastDays.slice(-30);
                 const monthTotal = last30Days.reduce((acc, curr) => acc + curr.count, 0);
                 monthlyCommitsElements.forEach(el => {
                     el.innerText = monthTotal;
                 });
             }
 
-            // Populate Main Calendar Grid (371 cells = 53 weeks * 7 days)
-            if (githubGrid) {
+            // Render Recent Year Heatmap Grid (aligned by day of week)
+            if (githubGrid && yearConts.length) {
                 githubGrid.innerHTML = '';
-                const gridParent = githubGrid.parentElement;
-                // Clean up previous divider lines
-                if (gridParent) {
-                    gridParent.querySelectorAll('.github-month-divider').forEach(d => d.remove());
+                
+                // First day offset (0 = Sunday, 1 = Monday, etc.)
+                const firstDayWeekday = new Date(yearConts[0].date).getDay();
+                
+                // Pad starting week with invisible placeholders so days align with Mon-Wed-Fri
+                for (let p = 0; p < firstDayWeekday; p++) {
+                    const emptyTile = document.createElement('div');
+                    emptyTile.className = 'github-tile opacity-0 pointer-events-none';
+                    githubGrid.appendChild(emptyTile);
                 }
 
-                // Take exactly 371 past contributions to fill a 53-column x 7-row grid
-                const lastYearConts = pastContributions.slice(-371);
-
-                // Render month barrier divider lines after each month transition
-                let lastMonthIdx = -1;
-                const totalCols = Math.ceil(lastYearConts.length / 7);
-
-                for (let col = 0; col < totalCols; col++) {
-                    let firstMonthInWeek = -1;
-                    for (let row = 0; row < 7; row++) {
-                        const idx = col * 7 + row;
-                        if (idx < lastYearConts.length) {
-                            const parts = lastYearConts[idx].date.split('-');
-                            const monthIdx = parseInt(parts[1], 10) - 1;
-                            if (firstMonthInWeek === -1) {
-                                firstMonthInWeek = monthIdx;
-                            }
-                        }
-                    }
-
-                    if (firstMonthInWeek !== -1) {
-                        if (lastMonthIdx !== -1 && firstMonthInWeek !== lastMonthIdx && col > 0) {
-                            // Place vertical barrier line right between tile columns in gap center
-                            const divider = document.createElement('div');
-                            divider.className = 'github-month-divider';
-                            const pixelPos = col * 13 - 2; // Exact 3px column gap midpoint
-                            divider.style.left = `${pixelPos}px`;
-                            githubGrid.appendChild(divider);
-                        }
-                        lastMonthIdx = firstMonthInWeek;
-                    }
-                }
-
-                lastYearConts.forEach((item, idx) => {
+                yearConts.forEach((item, idx) => {
                     const tile = document.createElement('div');
                     tile.className = `github-tile level-${item.level}`;
                     tile.setAttribute('title', `${item.count} contributions on ${item.date}`);
-                    // Sweep animation left-to-right week-by-week (column index = Math.floor(idx / 7))
-                    tile.style.animationDelay = `${Math.floor(idx / 7) * 0.015 + (idx % 7) * 0.01}s`;
+                    tile.style.animationDelay = `${(idx % 53) * 0.015}s`;
                     githubGrid.appendChild(tile);
                 });
             }
@@ -983,7 +1047,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Populate Bento mini calendar Grid (112 cells)
             if (githubBentoGrid) {
                 githubBentoGrid.innerHTML = '';
-                const last112Conts = pastContributions.slice(-112);
+                const last112Conts = pastDays.slice(-112);
                 last112Conts.forEach((item, idx) => {
                     const tile = document.createElement('div');
                     tile.className = `github-tile level-${item.level}`;
@@ -995,24 +1059,25 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(err => {
             console.warn('GitHub contributions API offline or blocked. Using simulated fallback.', err);
-            // Fallback to random simulated grids
-            generateSimulatedGrid(githubGrid, 371, 53);
+            generateSimulatedGrid(githubGrid, 365, 53);
             generateSimulatedGrid(githubBentoGrid, 112, 16);
         });
 
-    // Scroll Progress Indicator Logic
+    // Scroll Progress Indicator Logic (CSS Scroll-Timeline Native Fallback)
     const progressLine = document.getElementById('scroll-progress');
-    const updateScrollProgress = () => {
-        if (progressLine) {
+    const supportsScrollTimeline = window.CSS && CSS.supports && (CSS.supports('animation-timeline', 'scroll(root)') || CSS.supports('animation-timeline', 'view()'));
+    
+    if (progressLine && !supportsScrollTimeline) {
+        const updateScrollProgress = () => {
             const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
             if (windowHeight > 0) {
                 const scrolled = (window.scrollY / windowHeight) * 100;
                 progressLine.style.width = `${scrolled}%`;
             }
-        }
-    };
-    window.addEventListener('scroll', updateScrollProgress, { passive: true });
-    updateScrollProgress(); // Initial check
+        };
+        window.addEventListener('scroll', updateScrollProgress, { passive: true });
+        updateScrollProgress(); // Initial check
+    }
 
     // Dismiss Loading Screen Overlay after exactly 1 second
     const loadingOverlay = document.getElementById('loading-overlay');
