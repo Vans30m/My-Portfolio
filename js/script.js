@@ -433,9 +433,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetHref = clickedLink.getAttribute('href');
         if (targetHref && targetHref.startsWith('#')) {
             e.preventDefault();
-            const targetEl = document.querySelector(targetHref);
-            if (targetEl) {
-                targetEl.scrollIntoView({ behavior: 'smooth' });
+            if (targetHref === '#home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const targetEl = document.querySelector(targetHref);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         }
 
@@ -1309,9 +1313,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (item.url.startsWith('#')) {
                 // Smooth scroll to the target element without altering URL bar hash
-                const target = document.querySelector(item.url);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                if (item.url === '#home') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    const target = document.querySelector(item.url);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             } else {
                 if (item.external) {
