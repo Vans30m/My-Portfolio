@@ -198,16 +198,6 @@
                 <!-- Studio Framing Canvas Container with Technical Corner Markings -->
                 <div
                     class="relative rounded-3xl bg-[#FAFAF9]/90 border border-black/[0.08] p-6 sm:p-10 lg:p-14 shadow-sm">
-                    <!-- Corner Reticle Framing Brackets (From reference image) -->
-                    <span
-                        class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-black/30 pointer-events-none"></span>
-                    <span
-                        class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-black/30 pointer-events-none"></span>
-                    <span
-                        class="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-black/30 pointer-events-none"></span>
-                    <span
-                        class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-black/30 pointer-events-none"></span>
-
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
                         <!-- Left Column: Editorial Presentation -->
                         <div class="lg:col-span-7 flex flex-col items-start justify-center text-left">
@@ -578,8 +568,13 @@
             <!-- Stats Bar -->
             <div class="flex items-center gap-6 mb-8 text-xs font-mono" data-aos="fade-up" data-aos-delay="50">
                 <div>
-                    <span class="text-[#111111] text-lg font-bold">6</span> <span class="text-[#52525B]">Total
+                    <span class="text-[#111111] text-lg font-bold">7</span> <span class="text-[#52525B]">Total
                         Projects</span>
+                </div>
+                <div class="w-px h-4 bg-black/10"></div>
+                <div>
+                    <span class="text-[#111111] text-lg font-bold">2</span> <span class="text-[#52525B]">In
+                        Development</span>
                 </div>
                 <div class="w-px h-4 bg-black/10"></div>
                 <div>
@@ -595,9 +590,10 @@
                     <!-- Card 1: CheckInPass -->
                     <div class="carousel-card" data-category="projects">
                         <div>
-                            <div class="carousel-card-img-wrapper p-4 flex items-center justify-center bg-[#F4F4F5]">
-                                <img src="assets/Images/checkinpass_logo.webp" alt="CheckInPass Logo"
-                                    class="object-contain w-3/4 h-3/4" loading="lazy">
+                            <div class="carousel-card-img-wrapper">
+                                <img src="assets/Images/checkinpass.png" alt="CheckInPass Platform"
+                                    style="width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover; display: block;"
+                                    loading="lazy">
                             </div>
                             <div class="flex justify-between items-start mb-4">
                                 <a href="https://CheckInPass.onrender.com/" target="_blank"
@@ -809,26 +805,24 @@
                         </div>
                     </div>
 
-                    <!-- In Development Card 1 -->
+                    <!-- In Development Card 1: HemoConnect -->
                     <div class="carousel-card indev-card" data-category="indev">
                         <div>
-                            <div class="carousel-card-img-wrapper p-6 flex flex-col items-center justify-center bg-[#F4F4F5] dark:bg-[#18181B] relative overflow-hidden group">
-                                <div class="w-12 h-12 rounded-xl bg-black/[0.05] dark:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.1] flex items-center justify-center mb-2 text-primary dark:text-white">
-                                    <i class="fa-solid fa-compass-drafting text-xl"></i>
-                                </div>
-                                <span class="text-[11px] font-mono text-[#71717A] dark:text-[#A1A1AA] uppercase tracking-widest">// COMING SOON</span>
+                            <div class="carousel-card-img-wrapper bg-[#F4F4F5] dark:bg-[#18181B]">
+                                <img src="assets/Images/hemoconnect_logo.png" alt="HemoConnect Logo"
+                                    loading="lazy" />
                             </div>
                             <div class="flex justify-between items-start mb-4">
                                 <span class="text-[10px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full font-semibold">IN DEVELOPMENT</span>
                                 <span class="text-[10px] text-muted font-mono">SYSTEM_DEV_01</span>
                             </div>
-                            <h3 class="text-2xl font-display font-bold text-[#111111] dark:text-white mb-2">Next-Gen Architecture</h3>
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">HemoConnect</h3>
                             <p class="text-xs text-muted leading-relaxed">
-                                Currently architecting a high-throughput distributed system with real-time stream processing, event-driven workflows, and automated telemetry.
+                                Emergency blood matching and donor dispatch platform featuring real-time donor availability mapping, blood bank inventory tracking, and urgent request routing.
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                            <span class="text-[11px] font-mono text-primary leading-tight">TypeScript • Go<br>Distributed Architecture</span>
+                            <span class="text-[11px] font-mono text-primary leading-tight">React.js • Node.js<br>MongoDB • Express</span>
                             <div class="flex items-center gap-2 shrink-0">
                                 <span class="text-[11px] font-mono text-[#71717A] dark:text-[#A1A1AA] flex items-center gap-1.5">
                                     <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
@@ -838,26 +832,24 @@
                         </div>
                     </div>
 
-                    <!-- In Development Card 2 -->
+                    <!-- In Development Card 2: MediVita -->
                     <div class="carousel-card indev-card" data-category="indev">
                         <div>
-                            <div class="carousel-card-img-wrapper p-6 flex flex-col items-center justify-center bg-[#F4F4F5] dark:bg-[#18181B] relative overflow-hidden group">
-                                <div class="w-12 h-12 rounded-xl bg-black/[0.05] dark:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.1] flex items-center justify-center mb-2 text-primary dark:text-white">
-                                    <i class="fa-solid fa-microchip text-xl"></i>
-                                </div>
-                                <span class="text-[11px] font-mono text-[#71717A] dark:text-[#A1A1AA] uppercase tracking-widest">// RESEARCH LAB</span>
+                            <div class="carousel-card-img-wrapper bg-[#F4F4F5] dark:bg-[#18181B]">
+                                <img src="assets/Images/medivita_logo.png" alt="MediVita Logo"
+                                    loading="lazy" />
                             </div>
                             <div class="flex justify-between items-start mb-4">
                                 <span class="text-[10px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full font-semibold">IN DEVELOPMENT</span>
                                 <span class="text-[10px] text-muted font-mono">SYSTEM_DEV_02</span>
                             </div>
-                            <h3 class="text-2xl font-display font-bold text-[#111111] dark:text-white mb-2">Autonomous Agent Engine</h3>
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">MediVita</h3>
                             <p class="text-xs text-muted leading-relaxed">
-                                Prototyping multimodal agentic reasoning pipelines for intelligent code analysis, dynamic tooling dispatch, and context self-optimization.
+                                Intelligent patient telemetry and clinical records ecosystem with active vitals monitoring, appointment scheduling, and encrypted health data management.
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                            <span class="text-[11px] font-mono text-primary leading-tight">Python • FastAPI<br>LLM Agents • Vector DB</span>
+                            <span class="text-[11px] font-mono text-primary leading-tight">TypeScript • React<br>Node.js • WebSockets</span>
                             <div class="flex items-center gap-2 shrink-0">
                                 <span class="text-[11px] font-mono text-[#71717A] dark:text-[#A1A1AA] flex items-center gap-1.5">
                                     <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
@@ -1363,17 +1355,17 @@
                                                 <img src="assets/Images/focusorahq_logo.webp" alt="FocusoraHQ" class="w-full h-full object-cover rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">FocusoraHQ Platform</span>
+                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">FocusoraHQ</span>
                                                 <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Productivity workspace with synchronous rooms</span>
                                             </div>
                                         </div>
                                         <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="metro-subcard-icon w-8 h-8 rounded-md bg-black/[0.06] dark:bg-white/10 flex items-center justify-center shrink-0">
-                                                <i class="devicon-mongodb-plain text-base"></i>
+                                            <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
+                                                <img src="assets/Images/checkinpass_logo.webp" alt="CheckInPass" class="w-full h-full object-contain rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Database Pipelines</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Schema normalization, indexing &amp; secured API routes</span>
+                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">CheckInPass</span>
+                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Cryptographic event pass generation &amp; validation</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1436,7 +1428,7 @@
                                                 <img src="assets/Images/xplorism_logo.webp" alt="Xplorism" class="w-full h-full object-cover rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Xplorism Engine</span>
+                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Xplorism</span>
                                                 <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Dynamic itinerary generation engine</span>
                                             </div>
                                         </div>
@@ -1464,21 +1456,21 @@
                                 </div>
                                 <div class="flex items-start justify-between gap-3">
                                     <h4 class="text-sm sm:text-base font-display font-bold text-[#111111] dark:text-[#F4F2EE] leading-snug">
-                                        Advanced System Design &amp; CheckInPass Ecosystem
+                                        Healthcare &amp; Distributed Systems: HemoConnect &amp; MediVita
                                     </h4>
                                     <span class="metro-toggle-icon w-6 h-6 rounded-md bg-black/5 dark:bg-white/10 flex items-center justify-center text-[10px] text-[#71717A] dark:text-[#A1A1AA] transition-transform duration-300 shrink-0 mt-0.5">
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </span>
                                 </div>
                                 <p class="text-xs text-[#52525B] dark:text-[#A1A1AA] font-mono leading-relaxed mt-1.5 mb-2.5">
-                                    Optimizing core system configurations while building CheckInPass. Rigorous review of distributed architectures, high-concurrency event handling, and technical milestones for SWE 2026 roles.
+                                    Engineering production-grade health tech platforms: architecting HemoConnect for emergency donor dispatch and MediVita for intelligent clinical telemetry and vital-tracking workflows.
                                 </p>
                                 <!-- Technology Chips -->
                                 <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-[#52525B] dark:text-[#A1A1AA]">
                                     <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Distributed Systems</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">High Concurrency</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">250+ LeetCode DSA</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">System Design</span>
+                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">React &amp; TypeScript</span>
+                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Node &amp; Express</span>
+                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">WebSockets</span>
                                 </div>
                             </div>
 
@@ -1488,20 +1480,20 @@
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
                                         <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
                                             <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
-                                                <img src="assets/Images/checkinpass_logo.webp" alt="CheckInPass" class="w-full h-full object-contain rounded">
+                                                <img src="assets/Images/hemoconnect_logo.png" alt="HemoConnect" class="w-full h-full object-contain rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">CheckInPass</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Cryptographic event pass generation &amp; validation</span>
+                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">HemoConnect</span>
+                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Emergency blood matching &amp; donor dispatch platform</span>
                                             </div>
                                         </div>
                                         <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="metro-subcard-icon w-8 h-8 rounded-md bg-black/[0.06] dark:bg-white/10 flex items-center justify-center shrink-0">
-                                                <i class="fa-solid fa-code text-base"></i>
+                                            <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
+                                                <img src="assets/Images/medivita_logo.png" alt="MediVita" class="w-full h-full object-contain rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">250+ DSA Problems</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Dynamic programming, graphs &amp; tree optimizations</span>
+                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">MediVita</span>
+                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Intelligent clinical telemetry &amp; patient records ecosystem</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1513,36 +1505,36 @@
             </div>
         </section>
 
-        <!-- GitHub Activity Section (Full Screen Width / Edge-to-Edge) -->
-        <section id="github" class="section-container full-bleed-github !pt-4 !pb-8 md:!pt-6 md:!pb-10 !my-4" data-aos="fade-up">
-            <div class="w-full px-4 sm:px-8 md:px-12 lg:px-16">
-                <div class="github-full-banner p-6 sm:p-8 md:p-10">
-                    <!-- Header Bar -->
-                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                        <div class="flex items-center gap-4">
-                            <a href="https://github.com/Vans30m" target="_blank" rel="noopener noreferrer" class="shrink-0 group focus:outline-none">
-                                <img src="https://github.com/Vans30m.png" alt="Vansh Thakur Github Avatar"
-                                    class="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-black/[0.1] dark:border-white/[0.15] object-cover shadow-sm group-hover:scale-105 transition-transform duration-300">
-                            </a>
-                            <div>
-                                <span class="text-xs font-mono text-[#71717A] dark:text-[#A1A1AA] uppercase tracking-wider block font-semibold">// GITHUB METRICS &amp; ACTIVITY</span>
-                                <h3 class="text-xl sm:text-2xl font-display font-bold text-[#111111] dark:text-[#F4F2EE] mt-0.5">Shipping Open-Source Software Daily</h3>
-                                <p class="text-xs sm:text-sm text-[#52525B] dark:text-[#A1A1AA] mt-0.5 font-mono">Profile: <a href="https://github.com/Vans30m" target="_blank" class="text-[#111111] dark:text-white font-semibold underline underline-offset-2 hover:opacity-75">@Vans30m</a> </p>
-                            </div>
+        <!-- GitHub Activity Section -->
+        <section id="github" class="section-container !pt-4 !pb-8 md:!pt-6 md:!pb-10 !my-4" data-aos="fade-up">
+            <div class="github-full-banner rounded-3xl p-6 sm:p-8 md:p-10 border border-black/[0.08] dark:border-white/[0.08] shadow-sm">
+                <!-- Header Bar -->
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <a href="https://github.com/Vans30m" target="_blank" rel="noopener noreferrer" class="shrink-0 group focus:outline-none">
+                            <img src="https://github.com/Vans30m.png" alt="Vansh Thakur Github Avatar"
+                                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-black/[0.1] dark:border-white/[0.15] object-cover shadow-sm group-hover:scale-105 transition-transform duration-300">
+                        </a>
+                        <div>
+                            <span class="text-xs font-mono text-[#71717A] dark:text-[#A1A1AA] uppercase tracking-wider block font-semibold">// GITHUB METRICS &amp; ACTIVITY</span>
+                            <h3 class="text-xl sm:text-2xl font-display font-bold text-[#111111] dark:text-[#F4F2EE] mt-0.5">Shipping Open-Source Software Daily</h3>
+                            <p class="text-xs sm:text-sm text-[#52525B] dark:text-[#A1A1AA] mt-0.5 font-mono">Profile: <a href="https://github.com/Vans30m" target="_blank" class="text-[#111111] dark:text-white font-semibold underline underline-offset-2 hover:opacity-75">@Vans30m</a> </p>
                         </div>
+                    </div>
 
-                        <!-- High-Contrast Metric Badges -->
-                        <div class="flex items-center gap-6 sm:gap-8 flex-wrap">
-                            <div class="bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] px-5 py-3 rounded-2xl text-left">
-                                <span class="text-2xl sm:text-3xl font-display font-black text-[#111111] dark:text-white github-total-contributions block leading-tight">--</span>
-                                <span class="text-[10px] text-[#71717A] dark:text-[#A1A1AA] font-mono uppercase tracking-wider block mt-0.5">Yearly Contributions</span>
-                            </div>
-                            <div class="bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] px-5 py-3 rounded-2xl text-left">
-                                <span class="text-2xl sm:text-3xl font-display font-black text-[#111111] dark:text-white github-month-commits block leading-tight">--</span>
-                                <span class="text-[10px] text-[#71717A] dark:text-[#A1A1AA] font-mono uppercase tracking-wider block mt-0.5">Commits This Month</span>
-                            </div>
+                    <!-- High-Contrast Metric Badges & CTA -->
+                    <div class="flex items-center justify-center md:justify-end gap-4 sm:gap-6 md:gap-8 flex-wrap w-full md:w-auto">
+                        <div class="bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] px-5 py-3 rounded-2xl text-left">
+                            <span class="text-2xl sm:text-3xl font-display font-black text-[#111111] dark:text-white github-total-contributions block leading-tight">--</span>
+                            <span class="text-[10px] text-[#71717A] dark:text-[#A1A1AA] font-mono uppercase tracking-wider block mt-0.5">Yearly Contributions</span>
+                        </div>
+                        <div class="bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] px-5 py-3 rounded-2xl text-left">
+                            <span class="text-2xl sm:text-3xl font-display font-black text-[#111111] dark:text-white github-month-commits block leading-tight">--</span>
+                            <span class="text-[10px] text-[#71717A] dark:text-[#A1A1AA] font-mono uppercase tracking-wider block mt-0.5">Commits This Month</span>
+                        </div>
+                        <div class="w-full flex justify-center sm:w-auto sm:inline-flex">
                             <a href="https://github.com/Vans30m" target="_blank"
-                                class="github-follow-btn inline-flex items-center gap-2 px-5 py-3 rounded-full text-xs font-semibold hover:opacity-90 transition-all shadow-sm">
+                                class="github-follow-btn inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-xs font-semibold hover:opacity-90 transition-all shadow-sm">
                                 <span>Follow on GitHub</span>
                                 <i class="fa-brands fa-github text-sm"></i>
                             </a>
@@ -1623,7 +1615,7 @@
                             <h3 class="text-2xl sm:text-3xl font-display font-bold text-white mb-2 tracking-tight">
                                 Send Me a Message
                             </h3>
-                            <p class="text-xs sm:text-[13px] text-zinc-700 mb-6 leading-relaxed">
+                            <p class="text-xs sm:text-[13px] text-zinc-400 mb-6 leading-relaxed">
                                 Have a question, proposal, or need more information? Fill out the form below, and I'll
                                 get back to you as soon as possible.
                             </p>
@@ -1645,10 +1637,10 @@
                                 <!-- Black & White Submit Button Matching Website Theme -->
                                 <button type="submit" id="form-submit"
                                     class="w-full py-3.5 px-6 rounded-xl bg-white hover:bg-[#EAEAE8] text-[#111111] font-display font-bold text-sm tracking-wide transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] shadow-md cursor-pointer text-center block">
-                                    <span class="text-[#111111]">Submit</span>
+                                    <span id="form-submit-text" class="text-[#111111]">Send Message</span>
                                 </button>
                             </form>
-                            <div id="form-status" class="hidden font-mono text-xs text-center mt-3 p-2 rounded"></div>
+                            <div id="form-status" class="hidden font-mono text-xs text-center mt-3 p-3 rounded-xl border transition-all"></div>
                         </div>
                     </div>
                 </div>

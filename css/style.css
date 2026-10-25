@@ -1535,6 +1535,54 @@ a[href="#other-systems-preview"].bg-primary {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
+/* Contact Form Status Box Theme-Aware Styling */
+#form-status {
+    font-weight: 500 !important;
+    letter-spacing: -0.01em;
+}
+
+/* Success State - Light Theme */
+#form-status.form-status-success {
+    background-color: #E7F6ED !important;
+    border: 1px solid #B8E6C8 !important;
+    color: #146C2E !important;
+}
+
+/* Error State - Light Theme */
+#form-status.form-status-error {
+    background-color: #FDE8E8 !important;
+    border: 1px solid #F8B4B4 !important;
+    color: #9B1C1C !important;
+}
+
+/* Pending State - Light Theme */
+#form-status.form-status-pending {
+    background-color: #EBF5FF !important;
+    border: 1px solid #B4D7FE !important;
+    color: #1E429F !important;
+}
+
+/* Success State - Dark Theme */
+html[data-theme="dark"] #form-status.form-status-success {
+    background-color: rgba(16, 185, 129, 0.15) !important;
+    border: 1px solid rgba(52, 211, 153, 0.4) !important;
+    color: #34D399 !important;
+}
+
+/* Error State - Dark Theme */
+html[data-theme="dark"] #form-status.form-status-error {
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    border: 1px solid rgba(248, 113, 113, 0.4) !important;
+    color: #F87171 !important;
+}
+
+/* Pending State - Dark Theme */
+html[data-theme="dark"] #form-status.form-status-pending {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    border: 1px solid rgba(96, 165, 250, 0.4) !important;
+    color: #93C5FD !important;
+}
+
 /* Connect / Social Circle Buttons in Contact & Footer */
 #contact a[aria-label],
 footer a[aria-label] {
@@ -3260,36 +3308,19 @@ html[data-theme="dark"] .metro-card-details a {
 }
 
 /* ==========================================================================
-   Full Screen Width GitHub Activity Section (Edge-to-Edge)
+   GitHub Activity Section (Consistent Container Width & Curved Corners)
    ========================================================================== */
-#github.full-bleed-github {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    position: relative;
-    left: 50% !important;
-    right: 50% !important;
-    margin-left: -50vw !important;
-    margin-right: -50vw !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    box-sizing: border-box;
-}
-
 .github-full-banner {
     width: 100%;
-    border-radius: 0 !important;
-    border-left: none !important;
-    border-right: none !important;
+    border-radius: 1.5rem !important;
     background-color: #FFFFFF;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
     box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.04);
 }
 
 html[data-theme="dark"] .github-full-banner {
     background-color: #141416 !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -3531,6 +3562,27 @@ html[data-theme="dark"] #github .github-follow-btn * {
 .carousel-card:hover .carousel-card-img-wrapper img,
 .carousel-card:hover .carousel-card-img-wrapper svg {
     transform: scale(1.04);
+}
+
+/* In-development logo presentation */
+.indev-card .carousel-card-img-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1.5rem !important;
+}
+
+.indev-card .carousel-card-img-wrapper img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 45% !important;
+    max-height: 95px !important;
+    object-fit: contain !important;
+    margin: auto !important;
+}
+
+.indev-card:hover .carousel-card-img-wrapper img {
+    transform: scale(1.06) !important;
 }
 
 .carousel-card:hover {

@@ -625,54 +625,73 @@ document.addEventListener('DOMContentLoaded', () => {
             const nameEl = document.getElementById('form-name');
             const emailEl = document.getElementById('form-email');
             const messageEl = document.getElementById('form-message');
+            const submitText = document.getElementById('form-submit-text');
 
             const name = nameEl ? nameEl.value.trim() : '';
             const email = emailEl ? emailEl.value.trim() : '';
             const message = messageEl ? messageEl.value.trim() : '';
 
+            if (!name || !email || !message) return;
+
             formSubmit.disabled = true;
-            formSubmit.innerText = "TRANSMITTING SIGNAL DATA...";
-            formStatus.classList.remove('hidden', 'bg-red-500/10', 'text-red-400', 'bg-emerald-500/10', 'text-emerald-400');
+            if (submitText) {
+                submitText.innerText = "Transmitting message...";
+            } else {
+                formSubmit.innerText = "Transmitting message...";
+            }
+
+            formStatus.className = 'form-status-pending font-mono text-xs text-center mt-3 p-3 rounded-xl block';
+            formStatus.innerText = "Sending your message directly via secure server...";
 
             const params = {
+                name: name,
                 from_name: name,
+                email: email,
                 reply_to: email,
+                user_email: email,
                 message: message
             };
 
-            const triggerMailtoFallback = () => {
-                const mailtoUrl = `mailto:vthakur.290905@gmail.com?subject=${encodeURIComponent("Portfolio Contact from " + name)}&body=${encodeURIComponent(message + "\n\nReply To: " + email)}`;
-                window.location.href = mailtoUrl;
-                formStatus.innerText = "SUCCESS: Correspondence packet prepared and opened in your email app!";
-                formStatus.classList.add('bg-emerald-500/10', 'text-emerald-400');
-                formStatus.classList.remove('hidden');
+            const resetBtn = () => {
+                formSubmit.disabled = false;
+                if (submitText) {
+                    submitText.innerText = "Send Message";
+                } else {
+                    formSubmit.innerText = "Send Message";
+                }
+            };
+
+            const showSuccess = () => {
+                formStatus.className = 'form-status-success font-mono text-xs text-center mt-3 p-3 rounded-xl block';
+                formStatus.innerText = "✓ Message sent successfully! I'll get back to you shortly.";
                 contactForm.reset();
+                resetBtn();
+                setTimeout(() => {
+                    formStatus.classList.add('hidden');
+                }, 7000);
+            };
+
+            const showError = (errorMsg) => {
+                formStatus.className = 'form-status-error font-mono text-xs text-center mt-3 p-3 rounded-xl block';
+                formStatus.innerHTML = `<span>✕ Could not dispatch message (${errorMsg || 'service unavailable'}).</span> <a href="mailto:vthakur.290905@gmail.com" class="underline font-bold hover:opacity-80 ml-1">Send via email instead ↗</a>`;
+                resetBtn();
             };
 
             if (window.emailjs && typeof emailjs.send === 'function') {
-                // Send primary notification email to Vansh
                 emailjs.send('service_t3hkbsw', 'template_1894rk8', params)
-                    .then(() => {
-                        // Send optional auto-reply to visitor
+                    .then((res) => {
+                        console.log("EmailJS response:", res);
+                        // Optional auto-reply template
                         emailjs.send('service_t3hkbsw', 'template_qx3u0d8', params).catch(() => {});
-
-                        formStatus.innerText = "SUCCESS: Correspondence packet parsed and dispatched.";
-                        formStatus.classList.add('bg-emerald-500/10', 'text-emerald-400');
-                        formStatus.classList.remove('hidden');
-                        contactForm.reset();
+                        showSuccess();
                     })
                     .catch((err) => {
-                        console.warn("EmailJS API key placeholder or offline. Opening mail client fallback...", err);
-                        triggerMailtoFallback();
-                    })
-                    .finally(() => {
-                        formSubmit.disabled = false;
-                        formSubmit.innerText = "TRANSMIT SIGNAL PACKAGE";
+                        console.error("EmailJS Error:", err);
+                        const msg = (err && (err.text || err.message)) ? (err.text || err.message) : 'error';
+                        showError(msg);
                     });
             } else {
-                triggerMailtoFallback();
-                formSubmit.disabled = false;
-                formSubmit.innerText = "TRANSMIT SIGNAL PACKAGE";
+                showError("Email client library offline");
             }
         });
     }
