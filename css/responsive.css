@@ -168,9 +168,9 @@
         justify-content: flex-start !important;
     }
 
-    /* 5th skill card spans 2 columns nicely or centers if odd */
+    /* 6 skill cards naturally form 3 even rows of 2 columns */
     #skills .grid > div:last-child {
-        grid-column: span 2 !important;
+        grid-column: span 1 !important;
     }
 
     #skills .bentocard h3 {
@@ -494,18 +494,62 @@
         font-size: 1.15rem !important;
     }
 
-    /* Flagship Product Card Mobile Compression */
+    /* Flagship Product Card Mobile Compression & Centering */
+    #projects .mb-4 {
+        text-align: center !important;
+    }
+
+    #projects .mb-4 p {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
     #projects .bentocard {
-        padding: 0.85rem 1rem !important;
+        padding: 1rem 0.85rem !important;
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #projects .bentocard [class*="md:col-span-5"] {
+        align-items: center !important;
+        text-align: center !important;
     }
 
     #projects .bentocard h3 {
-        font-size: 1.2rem !important;
+        font-size: 1.15rem !important;
+        text-align: center !important;
     }
 
     #projects .bentocard p {
         font-size: 11px !important;
-        line-height: 1.35 !important;
+        line-height: 1.4 !important;
+        text-align: center !important;
+    }
+
+    #projects .bentocard .flex-wrap {
+        justify-content: center !important;
+    }
+
+    #projects .featured-project-img-wrapper {
+        max-height: 190px !important;
+        margin: 0.5rem auto 0 !important;
+    }
+
+    #projects .bentocard .border-t {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 0.5rem !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    #projects .bentocard .border-t a {
+        flex: 1 !important;
+        max-width: 180px !important;
+        padding: 0.5rem 0.75rem !important;
+        font-size: 11px !important;
+        text-align: center !important;
     }
 
     /* Selected Work Carousel Mobile Compression */

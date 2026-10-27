@@ -60,14 +60,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script>
-        (function() {
-            var theme = localStorage.getItem('portfolio-theme') || 'light';
-            if (theme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-            }
-        })();
+            (function () {
+                var theme = localStorage.getItem('portfolio-theme') || 'light';
+                if (theme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            })();
     </script>
 </head>
 
@@ -217,8 +217,12 @@
                             </h1>
 
                             <!-- Intro Paragraph -->
-                            <p class="text-sm sm:text-base text-[#52525B] dark:text-[#A1A1AA] leading-relaxed max-w-xl mb-8">
-                                Hi, I'm <strong class="hero-author-name text-[#111111] dark:text-[#FFFFFF] font-semibold"><span class="hero-name-type">Vansh Thakur</span><span class="typing-cursor">|</span></strong> — A
+                            <p
+                                class="text-sm sm:text-base text-[#52525B] dark:text-[#A1A1AA] leading-relaxed max-w-xl mb-8">
+                                Hi, I'm <strong
+                                    class="hero-author-name text-[#111111] dark:text-[#FFFFFF] font-semibold"><span
+                                        class="hero-name-type">Vansh Thakur</span><span
+                                        class="typing-cursor">|</span></strong> — A
                                 Full-Stack &amp; AI Software Engineer specializing in scalable web systems, low-latency
                                 AI integrations, and high-performance product experiences. Focused on turning complex
                                 architectures into digital products.
@@ -242,24 +246,32 @@
 
                         <!-- Right Column: Studio Portrait with Fluted Glass Slats Effect -->
                         <div class="lg:col-span-5 flex justify-center lg:justify-end">
-                            <div
-                                id="hero-portrait-card"
+                            <div id="hero-portrait-card"
                                 class="relative w-full max-w-[380px] sm:max-w-[420px] aspect-square rounded-[2.25rem] overflow-hidden bg-black/[0.04] border border-black/[0.06] shadow-xl group">
                                 <!-- Studio Monochrome Photo -->
                                 <img src="assets/Images/hero_portrait.jpg" alt="Vansh Thakur - Studio Portrait"
                                     class="w-full h-full object-cover object-[center_20%] grayscale contrast-125 transition-transform duration-700 group-hover:scale-105">
 
                                 <!-- Architectural Fluted Glass Slats Masking on the left edge (leaving face fully clear and prominent) -->
-                                <div class="absolute inset-y-0 left-0 w-[26%] overflow-hidden flex pointer-events-none z-10">
+                                <div
+                                    class="absolute inset-y-0 left-0 w-[26%] overflow-hidden flex pointer-events-none z-10">
                                     <!-- Optical blur underlay: guaranteed optical blur that never drops or flashes during theme transitions -->
                                     <img src="assets/Images/hero_portrait.jpg" alt=""
                                         class="absolute inset-0 w-[384%] max-w-none h-full object-cover object-[center_20%] grayscale contrast-125 filter blur-[6px] opacity-90">
 
                                     <div class="relative z-10 w-full h-full flex">
-                                        <div class="flex-1 backdrop-blur-[8px] bg-white/20 dark:bg-black/25 border-r border-white/30 dark:border-white/10"></div>
-                                        <div class="flex-1 backdrop-blur-[6px] bg-white/15 dark:bg-black/20 border-r border-white/25 dark:border-white/10"></div>
-                                        <div class="flex-1 backdrop-blur-[4px] bg-white/10 dark:bg-black/15 border-r border-white/20 dark:border-white/10"></div>
-                                        <div class="flex-1 backdrop-blur-[2px] bg-white/5 dark:bg-black/10 border-r border-white/15 dark:border-white/10"></div>
+                                        <div
+                                            class="flex-1 backdrop-blur-[8px] bg-white/20 dark:bg-black/25 border-r border-white/30 dark:border-white/10">
+                                        </div>
+                                        <div
+                                            class="flex-1 backdrop-blur-[6px] bg-white/15 dark:bg-black/20 border-r border-white/25 dark:border-white/10">
+                                        </div>
+                                        <div
+                                            class="flex-1 backdrop-blur-[4px] bg-white/10 dark:bg-black/15 border-r border-white/20 dark:border-white/10">
+                                        </div>
+                                        <div
+                                            class="flex-1 backdrop-blur-[2px] bg-white/5 dark:bg-black/10 border-r border-white/15 dark:border-white/10">
+                                        </div>
                                         <div class="flex-1 bg-transparent"></div>
                                     </div>
                                 </div>
@@ -425,8 +437,8 @@
                             <div
                                 class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
                                 <span class="text-zinc-400">LeetCode</span>
-                                <span class="text-white font-bold bg-acc3/10 px-2 py-0.5 rounded text-[10px]"
-                                    data-count="250" data-suffix="+">250+</span>
+                                <span
+                                    class="text-white font-bold bg-acc3/10 px-2 py-0.5 rounded text-[10px]">250+</span>
                             </div>
                             <div
                                 class="flex items-center justify-between p-2 rounded bg-zinc-950/40 border border-borderSpec/20 hover:border-accent/30 transition-all duration-300">
@@ -455,7 +467,7 @@
                             STATS</span>
                         <div class="grid grid-cols-2 gap-2 my-auto text-center font-mono">
                             <div class="p-2.5 bg-[#F4F4F5] rounded-xl border border-black/[0.08] shadow-sm"><span
-                                    class="text-lg font-bold text-[#111111] block">6</span><span
+                                    class="text-lg font-bold text-[#111111] block">8</span><span
                                     class="text-[9px] text-[#71717A] font-semibold">Projects</span></div>
                             <div class="p-2.5 bg-[#F4F4F5] rounded-xl border border-black/[0.08] shadow-sm"><span
                                     class="text-lg font-bold text-[#111111] block">15+</span><span
@@ -467,15 +479,18 @@
                     <div id="philosophy-card"
                         class="lg:col-span-4 bento-card-dark bento-border-glow p-4 sm:p-5 flex flex-col justify-between rounded-2xl min-h-[160px]"
                         data-aos="fade-up" data-aos-delay="200">
-                        <span class="text-[10px] font-mono font-bold tracking-[0.18em] text-[#111111] dark:text-[#A1A1AA] uppercase block mb-1.5">
+                        <span
+                            class="text-[10px] font-mono font-bold tracking-[0.18em] text-[#111111] dark:text-[#A1A1AA] uppercase block mb-1.5">
                             PHILOSOPHY
                         </span>
                         <div class="my-auto py-2">
-                            <span class="inline-block bg-[#F4F4F5] dark:bg-[#18181B] border border-black/80 dark:border-white/20 text-[#111111] dark:text-[#F4F2EE] px-3.5 py-2 rounded-xl text-sm sm:text-base italic font-serif leading-snug shadow-sm">
+                            <span
+                                class="inline-block bg-[#F4F4F5] dark:bg-[#18181B] border border-black/80 dark:border-white/20 text-[#111111] dark:text-[#F4F2EE] px-3.5 py-2 rounded-xl text-sm sm:text-base italic font-serif leading-snug shadow-sm">
                                 "I don't build projects. I build products."
                             </span>
                         </div>
-                        <div class="pt-2 border-t border-borderSpec/20 text-[10px] font-mono text-[#71717A] dark:text-[#A1A1AA]">
+                        <div
+                            class="pt-2 border-t border-borderSpec/20 text-[10px] font-mono text-[#71717A] dark:text-[#A1A1AA]">
                             Intent &amp; precision
                         </div>
                     </div>
@@ -535,13 +550,13 @@
                 </div>
 
                 <!-- Footer CTAs -->
-                <div class="flex flex-wrap items-center justify-end gap-2.5 mt-3.5 pt-3 border-t border-black/[0.06]">
+                <div class="flex items-center justify-end gap-2.5 mt-3.5 pt-3 border-t border-black/[0.06]">
                     <a href="https://finpulse-frontend-jrsd.onrender.com/pulse" target="_blank"
-                        class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md bg-[#18181B] !text-white text-xs font-mono font-medium hover:bg-black transition-all hover:scale-[1.02] shadow-sm w-full sm:w-auto">
+                        class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md bg-[#18181B] !text-white text-xs font-mono font-medium hover:bg-black transition-all hover:scale-[1.02] shadow-sm flex-1 sm:flex-initial">
                         <span class="!text-white">Live Demo</span> ↗
                     </a>
                     <a href="https://github.com/Vans30m/FinPulse-AI" target="_blank"
-                        class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md bg-white text-[#111111] border border-black/15 text-xs font-mono font-medium hover:border-black/40 hover:bg-[#F4F4F5] transition-all hover:scale-[1.02] w-full sm:w-auto">
+                        class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md bg-white text-[#111111] border border-black/15 text-xs font-mono font-medium hover:border-black/40 hover:bg-[#F4F4F5] transition-all hover:scale-[1.02] flex-1 sm:flex-initial">
                         Code ↗
                     </a>
                 </div>
@@ -552,9 +567,14 @@
         <section id="other-systems-preview" class="section-container !pt-4 !pb-8 md:!pt-6 md:!pb-12">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12" data-aos="fade-up">
                 <div>
-                    <span class="text-[11px] font-mono font-bold text-[#111111] dark:text-[#A1A1AA] uppercase tracking-[0.2em] block mb-3">SELECTED WORK</span>
-                    <h2 class="section-title text-3xl sm:text-4xl md:text-[2.6rem] font-display font-extrabold text-[#111111] !text-[#111111] dark:!text-[#F4F2EE] tracking-tight">Selected Masterpieces</h2>
-                    <p class="section-desc mt-3 text-sm sm:text-base text-[#52525B] dark:text-[#8E8E93]">Explore high-impact web software and hardware builds.</p>
+                    <span
+                        class="text-[11px] font-mono font-bold text-[#111111] dark:text-[#A1A1AA] uppercase tracking-[0.2em] block mb-3">SELECTED
+                        WORK</span>
+                    <h2
+                        class="section-title text-3xl sm:text-4xl md:text-[2.6rem] font-display font-extrabold text-[#111111] !text-[#111111] dark:!text-[#F4F2EE] tracking-tight">
+                        Selected Masterpieces</h2>
+                    <p class="section-desc mt-3 text-sm sm:text-base text-[#52525B] dark:text-[#8E8E93]">Explore
+                        high-impact web software and hardware builds.</p>
                 </div>
 
                 <div class="filter-pills-capsule">
@@ -568,12 +588,12 @@
             <!-- Stats Bar -->
             <div class="flex items-center gap-6 mb-8 text-xs font-mono" data-aos="fade-up" data-aos-delay="50">
                 <div>
-                    <span class="text-[#111111] text-lg font-bold">7</span> <span class="text-[#52525B]">Total
+                    <span class="text-[#111111] text-lg font-bold">8</span> <span class="text-[#52525B]">Total
                         Projects</span>
                 </div>
                 <div class="w-px h-4 bg-black/10"></div>
                 <div>
-                    <span class="text-[#111111] text-lg font-bold">2</span> <span class="text-[#52525B]">In
+                    <span class="text-[#111111] text-lg font-bold">3</span> <span class="text-[#52525B]">In
                         Development</span>
                 </div>
                 <div class="w-px h-4 bg-black/10"></div>
@@ -809,24 +829,28 @@
                     <div class="carousel-card indev-card" data-category="indev">
                         <div>
                             <div class="carousel-card-img-wrapper bg-[#F4F4F5] dark:bg-[#18181B]">
-                                <img src="assets/Images/hemoconnect_logo.png" alt="HemoConnect Logo"
-                                    loading="lazy" />
+                                <img src="assets/Images/hemoconnect_logo.png" alt="HemoConnect Logo" loading="lazy" />
                             </div>
                             <div class="flex justify-between items-start mb-4">
-                                <span class="text-[10px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full font-semibold">IN DEVELOPMENT</span>
+                                <span
+                                    class="text-[10px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full font-semibold">IN
+                                    DEVELOPMENT</span>
                                 <span class="text-[10px] text-muted font-mono">SYSTEM_DEV_01</span>
                             </div>
                             <h3 class="text-2xl font-display font-bold text-white mb-2">HemoConnect</h3>
                             <p class="text-xs text-muted leading-relaxed">
-                                Emergency blood matching and donor dispatch platform featuring real-time donor availability mapping, blood bank inventory tracking, and urgent request routing.
+                                Emergency blood matching and donor dispatch platform featuring real-time donor
+                                availability mapping, blood bank inventory tracking, and urgent request routing.
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                            <span class="text-[11px] font-mono text-primary leading-tight">React.js • Node.js<br>MongoDB • Express</span>
+                            <span class="text-[11px] font-mono text-primary leading-tight">React.js • Node.js<br>MongoDB
+                                • Express</span>
                             <div class="flex items-center gap-2 shrink-0">
-                                <span class="text-[11px] font-mono text-[#71717A] dark:text-[#A1A1AA] flex items-center gap-1.5">
+                                <span
+                                    class="text-[11px] font-mono text-[#71717A] dark:text-[#A1A1AA] flex items-center gap-1.5">
                                     <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
-                                    Active Sprint
+                                    In Development
                                 </span>
                             </div>
                         </div>
@@ -836,24 +860,61 @@
                     <div class="carousel-card indev-card" data-category="indev">
                         <div>
                             <div class="carousel-card-img-wrapper bg-[#F4F4F5] dark:bg-[#18181B]">
-                                <img src="assets/Images/medivita_logo.png" alt="MediVita Logo"
-                                    loading="lazy" />
+                                <img src="assets/Images/medivita_logo.png" alt="MediVita Logo" loading="lazy" />
                             </div>
                             <div class="flex justify-between items-start mb-4">
-                                <span class="text-[10px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full font-semibold">IN DEVELOPMENT</span>
+                                <span
+                                    class="text-[10px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full font-semibold">IN
+                                    DEVELOPMENT</span>
                                 <span class="text-[10px] text-muted font-mono">SYSTEM_DEV_02</span>
                             </div>
                             <h3 class="text-2xl font-display font-bold text-white mb-2">MediVita</h3>
                             <p class="text-xs text-muted leading-relaxed">
-                                Intelligent patient telemetry and clinical records ecosystem with active vitals monitoring, appointment scheduling, and encrypted health data management.
+                                Intelligent patient telemetry and clinical records ecosystem with active vitals
+                                monitoring, appointment scheduling, and encrypted health data management.
                             </p>
                         </div>
                         <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
-                            <span class="text-[11px] font-mono text-primary leading-tight">TypeScript • React<br>Node.js • WebSockets</span>
+                            <span class="text-[11px] font-mono text-primary leading-tight">TypeScript • React<br>Node.js
+                                • WebSockets</span>
                             <div class="flex items-center gap-2 shrink-0">
-                                <span class="text-[11px] font-mono text-[#71717A] dark:text-[#A1A1AA] flex items-center gap-1.5">
+                                <span
+                                    class="text-[11px] font-mono text-[#71717A] dark:text-[#A1A1AA] flex items-center gap-1.5">
                                     <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
-                                    Prototyping
+                                    In Development
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- In Development Card 3: EmploySync -->
+                    <div class="carousel-card indev-card" data-category="indev">
+                        <div>
+                            <div
+                                class="carousel-card-img-wrapper bg-[#F4F4F5] dark:bg-[#18181B] flex items-center justify-center p-4">
+                                <span
+                                    class="text-base sm:text-lg font-mono font-bold tracking-wider text-[#111111] dark:text-[#F4F2EE] uppercase">EmploySync</span>
+                            </div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span
+                                    class="text-[10px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full font-semibold">IN
+                                    DEVELOPMENT</span>
+                                <span class="text-[10px] text-muted font-mono">SYSTEM_DEV_03</span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">EmploySync</h3>
+                            <p class="text-xs text-muted leading-relaxed">
+                                Modern workforce & employee management platform optimizing staff onboarding, attendance
+                                sync, team workflows, and payroll records.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6 pt-3 border-t border-borderSpec/40">
+                            <span class="text-[11px] font-mono text-primary leading-tight">MongoDB •
+                                Express.js<br>React.js • Node.js</span>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <span
+                                    class="text-[11px] font-mono text-[#71717A] dark:text-[#A1A1AA] flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                    In Development
                                 </span>
                             </div>
                         </div>
@@ -870,51 +931,51 @@
             <p class="section-desc mb-6 text-muted" data-aos="fade-up" data-aos-delay="100">Comprehensive overview of
                 languages, frameworks, databases, and developer tooling.</p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3.5">
                 <!-- Languages Card -->
-                <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="150">
-                    <div class="mb-4 pb-2 border-b border-black/[0.08]">
-                        <h3 class="font-display font-bold text-[#111111] text-base">Languages</h3>
+                <div class="bentocard p-5" data-aos="fade-up" data-aos-delay="150">
+                    <div class="mb-3.5 pb-2 border-b border-black/[0.08]">
+                        <h3 class="font-display font-bold text-[#111111] text-sm sm:text-base">Languages</h3>
                     </div>
-                    <ul class="space-y-2.5 text-xs text-muted font-mono">
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                    <ul class="space-y-2 text-xs text-muted font-mono">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
                                     class="devicon-java-plain text-red-400"></i> Java</span>
                         </li>
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
                                     class="devicon-javascript-plain text-amber-400"></i> JavaScript</span>
                         </li>
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
+                            <span class="text-[#111111] font-semibold flex items-center gap-2"><i
+                                    class="devicon-typescript-plain text-blue-400"></i> TypeScript</span>
+                        </li>
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
                                     class="devicon-cplusplus-plain text-blue-500"></i> C++</span>
                         </li>
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
-                            <span class="text-[#111111] font-semibold flex items-center gap-2"><i
-                                    class="devicon-python-plain text-yellow-400"></i> Python</span>
-                        </li>
                         <li class="flex items-center justify-between">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
-                                    class="devicon-typescript-plain text-blue-400"></i> TypeScript</span>
+                                    class="devicon-python-plain text-yellow-400"></i> Python</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Frontend Card -->
-                <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="mb-4 pb-2 border-b border-black/[0.08]">
-                        <h3 class="font-display font-bold text-[#111111] text-base">Frontend</h3>
+                <div class="bentocard p-5" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mb-3.5 pb-2 border-b border-black/[0.08]">
+                        <h3 class="font-display font-bold text-[#111111] text-sm sm:text-base">Frontend</h3>
                     </div>
-                    <ul class="space-y-2.5 text-xs text-muted font-mono">
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                    <ul class="space-y-2 text-xs text-muted font-mono">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
                                     class="devicon-react-original text-cyan-400"></i> React.js</span>
                         </li>
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
                                     class="devicon-tailwindcss-original text-sky-400"></i> Tailwind CSS</span>
                         </li>
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
                                     class="devicon-html5-plain text-orange-500"></i> HTML5</span>
                         </li>
@@ -926,16 +987,16 @@
                 </div>
 
                 <!-- Backend Card -->
-                <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="250">
-                    <div class="mb-4 pb-2 border-b border-black/[0.08]">
-                        <h3 class="font-display font-bold text-[#111111] text-base">Backend</h3>
+                <div class="bentocard p-5" data-aos="fade-up" data-aos-delay="250">
+                    <div class="mb-3.5 pb-2 border-b border-black/[0.08]">
+                        <h3 class="font-display font-bold text-[#111111] text-sm sm:text-base">Backend</h3>
                     </div>
-                    <ul class="space-y-2.5 text-xs text-muted font-mono">
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                    <ul class="space-y-2 text-xs text-muted font-mono">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
                                     class="devicon-nodejs-plain text-green-500"></i> Node.js</span>
                         </li>
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
                                     class="devicon-express-original text-gray-300"></i> Express.js</span>
                         </li>
@@ -946,52 +1007,78 @@
                     </ul>
                 </div>
 
-                <!-- Databases Card -->
-                <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="280">
-                    <div class="mb-4 pb-2 border-b border-black/[0.08]">
-                        <h3 class="font-display font-bold text-[#111111] text-base">Databases</h3>
+                <!-- Modern ORM & Database Ecosystem Card -->
+<div class="bentocard p-5" data-aos="fade-up" data-aos-delay="280">
+    <div class="mb-3.5 pb-2 border-b border-black/[0.08]">
+        <h3 class="font-display font-bold text-[#111111] text-sm sm:text-base">ORM &amp; Databases</h3>
+    </div>
+    <ul class="space-y-2 text-xs text-muted font-mono">
+        <!-- 1. MongoDB at starting -->
+        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
+            <span class="text-[#111111] font-semibold flex items-center gap-2">
+                <i class="devicon-mongodb-plain text-emerald-500"></i> MongoDB
+            </span>
+        </li>
+        <!-- 2. PostgreSQL at index 2 -->
+        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
+            <span class="text-[#111111] font-semibold flex items-center gap-2">
+                <i class="devicon-postgresql-plain text-blue-400"></i> PostgreSQL
+            </span>
+        </li>
+        <!-- 3. Neon DB -->
+        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
+            <span class="text-[#111111] font-semibold flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-lime-400"></i> Neon DB
+            </span>
+        </li>
+        <!-- 4. Prisma ORM -->
+        <li class="flex items-center justify-between">
+            <span class="text-[#111111] font-semibold flex items-center gap-2">
+                <i class="devicon-prisma-original text-emerald-400"></i> Prisma ORM
+            </span>
+        </li>
+    </ul>
+</div>
+
+
+                <!-- Auth & Security Card -->
+                <div class="bentocard p-5" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mb-3.5 pb-2 border-b border-black/[0.08]">
+                        <h3 class="font-display font-bold text-[#111111] text-sm sm:text-base">Auth &amp; Security</h3>
                     </div>
-                    <ul class="space-y-2.5 text-xs text-muted font-mono">
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                    <ul class="space-y-2 text-xs text-muted font-mono">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
-                                    class="devicon-postgresql-plain text-blue-400"></i> PostgreSQL</span>
+                                    class="devicon-google-plain text-red-500"></i> Google OAuth 2.0</span>
                         </li>
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
-                                    class="devicon-mongodb-plain text-emerald-500"></i> MongoDB</span>
-                        </li>
-                        <li class="flex items-center justify-between">
-                            <span class="text-[#111111] font-semibold flex items-center gap-2"><i
-                                    class="fa-solid fa-database text-purple-400"></i> SQL</span>
+                                    class="fa-solid fa-shield-halved text-purple-400"></i> Clerk</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Tools & AI Card -->
-                <div class="bentocard p-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="mb-4 pb-2 border-b border-black/[0.08]">
-                        <h3 class="font-display font-bold text-[#111111] text-base">Tooling & AI</h3>
+                <!-- Tooling & AI Card -->
+                <div class="bentocard p-5" data-aos="fade-up" data-aos-delay="320">
+                    <div class="mb-3.5 pb-2 border-b border-black/[0.08]">
+                        <h3 class="font-display font-bold text-[#111111] text-sm sm:text-base">Tooling &amp; AI</h3>
                     </div>
-                    <ul class="space-y-2.5 text-xs text-muted font-mono">
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                    <ul class="space-y-2 text-xs text-muted font-mono">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
-                                    class="devicon-git-plain text-orange-600"></i> Git & GitHub</span>
+                                    class="devicon-git-plain text-orange-600"></i> Git &amp; GitHub</span>
                         </li>
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
                                     class="fa-solid fa-robot text-emerald-400"></i> LLM APIs</span>
                         </li>
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
+                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-1.5">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
                                     class="fa-solid fa-cloud-arrow-up text-white"></i> Vercel</span>
                         </li>
-                        <li class="flex items-center justify-between border-b border-black/[0.06] pb-2">
-                            <span class="text-[#111111] font-semibold flex items-center gap-2"><i
-                                    class="fa-solid fa-server text-teal-400"></i> Render</span>
-                        </li>
                         <li class="flex items-center justify-between">
                             <span class="text-[#111111] font-semibold flex items-center gap-2"><i
-                                    class="devicon-vscode-plain text-blue-500"></i> VS Code</span>
+                                    class="fa-solid fa-server text-teal-400"></i> Render</span>
                         </li>
                     </ul>
                 </div>
@@ -1004,29 +1091,37 @@
                     <div class="marquee-item"><i class="devicon-react-original text-cyan-400"></i> React.js</div>
                     <div class="marquee-item"><i class="devicon-typescript-plain text-blue-500"></i> TypeScript</div>
                     <div class="marquee-item"><i class="devicon-nodejs-plain text-green-500"></i> Node.js</div>
+                    <div class="marquee-item"><i class="devicon-prisma-original text-emerald-400"></i> Prisma</div>
+                    <div class="marquee-item"><i class="fa-solid fa-bolt text-lime-400"></i> Neon DB</div>
+                    <div class="marquee-item"><i class="fa-solid fa-shield-halved text-purple-400"></i> Clerk</div>
+                    <div class="marquee-item"><i class="devicon-google-plain text-red-500"></i> Google Auth</div>
                     <div class="marquee-item"><i class="devicon-python-plain text-yellow-400"></i> Python</div>
                     <div class="marquee-item"><i class="devicon-java-plain text-red-500"></i> Java</div>
-                    <div class="marquee-item"><i class="devicon-cplusplus-plain text-blue-600"></i> C++</div>
                     <div class="marquee-item"><i class="devicon-tailwindcss-plain text-sky-400"></i> Tailwind CSS</div>
                     <div class="marquee-item"><i class="devicon-mongodb-plain text-emerald-500"></i> MongoDB</div>
                     <div class="marquee-item"><i class="devicon-postgresql-plain text-blue-400"></i> PostgreSQL</div>
-                    <div class="marquee-item"><i class="devicon-git-plain text-orange-600"></i> Git & GitHub</div>
+                    <div class="marquee-item"><i class="devicon-git-plain text-orange-600"></i> Git &amp; GitHub</div>
                     <div class="marquee-item"><i class="devicon-fastapi-plain text-teal-400"></i> FastAPI</div>
-                    <div class="marquee-item"><i class="devicon-express-original text-textMain dark:text-white"></i> Express</div>
+                    <div class="marquee-item"><i class="devicon-express-original text-textMain dark:text-white"></i>
+                        Express</div>
 
                     <!-- Duplicate Set 2 (for seamless infinite loop) -->
                     <div class="marquee-item"><i class="devicon-react-original text-cyan-400"></i> React.js</div>
                     <div class="marquee-item"><i class="devicon-typescript-plain text-blue-500"></i> TypeScript</div>
                     <div class="marquee-item"><i class="devicon-nodejs-plain text-green-500"></i> Node.js</div>
+                    <div class="marquee-item"><i class="devicon-prisma-original text-emerald-400"></i> Prisma</div>
+                    <div class="marquee-item"><i class="fa-solid fa-bolt text-lime-400"></i> Neon DB</div>
+                    <div class="marquee-item"><i class="fa-solid fa-shield-halved text-purple-400"></i> Clerk</div>
+                    <div class="marquee-item"><i class="devicon-google-plain text-red-500"></i> Google Auth</div>
                     <div class="marquee-item"><i class="devicon-python-plain text-yellow-400"></i> Python</div>
                     <div class="marquee-item"><i class="devicon-java-plain text-red-500"></i> Java</div>
-                    <div class="marquee-item"><i class="devicon-cplusplus-plain text-blue-600"></i> C++</div>
                     <div class="marquee-item"><i class="devicon-tailwindcss-plain text-sky-400"></i> Tailwind CSS</div>
                     <div class="marquee-item"><i class="devicon-mongodb-plain text-emerald-500"></i> MongoDB</div>
                     <div class="marquee-item"><i class="devicon-postgresql-plain text-blue-400"></i> PostgreSQL</div>
-                    <div class="marquee-item"><i class="devicon-git-plain text-orange-600"></i> Git & GitHub</div>
+                    <div class="marquee-item"><i class="devicon-git-plain text-orange-600"></i> Git &amp; GitHub</div>
                     <div class="marquee-item"><i class="devicon-fastapi-plain text-teal-400"></i> FastAPI</div>
-                    <div class="marquee-item"><i class="devicon-express-original text-textMain dark:text-white"></i> Express</div>
+                    <div class="marquee-item"><i class="devicon-express-original text-textMain dark:text-white"></i>
+                        Express</div>
                 </div>
             </div>
         </section>
@@ -1046,13 +1141,16 @@
                     data-aos="fade-up" data-aos-delay="100">
                     <div>
                         <div class="flex justify-between items-center mb-2.5">
-                            <div class="profile-icon-badge w-8 h-8 rounded-lg flex items-center justify-center text-[#FFA116] bg-[#FFA116]/10 text-base transition-transform group-hover:scale-110">
+                            <div
+                                class="profile-icon-badge w-8 h-8 rounded-lg flex items-center justify-center text-[#FFA116] bg-[#FFA116]/10 text-base transition-transform group-hover:scale-110">
                                 <i class="fa-solid fa-code"></i>
                             </div>
                             <i
                                 class="fa-solid fa-arrow-up-right-from-square text-xs text-[#71717A] group-hover:text-[#FFA116] transition-colors"></i>
                         </div>
-                        <h3 class="text-base font-display font-bold text-[#111111] mb-0.5 group-hover:text-[#FFA116] transition-colors">LeetCode</h3>
+                        <h3
+                            class="text-base font-display font-bold text-[#111111] mb-0.5 group-hover:text-[#FFA116] transition-colors">
+                            LeetCode</h3>
                         <p class="text-[11px] text-[#52525B] mb-2.5 font-mono">Data Structures & Algorithms</p>
                         <div
                             class="metric-box bg-[#F4F4F5] border border-black/[0.06] rounded-lg p-2 space-y-1 font-mono text-xs">
@@ -1082,7 +1180,9 @@
                             <i
                                 class="fa-solid fa-arrow-up-right-from-square text-xs text-[#71717A] group-hover:text-[#2F8D46] transition-colors"></i>
                         </div>
-                        <h3 class="text-base font-display font-bold text-[#111111] mb-0.5 group-hover:text-[#2F8D46] transition-colors">GeeksforGeeks</h3>
+                        <h3
+                            class="text-base font-display font-bold text-[#111111] mb-0.5 group-hover:text-[#2F8D46] transition-colors">
+                            GeeksforGeeks</h3>
                         <p class="text-[11px] text-[#52525B] mb-2.5 font-mono">DSA & CS Fundamentals</p>
                         <div
                             class="metric-box bg-[#F4F4F5] border border-black/[0.06] rounded-lg p-2 space-y-1 font-mono text-xs">
@@ -1105,19 +1205,23 @@
                     data-aos="fade-up" data-aos-delay="300">
                     <div>
                         <div class="flex justify-between items-center mb-2.5">
-                            <div class="profile-icon-badge w-8 h-8 rounded-lg flex items-center justify-center text-[#00A843] dark:text-[#00EA64] bg-[#00EA64]/10 text-base transition-transform group-hover:scale-110">
+                            <div
+                                class="profile-icon-badge w-8 h-8 rounded-lg flex items-center justify-center text-[#00A843] dark:text-[#00EA64] bg-[#00EA64]/10 text-base transition-transform group-hover:scale-110">
                                 <i class="fa-brands fa-hackerrank text-lg"></i>
                             </div>
                             <i
                                 class="fa-solid fa-arrow-up-right-from-square text-xs text-[#71717A] group-hover:text-[#00A843] dark:group-hover:text-[#00EA64] transition-colors"></i>
                         </div>
-                        <h3 class="text-base font-display font-bold text-[#111111] mb-0.5 group-hover:text-[#00A843] dark:group-hover:text-[#00EA64] transition-colors">HackerRank</h3>
+                        <h3
+                            class="text-base font-display font-bold text-[#111111] mb-0.5 group-hover:text-[#00A843] dark:group-hover:text-[#00EA64] transition-colors">
+                            HackerRank</h3>
                         <p class="text-[11px] text-[#52525B] mb-2.5 font-mono">Problem Solving</p>
                         <div
                             class="metric-box bg-[#F4F4F5] border border-black/[0.06] rounded-lg p-2 space-y-1 font-mono text-xs">
                             <div class="flex justify-between items-center">
                                 <span class="metric-label text-[#71717A] text-[10px]">Skill Rating:</span>
-                                <span class="metric-val text-[#00A843] dark:text-[#00EA64] font-bold text-[11px]">4★ Problem Solving</span>
+                                <span class="metric-val text-[#00A843] dark:text-[#00EA64] font-bold text-[11px]">4★
+                                    Problem Solving</span>
                             </div>
                             <div class="flex justify-between items-center pt-1 border-t border-black/[0.05]">
                                 <span class="metric-label text-[#71717A] text-[10px]">Certifications:</span>
@@ -1133,13 +1237,16 @@
                     data-aos="fade-up" data-aos-delay="350">
                     <div>
                         <div class="flex justify-between items-center mb-2.5">
-                            <div class="profile-icon-badge w-8 h-8 rounded-lg flex items-center justify-center text-[#1F8ACB] bg-[#1F8ACB]/10 text-base transition-transform group-hover:scale-110">
+                            <div
+                                class="profile-icon-badge w-8 h-8 rounded-lg flex items-center justify-center text-[#1F8ACB] bg-[#1F8ACB]/10 text-base transition-transform group-hover:scale-110">
                                 <i class="fa-solid fa-chart-simple"></i>
                             </div>
                             <i
                                 class="fa-solid fa-arrow-up-right-from-square text-xs text-[#71717A] group-hover:text-[#1F8ACB] transition-colors"></i>
                         </div>
-                        <h3 class="text-base font-display font-bold text-[#111111] mb-0.5 group-hover:text-[#1F8ACB] transition-colors">Codeforces</h3>
+                        <h3
+                            class="text-base font-display font-bold text-[#111111] mb-0.5 group-hover:text-[#1F8ACB] transition-colors">
+                            Codeforces</h3>
                         <p class="text-[11px] text-[#52525B] mb-2.5 font-mono">Competitive Programming</p>
                         <div
                             class="metric-box bg-[#F4F4F5] border border-black/[0.06] rounded-lg p-2 space-y-1 font-mono text-xs">
@@ -1161,83 +1268,124 @@
         <section id="journey" class="section-container !pt-4 !pb-8 md:!pt-6 md:!pb-10">
             <span class="text-xs font-mono text-primary uppercase tracking-widest block mb-1" data-aos="fade-up">//
                 EVOLUTION LOG</span>
-            <h2 class="section-title !mb-1 text-2xl sm:text-3xl font-display font-bold" data-aos="fade-up" data-aos-delay="50">Engineering Journey</h2>
-            <p class="section-desc mb-6 text-muted text-xs sm:text-sm font-mono" data-aos="fade-up" data-aos-delay="100">Chronological history
+            <h2 class="section-title !mb-1 text-2xl sm:text-3xl font-display font-bold" data-aos="fade-up"
+                data-aos-delay="50">Engineering Journey</h2>
+            <p class="section-desc mb-6 text-muted text-xs sm:text-sm font-mono" data-aos="fade-up"
+                data-aos-delay="100">Chronological history
                 mapping my programming milestones and technical growth.</p>
 
             <!-- Metro Station Topology Map Container (Compact & Small) -->
-            <div class="metro-journey-container max-w-2xl mx-auto bg-white dark:bg-[#141416] border border-black/[0.08] dark:border-white/[0.08] rounded-2xl p-3.5 sm:p-5 shadow-sm relative" data-aos="fade-up">
+            <div class="metro-journey-container max-w-2xl mx-auto bg-white dark:bg-[#141416] border border-black/[0.08] dark:border-white/[0.08] rounded-2xl p-3.5 sm:p-5 shadow-sm relative"
+                data-aos="fade-up">
                 <!-- Top Header Bar (Compact monochrome styling) -->
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 mb-5 border-b border-black/[0.08] dark:border-white/[0.08] gap-2.5">
+                <div
+                    class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 mb-5 border-b border-black/[0.08] dark:border-white/[0.08] gap-2.5">
                     <div>
-                        <span class="text-[11px] font-mono text-[#71717A] dark:text-[#A1A1AA] font-semibold tracking-wider block uppercase">// SYSTEM TOPOLOGY MAP</span>
-                        <h3 class="text-lg sm:text-xl font-display font-bold text-[#111111] dark:text-[#F4F2EE] mt-0.5">Engineering Metro Line &amp; Station Router</h3>
+                        <span
+                            class="text-[11px] font-mono text-[#71717A] dark:text-[#A1A1AA] font-semibold tracking-wider block uppercase">//
+                            SYSTEM TOPOLOGY MAP</span>
+                        <h3 class="text-lg sm:text-xl font-display font-bold text-[#111111] dark:text-[#F4F2EE] mt-0.5">
+                            Engineering Metro Line &amp; Station Router</h3>
                     </div>
                 </div>
 
                 <!-- Metro Station Track & Cards (Compact Spacing) -->
                 <div class="metro-track-wrapper relative pl-10 sm:pl-12 flex flex-col space-y-4">
                     <!-- Continuous Monochrome Metro Track Line -->
-                    <div class="metro-track-line absolute top-5 bottom-5 left-[14px] sm:left-[16px] w-[2px] bg-black/15 dark:bg-white/15 rounded-full" aria-hidden="true">
-                        <div class="metro-track-progress w-full bg-[#111111] dark:bg-white transition-all duration-500 h-0"></div>
+                    <div class="metro-track-line absolute top-5 bottom-5 left-[14px] sm:left-[16px] w-[2px] bg-black/15 dark:bg-white/15 rounded-full"
+                        aria-hidden="true">
+                        <div
+                            class="metro-track-progress w-full bg-[#111111] dark:bg-white transition-all duration-500 h-0">
+                        </div>
                     </div>
 
                     <!-- Station 1 -->
                     <div class="metro-station-node relative" data-station="1">
                         <!-- Station Milestone Marker Badge -->
-                        <button type="button" class="metro-station-badge absolute -left-10 sm:-left-12 top-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[11px] sm:text-xs transition-all duration-300 z-10 cursor-pointer shadow-sm"
+                        <button type="button"
+                            class="metro-station-badge absolute -left-10 sm:-left-12 top-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[11px] sm:text-xs transition-all duration-300 z-10 cursor-pointer shadow-sm"
                             aria-label="Toggle Station 1 Details">
                             01
                         </button>
 
                         <!-- Station Card Accordion (Compact) -->
-                        <div class="metro-station-card bentocard rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer">
+                        <div
+                            class="metro-station-card bentocard rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer">
                             <!-- Card Summary Header (Always visible) -->
                             <div class="metro-card-summary p-3.5 sm:p-4">
                                 <div class="flex items-center justify-between gap-2 text-[11px] font-mono mb-1.5">
-                                    <span class="station-meta text-[#111111] dark:text-[#F4F2EE] font-bold tracking-wider uppercase">2024</span>
-                                    <span class="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#71717A] dark:text-[#A1A1AA] text-[9px] uppercase font-semibold">Initiation</span>
+                                    <span
+                                        class="station-meta text-[#111111] dark:text-[#F4F2EE] font-bold tracking-wider uppercase">2024</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#71717A] dark:text-[#A1A1AA] text-[9px] uppercase font-semibold">Initiation</span>
                                 </div>
                                 <div class="flex items-start justify-between gap-3">
-                                    <h4 class="text-sm sm:text-base font-display font-bold text-[#111111] dark:text-[#F4F2EE] leading-snug">
+                                    <h4
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] dark:text-[#F4F2EE] leading-snug">
                                         Algorithmic Foundations &amp; Embedded Systems
                                     </h4>
-                                    <span class="metro-toggle-icon w-6 h-6 rounded-md bg-black/5 dark:bg-white/10 flex items-center justify-center text-[10px] text-[#71717A] dark:text-[#A1A1AA] transition-transform duration-300 shrink-0 mt-0.5">
+                                    <span
+                                        class="metro-toggle-icon w-6 h-6 rounded-md bg-black/5 dark:bg-white/10 flex items-center justify-center text-[10px] text-[#71717A] dark:text-[#A1A1AA] transition-transform duration-300 shrink-0 mt-0.5">
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </span>
                                 </div>
-                                <p class="text-xs text-[#52525B] dark:text-[#A1A1AA] font-mono leading-relaxed mt-1.5 mb-2.5">
-                                    Initiated engineering journey mastering C++ logic, memory models, and embedded microcontrollers. Engineered a Piezoelectric Energy Tile harvesting footstep energy via Arduino UNO alongside mastering fundamental algorithms.
+                                <p
+                                    class="text-xs text-[#52525B] dark:text-[#A1A1AA] font-mono leading-relaxed mt-1.5 mb-2.5">
+                                    Initiated engineering journey mastering C++ logic, memory models, and embedded
+                                    microcontrollers. Engineered a Piezoelectric Energy Tile harvesting footstep energy
+                                    via Arduino UNO alongside mastering fundamental algorithms.
                                 </p>
                                 <!-- Technology Chips -->
-                                <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-[#52525B] dark:text-[#A1A1AA]">
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">C++</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Arduino UNO</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Embedded Sensors</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">DSA</span>
+                                <div
+                                    class="flex flex-wrap gap-1.5 text-[10px] font-mono text-[#52525B] dark:text-[#A1A1AA]">
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">C++</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Arduino
+                                        UNO</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Embedded
+                                        Sensors</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">DSA</span>
                                 </div>
                             </div>
 
                             <!-- High-Description Expanded Content (Accordion Panel) -->
-                            <div class="metro-card-details max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
-                                <div class="px-3.5 pb-4 sm:px-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.08] bg-[#F9F9F8] dark:bg-[#18181B] space-y-3 text-xs">
+                            <div
+                                class="metro-card-details max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
+                                <div
+                                    class="px-3.5 pb-4 sm:px-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.08] bg-[#F9F9F8] dark:bg-[#18181B] space-y-3 text-xs">
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                                        <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="metro-subcard-icon w-8 h-8 rounded-md bg-black/[0.06] dark:bg-white/10 flex items-center justify-center shrink-0">
+                                        <div
+                                            class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
+                                            <div
+                                                class="metro-subcard-icon w-8 h-8 rounded-md bg-black/[0.06] dark:bg-white/10 flex items-center justify-center shrink-0">
                                                 <i class="devicon-cplusplus-plain text-base"></i>
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Core C++ &amp; Data Structures</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Pointers, memory management &amp; Big-O analysis</span>
+                                                <span
+                                                    class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Core
+                                                    C++ &amp; Data Structures</span>
+                                                <span
+                                                    class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Pointers,
+                                                    memory management &amp; Big-O analysis</span>
                                             </div>
                                         </div>
-                                        <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
-                                                <img src="assets/Images/piezoPlates.webp" alt="Piezoelectric Tile" class="w-full h-full object-cover rounded">
+                                        <div
+                                            class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
+                                            <div
+                                                class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
+                                                <img src="assets/Images/piezoPlates.webp" alt="Piezoelectric Tile"
+                                                    class="w-full h-full object-cover rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Hardware Prototyping</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Piezoelectric energy harvesting tile via Arduino</span>
+                                                <span
+                                                    class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Hardware
+                                                    In Development</span>
+                                                <span
+                                                    class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Piezoelectric
+                                                    energy harvesting tile via Arduino</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1249,59 +1397,94 @@
                     <!-- Station 2 -->
                     <div class="metro-station-node relative" data-station="2">
                         <!-- Station Milestone Marker Badge -->
-                        <button type="button" class="metro-station-badge absolute -left-10 sm:-left-12 top-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[11px] sm:text-xs transition-all duration-300 z-10 cursor-pointer shadow-sm"
+                        <button type="button"
+                            class="metro-station-badge absolute -left-10 sm:-left-12 top-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[11px] sm:text-xs transition-all duration-300 z-10 cursor-pointer shadow-sm"
                             aria-label="Toggle Station 2 Details">
                             02
                         </button>
 
                         <!-- Station Card Accordion (Compact) -->
-                        <div class="metro-station-card bentocard rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer">
+                        <div
+                            class="metro-station-card bentocard rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer">
                             <!-- Card Summary Header (Always visible) -->
                             <div class="metro-card-summary p-3.5 sm:p-4">
                                 <div class="flex items-center justify-between gap-2 text-[11px] font-mono mb-1.5">
-                                    <span class="station-meta text-[#111111] dark:text-[#F4F2EE] font-bold tracking-wider uppercase">2024 - 2025</span>
-                                    <span class="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#71717A] dark:text-[#A1A1AA] text-[9px] uppercase font-semibold">Expansion</span>
+                                    <span
+                                        class="station-meta text-[#111111] dark:text-[#F4F2EE] font-bold tracking-wider uppercase">2024
+                                        - 2025</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#71717A] dark:text-[#A1A1AA] text-[9px] uppercase font-semibold">Expansion</span>
                                 </div>
                                 <div class="flex items-start justify-between gap-3">
-                                    <h4 class="text-sm sm:text-base font-display font-bold text-[#111111] dark:text-[#F4F2EE] leading-snug">
+                                    <h4
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] dark:text-[#F4F2EE] leading-snug">
                                         Responsive Interface Design &amp; Autonomous Robotics
                                     </h4>
-                                    <span class="metro-toggle-icon w-6 h-6 rounded-md bg-black/5 dark:bg-white/10 flex items-center justify-center text-[10px] text-[#71717A] dark:text-[#A1A1AA] transition-transform duration-300 shrink-0 mt-0.5">
+                                    <span
+                                        class="metro-toggle-icon w-6 h-6 rounded-md bg-black/5 dark:bg-white/10 flex items-center justify-center text-[10px] text-[#71717A] dark:text-[#A1A1AA] transition-transform duration-300 shrink-0 mt-0.5">
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </span>
                                 </div>
-                                <p class="text-xs text-[#52525B] dark:text-[#A1A1AA] font-mono leading-relaxed mt-1.5 mb-2.5">
-                                    Expanded into responsive web engineering and embedded robotics. Built Fitness Planet for health tracking alongside architecting an Autonomous Floor Cleaning Robot equipped with obstacle mapping and intelligent path planning.
+                                <p
+                                    class="text-xs text-[#52525B] dark:text-[#A1A1AA] font-mono leading-relaxed mt-1.5 mb-2.5">
+                                    Expanded into responsive web engineering and embedded robotics. Built Fitness Planet
+                                    for health tracking alongside architecting an Autonomous Floor Cleaning Robot
+                                    equipped with obstacle mapping and intelligent path planning.
                                 </p>
                                 <!-- Technology Chips -->
-                                <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-[#52525B] dark:text-[#A1A1AA]">
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">JavaScript ES6</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">HTML5 / CSS3</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Robotics Firmware</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Ultrasonic Mapping</span>
+                                <div
+                                    class="flex flex-wrap gap-1.5 text-[10px] font-mono text-[#52525B] dark:text-[#A1A1AA]">
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">JavaScript
+                                        ES6</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">HTML5
+                                        / CSS3</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Robotics
+                                        Firmware</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Ultrasonic
+                                        Mapping</span>
                                 </div>
                             </div>
 
                             <!-- High-Description Expanded Content (Accordion Panel) -->
-                            <div class="metro-card-details max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
-                                <div class="px-3.5 pb-4 sm:px-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.08] bg-[#F9F9F8] dark:bg-[#18181B] space-y-3 text-xs">
+                            <div
+                                class="metro-card-details max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
+                                <div
+                                    class="px-3.5 pb-4 sm:px-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.08] bg-[#F9F9F8] dark:bg-[#18181B] space-y-3 text-xs">
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                                        <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
-                                                <img src="assets/Images/fitnessplanet_logo.webp" alt="Fitness Planet" class="w-full h-full object-cover rounded">
+                                        <div
+                                            class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
+                                            <div
+                                                class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
+                                                <img src="assets/Images/fitnessplanet_logo.webp" alt="Fitness Planet"
+                                                    class="w-full h-full object-cover rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Fitness Planet</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Dynamic calorie tracking UI with localStorage</span>
+                                                <span
+                                                    class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Fitness
+                                                    Planet</span>
+                                                <span
+                                                    class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Dynamic
+                                                    calorie tracking UI with localStorage</span>
                                             </div>
                                         </div>
-                                        <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
-                                                <img src="assets/Images/floorRobot.webp" alt="Floor Robot" class="w-full h-full object-cover rounded">
+                                        <div
+                                            class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
+                                            <div
+                                                class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
+                                                <img src="assets/Images/floorRobot.webp" alt="Floor Robot"
+                                                    class="w-full h-full object-cover rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Autonomous Robotics</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Obstacle avoidance firmware with servo logic</span>
+                                                <span
+                                                    class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Autonomous
+                                                    Robotics</span>
+                                                <span
+                                                    class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Obstacle
+                                                    avoidance firmware with servo logic</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1313,59 +1496,89 @@
                     <!-- Station 3 -->
                     <div class="metro-station-node relative" data-station="3">
                         <!-- Station Milestone Marker Badge -->
-                        <button type="button" class="metro-station-badge absolute -left-10 sm:-left-12 top-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[11px] sm:text-xs transition-all duration-300 z-10 cursor-pointer shadow-sm"
+                        <button type="button"
+                            class="metro-station-badge absolute -left-10 sm:-left-12 top-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[11px] sm:text-xs transition-all duration-300 z-10 cursor-pointer shadow-sm"
                             aria-label="Toggle Station 3 Details">
                             03
                         </button>
 
                         <!-- Station Card Accordion (Compact) -->
-                        <div class="metro-station-card bentocard rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer">
+                        <div
+                            class="metro-station-card bentocard rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer">
                             <!-- Card Summary Header (Always visible) -->
                             <div class="metro-card-summary p-3.5 sm:p-4">
                                 <div class="flex items-center justify-between gap-2 text-[11px] font-mono mb-1.5">
-                                    <span class="station-meta text-[#111111] dark:text-[#F4F2EE] font-bold tracking-wider uppercase">2025</span>
-                                    <span class="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#71717A] dark:text-[#A1A1AA] text-[9px] uppercase font-semibold">Full Stack</span>
+                                    <span
+                                        class="station-meta text-[#111111] dark:text-[#F4F2EE] font-bold tracking-wider uppercase">2025</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#71717A] dark:text-[#A1A1AA] text-[9px] uppercase font-semibold">Full
+                                        Stack</span>
                                 </div>
                                 <div class="flex items-start justify-between gap-3">
-                                    <h4 class="text-sm sm:text-base font-display font-bold text-[#111111] dark:text-[#F4F2EE] leading-snug">
+                                    <h4
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] dark:text-[#F4F2EE] leading-snug">
                                         Full-Stack Architecture, REST APIs &amp; Databases
                                     </h4>
-                                    <span class="metro-toggle-icon w-6 h-6 rounded-md bg-black/5 dark:bg-white/10 flex items-center justify-center text-[10px] text-[#71717A] dark:text-[#A1A1AA] transition-transform duration-300 shrink-0 mt-0.5">
+                                    <span
+                                        class="metro-toggle-icon w-6 h-6 rounded-md bg-black/5 dark:bg-white/10 flex items-center justify-center text-[10px] text-[#71717A] dark:text-[#A1A1AA] transition-transform duration-300 shrink-0 mt-0.5">
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </span>
                                 </div>
-                                <p class="text-xs text-[#52525B] dark:text-[#A1A1AA] font-mono leading-relaxed mt-1.5 mb-2.5">
-                                    Transitioned to full-stack application development. Engineered asynchronous RESTful APIs using Node.js and Express, integrated MongoDB for structured storage, and deployed resilient cloud applications.
+                                <p
+                                    class="text-xs text-[#52525B] dark:text-[#A1A1AA] font-mono leading-relaxed mt-1.5 mb-2.5">
+                                    Transitioned to full-stack application development. Engineered asynchronous RESTful
+                                    APIs using Node.js and Express, integrated MongoDB for structured storage, and
+                                    deployed resilient cloud applications.
                                 </p>
                                 <!-- Technology Chips -->
-                                <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-[#52525B] dark:text-[#A1A1AA]">
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Node.js</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Express.js</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">MongoDB</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">JWT Auth</span>
+                                <div
+                                    class="flex flex-wrap gap-1.5 text-[10px] font-mono text-[#52525B] dark:text-[#A1A1AA]">
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Node.js</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Express.js</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">MongoDB</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">JWT
+                                        Auth</span>
                                 </div>
                             </div>
 
                             <!-- High-Description Expanded Content (Accordion Panel) -->
-                            <div class="metro-card-details max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
-                                <div class="px-3.5 pb-4 sm:px-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.08] bg-[#F9F9F8] dark:bg-[#18181B] space-y-3 text-xs">
+                            <div
+                                class="metro-card-details max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
+                                <div
+                                    class="px-3.5 pb-4 sm:px-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.08] bg-[#F9F9F8] dark:bg-[#18181B] space-y-3 text-xs">
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                                        <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
-                                                <img src="assets/Images/focusorahq_logo.webp" alt="FocusoraHQ" class="w-full h-full object-cover rounded">
+                                        <div
+                                            class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
+                                            <div
+                                                class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
+                                                <img src="assets/Images/focusorahq_logo.webp" alt="FocusoraHQ"
+                                                    class="w-full h-full object-cover rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">FocusoraHQ</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Productivity workspace with synchronous rooms</span>
+                                                <span
+                                                    class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">FocusoraHQ</span>
+                                                <span
+                                                    class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Productivity
+                                                    workspace with synchronous rooms</span>
                                             </div>
                                         </div>
-                                        <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
-                                                <img src="assets/Images/checkinpass_logo.webp" alt="CheckInPass" class="w-full h-full object-contain rounded">
+                                        <div
+                                            class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
+                                            <div
+                                                class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
+                                                <img src="assets/Images/checkinpass_logo.webp" alt="CheckInPass"
+                                                    class="w-full h-full object-contain rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">CheckInPass</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Cryptographic event pass generation &amp; validation</span>
+                                                <span
+                                                    class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">CheckInPass</span>
+                                                <span
+                                                    class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Cryptographic
+                                                    event pass generation &amp; validation</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1377,59 +1590,93 @@
                     <!-- Station 4 -->
                     <div class="metro-station-node relative" data-station="4">
                         <!-- Station Milestone Marker Badge -->
-                        <button type="button" class="metro-station-badge absolute -left-10 sm:-left-12 top-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[11px] sm:text-xs transition-all duration-300 z-10 cursor-pointer shadow-sm"
+                        <button type="button"
+                            class="metro-station-badge absolute -left-10 sm:-left-12 top-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[11px] sm:text-xs transition-all duration-300 z-10 cursor-pointer shadow-sm"
                             aria-label="Toggle Station 4 Details">
                             04
                         </button>
 
                         <!-- Station Card Accordion (Compact) -->
-                        <div class="metro-station-card bentocard rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer">
+                        <div
+                            class="metro-station-card bentocard rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer">
                             <!-- Card Summary Header (Always visible) -->
                             <div class="metro-card-summary p-3.5 sm:p-4">
                                 <div class="flex items-center justify-between gap-2 text-[11px] font-mono mb-1.5">
-                                    <span class="station-meta text-[#111111] dark:text-[#F4F2EE] font-bold tracking-wider uppercase">2025 - 2026</span>
-                                    <span class="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#71717A] dark:text-[#A1A1AA] text-[9px] uppercase font-semibold">AI Products</span>
+                                    <span
+                                        class="station-meta text-[#111111] dark:text-[#F4F2EE] font-bold tracking-wider uppercase">2025
+                                        - 2026</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#71717A] dark:text-[#A1A1AA] text-[9px] uppercase font-semibold">AI
+                                        Products</span>
                                 </div>
                                 <div class="flex items-start justify-between gap-3">
-                                    <h4 class="text-sm sm:text-base font-display font-bold text-[#111111] dark:text-[#F4F2EE] leading-snug">
+                                    <h4
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] dark:text-[#F4F2EE] leading-snug">
                                         AI Architectures &amp; FinPulse AI Launch
                                     </h4>
-                                    <span class="metro-toggle-icon w-6 h-6 rounded-md bg-black/5 dark:bg-white/10 flex items-center justify-center text-[10px] text-[#71717A] dark:text-[#A1A1AA] transition-transform duration-300 shrink-0 mt-0.5">
+                                    <span
+                                        class="metro-toggle-icon w-6 h-6 rounded-md bg-black/5 dark:bg-white/10 flex items-center justify-center text-[10px] text-[#71717A] dark:text-[#A1A1AA] transition-transform duration-300 shrink-0 mt-0.5">
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </span>
                                 </div>
-                                <p class="text-xs text-[#52525B] dark:text-[#A1A1AA] font-mono leading-relaxed mt-1.5 mb-2.5">
-                                    Pioneered intelligent automation by architecting FinPulse AI and building full-stack travel platforms like Xplorism, combining modern TypeScript architectures with LLM capabilities and live financial streams.
+                                <p
+                                    class="text-xs text-[#52525B] dark:text-[#A1A1AA] font-mono leading-relaxed mt-1.5 mb-2.5">
+                                    Pioneered intelligent automation by architecting FinPulse AI and building full-stack
+                                    travel platforms like Xplorism, combining modern TypeScript architectures with LLM
+                                    capabilities and live financial streams.
                                 </p>
                                 <!-- Technology Chips -->
-                                <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-[#52525B] dark:text-[#A1A1AA]">
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">TypeScript</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Next.js / React</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">LLM APIs</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Fintech Telemetry</span>
+                                <div
+                                    class="flex flex-wrap gap-1.5 text-[10px] font-mono text-[#52525B] dark:text-[#A1A1AA]">
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">TypeScript</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Next.js
+                                        / React</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">LLM
+                                        APIs</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Fintech
+                                        Telemetry</span>
                                 </div>
                             </div>
 
                             <!-- High-Description Expanded Content (Accordion Panel) -->
-                            <div class="metro-card-details max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
-                                <div class="px-3.5 pb-4 sm:px-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.08] bg-[#F9F9F8] dark:bg-[#18181B] space-y-3 text-xs">
+                            <div
+                                class="metro-card-details max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
+                                <div
+                                    class="px-3.5 pb-4 sm:px-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.08] bg-[#F9F9F8] dark:bg-[#18181B] space-y-3 text-xs">
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                                        <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
-                                                <img src="assets/Images/finpulseai_Logo.webp" alt="FinPulse AI" class="w-full h-full object-cover rounded">
+                                        <div
+                                            class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
+                                            <div
+                                                class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
+                                                <img src="assets/Images/finpulseai_Logo.webp" alt="FinPulse AI"
+                                                    class="w-full h-full object-cover rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">FinPulse AI </span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Financial stream parsing &amp; LLM telemetry</span>
+                                                <span
+                                                    class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">FinPulse
+                                                    AI </span>
+                                                <span
+                                                    class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Financial
+                                                    stream parsing &amp; LLM telemetry</span>
                                             </div>
                                         </div>
-                                        <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
-                                                <img src="assets/Images/xplorism_logo.webp" alt="Xplorism" class="w-full h-full object-cover rounded">
+                                        <div
+                                            class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
+                                            <div
+                                                class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
+                                                <img src="assets/Images/xplorism_logo.webp" alt="Xplorism"
+                                                    class="w-full h-full object-cover rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Xplorism</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Dynamic itinerary generation engine</span>
+                                                <span
+                                                    class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">Xplorism</span>
+                                                <span
+                                                    class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Dynamic
+                                                    itinerary generation engine</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1441,59 +1688,91 @@
                     <!-- Station 5 -->
                     <div class="metro-station-node relative" data-station="5">
                         <!-- Station Milestone Marker Badge -->
-                        <button type="button" class="metro-station-badge absolute -left-10 sm:-left-12 top-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[11px] sm:text-xs transition-all duration-300 z-10 cursor-pointer shadow-sm"
+                        <button type="button"
+                            class="metro-station-badge absolute -left-10 sm:-left-12 top-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[11px] sm:text-xs transition-all duration-300 z-10 cursor-pointer shadow-sm"
                             aria-label="Toggle Station 5 Details">
                             05
                         </button>
 
                         <!-- Station Card Accordion (Compact) -->
-                        <div class="metro-station-card bentocard rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer">
+                        <div
+                            class="metro-station-card bentocard rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer">
                             <!-- Card Summary Header (Always visible) -->
                             <div class="metro-card-summary p-3.5 sm:p-4">
                                 <div class="flex items-center justify-between gap-2 text-[11px] font-mono mb-1.5">
-                                    <span class="station-meta text-[#111111] dark:text-[#F4F2EE] font-bold tracking-wider uppercase">2026 - 2027</span>
-                                    <span class="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#111111] dark:text-white text-[9px] uppercase font-semibold">Active</span>
+                                    <span
+                                        class="station-meta text-[#111111] dark:text-[#F4F2EE] font-bold tracking-wider uppercase">2026
+                                        - 2027</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#111111] dark:text-white text-[9px] uppercase font-semibold">Active</span>
                                 </div>
                                 <div class="flex items-start justify-between gap-3">
-                                    <h4 class="text-sm sm:text-base font-display font-bold text-[#111111] dark:text-[#F4F2EE] leading-snug">
+                                    <h4
+                                        class="text-sm sm:text-base font-display font-bold text-[#111111] dark:text-[#F4F2EE] leading-snug">
                                         Healthcare &amp; Distributed Systems: HemoConnect &amp; MediVita
                                     </h4>
-                                    <span class="metro-toggle-icon w-6 h-6 rounded-md bg-black/5 dark:bg-white/10 flex items-center justify-center text-[10px] text-[#71717A] dark:text-[#A1A1AA] transition-transform duration-300 shrink-0 mt-0.5">
+                                    <span
+                                        class="metro-toggle-icon w-6 h-6 rounded-md bg-black/5 dark:bg-white/10 flex items-center justify-center text-[10px] text-[#71717A] dark:text-[#A1A1AA] transition-transform duration-300 shrink-0 mt-0.5">
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </span>
                                 </div>
-                                <p class="text-xs text-[#52525B] dark:text-[#A1A1AA] font-mono leading-relaxed mt-1.5 mb-2.5">
-                                    Engineering production-grade health tech platforms: architecting HemoConnect for emergency donor dispatch and MediVita for intelligent clinical telemetry and vital-tracking workflows.
+                                <p
+                                    class="text-xs text-[#52525B] dark:text-[#A1A1AA] font-mono leading-relaxed mt-1.5 mb-2.5">
+                                    Engineering production-grade health tech platforms: architecting HemoConnect for
+                                    emergency donor dispatch and MediVita for intelligent clinical telemetry and
+                                    vital-tracking workflows.
                                 </p>
                                 <!-- Technology Chips -->
-                                <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-[#52525B] dark:text-[#A1A1AA]">
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Distributed Systems</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">React &amp; TypeScript</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Node &amp; Express</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">WebSockets</span>
+                                <div
+                                    class="flex flex-wrap gap-1.5 text-[10px] font-mono text-[#52525B] dark:text-[#A1A1AA]">
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Distributed
+                                        Systems</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">React
+                                        &amp; TypeScript</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">Node
+                                        &amp; Express</span>
+                                    <span
+                                        class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5">WebSockets</span>
                                 </div>
                             </div>
 
                             <!-- High-Description Expanded Content (Accordion Panel) -->
-                            <div class="metro-card-details max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
-                                <div class="px-3.5 pb-4 sm:px-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.08] bg-[#F9F9F8] dark:bg-[#18181B] space-y-3 text-xs">
+                            <div
+                                class="metro-card-details max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
+                                <div
+                                    class="px-3.5 pb-4 sm:px-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.08] bg-[#F9F9F8] dark:bg-[#18181B] space-y-3 text-xs">
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                                        <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
-                                                <img src="assets/Images/hemoconnect_logo.png" alt="HemoConnect" class="w-full h-full object-contain rounded">
+                                        <div
+                                            class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
+                                            <div
+                                                class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
+                                                <img src="assets/Images/hemoconnect_logo.png" alt="HemoConnect"
+                                                    class="w-full h-full object-contain rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">HemoConnect</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Emergency blood matching &amp; donor dispatch platform</span>
+                                                <span
+                                                    class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">HemoConnect</span>
+                                                <span
+                                                    class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Emergency
+                                                    blood matching &amp; donor dispatch platform</span>
                                             </div>
                                         </div>
-                                        <div class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
-                                            <div class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
-                                                <img src="assets/Images/medivita_logo.png" alt="MediVita" class="w-full h-full object-contain rounded">
+                                        <div
+                                            class="flex items-center gap-2.5 p-2.5 bg-white dark:bg-[#1C1C1F] rounded-lg border border-black/[0.06] dark:border-white/[0.06]">
+                                            <div
+                                                class="w-8 h-8 rounded-md bg-white overflow-hidden shrink-0 border border-black/[0.08] shadow-sm flex items-center justify-center p-0.5">
+                                                <img src="assets/Images/medivita_logo.png" alt="MediVita"
+                                                    class="w-full h-full object-contain rounded">
                                             </div>
                                             <div>
-                                                <span class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">MediVita</span>
-                                                <span class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Intelligent clinical telemetry &amp; patient records ecosystem</span>
+                                                <span
+                                                    class="text-xs font-display font-bold text-[#111111] dark:text-[#F4F2EE] block">MediVita</span>
+                                                <span
+                                                    class="text-[10px] text-[#52525B] dark:text-[#A1A1AA] font-mono block">Intelligent
+                                                    clinical telemetry &amp; patient records ecosystem</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1507,30 +1786,48 @@
 
         <!-- GitHub Activity Section -->
         <section id="github" class="section-container !pt-4 !pb-8 md:!pt-6 md:!pb-10 !my-4" data-aos="fade-up">
-            <div class="github-full-banner rounded-3xl p-6 sm:p-8 md:p-10 border border-black/[0.08] dark:border-white/[0.08] shadow-sm">
+            <div
+                class="github-full-banner rounded-3xl p-6 sm:p-8 md:p-10 border border-black/[0.08] dark:border-white/[0.08] shadow-sm">
                 <!-- Header Bar -->
                 <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                     <div class="flex items-center gap-4">
-                        <a href="https://github.com/Vans30m" target="_blank" rel="noopener noreferrer" class="shrink-0 group focus:outline-none">
+                        <a href="https://github.com/Vans30m" target="_blank" rel="noopener noreferrer"
+                            class="shrink-0 group focus:outline-none">
                             <img src="https://github.com/Vans30m.png" alt="Vansh Thakur Github Avatar"
                                 class="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-black/[0.1] dark:border-white/[0.15] object-cover shadow-sm group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <div>
-                            <span class="text-xs font-mono text-[#71717A] dark:text-[#A1A1AA] uppercase tracking-wider block font-semibold">// GITHUB METRICS &amp; ACTIVITY</span>
-                            <h3 class="text-xl sm:text-2xl font-display font-bold text-[#111111] dark:text-[#F4F2EE] mt-0.5">Shipping Open-Source Software Daily</h3>
-                            <p class="text-xs sm:text-sm text-[#52525B] dark:text-[#A1A1AA] mt-0.5 font-mono">Profile: <a href="https://github.com/Vans30m" target="_blank" class="text-[#111111] dark:text-white font-semibold underline underline-offset-2 hover:opacity-75">@Vans30m</a> </p>
+                            <span
+                                class="text-xs font-mono text-[#71717A] dark:text-[#A1A1AA] uppercase tracking-wider block font-semibold">//
+                                GITHUB METRICS &amp; ACTIVITY</span>
+                            <h3
+                                class="text-xl sm:text-2xl font-display font-bold text-[#111111] dark:text-[#F4F2EE] mt-0.5">
+                                Shipping Open-Source Software Daily</h3>
+                            <p class="text-xs sm:text-sm text-[#52525B] dark:text-[#A1A1AA] mt-0.5 font-mono">Profile:
+                                <a href="https://github.com/Vans30m" target="_blank"
+                                    class="text-[#111111] dark:text-white font-semibold underline underline-offset-2 hover:opacity-75">@Vans30m</a>
+                            </p>
                         </div>
                     </div>
 
                     <!-- High-Contrast Metric Badges & CTA -->
-                    <div class="flex items-center justify-center md:justify-end gap-4 sm:gap-6 md:gap-8 flex-wrap w-full md:w-auto">
-                        <div class="bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] px-5 py-3 rounded-2xl text-left">
-                            <span class="text-2xl sm:text-3xl font-display font-black text-[#111111] dark:text-white github-total-contributions block leading-tight">--</span>
-                            <span class="text-[10px] text-[#71717A] dark:text-[#A1A1AA] font-mono uppercase tracking-wider block mt-0.5">Yearly Contributions</span>
+                    <div
+                        class="flex items-center justify-center md:justify-end gap-4 sm:gap-6 md:gap-8 flex-wrap w-full md:w-auto">
+                        <div
+                            class="bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] px-5 py-3 rounded-2xl text-left">
+                            <span
+                                class="text-2xl sm:text-3xl font-display font-black text-[#111111] dark:text-white github-total-contributions block leading-tight">--</span>
+                            <span
+                                class="text-[10px] text-[#71717A] dark:text-[#A1A1AA] font-mono uppercase tracking-wider block mt-0.5">Yearly
+                                Contributions</span>
                         </div>
-                        <div class="bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] px-5 py-3 rounded-2xl text-left">
-                            <span class="text-2xl sm:text-3xl font-display font-black text-[#111111] dark:text-white github-month-commits block leading-tight">--</span>
-                            <span class="text-[10px] text-[#71717A] dark:text-[#A1A1AA] font-mono uppercase tracking-wider block mt-0.5">Commits This Month</span>
+                        <div
+                            class="bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] px-5 py-3 rounded-2xl text-left">
+                            <span
+                                class="text-2xl sm:text-3xl font-display font-black text-[#111111] dark:text-white github-month-commits block leading-tight">--</span>
+                            <span
+                                class="text-[10px] text-[#71717A] dark:text-[#A1A1AA] font-mono uppercase tracking-wider block mt-0.5">Commits
+                                This Month</span>
                         </div>
                         <div class="w-full flex justify-center sm:w-auto sm:inline-flex">
                             <a href="https://github.com/Vans30m" target="_blank"
@@ -1640,7 +1937,9 @@
                                     <span id="form-submit-text" class="text-[#111111]">Send Message</span>
                                 </button>
                             </form>
-                            <div id="form-status" class="hidden font-mono text-xs text-center mt-3 p-3 rounded-xl border transition-all"></div>
+                            <div id="form-status"
+                                class="hidden font-mono text-xs text-center mt-3 p-3 rounded-xl border transition-all">
+                            </div>
                         </div>
                     </div>
                 </div>

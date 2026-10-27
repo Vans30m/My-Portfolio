@@ -2180,6 +2180,60 @@ html[data-theme="dark"] #skills li:hover i.fa-server {
     filter: drop-shadow(0 3px 8px rgba(20, 184, 166, 0.45)) !important;
 }
 
+/* Prisma ORM */
+#skills li:hover .devicon-prisma-original,
+#skills li:hover i.devicon-prisma-original,
+html[data-theme="dark"] #skills li:hover .devicon-prisma-original,
+html[data-theme="dark"] #skills li:hover i.devicon-prisma-original {
+    color: #10B981 !important;
+    filter: drop-shadow(0 3px 8px rgba(16, 185, 129, 0.55)) !important;
+}
+
+/* Neon DB (Serverless Postgres) */
+#skills li:hover .fa-bolt,
+#skills li:hover i.fa-bolt,
+html[data-theme="dark"] #skills li:hover .fa-bolt,
+html[data-theme="dark"] #skills li:hover i.fa-bolt {
+    color: #A3E635 !important;
+    filter: drop-shadow(0 3px 8px rgba(163, 230, 53, 0.6)) !important;
+}
+
+/* Google Auth */
+#skills li:hover .devicon-google-plain,
+#skills li:hover i.devicon-google-plain,
+html[data-theme="dark"] #skills li:hover .devicon-google-plain,
+html[data-theme="dark"] #skills li:hover i.devicon-google-plain {
+    color: #EA4335 !important;
+    filter: drop-shadow(0 3px 8px rgba(234, 67, 53, 0.5)) !important;
+}
+
+/* Clerk Auth */
+#skills li:hover .fa-shield-halved,
+#skills li:hover i.fa-shield-halved,
+html[data-theme="dark"] #skills li:hover .fa-shield-halved,
+html[data-theme="dark"] #skills li:hover i.fa-shield-halved {
+    color: #6C47FF !important;
+    filter: drop-shadow(0 3px 8px rgba(108, 71, 255, 0.55)) !important;
+}
+
+/* OAuth 2.0 */
+#skills li:hover .fa-key,
+#skills li:hover i.fa-key,
+html[data-theme="dark"] #skills li:hover .fa-key,
+html[data-theme="dark"] #skills li:hover i.fa-key {
+    color: #F59E0B !important;
+    filter: drop-shadow(0 3px 8px rgba(245, 158, 11, 0.5)) !important;
+}
+
+/* JWT & RBAC */
+#skills li:hover .fa-lock,
+#skills li:hover i.fa-lock,
+html[data-theme="dark"] #skills li:hover .fa-lock,
+html[data-theme="dark"] #skills li:hover i.fa-lock {
+    color: #06B6D4 !important;
+    filter: drop-shadow(0 3px 8px rgba(6, 182, 212, 0.5)) !important;
+}
+
 #skills li:hover .devicon-vscode-plain,
 #skills li:hover i.devicon-vscode-plain,
 html[data-theme="dark"] #skills li:hover .devicon-vscode-plain,
@@ -4716,6 +4770,35 @@ html[data-theme="dark"] .marquee-item:hover .devicon-nextjs-plain {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4)) !important;
 }
 
+/* Light Mode Marquee Hover for New Icons */
+#skills .marquee-item:hover .devicon-prisma-original,
+#skills .marquee-item i.devicon-prisma-original:hover,
+.marquee-item:hover .devicon-prisma-original {
+    color: #10B981 !important;
+    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .fa-bolt,
+#skills .marquee-item i.fa-bolt:hover,
+.marquee-item:hover .fa-bolt {
+    color: #84CC16 !important;
+    filter: drop-shadow(0 0 10px rgba(132, 204, 22, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .fa-shield-halved,
+#skills .marquee-item i.fa-shield-halved:hover,
+.marquee-item:hover .fa-shield-halved {
+    color: #6C47FF !important;
+    filter: drop-shadow(0 0 10px rgba(108, 71, 255, 0.65)) !important;
+}
+
+#skills .marquee-item:hover .devicon-google-plain,
+#skills .marquee-item i.devicon-google-plain:hover,
+.marquee-item:hover .devicon-google-plain {
+    color: #EA4335 !important;
+    filter: drop-shadow(0 0 10px rgba(234, 67, 53, 0.65)) !important;
+}
+
 html[data-theme="dark"] #skills .marquee-item:hover .devicon-express-original,
 html[data-theme="dark"] #skills .marquee-item i.devicon-express-original:hover,
 html[data-theme="dark"] .marquee-item:hover .devicon-express-original {
@@ -4822,6 +4905,30 @@ html[data-theme="dark"] #skills .marquee-item:hover .devicon-express-original,
 html[data-theme="dark"] #skills .marquee-item i.devicon-express-original:hover {
     color: #FFFFFF !important;
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-prisma-original,
+html[data-theme="dark"] #skills .marquee-item i.devicon-prisma-original:hover {
+    color: #10B981 !important;
+    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.75)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .fa-bolt,
+html[data-theme="dark"] #skills .marquee-item i.fa-bolt:hover {
+    color: #A3E635 !important;
+    filter: drop-shadow(0 0 10px rgba(163, 230, 53, 0.8)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .fa-shield-halved,
+html[data-theme="dark"] #skills .marquee-item i.fa-shield-halved:hover {
+    color: #6C47FF !important;
+    filter: drop-shadow(0 0 10px rgba(108, 71, 255, 0.75)) !important;
+}
+
+html[data-theme="dark"] #skills .marquee-item:hover .devicon-google-plain,
+html[data-theme="dark"] #skills .marquee-item i.devicon-google-plain:hover {
+    color: #EA4335 !important;
+    filter: drop-shadow(0 0 10px rgba(234, 67, 53, 0.75)) !important;
 }
 
 /* ==========================================================================

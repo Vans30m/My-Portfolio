@@ -159,49 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initMetroJourneyRouter();
 
     /* ==========================================================================
-       Animated Counters (IntersectionObserver triggered)
+       Counters disabled - Static Numbers Only
        ========================================================================== */
     const initAnimatedCounters = () => {
-        const counterEls = document.querySelectorAll('[data-count]');
-        if (!counterEls.length) return;
-
-        const easeOutQuart = t => 1 - Math.pow(1 - t, 4);
-
-        const animateCounter = (el) => {
-            const target = parseInt(el.getAttribute('data-count'), 10);
-            const suffix = el.getAttribute('data-suffix') || '';
-            const duration = Math.max(800, Math.min(2000, target * 18)); // Scale duration to number size
-            const start = performance.now();
-
-            const tick = (now) => {
-                const elapsed = now - start;
-                const progress = Math.min(elapsed / duration, 1);
-                const current = Math.floor(easeOutQuart(progress) * target);
-                el.textContent = current + suffix;
-
-                if (progress < 1) {
-                    requestAnimationFrame(tick);
-                } else {
-                    el.textContent = target + suffix;
-                    el.classList.add('counter-done');
-                    // Remove class after animation so it can re-trigger cleanly
-                    setTimeout(() => el.classList.remove('counter-done'), 400);
-                }
-            };
-
-            requestAnimationFrame(tick);
-        };
-
-        const counterObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter(entry.target);
-                    obs.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.4 });
-
-        counterEls.forEach(el => counterObserver.observe(el));
+        // Disabled: All problem numbers and statistics are strictly static text
     };
 
     initAnimatedCounters();
@@ -1462,7 +1423,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                                 <div class="recruiter-stat-card">
                                     <i class="fa-solid fa-laptop-code recruiter-stat-icon"></i>
-                                    <span class="recruiter-stat-val">6</span>
+                                    <span class="recruiter-stat-val">8</span>
                                     <span class="recruiter-stat-lbl">Projects</span>
                                 </div>
                             </div>
