@@ -723,74 +723,66 @@ html[data-theme="dark"] #about div[class*="border-t"] {
     border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Subtle Platform Accent & Glow on Coding Profile Cards */
-.profile-card-leetcode:hover {
-    box-shadow: 0 10px 30px -10px rgba(255, 161, 22, 0.25) !important;
-    border-color: rgba(255, 161, 22, 0.45) !important;
-}
-
-.profile-card-gfg:hover {
-    box-shadow: 0 10px 30px -10px rgba(47, 141, 70, 0.25) !important;
-    border-color: rgba(47, 141, 70, 0.45) !important;
-}
-
-.profile-card-hackerrank:hover {
-    box-shadow: 0 10px 30px -10px rgba(0, 234, 100, 0.25) !important;
-    border-color: rgba(0, 168, 67, 0.45) !important;
-}
-
+/* Sleek Minimalist Hover on Coding Profile Cards */
+.profile-card-leetcode:hover,
+.profile-card-gfg:hover,
+.profile-card-hackerrank:hover,
 .profile-card-codeforces:hover {
-    box-shadow: 0 10px 30px -10px rgba(31, 138, 203, 0.25) !important;
-    border-color: rgba(31, 138, 203, 0.45) !important;
+    box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.12) !important;
+    border-color: rgba(0, 0, 0, 0.3) !important;
 }
 
-html[data-theme="dark"] .profile-card-hackerrank:hover {
-    border-color: rgba(0, 234, 100, 0.45) !important;
+html[data-theme="dark"] .profile-card-leetcode:hover,
+html[data-theme="dark"] .profile-card-gfg:hover,
+html[data-theme="dark"] .profile-card-hackerrank:hover,
+html[data-theme="dark"] .profile-card-codeforces:hover {
+    box-shadow: 0 10px 25px -10px rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-/* Platform Badges & Icons in Dark Mode - Crisp, High Contrast & Perfectly Visible */
-html[data-theme="dark"] .profile-card-leetcode .profile-icon-badge {
-    background: rgba(255, 161, 22, 0.12) !important;
-    border: 1px solid rgba(255, 161, 22, 0.4) !important;
+/* Coding Profiles: Full Monochrome Logos (Pure Black in Light Mode, Pure White in Dark Mode) */
+.profile-icon-badge {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #111111;
+}
+
+.profile-icon-badge svg,
+.profile-icon-badge i {
+    color: #111111 !important;
+    fill: #111111 !important;
+    transition: color 0.25s ease, fill 0.25s ease;
+}
+
+.profile-icon-badge svg path {
+    fill: #111111 !important;
+}
+
+.leetcode-logo-svg,
+.gfg-logo-svg,
+.hackerrank-logo-svg,
+.codeforces-logo-svg {
+    display: block;
+    width: 1.15rem;
+    height: 1.15rem;
+}
+
+/* Dark Mode: Full White Logos */
+html[data-theme="dark"] .profile-icon-badge {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: none !important;
+    color: #FFFFFF !important;
 }
 
-html[data-theme="dark"] .profile-card-leetcode .profile-icon-badge,
-html[data-theme="dark"] .profile-card-leetcode .profile-icon-badge i {
-    color: #FFA116 !important;
-    font-size: 1rem !important;
+html[data-theme="dark"] .profile-icon-badge svg,
+html[data-theme="dark"] .profile-icon-badge i {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
 }
 
-html[data-theme="dark"] .profile-card-gfg .profile-icon-badge {
-    background: rgba(46, 204, 113, 0.12) !important;
-    border: 1px solid rgba(46, 204, 113, 0.4) !important;
-    color: #2ECC71 !important;
-    font-weight: 700 !important;
-    box-shadow: none !important;
-}
-
-html[data-theme="dark"] .profile-card-hackerrank .profile-icon-badge {
-    background: rgba(0, 234, 100, 0.12) !important;
-    border: 1px solid rgba(0, 234, 100, 0.4) !important;
-    box-shadow: none !important;
-}
-
-html[data-theme="dark"] .profile-card-hackerrank .profile-icon-badge,
-html[data-theme="dark"] .profile-card-hackerrank .profile-icon-badge i {
-    color: #00EA64 !important;
-    font-size: 1.15rem !important;
-}
-
-html[data-theme="dark"] .profile-card-codeforces .profile-icon-badge {
-    background: rgba(56, 189, 248, 0.12) !important;
-    border: 1px solid rgba(56, 189, 248, 0.4) !important;
-    box-shadow: none !important;
-}
-
-html[data-theme="dark"] .profile-card-codeforces .profile-icon-badge,
-html[data-theme="dark"] .profile-card-codeforces .profile-icon-badge i {
-    color: #38BDF8 !important;
-    font-size: 1rem !important;
+html[data-theme="dark"] .profile-icon-badge svg path {
+    fill: #FFFFFF !important;
 }
 
 /* Crisp Clean White Text & Numbers (No Glow) */
@@ -2198,7 +2190,7 @@ html[data-theme="dark"] #skills li:hover i.fa-bolt {
     filter: drop-shadow(0 3px 8px rgba(163, 230, 53, 0.6)) !important;
 }
 
-/* Google Auth */
+/* Google OAuth */
 #skills li:hover .devicon-google-plain,
 #skills li:hover i.devicon-google-plain,
 html[data-theme="dark"] #skills li:hover .devicon-google-plain,
@@ -3123,15 +3115,25 @@ html[data-theme="dark"] .metro-track-progress {
 }
 
 html[data-theme="dark"] .metro-station-badge.station-passed {
-    border-color: #FFFFFF !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .metro-station-node.active .metro-station-badge {
     background-color: #111111 !important;
     color: #FFFFFF !important;
     border-color: #111111 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
-    transform: scale(1.06);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.35) !important;
+    transform: scale(1.15) !important;
+    z-index: 20;
+}
+
+html[data-theme="dark"] .metro-station-node.active .metro-station-badge {
+    background-color: #FFFFFF !important;
+    color: #0B0B0C !important;
+    border-color: #FFFFFF !important;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2), 0 0 20px 4px rgba(255, 255, 255, 0.75), 0 0 35px rgba(255, 255, 255, 0.4) !important;
+    transform: scale(1.18) !important;
+    z-index: 20;
 }
 
 /* Metro Station Card - Compact & Crisp in Light Mode */
@@ -3266,14 +3268,23 @@ html.dark .metro-card-details .w-8.h-8 .devicon-mongodb-plain {
     visibility: visible !important;
 }
 
-/* Accordion Smooth Height Transition */
+/* Accordion Ultra-Smooth CSS Grid Animation */
 .metro-card-details {
-    max-height: 0;
-    transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    display: grid !important;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    will-change: grid-template-rows, opacity;
+}
+
+.metro-card-details > div {
+    overflow: hidden;
 }
 
 .metro-station-node.active .metro-card-details {
-    max-height: 800px;
+    grid-template-rows: 1fr !important;
+    opacity: 1 !important;
 }
 
 /* Dark Theme Overrides for Metro Journey */

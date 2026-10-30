@@ -66,11 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let isManualOverride = false;
         let manualTimeout = null;
 
-        // Dynamic scroll tracking: calculates scroll position relative to the metro track line
+        let currentActiveStation = null;
+
+        // Dynamic scroll tracking: calculates scroll position and auto-opens/glows stations
         const handleScrollProgress = () => {
             if (isManualOverride) return;
             const lineRect = trackLine ? trackLine.getBoundingClientRect() : journeySection.getBoundingClientRect();
-            const viewportMiddle = window.innerHeight * 0.55;
+            const viewportMiddle = window.innerHeight * 0.52;
 
             // Distance from top of the line to the viewport trigger point
             const travelDistance = viewportMiddle - lineRect.top;
@@ -80,17 +82,34 @@ document.addEventListener('DOMContentLoaded', () => {
             progressPct = Math.max(0, Math.min(100, progressPct));
             trackProgress.style.height = `${progressPct}%`;
 
-            // Highlight the latest station passed by the scroll line
+            // Find the station that corresponds to current scroll depth
+            let stationToActivate = null;
+
             stations.forEach((st) => {
                 const badge = st.querySelector('.metro-station-badge');
                 if (!badge) return;
                 const bRect = badge.getBoundingClientRect();
+                
+                // Track passed stations
                 if (bRect.top <= viewportMiddle + 10) {
                     badge.classList.add('station-passed');
+                    stationToActivate = st; // The deepest passed station becomes candidate for active
                 } else {
                     badge.classList.remove('station-passed');
                 }
             });
+
+            // Default to first station if user is at the top of the Journey section
+            if (!stationToActivate && lineRect.top < window.innerHeight * 0.75) {
+                stationToActivate = stations[0];
+            }
+
+            // Auto-activate & expand the reached station if it changed
+            if (stationToActivate && stationToActivate !== currentActiveStation) {
+                currentActiveStation = stationToActivate;
+                stations.forEach(s => s.classList.remove('active'));
+                stationToActivate.classList.add('active');
+            }
         };
 
         window.addEventListener('scroll', handleScrollProgress, { passive: true });
@@ -109,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // If it wasn't active, activate it
             if (!isAlreadyActive) {
                 targetStation.classList.add('active');
+                currentActiveStation = targetStation;
                 
                 // Temporarily smoothly advance track line to station node
                 isManualOverride = true;
@@ -1423,7 +1443,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                                 <div class="recruiter-stat-card">
                                     <i class="fa-solid fa-laptop-code recruiter-stat-icon"></i>
-                                    <span class="recruiter-stat-val">8</span>
+                                    <span class="recruiter-stat-val">9</span>
                                     <span class="recruiter-stat-lbl">Projects</span>
                                 </div>
                             </div>
