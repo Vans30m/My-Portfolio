@@ -73,8 +73,9 @@ Portfolio/
 | **SYSTEM_03** | **Xplorism** | Full-Stack AI Developer<br>`React.js` • `Node.js` • `Tailwind` • `LLM APIs` | [Source](https://github.com/Vans30m/xplorism-travel-ai) • [Demo](https://xplorism.vercel.app) |
 | **SYSTEM_04** | **FocusoraHQ** | React & WebSocket Developer<br>`React.js` • `Node.js` • `Express` • `MongoDB` | [Source](https://github.com/Vans30m/FocusoraHQ) • [Demo](https://focusorahq.vercel.app) |
 | **SYSTEM_05** | **Fitness Planet** | Frontend Developer<br>`HTML5` • `CSS3` • `JavaScript` • `Chart.js` | [Source](https://github.com/Vans30m/fitness-planet) • [Demo](https://fitness-planet-vans.vercel.app/) |
-| **SYSTEM_06** | **Autonomous Floor Robot** | Firmware Engineer<br>`C++` • `ROS` • `Obstacle Avoidance` • `Sensors` | [Source](https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot) • [Case Study](html/floorcleaning-details.html) |
-| **SYSTEM_07** | **Piezoelectric Energy Tile** | Embedded Systems Developer<br>`C++` • `Arduino` • `Sensors` • `Microgrid` | [Source](https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO) • [Case Study](html/piezoelectric-details.html) |
+| **SYSTEM_06** | **RaktDal** | Full-Stack Developer<br>`React.js` • `Node.js` • `Express` • `MongoDB` | [Source](https://github.com/Vans30m/RaktDal) • [Demo](https://raktdal.onrender.com/) |
+| **SYSTEM_07** | **Autonomous Floor Robot** | Firmware Engineer<br>`C++` • `ROS` • `Obstacle Avoidance` • `Sensors` | [Source](https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot) • [Case Study](html/floorcleaning-details.html) |
+| **SYSTEM_08** | **Piezoelectric Energy Tile** | Embedded Systems Developer<br>`C++` • `Arduino` • `Sensors` • `Microgrid` | [Source](https://github.com/Vans30m/Smart-Energy-Tile-Harvesting-Footstep-Energy-with-Piezoelectric-Plates-with-Arduino-UNO) • [Case Study](html/piezoelectric-details.html) |
 
 ---
 
