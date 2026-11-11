@@ -2104,14 +2104,6 @@ html[data-theme="dark"] #skills li:hover i.devicon-express-original {
     filter: drop-shadow(0 3px 8px rgba(255, 255, 255, 0.45)) !important;
 }
 
-#skills li:hover .devicon-fastapi-plain,
-#skills li:hover i.devicon-fastapi-plain,
-html[data-theme="dark"] #skills li:hover .devicon-fastapi-plain,
-html[data-theme="dark"] #skills li:hover i.devicon-fastapi-plain {
-    color: #059669 !important;
-    filter: drop-shadow(0 3px 8px rgba(5, 150, 105, 0.45)) !important;
-}
-
 #skills li:hover .devicon-postgresql-plain,
 #skills li:hover i.devicon-postgresql-plain,
 html[data-theme="dark"] #skills li:hover .devicon-postgresql-plain,
@@ -4767,13 +4759,6 @@ html[data-theme="dark"] .marquee-item:hover .devicon-nextjs-plain {
     filter: drop-shadow(0 0 10px rgba(36, 150, 237, 0.65)) !important;
 }
 
-#skills .marquee-item:hover .devicon-fastapi-plain,
-#skills .marquee-item i.devicon-fastapi-plain:hover,
-.marquee-item:hover .devicon-fastapi-plain {
-    color: #009688 !important;
-    filter: drop-shadow(0 0 10px rgba(0, 150, 136, 0.65)) !important;
-}
-
 #skills .marquee-item:hover .devicon-express-original,
 #skills .marquee-item i.devicon-express-original:hover,
 .marquee-item:hover .devicon-express-original {
@@ -4904,12 +4889,6 @@ html[data-theme="dark"] #skills .marquee-item:hover .devicon-git-plain,
 html[data-theme="dark"] #skills .marquee-item i.devicon-git-plain:hover {
     color: #F05032 !important;
     filter: drop-shadow(0 0 10px rgba(240, 80, 50, 0.65)) !important;
-}
-
-html[data-theme="dark"] #skills .marquee-item:hover .devicon-fastapi-plain,
-html[data-theme="dark"] #skills .marquee-item i.devicon-fastapi-plain:hover {
-    color: #009688 !important;
-    filter: drop-shadow(0 0 10px rgba(0, 150, 136, 0.65)) !important;
 }
 
 html[data-theme="dark"] #skills .marquee-item:hover .devicon-express-original,
