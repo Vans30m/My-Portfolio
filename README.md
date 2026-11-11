@@ -70,8 +70,8 @@ Portfolio/
 | :--- | :--- | :--- | :--- |
 | **SYSTEM_01** | **CheckInPass** | Full-Stack Developer<br>`React.js` • `Node.js` • `Express` • `MongoDB` | [Source](https://github.com/Vans30m/CheckInPass) • [Demo](https://CheckInPass.onrender.com/) |
 | **SYSTEM_02** | **FinPulse AI** | AI Full-Stack Developer<br>`TypeScript` • `React` • `Node.js` • `LLM APIs` | [Source](https://github.com/Vans30m/FinPulse-AI) • [Demo](https://finpulse-ai-bxas.onrender.com) |
-| **SYSTEM_03** | **Xplorism** | Full-Stack AI Developer<br>`React.js` • `Node.js` • `Tailwind` • `LLM APIs` | [Source](https://github.com/Vans30m/xplorism-travel-ai) • [Demo](https://xplorism.vercel.app) |
-| **SYSTEM_04** | **FocusoraHQ** | React & WebSocket Developer<br>`React.js` • `Node.js` • `Express` • `MongoDB` | [Source](https://github.com/Vans30m/FocusoraHQ) • [Demo](https://focusorahq.vercel.app) |
+| **SYSTEM_03** | **Xplorism** | Full-Stack AI Developer<br>`React.js` • `Node.js` • `Tailwind` • `LLM APIs` | [Source](https://github.com/TanishMehta23/Xplorism) • [Demo](https://xplorism.vercel.app) |
+| **SYSTEM_04** | **FocusoraHQ** | React & WebSocket Developer<br>`React.js` • `Node.js` • `Express` • `MongoDB` | [Source](https://github.com/Chet07-R/FocusoraHQ) • [Demo](https://focusora-hq.vercel.app/) |
 | **SYSTEM_05** | **Fitness Planet** | Frontend Developer<br>`HTML5` • `CSS3` • `JavaScript` • `Chart.js` | [Source](https://github.com/Vans30m/fitness-planet) • [Demo](https://fitness-planet-vans.vercel.app/) |
 | **SYSTEM_06** | **RaktDal** | Full-Stack Developer<br>`React.js` • `Node.js` • `Express` • `MongoDB` | [Source](https://github.com/Vans30m/RaktDal) • [Demo](https://raktdal.onrender.com/) |
 | **SYSTEM_07** | **Autonomous Floor Robot** | Firmware Engineer<br>`C++` • `ROS` • `Obstacle Avoidance` • `Sensors` | [Source](https://github.com/Vans30m/Autonomous-Floor-Cleaning-Robot) • [Case Study](html/floorcleaning-details.html) |

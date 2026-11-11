@@ -248,90 +248,81 @@
                         <div class="lg:col-span-5 flex justify-center lg:justify-end">
                             <div id="hero-telemetry-card"
                                 class="w-full max-w-[390px] sm:max-w-[420px] rounded-[1.75rem] p-5 sm:p-6 bg-white dark:bg-[#121214] border border-black/[0.08] dark:border-white/[0.08] shadow-2xl relative overflow-hidden flex flex-col justify-between transition-all duration-300 hover:border-black/20 dark:hover:border-white/20">
-                                
+
                                 <!-- Card Header: System Status & Terminal Dot indicators -->
                                 <div>
-                                    <div class="flex items-center justify-between pb-3.5 border-b border-black/[0.06] dark:border-white/[0.06]">
+                                    <div
+                                        class="flex items-center justify-between pb-3.5 border-b border-black/[0.06] dark:border-white/[0.06]">
                                         <div class="flex items-center gap-2">
-                                            <span class="relative flex h-2 w-2">
-                                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                                            </span>
-                                            <span class="font-mono text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">SYSTEMS OPERATIONAL</span>
-                                        </div>
-                                        <div class="flex items-center gap-1.5 opacity-60">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-black/20 dark:bg-white/20"></span>
-                                            <span class="w-2.5 h-2.5 rounded-full bg-black/20 dark:bg-white/20"></span>
-                                            <span class="w-2.5 h-2.5 rounded-full bg-black/20 dark:bg-white/20"></span>
+                                            <span
+                                                class="font-mono text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">SYSTEMS
+                                                OPERATIONAL</span>
                                         </div>
                                     </div>
 
-                                    <!-- Architecture Node Identity -->
-                                    <div class="mt-4 mb-4">
-                                        <div class="flex items-baseline justify-between mb-1">
-                                            <span class="font-mono text-[10px] text-[#71717A] dark:text-[#A1A1AA] uppercase tracking-widest">// NODE IDENT</span>
-                                            <span class="font-mono text-[10px] text-primary font-bold">NODE_VANSH_01</span>
-                                        </div>
-                                        <h3 class="font-display font-extrabold text-lg sm:text-xl text-[#111111] dark:text-[#F4F2EE] tracking-tight">
-                                            Full-Stack &amp; AI Architectures
-                                        </h3>
-                                        <p class="font-mono text-xs text-[#52525B] dark:text-[#8E8E93] mt-1 leading-relaxed">
-                                            High-concurrency microservices, realtime telemetry &amp; production web apps.
-                                        </p>
-                                    </div>
-
+                                    
                                     <!-- Telemetry Metrics Grid -->
                                     <div class="grid grid-cols-2 gap-2.5 my-3.5">
-                                        <div class="p-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.05] dark:border-white/[0.05]">
-                                            <div class="flex items-center justify-between text-[10px] font-mono text-[#71717A] dark:text-[#A1A1AA]">
+                                        <div
+                                            class="p-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.05] dark:border-white/[0.05]">
+                                            <div
+                                                class="flex items-center justify-between text-[10px] font-mono text-[#71717A] dark:text-[#A1A1AA]">
                                                 <span>LATENCY</span>
-                                                <i class="fa-solid fa-wifi text-[9px] text-emerald-500"></i>
                                             </div>
-                                            <div class="text-base font-mono font-bold text-[#111111] dark:text-white mt-1">
-                                                24ms <span class="text-[10px] font-normal text-emerald-500">optimal</span>
+                                            <div
+                                                class="text-base font-mono font-bold text-[#111111] dark:text-white mt-1">
+                                                24ms
                                             </div>
                                         </div>
 
-                                        <div class="p-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.05] dark:border-white/[0.05]">
-                                            <div class="flex items-center justify-between text-[10px] font-mono text-[#71717A] dark:text-[#A1A1AA]">
+                                        <div
+                                            class="p-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.05] dark:border-white/[0.05]">
+                                            <div
+                                                class="flex items-center justify-between text-[10px] font-mono text-[#71717A] dark:text-[#A1A1AA]">
                                                 <span>UPTIME</span>
-                                                <i class="fa-solid fa-shield-halved text-[9px] text-blue-500"></i>
                                             </div>
-                                            <div class="text-base font-mono font-bold text-[#111111] dark:text-white mt-1">
+                                            <div
+                                                class="text-base font-mono font-bold text-[#111111] dark:text-white mt-1">
                                                 99.98%
                                             </div>
                                         </div>
 
-                                        <div class="p-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.05] dark:border-white/[0.05]">
-                                            <div class="flex items-center justify-between text-[10px] font-mono text-[#71717A] dark:text-[#A1A1AA]">
+                                        <div
+                                            class="p-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.05] dark:border-white/[0.05]">
+                                            <div
+                                                class="flex items-center justify-between text-[10px] font-mono text-[#71717A] dark:text-[#A1A1AA]">
                                                 <span>SOLVED DSA</span>
-                                                <i class="fa-solid fa-code text-[9px] text-amber-500"></i>
                                             </div>
-                                            <div class="text-base font-mono font-bold text-[#111111] dark:text-white mt-1">
-                                                430+ <span class="text-[10px] font-normal text-[#71717A] dark:text-[#A1A1AA]">probs</span>
+                                            <div
+                                                class="text-base font-mono font-bold text-[#111111] dark:text-white mt-1">
+                                                250+ <span
+                                                    class="text-[10px] font-normal text-[#71717A] dark:text-[#A1A1AA]">probs</span>
                                             </div>
                                         </div>
 
-                                        <div class="p-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.05] dark:border-white/[0.05]">
-                                            <div class="flex items-center justify-between text-[10px] font-mono text-[#71717A] dark:text-[#A1A1AA]">
+                                        <div
+                                            class="p-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.05] dark:border-white/[0.05]">
+                                            <div
+                                                class="flex items-center justify-between text-[10px] font-mono text-[#71717A] dark:text-[#A1A1AA]">
                                                 <span>DEPLOYED APPS</span>
-                                                <i class="fa-solid fa-rocket text-[9px] text-purple-500"></i>
                                             </div>
-                                            <div class="text-base font-mono font-bold text-[#111111] dark:text-white mt-1">
-                                                8 <span class="text-[10px] font-normal text-[#71717A] dark:text-[#A1A1AA]">live</span>
+                                            <div
+                                                class="text-base font-mono font-bold text-[#111111] dark:text-white mt-1">
+                                                8 <span
+                                                    class="text-[10px] font-normal text-[#71717A] dark:text-[#A1A1AA]">live</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Card Footer: Live Pipeline Status & Timezone -->
-                                <div class="pt-3 border-t border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between text-[11px] font-mono">
+                                <div
+                                    class="pt-3 border-t border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between text-[11px] font-mono">
                                     <div class="flex items-center gap-1.5 text-[#52525B] dark:text-[#A1A1AA]">
-                                        <i class="fa-solid fa-circle-nodes text-primary text-[10px]"></i>
-                                        <span>Region: <strong class="text-[#111111] dark:text-white font-semibold">IN-DEL (IST)</strong></span>
+                                        <span>Region: <strong class="text-[#111111] dark:text-white font-semibold">IN
+                                                (IST)</strong></span>
                                     </div>
                                     <div class="flex items-center gap-1.5 text-[#71717A] dark:text-[#A1A1AA]">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                                         <span>2026 SWE Ready</span>
                                     </div>
                                 </div>
